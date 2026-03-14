@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="ko" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>구현자 가이드 | Kubernetes Gateway API</title>
+<meta name="description" content="Guidelines and tips for building a Gateway API implementation">
+<meta property="og:url" content="/ko/guides/implementers/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="구현자 가이드">
+  <meta property="og:description" content="Guidelines and tips for building a Gateway API implementation">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="guides">
+
+  <meta itemprop="name" content="구현자 가이드">
+  <meta itemprop="description" content="Guidelines and tips for building a Gateway API implementation">
+  <meta itemprop="wordCount" content="1738">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="구현자 가이드">
+  <meta name="twitter:description" content="Guidelines and tips for building a Gateway API implementation">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/ko/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/guides/implementers/">English</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-ko-guides-implementers").addClass("active"); 
+    $("#td-section-nav #m-ko-guides-implementers-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-ko-guides-implementers").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-ko-guides-implementers-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-ko-guides-implementers-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/guides/api-design/">English</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-guides-li">
+  <a href="/ko/guides/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-ko-guides"><span class="">가이드</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-guides-getting-started-li">
+  <input type="checkbox" id="m-ko-guides-getting-started-check" checked/>
+  <label for="m-ko-guides-getting-started-check"><a href="/ko/guides/getting-started/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-ko-guides-getting-started"><span class="">Gateway API 시작하기</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-getting-started-simple-gateway-li">
+  <input type="checkbox" id="m-ko-guides-getting-started-simple-gateway-check" checked/>
+  <label for="m-ko-guides-getting-started-simple-gateway-check"><a href="/ko/guides/getting-started/simple-gateway/" title="간단한 게이트웨이 배포하기" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-getting-started-simple-gateway"><span class="">Deploying a simple Gateway</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-getting-started-migrating-from-ingress-li">
+  <input type="checkbox" id="m-ko-guides-getting-started-migrating-from-ingress-check" checked/>
+  <label for="m-ko-guides-getting-started-migrating-from-ingress-check"><a href="/ko/guides/getting-started/migrating-from-ingress/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-getting-started-migrating-from-ingress"><span class="">Ingress에서 마이그레이션</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-getting-started-migrating-from-ingress-nginx-li">
+  <input type="checkbox" id="m-ko-guides-getting-started-migrating-from-ingress-nginx-check" checked/>
+  <label for="m-ko-guides-getting-started-migrating-from-ingress-nginx-check"><a href="/ko/guides/getting-started/migrating-from-ingress-nginx/" title="Ingress-NGINX 사용자를 위한 가이드" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-getting-started-migrating-from-ingress-nginx"><span class="">Migrating from Ingress-NGINX</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-guides-user-guides-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-check" checked/>
+  <label for="m-ko-guides-user-guides-check"><a href="/ko/guides/user-guides/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-ko-guides-user-guides"><span class="">사용자 가이드</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-routing-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-routing-check" checked/>
+  <label for="m-ko-guides-user-guides-http-routing-check"><a href="/ko/guides/user-guides/http-routing/" title="HTTP 라우팅" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-routing"><span class="">HTTP routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-redirect-rewrite-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-redirect-rewrite-check" checked/>
+  <label for="m-ko-guides-user-guides-http-redirect-rewrite-check"><a href="/ko/guides/user-guides/http-redirect-rewrite/" title="HTTP 경로 리다이렉트와 리라이트" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-redirect-rewrite"><span class="">HTTP redirects and rewrites</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-header-modifier-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-header-modifier-check" checked/>
+  <label for="m-ko-guides-user-guides-http-header-modifier-check"><a href="/ko/guides/user-guides/http-header-modifier/" title="HTTP 헤더 수정" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-header-modifier"><span class="">HTTP header modifier</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-traffic-splitting-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-traffic-splitting-check" checked/>
+  <label for="m-ko-guides-user-guides-traffic-splitting-check"><a href="/ko/guides/user-guides/traffic-splitting/" title="HTTP 트래픽 분할" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-traffic-splitting"><span class="">HTTP traffic splitting</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-request-mirroring-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-request-mirroring-check" checked/>
+  <label for="m-ko-guides-user-guides-http-request-mirroring-check"><a href="/ko/guides/user-guides/http-request-mirroring/" title="HTTP 요청 미러링" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-request-mirroring"><span class="">HTTP request mirroring</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-query-param-matching-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-query-param-matching-check" checked/>
+  <label for="m-ko-guides-user-guides-http-query-param-matching-check"><a href="/ko/guides/user-guides/http-query-param-matching/" title="HTTP 쿼리 파라미터 매칭" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-query-param-matching"><span class="">HTTP query parameter matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-method-matching-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-method-matching-check" checked/>
+  <label for="m-ko-guides-user-guides-http-method-matching-check"><a href="/ko/guides/user-guides/http-method-matching/" title="HTTP 메서드 매칭" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-method-matching"><span class="">HTTP method matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-timeouts-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-timeouts-check" checked/>
+  <label for="m-ko-guides-user-guides-http-timeouts-check"><a href="/ko/guides/user-guides/http-timeouts/" title="HTTP 타임아웃" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-timeouts"><span class="">HTTP timeouts</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-http-cors-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-http-cors-check" checked/>
+  <label for="m-ko-guides-user-guides-http-cors-check"><a href="/ko/guides/user-guides/http-cors/" title="CORS(교차 출처 리소스 공유)" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-http-cors"><span class="">HTTP CORS</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-multiple-ns-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-multiple-ns-check" checked/>
+  <label for="m-ko-guides-user-guides-multiple-ns-check"><a href="/ko/guides/user-guides/multiple-ns/" title="크로스 네임스페이스 라우팅" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-multiple-ns"><span class="">Cross-Namespace routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-tls-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-tls-check" checked/>
+  <label for="m-ko-guides-user-guides-tls-check"><a href="/ko/guides/user-guides/tls/" title="TLS 구성" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-tls"><span class="">TLS</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-tls-routing-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-tls-routing-check" checked/>
+  <label for="m-ko-guides-user-guides-tls-routing-check"><a href="/ko/guides/user-guides/tls-routing/" title="TLS 라우팅" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-tls-routing"><span class="">TLS routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-tcp-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-tcp-check" checked/>
+  <label for="m-ko-guides-user-guides-tcp-check"><a href="/ko/guides/user-guides/tcp/" title="TCP 라우팅" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-tcp"><span class="">TCP routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-grpc-routing-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-grpc-routing-check" checked/>
+  <label for="m-ko-guides-user-guides-grpc-routing-check"><a href="/ko/guides/user-guides/grpc-routing/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-grpc-routing"><span class="">gRPC 라우팅</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-backend-protocol-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-backend-protocol-check" checked/>
+  <label for="m-ko-guides-user-guides-backend-protocol-check"><a href="/ko/guides/user-guides/backend-protocol/" title="백엔드 프로토콜" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-backend-protocol"><span class="">Backend Protocol Selection</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-infrastructure-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-infrastructure-check" checked/>
+  <label for="m-ko-guides-user-guides-infrastructure-check"><a href="/ko/guides/user-guides/infrastructure/" title="게이트웨이 인프라 레이블 및 어노테이션" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-infrastructure"><span class="">Infrastructure attributes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-user-guides-listener-set-li">
+  <input type="checkbox" id="m-ko-guides-user-guides-listener-set-check" checked/>
+  <label for="m-ko-guides-user-guides-listener-set-check"><a href="/ko/guides/user-guides/listener-set/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-user-guides-listener-set"><span class="">ListenerSet</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-api-design-li">
+  <input type="checkbox" id="m-ko-guides-api-design-check" checked/>
+  <label for="m-ko-guides-api-design-check"><a href="/ko/guides/api-design/" title="API 설계 가이드" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-api-design"><span class="">API Design</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-crd-management-li">
+  <input type="checkbox" id="m-ko-guides-crd-management-check" checked/>
+  <label for="m-ko-guides-crd-management-check"><a href="/ko/guides/crd-management/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-crd-management"><span class="">CRD 관리</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-guides-implementers-li">
+  <input type="checkbox" id="m-ko-guides-implementers-check" checked/>
+  <label for="m-ko-guides-implementers-check"><a href="/ko/guides/implementers/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-guides-implementers"><span class="">구현자 가이드</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/ko/guides/implementers.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/ko/guides/implementers.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 페이지 편집</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/ko/guides/implementers.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 하부 페이지 생성</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=%ea%b5%ac%ed%98%84%ec%9e%90%20%ea%b0%80%ec%9d%b4%eb%93%9c" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> 이슈 생성</a>
+  <a id="print" href="/ko/guides/_print/"><i class="fa-solid fa-print fa-fw"></i> 전체 섹션 프린트</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gateway-api에-대해-기억해야-할-중요한-사항">Gateway API에 대해 기억해야 할 중요한 사항</a>
+      <ul>
+        <li><a href="#gateway-api는-kubernetes-io-api이다">Gateway API는 <code>kubernetes.io</code> API이다</a></li>
+        <li><a href="#gateway-api는-crd를-사용하여-배포된다">Gateway API는 CRD를 사용하여 배포된다</a></li>
+        <li><a href="#standard-채널-crd에-대한-변경은-하위-호환이-된다">Standard 채널 CRD에 대한 변경은 하위 호환이 된다</a></li>
+      </ul>
+    </li>
+    <li><a href="#구현-규칙-및-가이드라인">구현 규칙 및 가이드라인</a>
+      <ul>
+        <li><a href="#crd-관리">CRD 관리</a></li>
+        <li><a href="#적합성-및-버전-호환성">적합성 및 버전 호환성</a></li>
+        <li><a href="#표준-상태-필드-및-condition">표준 상태 필드 및 Condition</a></li>
+      </ul>
+    </li>
+    <li><a href="#tls">TLS</a>
+      <ul>
+        <li><a href="#listener-isolation">리스너 격리</a></li>
+        <li><a href="#간접-구성">간접 구성</a></li>
+        <li><a href="#tls-확장에-대한-전반적인-가이드라인">TLS 확장에 대한 전반적인 가이드라인</a></li>
+      </ul>
+    </li>
+    <li><a href="#리소스-세부-사항">리소스 세부 사항</a>
+      <ul>
+        <li><a href="#gatewayclass">GatewayClass</a></li>
+        <li><a href="#gateway">Gateway</a></li>
+        <li><a href="#라우트">라우트</a></li>
+        <li><a href="#referencegrant">ReferenceGrant</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/ko/guides/">가이드</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/ko/guides/implementers/" aria-disabled="true" class="btn-link disabled">구현자 가이드</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>구현자 가이드</h1>
+	<div class="lead">Guidelines and tips for building a Gateway API implementation</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<p>Gateway API 구현체를 만드는 것에 대해 알고 싶었지만 차마 물어보지 못했던 모든 것.</p>
+<p>이 문서는 기본 타입의 godoc 필드 내에 적절한 위치가 없는, <em>Gateway API 구현체를 작성하기</em> 위한 팁과 요령을 모아두는 곳이다.</p>
+<p>또한 이 API의 구현자가 흔한 실수를 피하는 데 도움이 되는 가이드라인을 기록하기 위한 곳이기도 하다.</p>
+<p>이 API를 <em>사용하는</em> 최종 사용자라면, 무언가를 <em>구축하는</em> 것이 아닌 한 크게 관련이 없을 수 있다.</p>
+<p>이 문서는 살아있는 문서이며, 빠진 내용이 있다면 PR을 환영한다!</p>
+<h2 id="gateway-api에-대해-기억해야-할-중요한-사항">Gateway API에 대해 기억해야 할 중요한 사항</h2>
+<p>이 내용의 대부분은 놀라운 것이 아니길 바라지만, 때때로 명확하지 않은 함의가 있으며 여기서 이를 설명하고자 한다.</p>
+<h3 id="gateway-api는-kubernetes-io-api이다">Gateway API는 <code>kubernetes.io</code> API이다</h3>
+<p>Gateway API는 <code>gateway.networking.k8s.io</code> API 그룹을 사용한다. 이는 쿠버네티스 코어 바이너리에 포함된 API와 마찬가지로, 릴리스가 발생할 때마다 업스트림 쿠버네티스 리뷰어가 API를 검토했다는 것을 의미한다.</p>
+<h3 id="gateway-api는-crd를-사용하여-배포된다">Gateway API는 CRD를 사용하여 배포된다</h3>
+<p>Gateway API는 <a href="/ko/overview/concepts/versioning/">버전 관리 정책</a>을 사용하여 버전이 관리되는 CRD 세트로 제공된다.</p>
+<p>해당 버전 관리 정책에서 가장 중요한 부분은, <em>동일해 보이는</em> 객체(즉, 동일한 <code>group</code>, <code>version</code>, <code>kind</code>를 가진 객체)가 약간 다른 스키마를 가질 수 있다는 것이다. 변경은 <em>호환 가능한</em> 방식으로 이루어지므로 일반적으로 &quot;그냥 작동&quot;하지만, &quot;그냥 작동&quot;하는 것을 더 안정적으로 만들기 위해 구현체가 취해야 할 조치가 있다. 이에 대한 자세한 내용은 아래에 설명되어 있다.</p>
+<p>CRD 기반 배포는 또한 CRD가 설치되지 <em>않은</em> 상태에서 구현체가 Gateway API 객체를 사용(즉, get, list, watch 등)하려고 하면 쿠버네티스 클라이언트 코드가 심각한 오류를 반환할 가능성이 높다는 것을 의미한다. 이를 처리하기 위한 팁도 아래에 자세히 설명되어 있다.</p>
+<p>Gateway API 객체에 대한 CRD 정의에는 모두 두 가지 특정 어노테이션이 포함되어 있다:</p>
+<ul>
+<li><code>gateway.networking.k8s.io/bundle-version: &lt;semver-release-version&gt;</code></li>
+<li><code>gateway.networking.k8s.io/channel: &lt;channel-name&gt;</code></li>
+</ul>
+<p>&quot;번들 버전&quot;과 &quot;채널&quot;(릴리스 채널의 줄임말)의 개념은 <a href="/ko/overview/concepts/versioning/">버전 관리</a> 문서에서 설명된다.</p>
+<p>구현체는 이를 사용하여 클러스터에 설치된 스키마 버전이 무엇인지(있는 경우) 확인할 수 있다.</p>
+<h3 id="standard-채널-crd에-대한-변경은-하위-호환이-된다">Standard 채널 CRD에 대한 변경은 하위 호환이 된다</h3>
+<p>Standard 채널 CRD에 대한 계약의 일부는 <em>API 버전 내의</em> 변경이 _호환 가능_해야 한다는 것이다. Experimental 채널에 속하는 CRD는 하위 호환성을 보장하지 않는다는 점에 유의한다.</p>
+<p><a href="/ko/overview/concepts/versioning/">Gateway API 버전 관리 정책</a>은 대체로 업스트림 쿠버네티스 API와 일치하지만, &quot;검증 수정&quot;을 허용한다. 예를 들어, API 사양에서 값이 유효하지 않다고 명시했지만 해당 검증이 이를 다루지 않았다면, 향후 릴리스에서 해당 유효하지 않은 입력을 방지하는 검증을 추가할 수 있다.</p>
+<p>이 계약은 또한 구현체가 작성된 버전보다 높은 버전의 API에서도 실패하지 않는다는 것을 의미한다. 쿠버네티스가 저장하는 새로운 스키마는 구현체가 코드에서 사용하는 이전 버전으로 확실히 직렬화할 수 있기 때문이다.</p>
+<p>마찬가지로, 구현체가 <em>더 높은</em> 버전으로 작성된 경우, 이해하는 새로운 값은 이전 버전에 존재하지 않으므로 단순히 <em>사용되지 않는다</em>.</p>
+<h2 id="구현-규칙-및-가이드라인">구현 규칙 및 가이드라인</h2>
+<h3 id="crd-관리">CRD 관리</h3>
+<p>Gateway API CRD를 관리하는 방법과 구현체에 CRD 설치를 번들로 제공하는 것이 허용되는 경우에 대한 정보는 <a href="/ko/guides/crd-management/">CRD 관리 가이드</a>를 참조한다.</p>
+<h3 id="적합성-및-버전-호환성">적합성 및 버전 호환성</h3>
+<p>적합한 Gateway API 구현체란 각 Gateway API 번들 버전 릴리스에 포함된 적합성 테스트를 통과하는 구현체이다.</p>
+<p>구현체는 적합하려면 <em>건너뛴</em> 테스트 <em>없이</em> 적합성 테스트 스위트를 통과해야 한다(MUST). 개발 중에는 테스트를 건너뛸 수 있지만, 적합하다고 인정받고자 하는 버전에는 건너뛴 테스트가 없어야 한다(MUST).</p>
+<p>Extended 기능은 Extended 상태에 대한 계약에 따라 비활성화할 수 있다.</p>
+<p>Gateway API 적합성은 버전별로 다르다. 버전 N에 대해 적합성을 통과한 구현체가 변경 없이 버전 N+1에 대해 적합성을 통과하지 못할 수 있다.</p>
+<p>구현체는 테스트 세부 정보가 포함된 적합성 테스트 스위트 보고서를 Gateway API GitHub 저장소에 제출하는 것이 좋다(SHOULD).</p>
+<p>적합성 테스트 스위트 출력에는 지원되는 Gateway API 버전이 포함된다.</p>
+<h4 id="버전-호환성">버전 호환성</h4>
+<p>v1.0이 릴리스되면, <strong>Gateway</strong>(게이트웨이)와 <strong>GatewayClass</strong>(게이트웨이 클래스)를 지원하는 구현체는 새로운 Condition인 <code>SupportedVersion</code>을 설정해야 한다(MUST). <code>status: true</code>는 설치된 CRD 버전이 지원됨을 의미하고, <code>status: false</code>는 지원되지 않음을 의미한다.</p>
+<h3 id="표준-상태-필드-및-condition">표준 상태 필드 및 Condition</h3>
+<p>Gateway API에는 많은 리소스가 있지만, 이를 설계할 때 Condition 타입과 <code>status.conditions</code> 필드를 사용하여 객체 간에 가능한 한 일관된 상태 경험을 유지하기 위해 노력했다.</p>
+<p>대부분의 리소스에는 <code>status.conditions</code> 필드가 있지만, 일부는 <code>conditions</code> 필드를 <em>포함하는</em> 네임스페이스가 지정된 필드도 가지고 있다.</p>
+<p>후자의 경우, 게이트웨이의 <code>status.listeners</code>와 라우트의 <code>status.parents</code> 필드가 슬라이스의 각 항목이 일부 구성 하위 집합과 관련된 Condition을 식별하는 예이다.</p>
+<p>게이트웨이의 경우, _리스너_별로 Condition을 허용하기 위한 것이고, 라우트의 경우, _구현체_별로 Condition을 허용하기 위한 것이다(라우트 객체가 여러 게이트웨이에서 사용될 수 있고, 해당 게이트웨이가 서로 다른 구현체에 의해 조정될 수 있기 때문이다).</p>
+<p>이 모든 경우에서 유사한 의미를 가진 비교적 일반적인 Condition 타입이 있다:</p>
+<ul>
+<li><code>Accepted</code> - 리소스 또는 그 일부에 구현체가 제어하는 기본 데이터 플레인에서 일부 구성을 생성할 수 있는 허용 가능한 설정이 포함되어 있다. 이는 <em>전체</em> 구성이 유효하다는 것을 의미하는 것이 아니라, 일부 효과를 생성하기에 <em>충분한</em> 구성이 유효하다는 것을 의미한다.</li>
+<li><code>Programmed</code> - 이는 <code>Accepted</code> 이후의 후속 단계를 나타내며, 리소스 또는 그 일부가 Accepted되고 기본 데이터 플레인에 프로그래밍된 상태이다. 사용자는 <em>가까운 미래의 어느 시점에</em> 트래픽이 흐를 준비가 된 구성을 기대해야 한다. 이 Condition은 설정될 <em>때</em> 데이터 플레인이 준비되었다는 것을 말하는 것이 <em>아니라</em>, 모든 것이 유효하고 <em>곧 준비될 것이라는</em> 의미이다. &quot;곧&quot;은 구현체에 따라 다른 의미를 가질 수 있다.</li>
+<li><code>ResolvedRefs</code> - 이 Condition은 리소스 또는 그 일부의 모든 참조가 유효하고, 존재하면서 해당 참조를 허용하는 객체를 가리키고 있음을 나타낸다. 이 Condition이 <code>status: false</code>로 설정된 경우, 리소스 또는 그 일부의 <em>최소 하나의</em> 참조가 어떤 이유로 유효하지 않으며, <code>message</code> 필드가 어떤 것이 유효하지 않은지 나타내야 한다.</li>
+</ul>
+<p>구현자는 각 리소스 또는 그 일부에 대한 이러한 Condition의 정확한 세부 사항을 확인하기 위해 각 타입의 godoc을 확인해야 한다.</p>
+<p>또한, 업스트림 <code>Conditions</code> 구조체에는 선택적 <code>observedGeneration</code> 필드가 포함되어 있다 - 구현체는 이 필드를 사용하고(MUST) 상태가 생성되는 시점에 객체의 <code>metadata.generation</code> 필드로 설정해야 한다. 이를 통해 API 사용자는 상태가 객체의 현재 버전과 관련이 있는지 판단할 수 있다.</p>
+<h2 id="tls">TLS</h2>
+<p>TLS는 Gateway API에서 큰 주제이며, 기능 세트가 계속 확장되고 있다. 사용자 관점에서 이 주제를 더 깊이 다루는 <a href="/ko/guides/user-guides/tls/">TLS 가이드</a>가 있지만, 이 섹션에서는 구현자 관점에서의 일부 공백을 메우고자 한다.</p>
+<h3 id="listener-isolation">리스너 격리</h3>
+<p>게이트웨이 내에서 TLS 구성은 현재 리스너에만 독점적으로 연결되어 있다. 이 접근 방식을 관리 가능하게 만들기 위해, 모든 구현체가 아래에 정의된 완전한 &quot;<strong>Listener</strong>(리스너) 격리&quot;를 제공하는 목표를 향해 노력하도록 권장하고 있다:</p>
+<p>요청은 최대 하나의 리스너와 매칭되어야 한다(SHOULD). 예를 들어, &quot;foo.example.com&quot;과 &quot;<em>.example.com&quot;에 대해 리스너가 정의된 경우, &quot;foo.example.com&quot;에 대한 요청은 &quot;foo.example.com&quot; 리스너에 연결된 라우트만 사용하여 라우팅되어야 한다(SHOULD)(&quot;</em>.example.com&quot; 리스너가 아님).</p>
+<p>리스너 격리를 지원하지 않는 구현체는 이를 명확하게 문서화해야 한다(MUST). 향후, 이 기능에 대한 지원을 주장하는 구현체 간에 이 동작이 일관되도록 HTTPS 리스너 격리 적합성 테스트를 추가할 계획이다.
+<a href="https://github.com/kubernetes-sigs/gateway-api/issues/2803">#2803</a>에서 이러한 테스트에 대한 최신 업데이트를 확인할 수 있다.</p>
+<h3 id="간접-구성">간접 구성</h3>
+<p>TLS 인증서가 게이트웨이 소유자에 의해 직접 관리되지 않을 수 있는 다양한 사례가 있다. 이것이 완전한 목록은 아니지만, Gateway API로 TLS 인증서를 관리하는 데 사용될 것으로 예상되는 몇 가지 접근 방식을 문서화한다:</p>
+<h4 id="1-다른-곳의-인증서">1. 다른 곳의 인증서</h4>
+<p>일부 제공자는 쿠버네티스 외부에서 TLS 인증서를 구성하고 호스팅하는 기능을 제공한다. 해당 외부 제공자에 연결할 수 있는 구현체는 게이트웨이 리스너의 TLS 옵션을 통해 해당 기능을 노출할 수 있다. 예를 들어:</p>
+<pre tabindex="0"><code>  listeners:
+  - name: https
+    protocol: HTTPS
+    port: 443
+    tls:
+      mode: Terminate
+      options:
+        vendor.example.com/certificate-name: store-example-com
+</code></pre><p>이 예에서 <code>store-example-com</code> 이름은 외부 <code>vendor.example.com</code> TLS 인증서 제공자가 저장한 인증서의 이름을 참조한다.</p>
+<h4 id="2-나중에-채워지는-자동-생성-tls-인증서">2. 나중에 채워지는 자동 생성 TLS 인증서</h4>
+<p>많은 사용자는 TLS 인증서가 자동으로 생성되기를 선호한다. 이에 대한 잠재적인 구현 중 하나는 게이트웨이와 HTTPRoute를 감시하고, TLS 인증서를 생성하여 게이트웨이에 첨부하는 컨트롤러를 포함한다. 구현 세부 사항에 따라, 게이트웨이 소유자는 이 기능에 명시적으로 옵트인하기 위해 게이트웨이 또는 리스너 수준에서 무언가를 구성해야 할 수 있다. 예를 들어, 누군가가 이 패턴을 따라 인증서를 생성하는 <code>acme-cert-generator</code>를 만들었다고 가정해 보자. 해당 생성기는 <code>tls.options</code>에 <code>acme.io/cert-generator</code>가 설정되었거나 전체 게이트웨이에 유사한 어노테이션이 설정된 게이트웨이 리스너에서만 인증서를 생성하고 채우도록 선택할 수 있다.</p>
+<p>이것은 실제로 <a href="https://cert-manager.io/docs/usage/gateway/">현재 Cert Manager가 작동하는 방식</a>과 상당히 유사하지만, 그 방식은 게이트웨이 소유자가 이후에 채울 쿠버네티스 Secret을 참조하도록 요구한다. 이 특정 접근 방식은 Gateway API v1.1까지 TLS CertificateRef를 지정해야 했기 때문에 필요했다.</p>
+<p>Gateway API v1.1에서 검증이 완화되면서, TLS 인증서를 생성 시 미지정 상태로 남길 수 있어 생성된 TLS 인증서를 다룰 때 구성이 줄어든다.</p>
+<h4 id="3-다른-페르소나에-의해-지정되는-인증서">3. 다른 페르소나에 의해 지정되는 인증서</h4>
+<p>일부 조직에서는 애플리케이션 개발자가 TLS 인증서를 관리하는 역할을 담당한다(이 역할과 다른 역할에 대한 자세한 내용은 <a href="/ko/overview/concepts/roles-and-personas/">역할 및 페르소나</a>를 참조한다).</p>
+<p>이 사용 사례를 가능하게 하려면 새로운 컨트롤러와 CRD가 생성되어야 한다. 이 CRD는 호스트명을 사용자가 제공한 인증서에 연결하고, 컨트롤러는 해당 CRD에 지정된 인증서를 해당 호스트명과 일치하는 게이트웨이 리스너에 채운다. 이 또한 리스너 또는 게이트웨이 수준의 동작 옵트인이 도움이 될 것이다.</p>
+<h3 id="tls-확장에-대한-전반적인-가이드라인">TLS 확장에 대한 전반적인 가이드라인</h3>
+<p>Gateway API 위에 TLS 확장을 구축할 때 다음 가이드라인을 따르는 것이 중요하다:</p>
+<ol>
+<li>TLS 옵션이나 어노테이션에 구현체에 고유한 도메인 접두사가 있는 이름을 사용한다.
+(예를 들어, <code>certificate-name</code> 대신 <code>example.com/certificate-name</code>을 사용한다).</li>
+<li>옵션이나 어노테이션 값에 인증서와 같은 민감한 정보를 인코딩하지 않는다.
+대신 이해하기 쉬운 간결한 이름을 통한 참조를 선호한다. 이러한 값은 기술적으로
+최대 253자까지 가능하지만, 전반적인 가독성과 UX를 유지하기 위해 50자 미만으로
+유지하는 것을 강력히 권장한다.</li>
+<li>이러한 확장을 활성화하기 위해 Gateway API v1.1+에서는 더 이상 게이트웨이
+리스너에 TLS 구성을 지정하도록 요구하지 않는다. 게이트웨이 리스너에 충분한
+TLS 구성이 지정되지 않은 경우, 구현체는 해당 리스너에 대해 <code>Programmed</code>
+condition을 <code>InvalidTLSConfig</code> 이유와 함께 <code>False</code>로 설정해야 한다(MUST).</li>
+<li>지원하기로 선택한 확장에 관계없이, 모든 구현체에서 이식 가능하도록 의도된
+핵심 TLS 구성을 지원하는 것이 중요하다. 확장은 이 API에서 자리가 있지만,
+모든 구현체는 여전히 API의 핵심 기능을 지원해야 한다(MUST).</li>
+</ol>
+<h2 id="리소스-세부-사항">리소스 세부 사항</h2>
+<p>현재 사용 가능한 각 적합성 프로필에 대해, 구현체가 조정하도록 기대되는 리소스 세트가 있다.</p>
+<p>다음 섹션에서는 각 Gateway API 객체를 살펴보고 예상되는 동작을 설명한다.</p>
+<h3 id="gatewayclass">GatewayClass</h3>
+<p>GatewayClass에는 하나의 주요 <code>spec</code> 필드인 <code>controllerName</code>이 있다. 각 구현체는 도메인 접두사가 있는 문자열 값(예: <code>example.com/example-ingress</code>)을 <code>controllerName</code>으로 주장해야 한다.</p>
+<p>구현체는 <em>모든</em> GatewayClass를 감시하고(MUST), 일치하는 <code>controllerName</code>을 가진 GatewayClass를 조정해야 한다. 구현체는 일치하는 <code>controllerName</code>을 가진 GatewayClass 세트에서 최소 하나의 호환 가능한 GatewayClass를 선택하고, 각각에 <code>Accepted</code> Condition을 <code>status: true</code>로 설정하여 해당 GatewayClass의 처리를 수락한다는 것을 나타내야 한다. 일치하는 <code>controllerName</code>을 가지지만 Accepted되지 <em>않은</em> GatewayClass에는 <code>Accepted</code> Condition을 <code>status: false</code>로 설정해야 한다.</p>
+<p>구현체는 하나의 GatewayClass만 조정할 수 있는 경우 허용 가능한 GatewayClass 풀에서 하나만 선택할 수 있으며(MAY), 여러 GatewayClass를 조정할 수 있는 경우 원하는 만큼 선택할 수도 있다.</p>
+<p>GatewayClass에 호환되지 않는 요소가 있는 경우(작성 시점에서 이에 대한 유일한 가능한 이유는 구현체가 지원하지 않는 <code>paramsRef</code> 객체에 대한 포인터가 있는 것이다), 구현체는 호환되지 않는 GatewayClass를 <code>Accepted</code>가 아닌 것으로 표시해야 한다(SHOULD).</p>
+<h3 id="gateway">Gateway</h3>
+<p>게이트웨이 객체는 구현체가 이를 조정하기 위해 <code>spec.gatewayClassName</code> 필드에서 존재하고 구현체에 의해 <code>Accepted</code>된 GatewayClass를 참조해야 한다(MUST).</p>
+<p>조정 범위를 벗어나는 게이트웨이 객체(예를 들어, 참조하는 GatewayClass가 삭제된 경우)는 삭제 프로세스의 일부로 구현체에 의해 상태가 제거될 수 있지만(MAY), 이는 필수가 아니다.</p>
+<h3 id="라우트">라우트</h3>
+<p>모든 라우트 객체는 몇 가지 속성을 공유한다:</p>
+<ul>
+<li>구현체가 조정 가능한 것으로 간주하려면 범위 내의 부모에 연결되어야 한다(MUST).</li>
+<li>구현체는 네임스페이스가 지정된 <code>parents</code> 필드를 사용하여 범위 내의 각 라우트에 대한 상태를 관련 Condition으로 업데이트해야 한다(MUST). 세부 사항은 특정 라우트 타입을 참조하되, 일반적으로 <code>Accepted</code>, <code>Programmed</code>, <code>ResolvedRefs</code> Condition이 포함된다.</li>
+<li>범위를 벗어나는 라우트는 상태가 업데이트되지 않아야 한다(SHOULD NOT). 이러한 업데이트가 새로운 소유자의 상태를 덮어쓸 수 있기 때문이다. <code>observedGeneration</code> 필드는 남아 있는 상태가 오래되었음을 나타낸다.</li>
+</ul>
+<h4 id="httproute">HTTPRoute</h4>
+<p>HTTPRoute는 <em>암호화되지 않고</em> 검사에 사용 가능한 HTTP 트래픽을 라우팅한다. 이는 게이트웨이에서 종료된 HTTPS 트래픽(이후 복호화되므로)을 포함하며, HTTPRoute가 경로, 메서드, 헤더와 같은 HTTP 속성을 라우팅 지시어에서 사용할 수 있게 한다.</p>
+<h4 id="tlsroute">TLSRoute</h4>
+<p>TLSRoute는 <em>트래픽 스트림을 복호화하지 않고</em> SNI 헤더를 사용하여 암호화된 TLS 트래픽을 관련 백엔드로 라우팅한다.</p>
+<h4 id="tcproute">TCPRoute</h4>
+<p>TCPRoute는 리스너에 도착하는 TCP 스트림을 주어진 백엔드 중 하나로 라우팅한다.</p>
+<h4 id="udproute">UDPRoute</h4>
+<p>UDPRoute는 리스너에 도착하는 UDP 패킷을 주어진 백엔드 중 하나로 라우팅한다.</p>
+<h3 id="referencegrant">ReferenceGrant</h3>
+<p><strong>ReferenceGrant</strong>(참조 승인)는 한 네임스페이스의 리소스 소유자가 다른 네임스페이스의 Gateway API 객체로부터의 참조를 <em>선택적으로</em> 허용하는 데 사용되는 특수한 리소스이다.</p>
+<p>ReferenceGrant는 참조 접근을 부여하는 대상과 동일한 네임스페이스에 생성되며, 다른 네임스페이스, 다른 Kind, 또는 둘 다로부터의 접근을 허용한다.</p>
+<p>교차 네임스페이스 참조를 지원하는 구현체는 ReferenceGrant를 감시하고(MUST), 범위 내 Gateway API 객체가 참조하는 객체를 가리키는 모든 ReferenceGrant를 조정해야 한다.</p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

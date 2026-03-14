@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="ko" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>GEP-2649: Inherited Policy Attachment | Kubernetes Gateway API</title>
+<meta name="description" content="GEP-2649: Inherited Policy Attachment (Declined)">
+<meta property="og:url" content="/ko/geps/gep-2649/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="GEP-2649: Inherited Policy Attachment">
+  <meta property="og:description" content="GEP-2649: Inherited Policy Attachment (Declined)">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="geps">
+
+  <meta itemprop="name" content="GEP-2649: Inherited Policy Attachment">
+  <meta itemprop="description" content="GEP-2649: Inherited Policy Attachment (Declined)">
+  <meta itemprop="wordCount" content="4912">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GEP-2649: Inherited Policy Attachment">
+  <meta name="twitter:description" content="GEP-2649: Inherited Policy Attachment (Declined)">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/ko/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/geps/gep-2649/">English</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-ko-geps-gep-2649").addClass("active"); 
+    $("#td-section-nav #m-ko-geps-gep-2649-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-ko-geps-gep-2649").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-ko-geps-gep-2649-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-ko-geps-gep-2649-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/geps/">English</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-geps-li">
+  <a href="/ko/geps/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-ko-geps"><span class="">Enhancements</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-overview-li">
+  <input type="checkbox" id="m-ko-geps-overview-check" checked/>
+  <label for="m-ko-geps-overview-check"><a href="/ko/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-overview"><span class="">Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-list-li">
+  <input type="checkbox" id="m-ko-geps-list-check" checked/>
+  <label for="m-ko-geps-list-check"><a href="/ko/geps/list/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-list"><span class="">List</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-geps-by-state-li">
+  <input type="checkbox" id="m-ko-geps-by-state-check" checked/>
+  <label for="m-ko-geps-by-state-check"><a href="/ko/geps/by-state/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-ko-geps-by-state"><span class="">By State</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-standard-li">
+  <input type="checkbox" id="m-ko-geps-by-state-standard-check" checked/>
+  <label for="m-ko-geps-by-state-standard-check"><a href="/ko/geps/by-state/standard/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-standard"><span class="">Standard</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-memorandum-li">
+  <input type="checkbox" id="m-ko-geps-by-state-memorandum-check" checked/>
+  <label for="m-ko-geps-by-state-memorandum-check"><a href="/ko/geps/by-state/memorandum/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-memorandum"><span class="">Memorandum</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-experimental-li">
+  <input type="checkbox" id="m-ko-geps-by-state-experimental-check" checked/>
+  <label for="m-ko-geps-by-state-experimental-check"><a href="/ko/geps/by-state/experimental/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-experimental"><span class="">Experimental</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-implementable-li">
+  <input type="checkbox" id="m-ko-geps-by-state-implementable-check" checked/>
+  <label for="m-ko-geps-by-state-implementable-check"><a href="/ko/geps/by-state/implementable/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-implementable"><span class="">Implementable</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-provisional-li">
+  <input type="checkbox" id="m-ko-geps-by-state-provisional-check" checked/>
+  <label for="m-ko-geps-by-state-provisional-check"><a href="/ko/geps/by-state/provisional/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-provisional"><span class="">Provisional</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/ko/geps/gep-2649/index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/ko/geps/gep-2649/index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 페이지 편집</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/ko/geps/gep-2649/index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 하부 페이지 생성</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=GEP-2649:%20Inherited%20Policy%20Attachment" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> 이슈 생성</a>
+  <a id="print" href="/ko/geps/_print/"><i class="fa-solid fa-print fa-fw"></i> 전체 섹션 프린트</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#tldr">TLDR</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#non-goals">Non-Goals</a></li>
+    <li><a href="#inherited-policy-attachment-requirements-in-brief">Inherited Policy Attachment requirements in brief</a></li>
+    <li><a href="#inherited-policy-attachment">Inherited Policy Attachment</a></li>
+    <li><a href="#inherited-policy-design-guidelines">Inherited Policy design guidelines</a>
+      <ul>
+        <li></li>
+        <li><a href="#merging-into-existing-spec-fields">Merging into existing <code>spec</code> fields</a></li>
+        <li><a href="#conflict-resolution">Conflict Resolution</a></li>
+      </ul>
+    </li>
+    <li><a href="#policy-attachment-examples-and-behavior">Policy Attachment examples and behavior</a>
+      <ul>
+        <li><a href="#policy-attachment-for-ingress">Policy Attachment for Ingress</a></li>
+        <li><a href="#policy-attachment-for-mesh">Policy Attachment for Mesh</a></li>
+        <li><a href="#policy-targetref-api">Policy TargetRef API</a></li>
+        <li><a href="#sample-policy-api">Sample Policy API</a></li>
+        <li><a href="#hierarchy">Hierarchy</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#inherited-policy-attachment-1">Inherited Policy Attachment</a></li>
+        <li><a href="#handling-non-scalar-values">Handling non-scalar values</a></li>
+        <li><a href="#interactions-between-defaults-overrides-and-field-values">Interactions between defaults, overrides, and field values</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-discoverability-and-status">User discoverability and status</a>
+      <ul>
+        <li><a href="#standard-label-on-crd-objects">Standard label on CRD objects</a></li>
+        <li><a href="#conditions">Conditions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/ko/geps/">Enhancements</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/ko/geps/gep-2649/" aria-disabled="true" class="btn-link disabled">GEP-2649: Inherited Policy Attachment</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>GEP-2649: Inherited Policy Attachment</h1>
+	<div class="lead">GEP-2649: Inherited Policy Attachment (Declined)</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<h1 id="gep-2649-inherited-policy-attachment">GEP-2649: Inherited Policy Attachment</h1>
+<ul>
+<li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/2649">#2649</a></li>
+<li>Status: Experimental</li>
+</ul>
+<p>(See <a href="/ko/geps/overview/#gep-states">status definitions</a>.)</p>
+<h2 id="tldr">TLDR</h2>
+<p>Describe and specify a design pattern for a class of metaresource that can
+affect specific settings across a multiple target objects.</p>
+<p>This is a design for a <em>pattern</em>, not an API field or new object.</p>
+<div class="alert alert-danger" role="note"><h4 class="alert-heading">위험:</h4>This GEP is in the process of being updated.
+Please see the discussion at <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/2927">https://github.com/kubernetes-sigs/gateway-api/discussions/2927</a>
+and expect further changes.
+Some options under discussion there may make the distinction between Direct
+and Inherited Policies moot, which would require a rework.</div>
+
+<h2 id="goals">Goals</h2>
+<ul>
+<li>Specify what common properties all Inherited Policies MUST have</li>
+<li>Recommend design patterns for areas that cannot be mandated but that could
+cause problems for API designers.</li>
+</ul>
+<h2 id="non-goals">Non-Goals</h2>
+<ul>
+<li>Fully specify the entire design space for Inherited Policy Attachment</li>
+</ul>
+<h2 id="inherited-policy-attachment-requirements-in-brief">Inherited Policy Attachment requirements in brief</h2>
+<p>The following parts of GEP-713 also apply here. Inherited Policy Attachments:</p>
+<ul>
+<li>MUST be their own CRDs (e.g. <code>TimeoutPolicy</code>, <code>RetryPolicy</code> etc),</li>
+<li>MUST include both <code>spec</code> and <code>status</code> stanzas</li>
+<li>MUST have the <code>status</code> stanza include a <code>conditions</code> section using the standard
+upstream Condition type</li>
+<li>MUST use the <code>targetRef</code> struct to specify their target resource.</li>
+<li>MUST follow the naming requirements (MUST be named to clearly indicate that the
+kind is a Policy, and SHOULD use the <code>Policy</code> suffix at the end of the Kind and
+<code>policies</code> at the end of the Resource names).</li>
+</ul>
+<p>Additionally, Inherited Policy Attachment:</p>
+<ul>
+<li>MAY specify a <code>defaults</code> stanza, an <code>overrides</code> stanza, or both. If it does not,
+it MUST specify if its fields are defaults or overrides in each field's godoc.</li>
+</ul>
+<h2 id="inherited-policy-attachment">Inherited Policy Attachment</h2>
+<p>Because a Inherited Policy is a metaresource, it targets some other resource
+and <em>augments</em> its behavior.</p>
+<p>But why have this distinct from other types of metaresource? Because Inherited
+Policy resources are designed to have a way for settings to flow down a hierarchy.</p>
+<p><em>Any</em> object that affects settings outside of the object that it attaches to is
+an Inherited Policy.</p>
+<p>Note that the same object may be have some properties of both an Inherited Policy
+<em>and</em> a Direct Policy if it can attach to multiple points of a hierarchy, such
+as if the same Policy can be attached to a Gateway (where it affects all Routes
+attached to that Gateway) or to a Route (where it affects only that Route).</p>
+<p>If a Policy <em>can be</em> used as an Inherited Policy, it MUST be treated as an
+Inherited Policy, regardless of whether a specific instance of the Policy is
+only affecting a single object.</p>
+<p>This is because all of the rules about inheritance apply to the object, regardless
+of where it is attached in the hierarchy.</p>
+<p>Regardless of exactly how they are designed, settings in an Inherited Policy
+generally fall into two categories, Defaults and Overrides.</p>
+<p>Defaults set the default value for something, and can be overridden by the
+“lower” objects (like a connection timeout default policy on a Gateway being
+overridable inside a HTTPRoute), and Overrides cannot be overridden by “lower”
+objects (like setting a maximum client timeout to some non-infinite value at the
+Gateway level to stop HTTPRoute owners from leaking connections over time).</p>
+<p>Note that while both types of setting are valid, both also come with difficulties
+in communicating the currently active setting to the owners of the modified
+objects. These are discussed in more detail below.</p>
+<h2 id="inherited-policy-design-guidelines">Inherited Policy design guidelines</h2>
+<p>Here are some guidelines for when to consider using a Inherited Policy object:</p>
+<ul>
+<li>The settings or configuration are bound to one containing object, but affect
+other objects attached to that one (for example, affecting HTTPRoutes attached
+to a single Gateway, or all HTTPRoutes in a GatewayClass).</li>
+<li>The settings need to able to be defaulted, but can be overridden on a per-object
+basis.</li>
+<li>The settings must be enforced by one persona, and not modifiable or removable
+by a lesser-privileged persona. (For example, The owner of a GatewayClass may
+want to restrict something about all Gateways in a GatewayClass, regardless of
+who owns the Gateway, or a Gateway owner may want to enforce some setting
+across all attached HTTPRoutes).</li>
+<li>In terms of status, a good accounting for how to record that the Policy is
+attached is easy, but recording what resources the Policy is being applied to
+is not, and needs to be carefully designed to avoid fanout apiserver load.</li>
+</ul>
+<p>When multiple Inherited Policies are used, they can interact in various ways,
+which are governed by the following rules, which will be expanded on later in
+this document.</p>
+<ul>
+<li>If a Policy does not affect an object's fields directly, then the resultant
+Policy MUST be the set of all distinct fields inside the relevant Policy objects,
+as set out by the rules below.</li>
+<li>For Policies that affect an object's existing fields, multiple instances of the
+same Policy Kind affecting an object's fields MUST be evaluated as
+though only a single Policy &quot;wins&quot; the right to affect each field. This operation
+is performed on a <em>per-distinct-field</em> basis.</li>
+<li>Settings in <code>overrides</code> stanzas MUST win over the same setting in a <code>defaults</code>
+stanza.</li>
+<li><code>overrides</code> settings operate in a &quot;less specific beats more specific&quot; fashion -
+Policies attached <em>higher</em> up the hierarchy beat the same type of Policy
+attached further down the hierarchy.</li>
+<li><code>defaults</code> settings operate in a &quot;more specific beats less specific&quot; fashion -
+Policies attached <em>lower down</em> the hierarchy beat the same type of Policy
+attached further <em>up</em> the hierarchy.</li>
+<li>For <code>defaults</code>, the <em>most specific</em> value is the one <em>inside the object</em> that
+the Policy applies to; that is, if a Policy specifies a <code>default</code>, and an object
+specifies a value, the <em>object's</em> value wins.</li>
+<li>When Policies interact with <em>fields</em> in other objects (for example, if they
+set a default or override for a field in a HTTPRoute), they MUST do so in a
+&quot;replace value&quot; fashion.
+<ul>
+<li>For fields where the <code>value</code> is a scalar, (like a string or a number)
+MUST have their value <em>replaced</em> by the value in the Policy if it wins.
+Notably, this means that a <code>default</code> will only ever replace an empty or unset
+value in an object. Note also that, as in Go, the empty string value is <em>only</em>
+a string of length 0, generally represented as <code>&quot;&quot;</code>.</li>
+<li>For fields where the value is an object, the Policy should include the fields
+in the object in its definition, so that the replacement can be performed
+on each field inside the object as a simple field rather than the object as
+a whole.</li>
+<li>For fields where the final value is non-scalar, but is not an <em>object</em> with
+fields of its own, the value MUST be entirely replaced, <em>not</em> merged. This
+means that lists of strings or lists of ints specified in a Policy overwrite
+the empty list (in the case of a <code>default</code>) or any specified list (in the case
+of an <code>override</code>). The same applies to <code>map[string]string</code> fields. An example
+here would be a field that stores a map of annotations - specifying a Policy
+that overrides annotations will mean that a final object specifying those
+annotations will have its value <em>entirely replaced</em> by an <code>override</code> setting.</li>
+</ul>
+</li>
+<li>In the case that two Policies of the same type specify different fields, then
+<em>all</em> of the specified fields MUST take effect on the affected object, using
+the precedence rules given above.</li>
+</ul>
+<p>Examples to further illustrate these rules are given below.</p>
+<h4 id="attaching-policy-to-gatewayclass">Attaching Policy to GatewayClass</h4>
+<p>GatewayClass may be the trickiest resource to attach policy to. Policy
+attachment relies on the policy being defined within the same scope as the
+target. This ensures that only users with write access to a policy resource in a
+given scope will be able to modify policy at that level. Since GatewayClass is a
+cluster scoped resource, this means that any policy attached to it must also be
+cluster scoped.</p>
+<p>GatewayClass parameters provide an alternative to policy attachment that may be
+easier for some implementations to support. These parameters can similarly be
+used to set defaults and requirements for an entire GatewayClass.</p>
+<h3 id="merging-into-existing-spec-fields">Merging into existing <code>spec</code> fields</h3>
+<p>It's possible (even likely) that configuration in a Policy may need to be merged
+into an existing object's fields somehow, particularly for Inherited policies.</p>
+<p>When merging into an existing fields inside an object, Policy objects should
+merge values at a scalar level, not at a struct or object level.</p>
+<p>For example, in the <code>CDNCachingPolicy</code> example below, the <code>cdn</code> struct contains
+a <code>cachePolicy</code> struct that contains fields. If an implementation was merging
+this configuration into an existing object that contained the same fields, it
+should merge the fields at a scalar level, with the <code>includeHost</code>,
+<code>includeProtocol</code>, and <code>includeQueryString</code> values being defaulted if they were
+not specified in the object being controlled. Similarly, for <code>overrides</code>, the
+values of the innermost scalar fields should overwrite the scalar fields in the
+affected object.</p>
+<p>Implementations should not copy any structs from the Policy object directly into the
+affected object, any fields that <em>are</em> overridden should be overridden on a per-field
+basis.</p>
+<p>In the case that the field in the Policy affects a struct that is a member of a list,
+each existing item in the list in the affected object should have each of its
+fields compared to the corresponding fields in the Policy.</p>
+<p>For non-scalar field <em>values</em>, like a list of strings, or a <code>map[string]string</code>
+value, the <em>entire value</em> must be overwritten by the value from the Policy. No
+merging should take place. This mainly applies to <code>overrides</code>, since for
+<code>defaults</code>, there should be no value present in a field on the final object.</p>
+<p>There is one exception here: the listMapType list. These are lists of structs
+that, in their API definitions, define one string in the struct as a key, and
+are defined to be treated the same as a map (only one entry for each value in
+the key can be present, and patches that duplicate the key overwrite the rest
+of the struct).</p>
+<p>For these values, and these values <em>only</em>, implementations SHOULD treat the list
+like a map and merge values into the corresponding entry, by the key field.</p>
+<p>This table shows how this works for various types:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Object config</th>
+          <th>Override Policy config</th>
+          <th>Result</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>string</td>
+          <td><code>key: &quot;foo&quot;</code></td>
+          <td><code>key: &quot;bar&quot;</code></td>
+          <td><code>key: &quot;bar&quot;</code></td>
+      </tr>
+      <tr>
+          <td>list</td>
+          <td><code>key: [&quot;a&quot;,&quot;b&quot;]</code></td>
+          <td><code>key: [&quot;c&quot;,&quot;d&quot;]</code></td>
+          <td><code>key: [&quot;c&quot;,&quot;d&quot;]</code></td>
+      </tr>
+      <tr>
+          <td><code>map[string]string</code></td>
+          <td><code>key: {&quot;foo&quot;: &quot;a&quot;, &quot;bar&quot;: &quot;b&quot;}</code></td>
+          <td><code>key: {&quot;foo&quot;: &quot;c&quot;, &quot;bar&quot;: &quot;d&quot;}</code></td>
+          <td><code>key: {&quot;foo&quot;: &quot;c&quot;, &quot;bar&quot;: &quot;d&quot;}</code></td>
+      </tr>
+      <tr>
+          <td>listMapType</td>
+          <td><code>listMaps: [{&quot;name&quot;: &quot;o1&quot;, &quot;foo&quot;: &quot;a&quot;, &quot;bar&quot;: &quot;b&quot;},{&quot;name&quot;: &quot;o2&quot;, &quot;foo&quot;: &quot;c&quot;, &quot;bar&quot;: &quot;d&quot;}]</code></td>
+          <td><code>listMaps: [{&quot;name&quot;: &quot;o1&quot;, &quot;foo&quot;: &quot;e&quot;, &quot;bar&quot;: &quot;f&quot;, &quot;baz&quot;: &quot;g&quot;}]</code></td>
+          <td><code>listMaps: [{&quot;name&quot;: &quot;o1&quot;, &quot;foo&quot;: &quot;e&quot;, &quot;bar&quot;: &quot;f&quot;, &quot;baz&quot;: &quot;g&quot;},{&quot;name&quot;: &quot;o2&quot;, &quot;foo&quot;: &quot;c&quot;, &quot;bar&quot;: &quot;d&quot;}]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="conflict-resolution">Conflict Resolution</h3>
+<p>Other conflict resolution between Policy objects must also follow the rules
+outlined in GEP-713, in its Conflict Resolution section.</p>
+<h2 id="policy-attachment-examples-and-behavior">Policy Attachment examples and behavior</h2>
+<p>This approach is building on concepts from all of the alternatives discussed
+below. This is very similar to the (now removed) BackendPolicy resource in the API,
+but also borrows some concepts from the <a href="https://github.com/kubernetes-sigs/gateway-api/issues/611">ServicePolicy
+proposal</a>.</p>
+<h3 id="policy-attachment-for-ingress">Policy Attachment for Ingress</h3>
+<p>When talking about Direct Attached Policy attaching to Gateway resources for
+ingress use cases (as discussed in GEP-2648), the flow is relatively
+straightforward. A policy can reference the resource it wants to apply to, and
+only affects that resource.</p>
+<p><img src="/ko/geps/gep-2649/images/2649-ingress-simple.png" alt="Simple Ingress Example"></p>
+<p>However, an Inherited Policy can attach to a parent resource, and then each policy
+applies to the referenced resource and everything below it in terms of hierarchy.</p>
+<p>In the simple example above, the TimeoutPolicy <em>attaches</em> to the Gateway but
+<em>affects</em> the HTTPRoute. That's the very thing that makes this an Inherited
+Policy.</p>
+<p>Although the next example is likely more complex than many real world
+use cases, it helps demonstrate how policy attachment can work across
+namespaces.</p>
+<p><img src="/ko/geps/gep-2649/images/2649-ingress-complex.png" alt="Complex Ingress Example"></p>
+<p>In this example, the Gateway has a TimeoutPolicy attached, which affects the
+HTTPRoute in the App namespace. That HTTPRoute also has the Direct Attached
+RetryPolicy attached, which affects the HTTPRoute itself, and one of the backends
+has a HealthCheckPolicy attached to the Service, which is also a Direct Attached
+Policy.</p>
+<p>This shows how Direct and Inherited Policies can be attached to varied objects
+and still apply the relevant configuration.</p>
+<p>As a preview of a later section though, ask yourself: If I was the owner of the
+HTTPRoute, how would I know what Policy was affecting it at any point in time?</p>
+<h3 id="policy-attachment-for-mesh">Policy Attachment for Mesh</h3>
+<p>Although there is a great deal of overlap between ingress and mesh use cases,
+mesh enables more complex policy attachment scenarios. For example, you may want
+to apply policy to requests from a specific namespace to a backend in another
+namespace.</p>
+<p><img src="/ko/geps/gep-2649/images/2649-mesh-simple.png" alt="Simple Mesh Example"></p>
+<p>Policy attachment can be quite simple with mesh. Policy can be applied to any
+resource in any namespace but it can only apply to requests from the same
+namespace if the target is in a different namespace.</p>
+<p>At the other extreme, policy can be used to apply to requests from a specific
+workload to a backend in another namespace. A route can be used to intercept
+these requests and split them between different backends (foo-a and foo-b in
+this case).</p>
+<p><img src="/ko/geps/gep-2649/images/2649-mesh-complex.png" alt="Complex Mesh Example"></p>
+<h3 id="policy-targetref-api">Policy TargetRef API</h3>
+<p>Each Policy resource MUST include a single <code>targetRef</code> field. It must not
+target more than one resource at a time, but it can be used to target larger
+resources such as Gateways or Namespaces that may apply to multiple child
+resources.</p>
+<p>As with most APIs, there are countless ways we could choose to expand this in
+the future. This includes supporting multiple targetRefs and/or label selectors.
+Although this would enable compelling functionality, it would increase the
+complexity of an already complex API and potentially result in more conflicts
+between policies. Although we may choose to expand the targeting capabilities
+in the future, at this point it is strongly preferred to start with a simpler
+pattern that still leaves room for future expansion.</p>
+<p>The <code>targetRef</code> field MUST have the following structure:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyTargetReference identifies an API object to apply policy to.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> PolicyTargetReference <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Group is the group of the target resource.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinLength=1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=253</span>
+</span></span><span style="display:flex;"><span>    Group <span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;group&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Kind is kind of the target resource.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinLength=1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=253</span>
+</span></span><span style="display:flex;"><span>    Kind <span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;kind&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Name is the name of the target resource.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinLength=1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=253</span>
+</span></span><span style="display:flex;"><span>    Name <span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;name&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Namespace is the namespace of the referent. When unspecified, the local</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// namespace is inferred. Even when policy targets a resource in a different</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// namespace, it may only apply to traffic originating from the same</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// namespace as the policy.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinLength=1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=253</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    Namespace <span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;namespace,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="sample-policy-api">Sample Policy API</h3>
+<p>The following structure can be used as a starting point for any Policy resource
+using this API pattern. Note that the PolicyTargetReference struct defined above
+will be distributed as part of the Gateway API.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// ACMEServicePolicy provides a way to apply Service policy configuration with</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// the ACME implementation of the Gateway API.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ACMEServicePolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>    metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Spec defines the desired state of ACMEServicePolicy.</span>
+</span></span><span style="display:flex;"><span>    Spec ACMEServicePolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Status defines the current state of ACMEServicePolicy.</span>
+</span></span><span style="display:flex;"><span>    Status ACMEServicePolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// ACMEServicePolicySpec defines the desired state of ACMEServicePolicy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ACMEServicePolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// TargetRef identifies an API object to apply policy to.</span>
+</span></span><span style="display:flex;"><span>    TargetRef gatewayv1a2.PolicyTargetReference <span style="color:#b44">`json:&#34;targetRef&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Override defines policy configuration that should override policy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// configuration attached below the targeted resource in the hierarchy.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    Override <span style="color:#666">*</span>ACMEPolicyConfig <span style="color:#b44">`json:&#34;override,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Default defines default policy configuration for the targeted resource.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    Default <span style="color:#666">*</span>ACMEPolicyConfig <span style="color:#b44">`json:&#34;default,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// ACMEPolicyConfig contains ACME policy configuration.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ACMEPolicyConfig <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Add configurable policy here</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// ACMEServicePolicyStatus defines the observed state of ACMEServicePolicy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ACMEServicePolicyStatus <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Conditions describe the current conditions of the ACMEServicePolicy.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listType=map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listMapKey=type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxItems=8</span>
+</span></span><span style="display:flex;"><span>    Conditions []metav1.Condition <span style="color:#b44">`json:&#34;conditions,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="hierarchy">Hierarchy</h3>
+<p>Each policy MAY include default or override values. Default values are given
+precedence from the bottom up, while override values are top down. That means
+that a default attached to a Backend will have the highest precedence among
+default values while an override value attached to a GatewayClass will have the
+highest precedence overall.</p>
+<p><img src="/ko/geps/gep-2649/images/2649-hierarchy.png" alt="Ingress and Sidecar Hierarchy"></p>
+<p>To illustrate this, consider 3 resources with the following hierarchy:
+A &gt; B &gt; C. When attaching the concept of defaults and overrides to that, the
+hierarchy would be expanded to this:</p>
+<p>A override &gt; B override &gt; C override &gt; C default &gt; B default &gt; A default.</p>
+<p>Note that the hierarchy is reversed for defaults. The rationale here is that
+overrides usually need to be enforced top down while defaults should apply to
+the lowest resource first. For example, if an admin needs to attach required
+policy, they can attach it as an override to a Gateway. That would have
+precedence over Routes and Services below it. On the other hand, an app owner
+may want to set a default timeout for their Service. That would have precedence
+over defaults attached at higher levels such as Route or Gateway.</p>
+<p>If using defaults <em>and</em> overrides, each policy resource MUST include 2 structs
+within the spec. One with override values and the other with default values.</p>
+<p>In the following example, the policy attached to the Gateway requires cdn to
+be enabled and provides some default configuration for that. The policy attached
+to the Route changes the value for one of those fields (includeQueryString).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>CDNCachingPolicy<span style="color:#bbb"> </span><span style="color:#080;font-style:italic"># Example of implementation specific policy name</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">override</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">cdn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">enabled</span>:<span style="color:#bbb"> </span><span style="color:#a2f;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">default</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">cdn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">cachePolicy</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">includeHost</span>:<span style="color:#bbb"> </span><span style="color:#a2f;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">includeProtocol</span>:<span style="color:#bbb"> </span><span style="color:#a2f;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">includeQueryString</span>:<span style="color:#bbb"> </span><span style="color:#a2f;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>example<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>CDNCachingPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">default</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">cdn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">cachePolicy</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">includeQueryString</span>:<span style="color:#bbb"> </span><span style="color:#a2f;font-weight:bold">false</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>example<span style="color:#bbb">
+</span></span></span></code></pre></div><p>In this final example, we can see how the override attached to the Gateway has
+precedence over the default drainTimeout value attached to the Route. At the
+same time, we can see that the default connectionTimeout attached to the Route
+has precedence over the default attached to the Gateway.</p>
+<p>Also note how the different resources interact - fields that are not common across
+objects <em>may</em> both end up affecting the final object.</p>
+<p><img src="/ko/geps/gep-2649/images/2649-policy-hierarchy.png" alt="Inherited Policy Example"></p>
+<h4 id="supported-resources">Supported Resources</h4>
+<p>It is important to note that not every implementation will be able to support
+policy attachment to each resource described in the hierarchy above. When that
+is the case, implementations MUST clearly document which resources a policy may
+be attached to.</p>
+<h2 id="examples">Examples</h2>
+<p>This section provides some examples of various types of Policy objects, and how
+merging, <code>defaults</code>, <code>overrides</code>, and other interactions work.</p>
+<h3 id="inherited-policy-attachment-1">Inherited Policy Attachment</h3>
+<p>It also could be useful to be able to <em>default</em> the <code>minimumTLSVersion</code> setting
+across multiple Gateways.</p>
+<p>This version of the above Policy allows this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.example.io/v1alpha1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>TLSMinimumVersionPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>minimum12<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">defaults</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">minimumTLSVersion</span>:<span style="color:#bbb"> </span><span style="color:#666">1.2</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>namespace<span style="color:#bbb">
+</span></span></span></code></pre></div><p>This Inherited Policy is using the implicit hierarchy that all resources belong
+to a namespace, so attaching a Policy to a namespace means affecting all possible
+resources in a namespace. Multiple hierarchies are possible, even within Gateway
+API, for example Gateway -&gt; Route, Gateway -&gt; Route -&gt; Backend, Gateway -&gt; Route
+-&gt; Service. GAMMA Policies could conceivably use a hierarchy of Service -&gt; Route
+as well.</p>
+<p>Note that this will not be very discoverable for Gateway owners in the absence of
+a solution to the Policy status problem. This is being worked on and this GEP will
+be updated once we have a design.</p>
+<p>Conceivably, a security or admin team may want to <em>force</em> Gateways to have at least
+a minimum TLS version of <code>1.2</code> - that would be a job for <code>overrides</code>, like so:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.example.io/v1alpha1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>TLSMinimumVersionPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>minimum12<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">overrides</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">minimumTLSVersion</span>:<span style="color:#bbb"> </span><span style="color:#666">1.2</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>namespace<span style="color:#bbb">
+</span></span></span></code></pre></div><p>This will make it so that <em>all Gateways</em> in the <code>default</code> namespace <em>must</em> use
+a minimum TLS version of <code>1.2</code>, and this <em>cannot</em> be changed by Gateway owners.
+Only the Policy owner can change this Policy.</p>
+<h3 id="handling-non-scalar-values">Handling non-scalar values</h3>
+<p>In this example, we will assume that at some future point, HTTPRoute has grown
+fields to configure retries, including a field called <code>retryOn</code> that reflects
+the HTTP status codes that should be retried. The <em>value</em> of this field is a
+list of strings, being the HTTP codes that must be retried. The <code>retryOn</code> field
+has no defaults in the field definitions (which is probably a bad design, but we
+need to show this interaction somehow!)</p>
+<p>We also assume that a Inherited <code>RetryOnPolicy</code> exists that allows both
+defaulting and overriding of the <code>retryOn</code> field.</p>
+<p>A full <code>RetryOnPolicy</code> to default the field to the codes <code>501</code>, <code>502</code>, and <code>503</code>
+would look like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.example.io/v1alpha1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>RetryOnPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>retryon5xx<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">defaults</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">retryOn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;501&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;502&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;503&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>we-love-retries<span style="color:#bbb">
+</span></span></span></code></pre></div><p>This means that, for HTTPRoutes that do <em>NOT</em> explicitly set this field to something
+else, (in other words, they contain an empty list), then the field will be set to
+a list containing <code>501</code>, <code>502</code>, and <code>503</code>. (Notably, because of Go zero values, this
+would also occur if the user explicitly set the value to the empty list.)</p>
+<p>However, if a HTTPRoute owner sets any value other than the empty list, then that
+value will remain, and the Policy will have <em>no effect</em>. These values are <em>not</em>
+merged.</p>
+<p>If the Policy used <code>overrides</code> instead:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.example.io/v1alpha1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>RetryOnPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>retryon5xx<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">overrides</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">retryOn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;501&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;502&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;503&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>you-must-retry<span style="color:#bbb">
+</span></span></span></code></pre></div><p>Then no matter what the value is in the HTTPRoute, it will be set to <code>501</code>, <code>502</code>,
+<code>503</code> by the Policy override.</p>
+<h3 id="interactions-between-defaults-overrides-and-field-values">Interactions between defaults, overrides, and field values</h3>
+<p>All HTTPRoutes that attach to the <code>YouMustRetry</code> Gateway will have any value
+<em>overwritten</em> by this policy. The empty list, or any number of values, will all
+be replaced with <code>501</code>, <code>502</code>, and <code>503</code>.</p>
+<p>Now, let's also assume that we use the Namespace -&gt; Gateway hierarchy on top of
+the Gateway -&gt; HTTPRoute hierarchy, and allow attaching a <code>RetryOnPolicy</code> to a
+<em>namespace</em>. The expectation here is that this will affect all Gateways in a namespace
+and all HTTPRoutes that attach to those Gateways. (Note that the HTTPRoutes
+themselves may not necessarily be in the same namespace though.)</p>
+<p>If we apply the default policy from earlier to the namespace:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.example.io/v1alpha1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>RetryOnPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>retryon5xx<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">defaults</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">retryOn</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;501&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;502&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b44">&#34;503&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Namespace<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>appns<span style="color:#bbb">
+</span></span></span></code></pre></div><p>Then this will have the same effect as applying that Policy to every Gateway in
+the <code>default</code> namespace - namely that every HTTPRoute that attaches to every
+Gateway will have its <code>retryOn</code> field set to <code>501</code>, <code>502</code>, <code>503</code>, <em>if</em> there is no
+other setting in the HTTPRoute itself.</p>
+<p>With two layers in the hierarchy, we have a more complicated set of interactions
+possible.</p>
+<p>Let's look at some tables for a particular HTTPRoute, assuming that it does <em>not</em>
+configure the <code>retryOn</code> field, for various types of Policy at different levels.</p>
+<h4 id="overrides-interacting-with-defaults-for-retryonpolicy-empty-list-in-httproute">Overrides interacting with defaults for RetryOnPolicy, empty list in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>None</th>
+          <th>Namespace override</th>
+          <th>Gateway override</th>
+          <th>HTTPRoute override</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No default</td>
+          <td>Empty list</td>
+          <td>Namespace override</td>
+          <td>Gateway override Policy</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>Namespace default</td>
+          <td>Namespace default</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>Gateway default</td>
+          <td>Gateway default</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute default</td>
+          <td>HTTPRoute default</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="overrides-interacting-with-other-overrides-for-retryonpolicy-empty-list-in-httproute">Overrides interacting with other overrides for RetryOnPolicy, empty list in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>No override</th>
+          <th>Namespace override A</th>
+          <th>Gateway override A</th>
+          <th>HTTPRoute override A</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No override</td>
+          <td>Empty list</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>Namespace override B</td>
+          <td>Namespace override B</td>
+          <td>Namespace override<br />first created wins<br />otherwise first alphabetically</td>
+          <td>Namespace override B</td>
+          <td>Namespace override B</td>
+      </tr>
+      <tr>
+          <td>Gateway override B</td>
+          <td>Gateway override B</td>
+          <td>Namespace override A</td>
+          <td>Gateway override<br />first created wins<br />otherwise first alphabetically</td>
+          <td>Gateway override B</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute override B</td>
+          <td>HTTPRoute override B</td>
+          <td>Namespace override A</td>
+          <td>Gateway override A</td>
+          <td>HTTPRoute override<br />first created wins<br />otherwise first alphabetically</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="defaults-interacting-with-other-defaults-for-retryonpolicy-empty-list-in-httproute">Defaults interacting with other defaults for RetryOnPolicy, empty list in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>No default</th>
+          <th>Namespace default A</th>
+          <th>Gateway default A</th>
+          <th>HTTPRoute default A</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No default</td>
+          <td>Empty list</td>
+          <td>Namespace default</td>
+          <td>Gateway default</td>
+          <td>HTTPRoute default A</td>
+      </tr>
+      <tr>
+          <td>Namespace default B</td>
+          <td>Namespace default B</td>
+          <td>Namespace default<br />first created wins<br />otherwise first alphabetically</td>
+          <td>Gateway default A</td>
+          <td>HTTPRoute default A</td>
+      </tr>
+      <tr>
+          <td>Gateway default B</td>
+          <td>Gateway default B</td>
+          <td>Gateway default B</td>
+          <td>Gateway default<br />first created wins<br />otherwise first alphabetically</td>
+          <td>HTTPRoute default A</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute default B</td>
+          <td>HTTPRoute default B</td>
+          <td>HTTPRoute default B</td>
+          <td>HTTPRoute default B</td>
+          <td>HTTPRoute default<br />first created wins<br />otherwise first alphabetically</td>
+      </tr>
+  </tbody>
+</table>
+<p>Now, if the HTTPRoute <em>does</em> specify a RetryPolicy,
+it's a bit easier, because we can basically disregard all defaults:</p>
+<h4 id="overrides-interacting-with-defaults-for-retryonpolicy-value-in-httproute">Overrides interacting with defaults for RetryOnPolicy, value in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>None</th>
+          <th>Namespace override</th>
+          <th>Gateway override</th>
+          <th>HTTPRoute override</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No default</td>
+          <td>Value in HTTPRoute</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>Namespace default</td>
+          <td>Value in HTTPRoute</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>Gateway default</td>
+          <td>Value in HTTPRoute</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute default</td>
+          <td>Value in HTTPRoute</td>
+          <td>Namespace override</td>
+          <td>Gateway override</td>
+          <td>HTTPRoute override</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="overrides-interacting-with-other-overrides-for-retryonpolicy-value-in-httproute">Overrides interacting with other overrides for RetryOnPolicy, value in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>No override</th>
+          <th>Namespace override A</th>
+          <th>Gateway override A</th>
+          <th>HTTPRoute override A</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No override</td>
+          <td>Value in HTTPRoute</td>
+          <td>Namespace override A</td>
+          <td>Gateway override A</td>
+          <td>HTTPRoute override A</td>
+      </tr>
+      <tr>
+          <td>Namespace override B</td>
+          <td>Namespace override B</td>
+          <td>Namespace override<br />first created wins<br />otherwise first alphabetically</td>
+          <td>Namespace override B</td>
+          <td>Namespace override B</td>
+      </tr>
+      <tr>
+          <td>Gateway override B</td>
+          <td>Gateway override B</td>
+          <td>Namespace override A</td>
+          <td>Gateway override<br />first created wins<br />otherwise first alphabetically</td>
+          <td>Gateway override B</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute override B</td>
+          <td>HTTPRoute override B</td>
+          <td>Namespace override A</td>
+          <td>Gateway override A</td>
+          <td>HTTPRoute override<br />first created wins<br />otherwise first alphabetically</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="defaults-interacting-with-other-defaults-for-retryonpolicy-value-in-httproute">Defaults interacting with other defaults for RetryOnPolicy, value in HTTPRoute</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>No default</th>
+          <th>Namespace default A</th>
+          <th>Gateway default A</th>
+          <th>HTTPRoute default A</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>No default</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+      </tr>
+      <tr>
+          <td>Namespace default B</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+      </tr>
+      <tr>
+          <td>Gateway default B</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+      </tr>
+      <tr>
+          <td>HTTPRoute default B</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+          <td>Value in HTTPRoute</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="user-discoverability-and-status">User discoverability and status</h2>
+<h3 id="standard-label-on-crd-objects">Standard label on CRD objects</h3>
+<p>Each CRD that defines an Inherited Policy object MUST include a label that specifies
+that it is a Policy object, and that label MUST specify that the object is an
+<code>inherited</code> one.</p>
+<p>The label is <code>gateway.networking.k8s.io/policy: inherited</code>.</p>
+<p>This solution is intended to allow both users and tooling to identify which CRDs
+in the cluster should be treated as Policy objects, and so is intended to help
+with discoverability generally. It will also be used by the forthcoming <code>kubectl</code>
+plugin.</p>
+<h3 id="conditions">Conditions</h3>
+<p>Implementations using Policy objects MUST include a <code>spec</code> and <code>status</code> stanza,
+and the <code>status</code> stanza MUST contain a <code>conditions</code> stanza, using the standard
+Condition format.</p>
+<p>Policy authors should consider namespacing the <code>conditions</code> stanza with a
+<code>controllerName</code>, as in Route status, if more than one implementation will be
+reconciling the Policy type.</p>
+<h4 id="on-policy-objects">On <code>Policy</code> objects</h4>
+<p>Each Inherited Policy MUST populate the <code>Accepted</code> condition and reasons
+as defined in the Go spec, a snapshot of which is included below. The canonical
+representation is in the actual Go files. (At the time of writing, this is in
+<code>apis/v1alpha2/policy_types.go</code>)</p>
+<p>This allows the responsible controller to indicate that the Policy has been
+accepted for processing.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyConditionType is a type of condition for a policy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> PolicyConditionType <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyConditionReason is a reason for a policy condition.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> PolicyConditionReason <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyConditionAccepted indicates whether the policy has been accepted or rejected</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// by a targeted resource, and why.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be True are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be False are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Conflicted&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Invalid&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;TargetNotFound&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  PolicyConditionAccepted PolicyConditionType = <span style="color:#b44">&#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonAccepted is used with the &#34;Accepted&#34; condition when the policy has been</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// accepted by the targeted resource.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonAccepted PolicyConditionReason = <span style="color:#b44">&#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonConflicted is used with the &#34;Accepted&#34; condition when the policy has not</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// been accepted by a targeted resource because there is another policy that targets the same</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// resource and a merge is not possible.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonConflicted PolicyConditionReason = <span style="color:#b44">&#34;Conflicted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonInvalid is used with the &#34;Accepted&#34; condition when the policy is syntactically</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// or semantically invalid.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonInvalid PolicyConditionReason = <span style="color:#b44">&#34;Invalid&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonTargetNotFound is used with the &#34;Accepted&#34; condition when the policy is attached to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// an invalid target resource</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonTargetNotFound PolicyConditionReason = <span style="color:#b44">&#34;TargetNotFound&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h4 id="on-targeted-resources">On targeted resources</h4>
+<p>Implementations that use Inherited Policy objects SHOULD put a Condition into
+<code>status.Conditions</code> of any objects affected by a Inherited Policy, if that field
+is present.</p>
+<p>If they do, that Condition MUST have a <code>type</code> ending in <code>PolicyAffected</code> (like
+<code>gateway.networking.k8s.io/PolicyAffected</code>),
+and have the optional <code>observedGeneration</code> field kept up to date when the <code>spec</code>
+of the Policy-attached object changes.</p>
+<p>Implementations SHOULD use their own unique domain prefix for this Condition
+<code>type</code> - it is recommended that implementations use the same domain as in the
+<code>controllerName</code> field on GatewayClass (or some other implementation-unique
+domain for implementations that do not use GatewayClass).</p>
+<p>For objects that do <em>not</em> have a <code>status.Conditions</code> field available (<code>Secret</code>
+is a good example), that object SHOULD instead have a label of
+<code>gateway.networking.k8s.io/PolicyAffected: true</code> (or with an
+implementation-specific domain prefix) added instead.</p>
+<p>Because these Conditions or labels are namespaced per-implementation,
+implementations SHOULD:</p>
+<ul>
+<li>Add the Condition or label if an object is policy affected when it is not
+already present</li>
+<li>Remove the Condition or label when the last policy object stops referencing
+the targeted object.</li>
+</ul>
+<p>The intent here is to give <em>some</em> feedback that the object is affected by a Policy,
+even if the details are difficult to communicate.</p>
+<h4 id="further-status-design">Further status design</h4>
+<p>Further status design for Inherited Policy is required, but needs to solve the
+complexity and fanout problems listed above. Further design is therefore currently
+up for discussion.</p>
+<p>Community members are encouraged to submit updates to this GEP with further patterns.</p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

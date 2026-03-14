@@ -1,0 +1,18 @@
+{{- $_hugo_config := `{ "version": 1 }` -}}
+{{- $channel := .Get "channel" | default "standard" -}}
+{{- $version := .Get "version" | default "" -}}
+{{- $color := cond (eq $channel "experimental") "example" "success" -}}
+{{- $titleKey := cond (eq $channel "experimental") "channel_experimental" "channel_standard" -}}
+{{- $title := T $titleKey -}}
+{{- if $version -}}
+  {{- $sinceText := T "channel_since" -}}
+  {{- $title = printf "%s %s %s" $title $sinceText $version -}}
+{{- end -}}
+<details class="alert alert-{{ $color }} channel-version channel-{{ $channel }}" open>
+<summary class="alert-heading">{{- $title | safeHTML -}}</summary>
+{{- if eq .Page.File.Ext "md" -}}
+    {{- .Inner | markdownify -}}
+{{- else -}}
+    {{- .Inner | htmlUnescape | safeHTML -}}
+{{- end -}}
+</details>

@@ -1,0 +1,1864 @@
+<!doctype html>
+<html lang="ko" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>GEP-1619: Session Persistence | Kubernetes Gateway API</title>
+<meta name="description" content="GEP-1619: Session Persistence (Experimental)">
+<meta property="og:url" content="/ko/geps/gep-1619/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="GEP-1619: Session Persistence">
+  <meta property="og:description" content="GEP-1619: Session Persistence (Experimental)">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="geps">
+
+  <meta itemprop="name" content="GEP-1619: Session Persistence">
+  <meta itemprop="description" content="GEP-1619: Session Persistence (Experimental)">
+  <meta itemprop="wordCount" content="8731">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GEP-1619: Session Persistence">
+  <meta name="twitter:description" content="GEP-1619: Session Persistence (Experimental)">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/ko/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/ko/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/geps/gep-1619/">English</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-ko-geps-gep-1619").addClass("active"); 
+    $("#td-section-nav #m-ko-geps-gep-1619-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-ko-geps-gep-1619").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-ko-geps-gep-1619-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-ko-geps-gep-1619-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	한국어 (Korean)
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/geps/">English</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-geps-li">
+  <a href="/ko/geps/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-ko-geps"><span class="">Enhancements</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-overview-li">
+  <input type="checkbox" id="m-ko-geps-overview-check" checked/>
+  <label for="m-ko-geps-overview-check"><a href="/ko/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-overview"><span class="">Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-list-li">
+  <input type="checkbox" id="m-ko-geps-list-check" checked/>
+  <label for="m-ko-geps-list-check"><a href="/ko/geps/list/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-list"><span class="">List</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-ko-geps-by-state-li">
+  <input type="checkbox" id="m-ko-geps-by-state-check" checked/>
+  <label for="m-ko-geps-by-state-check"><a href="/ko/geps/by-state/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-ko-geps-by-state"><span class="">By State</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-standard-li">
+  <input type="checkbox" id="m-ko-geps-by-state-standard-check" checked/>
+  <label for="m-ko-geps-by-state-standard-check"><a href="/ko/geps/by-state/standard/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-standard"><span class="">Standard</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-memorandum-li">
+  <input type="checkbox" id="m-ko-geps-by-state-memorandum-check" checked/>
+  <label for="m-ko-geps-by-state-memorandum-check"><a href="/ko/geps/by-state/memorandum/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-memorandum"><span class="">Memorandum</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-experimental-li">
+  <input type="checkbox" id="m-ko-geps-by-state-experimental-check" checked/>
+  <label for="m-ko-geps-by-state-experimental-check"><a href="/ko/geps/by-state/experimental/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-experimental"><span class="">Experimental</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-implementable-li">
+  <input type="checkbox" id="m-ko-geps-by-state-implementable-check" checked/>
+  <label for="m-ko-geps-by-state-implementable-check"><a href="/ko/geps/by-state/implementable/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-implementable"><span class="">Implementable</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-ko-geps-by-state-provisional-li">
+  <input type="checkbox" id="m-ko-geps-by-state-provisional-check" checked/>
+  <label for="m-ko-geps-by-state-provisional-check"><a href="/ko/geps/by-state/provisional/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-ko-geps-by-state-provisional"><span class="">Provisional</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/ko/geps/gep-1619/index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/ko/geps/gep-1619/index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 페이지 편집</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/ko/geps/gep-1619/index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 하부 페이지 생성</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=GEP-1619:%20Session%20Persistence" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> 이슈 생성</a>
+  <a id="print" href="/ko/geps/_print/"><i class="fa-solid fa-print fa-fw"></i> 전체 섹션 프린트</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#graduation-criteria">Graduation Criteria</a>
+      <ul>
+        <li><a href="#implementable">Implementable</a></li>
+        <li><a href="#standard">Standard</a></li>
+      </ul>
+    </li>
+    <li><a href="#tldr">TLDR</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#non-goals">Non-Goals</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#naming">Naming</a></li>
+        <li><a href="#defining-session-persistence">Defining Session Persistence</a></li>
+        <li><a href="#security-and-privacy-implications">Security and Privacy Implications</a></li>
+        <li><a href="#achieving-session-persistence">Achieving Session Persistence</a></li>
+        <li><a href="#session-persistence-initiation">Session Persistence Initiation</a></li>
+        <li><a href="#when-does-an-application-require-session-persistence">When does an application require session persistence?</a></li>
+        <li><a href="#the-relationship-of-session-persistence-and-session-affinity">The Relationship of Session Persistence and Session Affinity</a></li>
+        <li><a href="#implementations">Implementations</a></li>
+        <li><a href="#sessions-in-java">Sessions in Java</a></li>
+        <li><a href="#session-affinity-in-k8s-services">Session Affinity in K8S Services</a></li>
+      </ul>
+    </li>
+    <li><a href="#api">API</a>
+      <ul>
+        <li><a href="#backendlbpolicy-api">BackendLBPolicy API</a></li>
+        <li><a href="#route-rule-api">Route Rule API</a></li>
+        <li><a href="#api-granularity">API Granularity</a></li>
+        <li><a href="#target-persona">Target Persona</a></li>
+        <li><a href="#prior-art">Prior Art</a></li>
+        <li><a href="#api-attachment-points">API Attachment Points</a></li>
+        <li><a href="#traffic-splitting">Traffic Splitting</a></li>
+        <li><a href="#cookie-attributes">Cookie Attributes</a></li>
+        <li><a href="#session-persistence-api-with-gamma">Session Persistence API with GAMMA</a></li>
+        <li><a href="#session-initiation-guidelines">Session Initiation Guidelines</a></li>
+        <li><a href="#session-persistence-failure-behavior">Session Persistence Failure Behavior</a></li>
+        <li><a href="#edge-case-behavior">Edge Case Behavior</a></li>
+        <li><a href="#conformance-details">Conformance Details</a></li>
+        <li><a href="#open-questions">Open Questions</a></li>
+      </ul>
+    </li>
+    <li><a href="#todo">TODO</a></li>
+    <li><a href="#alternatives">Alternatives</a>
+      <ul>
+        <li><a href="#sessionpersistence-api-alternative">SessionPersistence API Alternative</a></li>
+        <li><a href="#httpcookie-api-alternative">HTTPCookie API Alternative</a></li>
+        <li><a href="#alternate-naming">Alternate Naming</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/ko/geps/">Enhancements</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/ko/geps/gep-1619/" aria-disabled="true" class="btn-link disabled">GEP-1619: Session Persistence</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>GEP-1619: Session Persistence</h1>
+	<div class="lead">GEP-1619: Session Persistence (Experimental)</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<h1 id="gep-1619-session-persistence-via-backendlbpolicy">GEP-1619: Session Persistence via BackendLBPolicy</h1>
+<ul>
+<li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1619">#1619</a></li>
+<li>Status: Experimental</li>
+</ul>
+<p>(See <a href="/ko/geps/overview/#gep-states">status definitions</a>.)</p>
+<h2 id="graduation-criteria">Graduation Criteria</h2>
+<h3 id="implementable">Implementable</h3>
+<p>This GEP was accidentally merged as Provisional before the required approval
+from 2 maintainers had been received. Before this graduates to implementable,
+we need to get at least one of @robscott or @youngnick to also approve this GEP.</p>
+<p>Before this GEP graduates to Implementable, we must fulfill the following criteria:</p>
+<ol>
+<li>Should we leave room in this policy to add additional concepts in the future
+such as Session Affinity? If so, how would we adjust the naming and overall
+scope of this policy?
+<ul>
+<li><strong>Answer</strong>: Yes. We adjusted the API to use <code>BackendLBPolicy</code>. See <a href="/ko/geps/gep-1619/#api">API</a> for more details.</li>
+</ul>
+</li>
+<li>Should we leave room for configuring different forms of Session Persistence?
+If so, what would that look like?
+<ul>
+<li><strong>Answer</strong>: Yes. See the <a href="/ko/geps/gep-1619/#BackendLBPolicy-api">BackendLBPolicy API</a> and <a href="/ko/geps/gep-1619/#api-granularity">API Granularity</a>
+sections for more details.</li>
+</ul>
+</li>
+<li>What name appropriately describe the API responsible for configuring load-balancing options for backend traffic?
+<ul>
+<li><strong>Answer</strong>: We decided on <code>BackendLBPolicy</code> since it is aligned with <code>BackendTLSPolicy</code>, describes configuration
+related to load balancing, and isn't too long.</li>
+</ul>
+</li>
+<li>Finish designing the <a href="/ko/geps/gep-1619/#route-rule-api">Route Rule API</a> and document edge cases in <a href="/ko/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a>
+for configuring session persistence on both <code>BackendLBPolicy</code> and route rules.
+<ul>
+<li><strong>Answer</strong>: Yes. See <a href="/ko/geps/gep-1619/#route-rule-api">Route Rule API</a> and <a href="/ko/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a> for more details.</li>
+</ul>
+</li>
+</ol>
+<h3 id="standard">Standard</h3>
+<p>Before this GEP graduates to the Standard channel, we must fulfill the following criteria:</p>
+<ul>
+<li>Sign-off from the GAMMA leads to ensure service mesh gets fully considered.</li>
+</ul>
+<h2 id="tldr">TLDR</h2>
+<p>This GEP initially proposes a definitions for session persistence, followed by the definition of an API spec for
+configuring it. Additionally, it explores example scenarios of session persistence and examines the approaches that
+implementations have taken to design APIs for session persistence. It intentionally refrains from defining an API for
+session affinity, as this design is expected to be addressed within a separate GEP.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>Define session persistence and session affinity to establish a common language</li>
+<li>Identify differences in session persistence functionality between implementations</li>
+<li>Define an API for session persistence</li>
+<li>Establish anticipated outcomes for specific API configurations or scenarios</li>
+</ul>
+<h2 id="non-goals">Non-Goals</h2>
+<ul>
+<li>Define an API for session affinity</li>
+<li>Mandate a default session persistence or session affinity functionality for implementations</li>
+<li>Prescribe the precise manner (the &quot;how&quot;) in which implementations should achieve session persistence or handle
+specific scenarios</li>
+<li>Add API configuration for supporting backend initiated sessions</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h3 id="naming">Naming</h3>
+<p>Naming is hard. We've had lots of <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/2893">discussion</a> on the
+topic of naming session persistence. Adding to the complexity, the Gateway API implementations do not have a consensus
+on a naming convention for session persistence or affinity.</p>
+<p>To start this discussion, lets establish the idea of strong session affinity (what this GEP calls session persistence)
+and weak session affinity (what this GEP calls session affinity) which we will define further in
+<a href="/ko/geps/gep-1619/#the-relationship-of-session-persistence-and-session-affinity">The Relationship of Session Persistence and Session Affinity</a>.
+In this context, &quot;strong&quot; implies a guarantee, while &quot;weak&quot; indicates a best-effort approach.</p>
+<p>Here's a survey of how some implementations refers to these ideas:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Implementation</th>
+          <th>Name for Strong Session Affinity</th>
+          <th>Name for Weak Session Affinity</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apache APISIX</td>
+          <td><a href="https://apisix.apache.org/docs/ingress-controller/concepts/apisix_upstream/">Sticky Sessions</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Avi Kubernetes Operator</td>
+          <td><a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/administration/GUID-8B5C8D64-2B69-4C95-86A5-C5396CB9E51F.html">Session Persistence</a></td>
+          <td><a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/administration/GUID-8B5C8D64-2B69-4C95-86A5-C5396CB9E51F.html">Session Persistence</a></td>
+      </tr>
+      <tr>
+          <td>Azure Application Gateway for Containers</td>
+          <td><a href="https://learn.microsoft.com/en-us/azure/application-gateway/for-containers/session-affinity?tabs=session-affinity-gateway-api">Session Affinity</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Cilium</td>
+          <td>N/A</td>
+          <td><a href="https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/#session-affinity">Session Affinity</a></td>
+      </tr>
+      <tr>
+          <td>Contour</td>
+          <td><a href="https://projectcontour.io/docs/1.24/config/request-routing/#session-affinity">Session Affinity / Sticky Sessions</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Envoy</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/stateful_session_filter">Session Stickiness / Stateful Sessions</a> (Strong)</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/stateful_session_filter">Session Stickiness / Stateful Sessions</a> (Weak)</td>
+      </tr>
+      <tr>
+          <td>Emissary-Ingress (Ambassador API Gateway)</td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#cookie">Sticky Sessions / Session Affinity</a></td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#cookie">Sticky Sessions / Session Affinity</a></td>
+      </tr>
+      <tr>
+          <td>Gloo Gateway 2.0</td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/installation/advanced_configuration/session_affinity/">Session Affinity / Sticky Sessions</a></td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/installation/advanced_configuration/session_affinity/">Session Affinity / Sticky Sessions</a></td>
+      </tr>
+      <tr>
+          <td>Google Kubernetes Engine</td>
+          <td><a href="https://cloud.google.com/load-balancing/docs/backend-service#session_affinity">Session Affinity</a></td>
+          <td><a href="https://cloud.google.com/load-balancing/docs/backend-service#session_affinity">Session Affinity</a></td>
+      </tr>
+      <tr>
+          <td>HAProxy Ingress</td>
+          <td><a href="https://haproxy-ingress.github.io/docs/configuration/keys/#affinity">Affinity</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>HAProxy Kubernetes Ingress Controller</td>
+          <td><a href="https://www.haproxy.com/documentation/haproxy-runtime-api/reference/enable-dynamic-cookie-backend/#sidebar">Session Persistence</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Istio</td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">Strong Session Affinity</a></td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">Soft Session Affinity</a></td>
+      </tr>
+      <tr>
+          <td>Kong</td>
+          <td><a href="https://docs.konghq.com/hub/kong-inc/saml/configuration/#config-session_remember">Persistent Session</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Nginx (Proxy)</td>
+          <td><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#enabling-session-persistence">Session Persistence</a></td>
+          <td><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#enabling-session-persistence">Session Persistence</a></td>
+      </tr>
+      <tr>
+          <td>Traefik</td>
+          <td><a href="https://doc.traefik.io/traefik/routing/services/#sticky-sessions">Sticky Sessions</a></td>
+          <td>N/A</td>
+      </tr>
+  </tbody>
+</table>
+<p>Visualizing the result for what implementations call &quot;Strong Session Affinity&quot; (aka Session Persistence), it's mostly
+inconclusive:</p>
+<div class="mermaid">pie title  What Implementations Call "Strong Session Affinity"?
+    "Session Affinity" : 5
+    "Sticky Sessions" : 5
+    "Session Persistence" : 3
+    "Persistent Session": 1
+    "Strong Session Affinity": 1
+    "Affinity": 1
+    "Session Stickiness": 1
+    "Stateful Sessions": 1
+</div>
+<p>This GEP chooses to use &quot;session persistence&quot; as the preferred definition of strong session affinity (guaranteed) while
+reserving &quot;session affinity&quot; to mean weak session affinity (best-effort).  We selected these names because &quot;session
+persistence&quot; and &quot;session affinity&quot; share a symmetry that indicates to users that there is a relationship between them.
+The term &quot;Persistence&quot; implies a sense of strong consistency or recurring behavior, whereas &quot;Affinity&quot; carries a weaker
+connotation related to liking or attraction.</p>
+<p><strong>Note</strong>: One concern for using the name &quot;session persistence&quot; is that it may be confused the idea of persisting a
+session to storage. This confusion is particularly common among Java developers, as Java defines session persistence as
+storing a session to disk.</p>
+<h3 id="defining-session-persistence">Defining Session Persistence</h3>
+<p>Session persistence is when a client request is directed to the same backend server for the duration of a &quot;session&quot;. It is achieved when a client directly provides information, such as a header, that a proxy uses as a reference to direct traffic to a specific server. Persistence is an exception to load balancing: a persistent client request bypasses the proxy's load balancing algorithm, going directly to a backend server it has previously established a session with.</p>
+<p>Session persistence enables more efficient application workflows:</p>
+<ol>
+<li>Better performance: Maintaining a single session allows a server to cache information about a client locally reducing the need for servers to exchange session data and overall storage needs.</li>
+<li>Seamless client experience: Clients can reconnect to the same server without re-authenticating or re-entering their information.</li>
+</ol>
+<p>Some of the concerns of session persistence are the duration and expiration of the session, security of the transaction stream, and storage of the context or state.</p>
+<p>Session affinity, not to be confused with session persistence, uses an existing attribute of the request to consistently send to the same backend. Session affinity can be considered a weaker form of session persistence: it is not guaranteed to persist a connection to the same backend server if certain attributes of the request or the backends are changed.</p>
+<h3 id="security-and-privacy-implications">Security and Privacy Implications</h3>
+<p>Session persistence can introduce security and privacy vulnerabilities if not properly implemented. These vulnerabilities can include:</p>
+<ol>
+<li>Session hijacking: Attackers intercepting or predicting a valid session token to gain unauthorized access.</li>
+<li>Session fixation: Attackers setting a client's session ID to a known value, which they can then use to hijack the session.</li>
+<li>Session replay attacks: Attackers capturing and resending a client's message with a valid session ID.</li>
+<li>Data leakage: Attackers can exploit sensitive session information cached on servers if not properly secured.</li>
+<li>Denial of service attacks: Attackers can use up server resources by creating and maintaining large numbers of sessions.</li>
+</ol>
+<p>To mitigate these security concerns, it is important to implement session persistence using secure practices, such as using strong session ID generation algorithms, implementing session timeouts, encrypting sensitive data, and monitoring server resources for unusual activity.</p>
+<p>IP address reuse may also be a security or privacy concern when using session persistence or session affinity. If Kubernetes reuses an IP address of previously shutdown pod, the new pod may receive session persistent traffic meant for the old pod.</p>
+<p>Session affinity introduces fewer security and privacy vulnerabilities since there are no session tokens to protect or exploit.</p>
+<h3 id="achieving-session-persistence">Achieving Session Persistence</h3>
+<p>Session persistence is achieved using attributes residing in the application layer. The following are mechanisms for achieving session persistence:</p>
+<p><strong>1. Cookie-Based Session Persistence</strong></p>
+<p>The most common mechanism is by using cookies (described by <a href="https://www.rfc-editor.org/rfc/rfc6265">RFC6265</a>) with the set-cookie HTTP response header. A client will use the provided value in the set-cookie response header in a cookie request header in subsequent requests. Proxies can use this cookie header to maintain a persistent connection to a single backend server on behalf of the client.</p>
+<p><strong>2. Header-Based Session Persistence</strong></p>
+<p>Header-based stateful sessions are achieved by a backend or gateway providing an HTTP response header and the client using the same header in subsequent HTTP requests. Proxies can use this header to maintain a persistent connection to a single backend server on behalf of the client.</p>
+<p><strong>3. URL-Encoded Session Persistence</strong></p>
+<p>Session information can be also encoded into the request URL to establish a persistent session. The server rewrites the client's URL to encode the new session information automatically. The server or the gateway then decodes the session information from the URL to identify the session.</p>
+<h3 id="session-persistence-initiation">Session Persistence Initiation</h3>
+<p>For all implementations of session persistence, the initiation of the persistent session is possible from various
+sources, including the gateway, intermediary gateway, backend, a sidecar in a backend, or any other infrastructure
+component.</p>
+<p>Let's consider a simple implementation comprised of gateways and backends. The following rules apply based on who initiates the session:</p>
+<ul>
+<li>If the gateway initiates the session, the backend will be presented with session attributes regardless if it enabled them.</li>
+<li>If the backend initiates the session, the gateway should allow this and not force persistent connections, unless
+specifically configured to. The gateway may decode and alter the cookie established by the backend to achieve
+session persistence.</li>
+</ul>
+<p>It's important to note that we can have more complex implementations which involve traversing global load balancers,
+regional load balancers, intermediary internal gateways, sidecars, or waypoints before reaching the backend. At any
+point within this architecture, a persistent session can be initiated. See <a href="/ko/geps/gep-1619/#global-load-balancer-initiated-session-example">Global Load Balancer Initiated Session Example</a>
+for an example of one of these alternative implementations.</p>
+<p>In the next sections, we will take a closer look at the initiation of sessions in both the gateway and the backend.
+Please note that in the next sections, we are examining the various scenarios in which a session can be initiated. We
+are not prescribing specific implementations for session persistence. The intention is to understand the possibilities
+and behaviors related to session initiation while the <a href="/ko/geps/gep-1619/#api">API</a> section will provide more details on specific
+implementation details.</p>
+<h4 id="gateway-initiated-session-example">Gateway Initiated Session Example</h4>
+<p>To illustrate how a gateway can initiate a session, let's examine an implementation that uses cookies for persistence.
+This represents the most straightforward scenario for utilizing cookies. When a request is made, the gateway includes
+the <code>set-cookie</code> header in the final response, prompting the client to store the cookie. This cookie is subsequently
+used in future requests, allowing the gateway to consistently choose the same upstream, establishing a persistent
+session.</p>
+<p>Here an example implementation of a gateway initiating a session through cookies:</p>
+<div class="mermaid">sequenceDiagram
+    actor C as Client
+    participant G as Gateway
+    participant B as Backend
+    C->>+G: Request Web Page
+    activate G
+    G->>+B: Request
+    B-->>-G: Response
+    G->>G: Add set-cookie header
+    G-->>-C: Response<br>[set-cookie]
+    Note right of G: [set-cookie] indicates a response<br> with a set-cookie header.<br>May include other set-cookie<br>headers from backend.
+    C->>C: Create Cookie(s)<br>from set-cookie header(s)
+    Note right of C: [cookie] indicates a request<br> with one or more cookies
+    C->>+G: Request Web Page<br>[cookie]
+    G->>G: Consistent lookup of<br>server using cookie value
+    G->>+B: Request<br>[cookie]
+    B-->>-G: Response
+    G-->>-C: Response
+</div>
+<h4 id="backend-initiated-session-example">Backend Initiated Session Example</h4>
+<p><strong>Important</strong>: While we took it into consideration, this GEP does not support configuring backend-initiated sessions.
+This could potentially affect frameworks that initiate sessions in the backend. Implementing this feature is complicated
+and requires careful design, making it suitable for exploration in a separate GEP.</p>
+<p>Continuing with the cookie example, when dealing with backend-initiated sessions, the process becomes somewhat more
+complex. For cookie-based session persistence, the gateway needs to store a value within a cookie containing a backend
+identifier. This identifier can be then used as a reference to maintain a persistent session to a specific backend.
+There are several approaches a gateway could use in this situation to achieve session persistence:</p>
+<ol>
+<li>Insert an additional cookie</li>
+<li>Modify the existing cookie's value</li>
+<li>Prefix the existing cookie</li>
+</ol>
+<p>Additionally, there are variations to each of these approaches, such as making new or updated cookies transparent to the
+backend, either by remove an inserted cookie or reversing modifications of the cookie's value.</p>
+<p>Alternatively, if the backend is not configured for session persistence, the gateway should refrain from modifying or
+inserting a cookie. In this situation, the gateway should remain passive and simply forward the <code>set-cookie</code> header as
+it is.</p>
+<p>Refer to the <a href="/ko/geps/gep-1619/#session-initiation-guidelines">Session Initiation Guidelines</a> section of the API for implementation
+guidance.</p>
+<p>Here's an example implementation of a backend initiating a session and the gateway modifies the cookie's value:</p>
+<div class="mermaid">sequenceDiagram
+    actor C as Client
+    participant G as Gateway
+    participant B as Backend
+    C->>+G: Request Web Page
+    activate G
+    G->>+B: Request
+    B->>B: Add set-cookie<br>header
+    B-->>-G: Response<br>[set-cookie]
+    G->>G: Modify set-cookie<br>header per configuration
+    G-->>-C: Response<br>[set-cookie*]
+    Note right of G: [set-cookie] indicates a response<br> with a set-cookie header<br>[set-cookie*] indicates a response<br>with a MODIFIED set-cookie header
+    C->>C: Create Cookie<br>from set-cookie header
+    Note right of C: [cookie] indicates a request<br>or response with a cookie
+    C->>+G: Request Web Page<br>[cookie]
+    G->>G: Consistent lookup<br>of server using cookie value
+    G->>+B: Request<br>[cookie]
+    B-->>-G: Response
+    G-->>-C: Response
+</div>
+<h4 id="global-load-balancer-initiated-session-example">Global Load Balancer Initiated Session Example</h4>
+<p>In a more complex architecture example, a global load balancer may need to use cookies in order to maintain persistent
+connections to a regional load balancer. The regional cluster load balancer initiates the session by issuing the
+<code>set-cookie</code> header and subsequently uses the cookie to maintain persistent connections to a specific backend. The
+global load balancer then adds or modifies a cookie in order to establish persistent connection to a regional cluster
+load balancer.</p>
+<p>Here an example implementation of a global load balancer and a regional load balancer creating sessions through cookies:</p>
+<div class="mermaid">sequenceDiagram
+    actor C as Client
+    participant G as Global<br>Load Balancer
+    participant R as Regional Cluster<br>Load Balancer
+    participant B as Backend
+    C->>+G: Request Web Page
+    G->>+R: Request
+    R->>+B: Request
+    B-->>-R: Response
+    R->>R: Initiates session by<br>adding set-cookie header
+    R-->>-G: Response<br>[set-cookie]
+    G->>G: Add or modify<br>set-cookie header
+    G-->>-C: Response<br>[set-cookie*]
+    Note right of G: [set-cookie] indicates a response<br> with a set-cookie header<br>[set-cookie*] indicates a response with a<br>modified or additional set-cookie header
+    C->>C: Create Cookie<br>from set-cookie header
+    Note right of C: [cookie] indicates a request<br> with one or more cookies
+    C->>+G: Request Web Page<br>[cookie]
+    G->>G: Consistent lookup of<br>regional cluster load balancer<br>using cookie value
+    G->>+R: Request<br>[cookie]
+    R->>R: Consistent lookup of backend<br>using cookie value
+    R->>+B: Request<br>[cookie]
+    B-->>-R: Response
+    R-->>-G: Response
+    G-->>-C: Response
+</div>
+<h3 id="when-does-an-application-require-session-persistence">When does an application require session persistence?</h3>
+<p>Enabling session persistence is a required configuration for applications intentionally designed by the application
+developer to use it, as they will encounter failures or malfunctions when it's not enabled. However, it's worth noting
+that certain applications may be designed to function both with and without session persistence. Regardless, the
+importance of Gateway API supporting session persistence remains emphasized because it is frequently seen as a necessary
+feature.</p>
+<p>Conversely, apps that have not been designed or tested with session persistence in mind may misbehave when it is
+enabled, primarily because of the impacts of load distribution on the app. Apps using session persistence must account
+for aspects like load shedding, draining, and session migration as a part of their application design.</p>
+<h3 id="the-relationship-of-session-persistence-and-session-affinity">The Relationship of Session Persistence and Session Affinity</h3>
+<p>As discussed in <a href="/ko/geps/gep-1619/#naming">Naming</a>, we defined session persistence as &quot;strong&quot; and session affinity as &quot;weak&quot;. Though
+this GEP's intention is not to define an API for session affinity, let's understand its distinction with session
+persistence.</p>
+<p>While session persistence uses attributes in the application layer, session affinity can also use attributes below the
+application layer. Session affinity doesn't require a specific backend identifier to be encoded in a cookie or header;
+instead, it can use any existing connection attributes to establish a consistent hashing load balancing algorithm. This
+implies session affinity can use cookies or headers, as seen in Istio's <a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">ConsistentHashLB</a>. With session
+affinity, the cookie or header will be hashed on its arbitrary value.</p>
+<p>It is important to note the session affinity is less reliable and doesn't guarantee persistent connections to the same
+backend server. If a proxy or load balancer restarts, or if backends are added to the backend pool, the session affinity
+mechanism will likely redirect the user's connection to a new backend. In contrast, session persistence encodes a
+backend identifier in a cookie or header, so as long as the backend still exists, it will be unaffected by proxy
+restarts or changes in the backend pool.</p>
+<p>Session affinity can be achieved by deterministic load balancing algorithms or a proxy feature that tracks IP-to-backend
+associations such as <a href="https://www.haproxy.com/blog/introduction-to-haproxy-stick-tables/">HAProxy's stick tables</a> or
+<a href="https://docs.cilium.io/en/v1.12/gettingstarted/kubeproxy-free/#id2">Cilium's session affinity</a>.</p>
+<p>We can also examine how session persistence and session affinity functionally work together, by framing the relationship
+into a two tiered logical decision made by the data plane:</p>
+<ol>
+<li>If the request contains a session persistence identity (e.g. in a cookie or header), then route it directly to the
+backend it has previously established a session with.</li>
+<li>If no session persistence identity is present, load balance as per load balancing configuration, taking into account
+the session affinity configuration (e.g. by utilizing a hashing algorithm that is deterministic).</li>
+</ol>
+<p>This tiered decision-based logic is consistent with the idea that session persistence is an exception to load balancing.
+Though there are different ways to frame this relationship, this design will influence the separation between
+persistence and affinity API design.</p>
+<h3 id="implementations">Implementations</h3>
+<p>In this section, we will describe how implementations achieve session persistence, along with a breakdown of related configuration options. Input from implementations is appreciated to complete this information.</p>
+<p>In the following tables, we will example two types of APIs:</p>
+<ol>
+<li>Dataplane APIs</li>
+<li>Implementation APIs</li>
+</ol>
+<p>Generally, the implementation API programs the dataplane API; however these two are not always clearly separated. The two types of APIs can use different API structures for configuring the same feature. Examining the dataplane APIs helps to remove the layer of API abstraction that implementations provide. Removing this layer avoids situations where implementations don’t fully implement all capabilities of a dataplane API or obfuscate certain configuration around session persistence. On the other hand, examining implementation APIs provides valuable data points in what implementations are interested in configuring.</p>
+<p><strong>Table Last Updated:</strong> Feb 21, 2024</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Technology</strong></th>
+          <th><strong>Technology Type</strong></th>
+          <th><strong>Session Persistence Type</strong></th>
+          <th><strong>Configuration Options</strong></th>
+          <th><strong>Configuration Association (Global, Gateway, Route, or Backends)</strong></th>
+          <th><strong>Notes</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Acnodal EPIC</td>
+          <td>Implementation (Envoy)</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*Acnodal Epic solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://www.epick8sgw.io/docs/">Acnodal EPIC Docs</a></td>
+      </tr>
+      <tr>
+          <td>Amazon Elastic Kubernetes Service</td>
+          <td>Implementation / Dataplane</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*Amazon Elastic Kubernetes Service solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://www.gateway-api-controller.eks.aws.dev/">Amazon Elastic Kubernetes Service Docs</a></td>
+      </tr>
+      <tr>
+          <td>Apache APISIX</td>
+          <td>Implementation (Nginx)</td>
+          <td><a href="https://apisix.apache.org/docs/apisix/admin-api/#upstream">Cookie-Based</a></td>
+          <td>hash_on=[vars | header | cookie | consumer]<br>key=cookie_name</td>
+          <td><a href="https://apisix.apache.org/docs/apisix/admin-api/#upstream">Upstream</a> (Route or Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Implementation (Nginx)</td>
+          <td><a href="https://apisix.apache.org/docs/apisix/terminology/upstream/#header">Header-Based</a></td>
+          <td>hash_on=[vars | header | cookie | consumer]<br>key=header_name</td>
+          <td><a href="https://apisix.apache.org/docs/apisix/admin-api/#upstream">Upstream</a> (Route or Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Apache httpd</td>
+          <td>Web Server</td>
+          <td><a href="https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html">Cookie-Based / URL-Encoded</a></td>
+          <td>Cookie Attributes</td>
+          <td>N/A</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Avi Kubernetes Operator</td>
+          <td>Implementation / Dataplane</td>
+          <td><a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/administration/GUID-8B5C8D64-2B69-4C95-86A5-C5396CB9E51F.html">Cookie-Based</a></td>
+          <td>Shared Persistence Cookie Mode=[Insert | Prefix | Rewrite] Cookie Name=name Cookie Domain=domain Cookie Fallback=domain Cookie Path=path Cookie Garbling Cookie Type=[ Session Cookie | Persistence Cookie] Http Only Flag Secure Flag Max Idle Time=time Max Cookie Age=time</td>
+          <td><a href="https://docs.vmware.com/en/VMware-NSX-Advanced-Load-Balancer/1.11/Avi-Kubernetes-Operator-Guide/GUID-E8F3C338-46FB-412E-8B46-16EE2C12A8AF.html">Route</a></td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Azure Application Gateway for Containers</td>
+          <td>Implementation / Dataplane</td>
+          <td><a href="https://learn.microsoft.com/en-us/azure/application-gateway/for-containers/session-affinity?tabs=session-affinity-gateway-api">Cookie-Based</a></td>
+          <td>affinityType=[application-cookie | managed-cookie]<br>cookieName=name<br>cookieDuration=seconds</td>
+          <td><a href="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/application-gateway/for-containers/api-specification-kubernetes.md#alb.networking.azure.io/v1.RoutePolicy">Route</a></td>
+          <td>RoutePolicy which attaches to HTTPRoutes</td>
+      </tr>
+      <tr>
+          <td>BIG-IP Kubernetes Gateway</td>
+          <td>Implementation (F5 BIG-IP)</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*BIG-IP Kubernetes Gateway solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://gateway-api.f5se.io/">BIG-IP Kubernetes Gateway Docs</a></td>
+      </tr>
+      <tr>
+          <td>Cilium</td>
+          <td>Implementation / Dataplane</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Cilium has no documented way of doing session persistence. <a href="https://cilium.io/">Cilium Docs</a></td>
+      </tr>
+      <tr>
+          <td>Contour</td>
+          <td>Implementation (Envoy)</td>
+          <td><a href="https://projectcontour.io/docs/1.24/config/api/#projectcontour.io/v1.CookieRewritePolicy">Cookie-Based</a></td>
+          <td>Name=name<br>pathRewrite=path<br>domainRewrite=domain<br>secure<br>sameSite</td>
+          <td><a href="https://projectcontour.io/docs/1.24/config/api/#projectcontour.io/v1.Route">Route</a> and <a href="https://projectcontour.io/docs/1.24/config/api/#projectcontour.io/v1.Service">Service</a> (Backends)</td>
+          <td>Envoy does not natively support cookie attribute rewriting nor adding attributes other than path and TTL, but rewriting and adding additional attributes is possible via Lua (<a href="https://github.com/projectcontour/contour/blob/main/design/cookie-rewrite-design.md">Contour design reference</a>, <a href="https://github.com/envoyproxy/envoy/issues/15612">Envoy Issue</a>).</td>
+      </tr>
+      <tr>
+          <td>Easegress</td>
+          <td>Implementation / Dataplane</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td><a href="https://megaease.com/docs/easegress/">Easegress Docs</a></td>
+      </tr>
+      <tr>
+          <td>Emissary-Ingress</td>
+          <td>Implementation (Envoy)</td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#cookie">Cookie-Based</a></td>
+          <td>Name=name<br>Path=path<br>TTL=duration</td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#cookie">Module or Mapping</a> (Global or Route)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#header">Header-Based</a></td>
+          <td>Name=name</td>
+          <td><a href="https://www.getambassador.io/docs/emissary/latest/topics/running/load-balancer#cookie">Module or Mapping</a> (Global or Route)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Envoy</td>
+          <td>Dataplane</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/stateful_session/cookie/v3/cookie.proto">Cookie-Based</a></td>
+          <td>Name=name<br>Path=path<br>TTL=duration</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/http_connection_manager/v3/http_connection_manager.proto">HttpConnectionManager</a> (Route)</td>
+          <td>Envoy does not natively support cookie attribute rewriting nor adding attributes other than path and TTL, but rewriting and adding additional attributes is possible via Lua (<a href="https://github.com/projectcontour/contour/blob/main/design/cookie-rewrite-design.md">Contour design reference</a>, <a href="https://github.com/envoyproxy/envoy/issues/15612">Envoy Issue</a>).</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/stateful_session/header/v3/header.proto">Header-Based</a></td>
+          <td>Name=name</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/http_connection_manager/v3/http_connection_manager.proto">HttpConnectionManager</a> (Route)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Envoy Gateway</td>
+          <td>Implementation (Envoy)</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*Envoy Gateway solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://gateway.envoyproxy.io/v0.3.0/index.html">Envoy Gateway Docs</a></td>
+      </tr>
+      <tr>
+          <td>Flomesh Service Mesh</td>
+          <td>Implementation / Dataplane (Pipy)</td>
+          <td>?</td>
+          <td>?</td>
+          <td>?</td>
+          <td>?</td>
+      </tr>
+      <tr>
+          <td>Gloo Gateway</td>
+          <td>Implementation (Envoy)</td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/reference/api/envoy/api/v2/route/route.proto.sk/#cookie">Cookie-Based</a></td>
+          <td>Name=name Path=path TTL=duration</td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/reference/api/envoy/api/v2/route/route.proto.sk/#route">Route</a> (Route)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/reference/api/envoy/api/v2/route/route.proto.sk/#hashpolicy">Header-Based</a></td>
+          <td>Name=name</td>
+          <td><a href="https://docs.solo.io/gloo-edge/latest/reference/api/envoy/api/v2/route/route.proto.sk/#route">Route</a> (Route)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Google CloudRun</td>
+          <td>Dataplane</td>
+          <td><a href="https://cloud.google.com/run/docs/configuring/session-affinity">Cookie-Based</a></td>
+          <td>Enabled / Disabled</td>
+          <td><a href="https://cloud.google.com/run/docs/configuring/session-affinity">Service</a> (Backends)</td>
+          <td>Only allowed to turn off or on, no other configuration items</td>
+      </tr>
+      <tr>
+          <td>Google Kubernetes Engine</td>
+          <td>Implementation / Dataplane</td>
+          <td><a href="https://cloud.google.com/load-balancing/docs/backend-service#session_affinity">Cookie-Based</a></td>
+          <td>GENERATED_COOKIE or HTTP_COOKIE=name<br>cookieTtlSec</td>
+          <td><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/configure-gateway-resources#session_affinity">Backend Policy</a> (Backends)</td>
+          <td>Google Kubernetes Engine <a href="https://cloud.google.com/load-balancing/docs/backend-service#bs-session-affinity">lists</a> the products that can do persistence/affinity mode. All persistence/affinity options are exclusive and can’t be used at the same time.<br>Note: Google Kubernetes Engine defines everything (persistence and affinity) as session affinity.</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><a href="https://cloud.google.com/load-balancing/docs/backend-service#header_field_affinity">Header-Based</a></td>
+          <td>httpHeaderName=name</td>
+          <td><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/configure-gateway-resources#session_affinity">Backend Policy</a> (Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>HAProxy</td>
+          <td>Dataplane</td>
+          <td><a href="https://docs.haproxy.org/2.6/configuration.html#4.2-cookie">Cookie-Based</a></td>
+          <td>name=name<br>[rewrite | insert | prefix ]<br>indirect<br>nocache<br>postonly<br>preserve<br>httponly<br>secure<br>domain=domain<br>maxidle=idle<br>maxlife=life<br>dynamic<br>attr=value</td>
+          <td><a href="https://docs.haproxy.org/2.6/configuration.html#4.2-cookie">Default or Backends</a> (Global or Backends)</td>
+          <td>HAProxy allows for operational cookie strategy configuration (i.e. when/how HAProxy should inject cookies)</td>
+      </tr>
+      <tr>
+          <td>HAProxy Ingress</td>
+          <td>Implementation (HAProxy)</td>
+          <td><a href="https://haproxy-ingress.github.io/docs/configuration/keys/#affinity">Cookie-Based</a></td>
+          <td>affinity (enable/disable)<br>cookie-key=key<br>session-cookie-domain=domain<br>session-cookie-dynamic=[true | false]<br>session-cookie-keywords=keywords<br>session-cookie-name=name<br>session-cookie-preserve=[true | false]<br>session-cookie-same-site=[true | false]<br>session-cookie-shared=[true | false]<br>session-cookie-strategy=strategy<br>session-cookie-value-strategy=value_strategy</td>
+          <td><a href="https://haproxy-ingress.github.io/docs/configuration/keys/#affinity">Backend</a> (Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Hashicorp Consul</td>
+          <td>Implementation (Envoy)</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*Hashicorp Consul solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://developer.hashicorp.com/consul/docs/api-gateway">Hashicorp Consul API Gateway Docs</a></td>
+      </tr>
+      <tr>
+          <td>Istio</td>
+          <td>Implementation (Envoy)</td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB-HTTPCookie">Cookie-Based</a></td>
+          <td>Name=name<br>Path=path<br>TTL=duration</td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">ConsistentHashLB</a> (Backends)</td>
+          <td>Istio also supports turning on cookie-based session persistence via the Pilot ENV variable <a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">PILOT_PERSISTENT_SESSION_LABEL</a>.</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Implementation (Envoy)</td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">Header-Based</a></td>
+          <td>Name=name</td>
+          <td><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">ConsistentHashLB</a> (Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Java Servlet</td>
+          <td>Web Server</td>
+          <td><a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html">Cookie-Based / URL-Encoded</a></td>
+          <td>invalidate()<br>setAttribute(String name, Object value)<br>setMaxInactiveInterval(int interval)</td>
+          <td>N/A</td>
+          <td>Java Servlets do not natively support proxy functions.</td>
+      </tr>
+      <tr>
+          <td>Kong</td>
+          <td>Implementation / Dataplane</td>
+          <td><a href="https://docs.konghq.com/hub/kong-inc/session/">Cookie-Based</a></td>
+          <td>cookie_name=name<br>rolling_timeout=timeout<br>absolute_timeout=timeout<br>idling_timeout=timeout<br>cookie_path=path<br>cookie_domain=domain<br>cookie_same_site=[Strict | Lax | None | off]<br>cookie_http_only<br>cookie_secure=[true | false]<br>stale_ttl=duration<br>cookie_persistent=[true | false]<br>storage=storage_type</td>
+          <td><a href="https://docs.konghq.com/hub/kong-inc/session/">Route, Service, Global</a> (Route or Backends or Global)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><a href="https://docs.konghq.com/gateway/latest/how-kong-works/load-balancing/#balancing-algorithms">Header-Based</a></td>
+          <td>name</td>
+          <td><a href="https://docs.konghq.com/gateway/3.2.x/admin-api/#add-upstream">Upstreams</a> (Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Kuma</td>
+          <td>Implementation (Envoy)</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Kuma has no documentation on how it supports session persistence or cookies. <a href="https://kuma.io/docs/2.1.x/">Kuma Docs</a></td>
+      </tr>
+      <tr>
+          <td>Linkerd</td>
+          <td>Gamma Implementation</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td><a href="https://linkerd.io/">Linkerd Docs</a></td>
+      </tr>
+      <tr>
+          <td>LiteSpeed Ingress Controller</td>
+          <td>?</td>
+          <td>?</td>
+          <td>?</td>
+          <td>?</td>
+          <td>?</td>
+      </tr>
+      <tr>
+          <td>Nginx</td>
+          <td>Dataplane</td>
+          <td><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#enabling-session-persistence">Cookie-Based (Nginx Plus Only)</a></td>
+          <td>Name=name<br>Expires=time<br>Domain=domain<br>HttpOnly<br>SameSite = [strict | lax | none | $variable]<br>Secure<br>path=path</td>
+          <td><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#enabling-session-persistence">Upstream</a> (Backends)</td>
+          <td>See also <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html?&amp;_ga=2.184452070.1306763907.1680031702-1761609832.1671225057#sticky_cookie">Sticky Cookie</a></td>
+      </tr>
+      <tr>
+          <td>NGINX Gateway Fabric</td>
+          <td>Implementation (Nginx)</td>
+          <td>N/A</td>
+          <td>Supports Gateway API Only*</td>
+          <td>N/A</td>
+          <td>*NGINX Gateway Fabric solely uses Gateway API; therefore, it doesn’t yet have a way to configure session persistence. <a href="https://github.com/nginxinc/nginx-gateway-fabric">NGINX Gateway Fabric Docs</a></td>
+      </tr>
+      <tr>
+          <td>STUNner</td>
+          <td>Implementation / Dataplane</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td><a href="https://github.com/l7mp/stunner">STUNner Docs</a></td>
+      </tr>
+      <tr>
+          <td>Traefik</td>
+          <td>Implementation / Dataplane</td>
+          <td><a href="https://doc.traefik.io/traefik/routing/services/#sticky-sessions">Cookie-Based</a></td>
+          <td>name=name<br>secure<br>httpOnly<br>sameSite=[none | lax | strict ]</td>
+          <td><a href="https://doc.traefik.io/traefik/routing/services/#sticky-sessions">Services</a> (Backends)</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>Tyk</td>
+          <td>Implementation / Dataplane</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td><a href="https://tyk.io/docs/">Tyk Docs</a></td>
+      </tr>
+      <tr>
+          <td>WSO2 APK</td>
+          <td>Implementation / Dataplane</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td><a href="https://apk.docs.wso2.com/en/latest/">WSO2 APK Docs</a></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="sessions-in-java">Sessions in Java</h3>
+<p>Java application servers such as Tomcat and Jetty, were the first to standardize the API around cookies and sessions.
+These Java applications introduced the “jsessionid” cookie and session IDs encoded in URL parameters as well as more
+advanced features such as session migration, replication, and on demand session activation. It’s important for Gateway
+API to examine cookie use cases and history from Java APIs to ensure the API is designed appropriately.</p>
+<h3 id="session-affinity-in-k8s-services">Session Affinity in K8S Services</h3>
+<p>Kubernetes provides an API that allows you to enable <a href="https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity">session affinity</a>
+on service objects. It ensures consistent sessions by utilizing the client's IP address and also offers the option to
+set a timeout for the maximum session duration. Implementations of Gateway API, such as service mesh use cases, may use
+the service IP directly. In these cases where both Kubernetes service session affinity and Gateway API session
+persistence are both enabled, the route MUST be rejected, and a status should be set describing the incompatibility of
+these two configurations.</p>
+<h2 id="api">API</h2>
+<p>In this section, we will explore the questions and design elements associated with a session persistence API.</p>
+<p>We will present two distinct patterns for configuring session persistence:</p>
+<ol>
+<li><code>BackendLBPolicy</code>: a Direct Policy Attachment for backends (Services, ServiceImports, or any
+implementation-specific backendRef)</li>
+<li>An inline API update to HTTPRoute and GRPCRoute rules</li>
+</ol>
+<h3 id="backendlbpolicy-api">BackendLBPolicy API</h3>
+<p>In order to apply session persistence configuration to a backend, we will implement it as a <a href="/ko/reference/policy-attachment/">Policy Attachment</a>.
+The new metaresource is named <code>BackendLBPolicy</code> and is responsible for configuring load balancing-related configuration
+for traffic intended for a backend after routing has occurred. It is defined as a <a href="/ko/geps/gep-713/#direct-policy-attachment">Direct Policy Attachment</a>
+without defaults or overrides, applied to the targeted backend.</p>
+<p>Instead of utilizing a specific, session persistence-only policy object, we introduce a more generic API object named
+<code>BackendLBPolicy</code>. This design provides tighter coupling with other load balancing configuration which helps reduce
+CRD proliferation. For instance, <code>BackendLBPolicy</code> could be augmented to add configuration for selecting a load
+balancing algorithm for traffic to the backends, as desired in issue <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1778">#1778</a>.
+<code>BackendLBPolicy</code> could also be later expanded to contain <a href="/ko/geps/gep-1619/#the-relationship-of-session-persistence-and-session-affinity">session affinity</a>
+configuration. This would provide a convenient grouping of the two related APIs within the same policy object.
+Additionally, other future enhancements to the API may include the addition of timeouts, connection draining, and
+logging within <code>BackendLBPolicy</code>.</p>
+<p>As for achieving session persistence, this API currently exposes the <code>Type</code> field which allows selection between
+cookie-based and header-based session persistence. Cookie-based session persistence is considered a core feature,
+while header-based session persistence is extended and therefore optional.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// BackendLBPolicy provides a way to define load balancing rules</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// for a backend.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> BackendLBPolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>    metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Spec defines the desired state of BackendLBPolicy.</span>
+</span></span><span style="display:flex;"><span>    Spec BackendLBPolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Status defines the current state of BackendLBPolicy.</span>
+</span></span><span style="display:flex;"><span>    Status PolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// BackendLBPolicySpec defines the desired state of</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// BackendLBPolicy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Note: there is no Override or Default policy configuration.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> BackendLBPolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// TargetRef identifies an API object to apply policy to.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Currently, Backends (i.e. Service, ServiceImport, or any</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// implementation-specific backendRef) are the only valid API</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// target references.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listType=map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listMapKey=group</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listMapKey=kind</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +listMapKey=name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinItems=1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxItems=16</span>
+</span></span><span style="display:flex;"><span>    TargetRefs []LocalPolicyTargetReference <span style="color:#b44">`json:&#34;targetRefs&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionPersistence defines and configures session persistence</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// for the backend.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    SessionPersistence <span style="color:#666">*</span>SessionPersistence <span style="color:#b44">`json:&#34;sessionPersistence&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// SessionPersistence defines the desired state of</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// SessionPersistence.</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// +kubebuilder:validation:XValidation:message=&#34;AbsoluteTimeout must be specified when cookie lifetimeType is Permanent&#34;,rule=&#34;!has(self.cookieConfig) || !has(self.cookieConfig.lifetimeType) || self.cookieConfig.lifetimeType != &#39;Permanent&#39; || has(self.absoluteTimeout)&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> SessionPersistence <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionName defines the name of the persistent session token</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// which may be reflected in the cookie or the header. Users</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// should avoid reusing session names to prevent unintended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// consequences, such as rejection or unpredictable behavior.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Implementation-specific</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=128</span>
+</span></span><span style="display:flex;"><span>    SessionName <span style="color:#666">*</span><span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;sessionName,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// AbsoluteTimeout defines the absolute timeout of the persistent</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// session. Once the AbsoluteTimeout duration has elapsed, the</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// session becomes invalid.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    AbsoluteTimeout <span style="color:#666">*</span>Duration <span style="color:#b44">`json:&#34;absoluteTimeout,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// IdleTimeout defines the idle timeout of the persistent session.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Once the session has been idle for more than the specified</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// IdleTimeout duration, the session becomes invalid.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    IdleTimeout <span style="color:#666">*</span>Duration <span style="color:#b44">`json:&#34;idleTimeout,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Type defines the type of session persistence such as through</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// the use a header or cookie. Defaults to cookie based session</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// persistence.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Core for &#34;Cookie&#34; type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended for &#34;Header&#34; type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:default=Cookie</span>
+</span></span><span style="display:flex;"><span>    Type <span style="color:#666">*</span>SessionPersistenceType <span style="color:#b44">`json:&#34;type,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieConfig provides configuration settings that are specific</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// to cookie-based session persistence.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Core</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    CookieConfig <span style="color:#666">*</span>CookieConfig <span style="color:#b44">`json:&#34;cookieConfig,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Duration is a string value representing a duration in time. The format is as specified</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// in GEP-2257, a strict subset of the syntax parsed by Golang time.ParseDuration.</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// +kubebuilder:validation:Pattern=`^([0-9]{1,5}(h|m|s|ms)){1,4}$`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> Duration <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// +kubebuilder:validation:Enum=Cookie;Header</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> SessionPersistenceType <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieBasedSessionPersistence specifies cookie-based session</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// persistence.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Core</span>
+</span></span><span style="display:flex;"><span>    CookieBasedSessionPersistence   SessionPersistenceType = <span style="color:#b44">&#34;Cookie&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// HeaderBasedSessionPersistence specifies header-based session</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// persistence.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    HeaderBasedSessionPersistence   SessionPersistenceType = <span style="color:#b44">&#34;Header&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// CookieConfig defines the configuration for cookie-based session persistence.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> CookieConfig <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// LifetimeType specifies whether the cookie has a permanent or</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// session-based lifetime. A permanent cookie persists until its</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// specified expiry time, defined by the Expires or Max-Age cookie</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// attributes, while a session cookie is deleted when the current</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// session ends.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// When set to &#34;Permanent&#34;, AbsoluteTimeout indicates the</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// cookie&#39;s lifetime via the Expires or Max-Age cookie attributes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// and is required.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// When set to &#34;Session&#34;, AbsoluteTimeout indicates the</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// absolute lifetime of the cookie tracked by the gateway and</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// is optional.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Core for &#34;Session&#34; type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended for &#34;Permanent&#34; type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:default=Session</span>
+</span></span><span style="display:flex;"><span>    LifetimeType <span style="color:#666">*</span>CookieLifetimeType <span style="color:#b44">`json:&#34;lifetimeType,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// +kubebuilder:validation:Enum=Permanent;Session</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> CookieLifetimeType <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionCookieLifetimeType specifies the type for a session</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// cookie.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Core</span>
+</span></span><span style="display:flex;"><span>    SessionCookieLifetimeType   CookieLifetimeType = <span style="color:#b44">&#34;Session&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// PermanentCookieLifetimeType specifies the type for a permanent</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// cookie.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    PermanentCookieLifetimeType  CookieLifetimeType = <span style="color:#b44">&#34;Permanent&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="route-rule-api">Route Rule API</h3>
+<p>To support route rule level configuration, this GEP also introduces an API as inline fields within HTTPRouteRule and GRPCRouteRule.
+Any configuration that is specified at Route Rule level MUST override configuration that is attached at the backend level because route rule have a more global view and responsibility for the overall traffic routing.
+This route rule level API for enabling session persistence currently uses the same <code>SessionPersistence</code> struct from the
+<code>BackendLBPolicy</code> API.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> HTTPRouteRule <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    [<span style="color:#666">...</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionPersistence defines and configures session persistence</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// for the route rule.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    SessionPersistence <span style="color:#666">*</span>SessionPersistence <span style="color:#b44">`json:&#34;sessionPersistence&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> GRPCRouteRule <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    [<span style="color:#666">...</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionPersistence defines and configures session persistence</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// for the route rule.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Support: Extended</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    SessionPersistence <span style="color:#666">*</span>SessionPersistence <span style="color:#b44">`json:&#34;sessionPersistence&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="api-granularity">API Granularity</h3>
+<p>The purpose of this session persistence API spec is to enable developers to specify that a specific backend expects a
+persistent session. However, it intentionally avoids specifying low-level details or configurations related to the
+session persistence implementation, such as cookie attributes. This decision is because the Gateway API supports various
+infrastructure types, and some implementations that already provide session persistence may not be able to adhere to a
+low-level API.</p>
+<p>For instance, platforms using global load balancers to maintain persistent sessions between regional load balancers, or
+Tomcat servlets generating distinct cookies per server. In such scenarios, it is important that this GEP does not
+obstruct the existing use of cookies while enabling session persistence. Enabling particular low-level API
+configurations, like allowing customization of the cookie name, could prevent certain implementations from conforming to
+the spec. In other words, opting for a higher-level API provides better interoperability among our implementations.</p>
+<p>However, this API spec does allow specifying specific forms or types of session persistence through the <code>Type</code> field in
+the <code>SessionPersistence</code> struct, including options for cookie-based or header-based session persistence. This API field
+accommodates implementations that offer multiple methods of session persistence, while also allowing users to specify
+their preferred form of session persistence if desired.</p>
+<h3 id="target-persona">Target Persona</h3>
+<p>Referring to the <a href="../../concepts/security.md#roles-and-personas">Gateway API Security Model</a>,
+the target kubernetes role/persona for session persistence are application developers, as mentioned in the <a href="/ko/geps/gep-1619/#when-does-an-application-require-session-persistence">When does an application require session persistence?</a>
+section. It is the responsibility of the application developers to adjust the persistence configuration to ensure the
+functionality of their applications.</p>
+<h3 id="prior-art">Prior Art</h3>
+<p>Referring to our <a href="/ko/geps/gep-1619/#Implementations">Implementations</a> table on session persistence, the majority of Gateway API
+implementations designed session persistence in their APIs to be attached to a service or backends. This should be
+considered cautiously, as making associations to Gateway API's notion of Gateway, Route, and Service to other
+implementation's objects is hard to directly translate. The idea of a route in Gateway API is often not the same as a
+route in any given implementation.</p>
+<h3 id="api-attachment-points">API Attachment Points</h3>
+<p>The new <code>BackendLBPolicy</code> metaresource only supports attaching to a backend. A backend can be a Service,
+ServiceImport (see <a href="/ko/geps/gep-1748/">GEP-1748</a>), or any implementation-specific backends that are a valid
+<a href="/ko/reference/spec/#gateway.networking.k8s.io/v1.BackendObjectReference"><code>BackendObjectReference</code></a>. Enabling session
+persistence for a backend enables subsequently enables it for any route directing traffic to this backend. To learn more
+about the process of attaching a policy to a backend, please refer to <a href="/ko/geps/gep-713/">GEP-713</a>.</p>
+<p>On the other hand, configuring the <code>sessionPersistence</code> field in the route rule enables session persistence exclusively
+for the traffic directed to the <code>backendRefs</code> in this route rule. This means applying session persistence configuration
+to a route rule MUST NOT affect traffic for other routes or route rules. Designing the configuration for a specific
+route rule section rather than the route entirely, allows users to configure session persistence in a more granular
+fashion. This approach avoids the need to decompose routes if the configuration is specific to a route path.</p>
+<p>Session persistence configuration specified in a route rule SHALL override equivalent configuration in <code>BackendLBPolicy</code>.
+In this situation, implementations MAY want to indicate a warning via a log or status. Refer to <a href="/ko/geps/gep-713/">GEP-713</a>
+and/or <a href="/ko/geps/gep-2648/">GEP-2648</a> for more specific details on how to handle override scenarios.</p>
+<p>Edge cases will arise when implementing session persistence support for both backends and route rules through
+<code>BackendLBPolicy</code> and the route rule's <code>sessionPersistence</code> field. For guidance on addressing conflicting
+attachments, please consult the <a href="/ko/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a> section, which outlines API
+use cases. Only a subset of implementations have already designed their data plane to incorporate route rule level session
+persistence, making it likely that route rule level session persistence will be less widely implemented.</p>
+<h3 id="traffic-splitting">Traffic Splitting</h3>
+<p>In scenarios involving traffic splitting, session persistence impacts load balancing done after routing.
+When a persistent session is established and traffic splitting is configured across services, the persistence to a single backend MUST be maintained across services, even if the weight is set to 0.
+Consequently, a persistent session takes precedence over traffic split
+weights when selecting a backend after route matching. It's important to note that session persistence does not impact
+the process of route matching.</p>
+<p>When using multiple backends in traffic splitting, all backend services should have session persistence enabled.
+Nonetheless, implementations MUST carefully consider how to manage traffic splitting scenarios in which one service has
+persistence enabled while the other does not. This includes scenarios where users are transitioning to or from an
+implementation version designed with or without persistence. For traffic splitting scenario within a single route rule,
+this GEP leaves the decision to the implementation. Implementations MUST choose to apply session persistence to all
+backends equally, reject the session persistence configuration entirely, or apply session persistence only for the
+backends with it configured.</p>
+<p>See <a href="/ko/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a> for more use cases on traffic splitting.</p>
+<h3 id="cookie-attributes">Cookie Attributes</h3>
+<p>While the API is intended to be generic, as described in <a href="/ko/geps/gep-1619/#api-granularity">API Granularity</a>, a majority of
+implementations will employ session persistence through cookies. Therefore, let's explore the possibilities of cookie
+configuration for these APIs.</p>
+<p>A cookie is composed of various attributes, each represented as key=value pairs. While some attributes may have optional
+values, the cookie name attribute is the only mandatory one, and the rest are considered optional.</p>
+<p>The cookie attributes defined by <a href="https://www.rfc-editor.org/rfc/rfc6265#section-5.2">RFC6265</a> are:</p>
+<ul>
+<li>Name=<em>value</em></li>
+<li>Expires=<em>date</em></li>
+<li>Max-Age=<em>number</em></li>
+<li>Domain=<em>domain</em></li>
+<li>Path=<em>path-value</em></li>
+<li>Secure</li>
+<li>HttpOnly</li>
+</ul>
+<p>Other cookie attributes not defined by RFC6265, but are captured in draft RFCs and could be considered de facto
+standards due to wide acceptance are:</p>
+<ul>
+<li>SameSite=[Strict|Lax|None]</li>
+<li>Partitioned</li>
+</ul>
+<p>Unless a <code>sessionPersistence</code> API field can be satisfied through a manipulating a cookie attribute, the attributes
+of the cookies are considered as opaque values in this spec and are to be determined by the individual implementations.
+Let's discuss some of these cookie attributes in more detail.</p>
+<h4 id="name">Name</h4>
+<p>The <code>Name</code> cookie attribute MAY be configured via the <code>SessionName</code> field in <code>sessionPersistence</code>. However, this field
+is implementation-specific because it's impossible to create a conformance test for it, given that sessions could be
+created in a variety of ways. Additionally, <code>SessionName</code> is not universally supported as some implementations, such as
+ones supporting global load balancers, don't have the capability to configure the cookie name. Some implementations
+have a fixed cookie name, and therefore <code>SessionName</code> may be reflected in the value of the cookie.</p>
+<p>The use case for modifying the cookie name using <code>SessionName</code> is that certain users might need to align it with an
+existing cookie name, such as Java's <code>JSESSIONID</code>. Refer to <a href="/ko/geps/gep-1619/#session-initiation-guidelines">Session Initiation Guidelines</a>
+for details on how this GEP supports existing sessions. If <code>SessionName</code> is not specified, then a unique cookie name
+should be generated.</p>
+<h4 id="expires-max-age">Expires / Max-Age</h4>
+<p>The <code>Expires</code> and <code>Max-Age</code> cookie attributes are important in distinguishing between <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#define_the_lifetime_of_a_cookie">session cookies and permanent
+cookies</a>. Session cookies do
+not include either of these attributes, while permanent cookies will contain one of them. Session cookies can still
+have an expiration or timeout, but it will be accomplished through alternative mechanisms, such as the proxy tracking
+the cookie's lifetime via its value.</p>
+<p>The <code>LifetimeType</code> API field specifies whether a cookie should be a session or permanent cookie. Additionally, the lifetime
+or timeout for both session and permanent cookies is represented by <code>AbsoluteTimeout</code>. In the case of
+<code>LifetimeType</code> being <code>Permanent</code>, <code>AbsoluteTimeout</code> MUST configure the <code>Expires</code> or <code>Max-Age</code> cookie attributes.
+Conversely, if <code>LifetimeType</code> is <code>Session</code>, <code>AbsoluteTimeout</code> MUST regulate the cookie's lifespan through a
+different mechanism, as mentioned above. If <code>LifetimeType</code> is set to <code>Permanent</code>, then <code>AbsoluteTimeout</code> MUST
+also be set as well. This requirement is necessary because an expiration value is required to set <code>Expires</code> or <code>Max-Age</code>.
+<code>LifetimeType</code> of <code>Session</code> is core support level and the default, while <code>LifetimeType</code> of <code>Permanent</code> is extended.</p>
+<p>See <a href="https://github.com/kubernetes-sigs/gateway-api/issues/2747">issue #2747</a> for more context regarding distinguishing
+between permanent and session cookies.</p>
+<h4 id="path">Path</h4>
+<p>The cookie's <code>Path</code> attribute defines the URL path that must exist in order for the client to send the <code>cookie</code> header.
+Whether attaching session persistence to an xRoute or a service, it's important to consider the relationship the cookie
+<code>Path</code> attribute has with the route path.</p>
+<p>When session persistence is enabled on a xRoute rule, the implementor should interpret the path as
+configured on the xRoute. To interpret the <code>Path</code> attribute from an xRoute, implementors should take note of the
+following:</p>
+<ol>
+<li>For an xRoute that matches all paths, the <code>Path</code> should be set to <code>/</code>.</li>
+<li>For an xRoute that has multiple paths, the <code>Path</code> should be interpreted based on the route path that was matched.</li>
+<li>For an xRoute using a path that is a regex, the <code>Path</code> should be set to the longest non-regex prefix (.e.g. if the
+path is /p1/p2/*/p3 and the request path was /p1/p2/foo/p3, then the cookie path would be /p1/p2).</li>
+</ol>
+<p>It is also important to note that this design makes persistent session unique per route path. For instance, if two
+distinct routes, one with path prefix <code>/foo</code> and the other with <code>/bar</code>, both target the same service, the persistent
+session won't be shared between these two paths.</p>
+<p>Conversely, if the <code>BackendLBPolicy</code> policy is attached to a service, the <code>Path</code> attribute MUST be left
+unset. This is because multiple routes can target a single service. If the <code>Path</code> cookie attribute is configured in this
+scenario, it could result in problems due to the possibility of different paths being taken for the same cookie.
+Implementations MUST also handle the case where the client is a browser making requests to multiple persistent services
+from the same page.</p>
+<h4 id="secure-httponly-samesite">Secure, HttpOnly, SameSite</h4>
+<p>The <code>Secure</code>, <code>HttpOnly</code>, and <code>SameSite</code> cookie attributes are security-related. The API implementers SHOULD follow the
+security-by-default principle and configure these attributes accordingly. This means enabling <code>Secure</code> and <code>HttpOnly</code>,
+and setting <code>SameSite</code> to <code>Strict</code>. However, in certain implementation use cases such as service mesh, secure values
+might not function as expected. In such cases, it's acceptable to make appropriate adjustments.</p>
+<h3 id="session-persistence-api-with-gamma">Session Persistence API with GAMMA</h3>
+<p>The object of the <a href="../../mesh/gamma.md">GAMMA (Gateway API for Mesh Management and Administration)</a>
+initiative is to provide support for service mesh and mesh-adjacent use-cases with Gateway API. GAMMA is focused on
+defining how Gateway API could also be used for inter-service or <a href="../../concepts/glossary.md#eastwest-traffic">east/west</a>
+traffic within the same cluster.</p>
+<p>Given that service meshes commonly have session persistence requirements, this API design should take into consideration
+session persistence needs in GAMMA and service mesh scenarios.</p>
+<h3 id="session-initiation-guidelines">Session Initiation Guidelines</h3>
+<p>As illustrated in the examples provided in <a href="/ko/geps/gep-1619/#session-persistence-initiation">Session Persistence Initiation</a>,
+implementations must consider how to manage sessions initiated by other components. As mentioned in <a href="/ko/geps/gep-1619/#backend-initiated-session-example">Backend Initiated Session Example</a>,
+this GEP does not support configuring backend-initiated persistent sessions. We leave the decision of handling existing
+sessions with each specific implementation. In the case of cookie-based session persistence, an implementation MAY
+either rewrite the cookie or insert an additional cookie, or to do nothing (resulting in the lack of a
+persistent session). In general, inserting an additional cookie is a generally safe option, but it's important for
+implementations to exercise their own discretion. However, regardless of the implementation's design choice, the
+implementation MUST be able to handle multiple cookies.</p>
+<h3 id="session-persistence-failure-behavior">Session Persistence Failure Behavior</h3>
+<p>In a situation where session persistence is configured and the backend becomes unhealthy, this GEP doesn't specify a
+prescribed fallback behavior mechanism or HTTP status code. Implementations MAY exhibit different behaviors depending
+on whether active health checking is enabled. Data planes MAY fall back to available backends, disregarding the broken
+session, and reestablish session persistence when the backend becomes available again.</p>
+<h3 id="edge-case-behavior">Edge Case Behavior</h3>
+<p>Implementing session persistence is complex and involves many edge cases. In this section, we will outline API
+configuration scenarios (use cases) and how implementations should handle them.</p>
+<h4 id="attaching-session-persistence-to-both-service-and-a-route-rule">Attaching Session Persistence to both Service and a Route Rule</h4>
+<p>In a situation which:</p>
+<ul>
+<li><code>ServiceA</code> with <code>BackendLBPolicy</code> attached</li>
+<li><code>RouteX</code> with <code>sessionPersistence</code> configured on the route rule and backend <code>ServiceA</code></li>
+</ul>
+<p>The <code>sessionPersistence</code> configuration inline to <code>RouteX</code> route rule MUST take precedence over <code>BackendLBPolicy</code>. Since
+routes direct traffic to services, the policy attached to route operates at a higher-level and MUST override policies
+applied to individual services.</p>
+<div class="mermaid">graph TB
+   RouteX ----> ServiceA((ServiceA))
+   BackendLBPolicyServiceA[BackendLBPolicy] -.-> ServiceA
+   BackendLBPolicyRouteA[SessionPersistence] -.Precedence.-> RouteX
+   linkStyle 2 stroke:red;
+</div>
+<h4 id="two-routes-rules-have-session-persistence-to-the-same-service">Two Routes Rules have Session Persistence to the Same Service</h4>
+<p>Consider the situation in which two different route paths have session persistence configured and are going to the same
+service:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>routeX<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">matches</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">path</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">value</span>:<span style="color:#bbb"> </span>/a<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>session-a<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">matches</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">path</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">value</span>:<span style="color:#bbb"> </span>/b<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">0</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">100</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>session-b<span style="color:#bbb">
+</span></span></span></code></pre></div><p>Route rules referencing the same service MUST NOT share persistent sessions (i.e. the same cookie). Let's illustrate
+this by the following commands:</p>
+<ol>
+<li>Curl to <code>/a</code> which establishes a persistent session with <code>servicev1</code></li>
+<li>Curl to <code>/b</code> routes MUST direct traffic to <code>servicev2</code> since the persistent session established earlier is not
+shared with this route path.</li>
+</ol>
+<h4 id="route-rules-referencing-to-a-session-persistent-enabled-service-must-not-share-sessions">Route Rules Referencing to a Session Persistent Enabled Service Must Not Share Sessions</h4>
+<p>Consider the situation in which two different route paths are going to the same service, and session persistence is enabled with the service via <code>BackendLBPolicy</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>routeX<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">matches</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">path</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">value</span>:<span style="color:#bbb"> </span>/a<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">matches</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">path</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">value</span>:<span style="color:#bbb"> </span>/b<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>BackendLBPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>lbp<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">Name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionName</span>:<span style="color:#bbb"> </span>service-cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Cookie<span style="color:#bbb">
+</span></span></span></code></pre></div><p>Route rules referencing the same service MUST NOT share persistent sessions (i.e. the same cookie), even if the session persistence is attached to the service via <code>BackendLBPolicy</code>, and each route rule should have different persistent sessions.</p>
+<ol>
+<li>Curl to <code>/a</code> which establishes a persistent session with <code>servicev1</code></li>
+<li>Curl to <code>/b</code> which establishes another persistent session with <code>servicev1</code> since the previous session established earlier is not shared with this route path.</li>
+</ol>
+<h4 id="session-naming-collision">Session Naming Collision</h4>
+<p>Consider the situation in which two different services have cookie-based session persistence configured with the
+same <code>sessionName</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>split-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>BackendLBPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>lbp-split-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">Name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionName</span>:<span style="color:#bbb"> </span>split-route-cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>BackendLBPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>lbp-split-route2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">Name</span>:<span style="color:#bbb"> </span>servicev2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionName</span>:<span style="color:#bbb"> </span>split-route-cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Cookie<span style="color:#bbb">
+</span></span></span></code></pre></div><p>This is an invalid configuration as two separate sessions cannot have the same cookie name. Implementations SHOULD
+address this scenario in manner they deem appropriate. Implementations MAY choose to reject the configuration, or they
+MAY non-deterministically allow one cookie to work (e.g. whichever cookie is configured first).</p>
+<h4 id="traffic-splitting-with-route-rule-inline-sessionpersistence-field">Traffic Splitting with route rule inline sessionPersistence field</h4>
+<p>Consider the scenario where a route is traffic splitting between two backends, and additionally, an inline route rule <code>sessionPersistence</code> config is applied:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>split-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">sessionName</span>:<span style="color:#bbb"> </span>split-route-cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Cookie<span style="color:#bbb">
+</span></span></span></code></pre></div><p>In this scenario, session persistence is enabled at route rule level and all services in the traffic split have persistent session.</p>
+<p>That is to say, traffic routing to <code>servicev1</code> previously MUST continue to be routed to <code>servicev1</code> when cookie is present, and traffic routing to <code>servicev2</code> previously MUST continue to be routed to <code>servicev2</code> when cookie is present.</p>
+<p>When cookie is not present, such as, a new session, it will be routed based on the <code>weight</code> configuration and choose one of the services.</p>
+<h4 id="traffic-splitting-with-backendlbpolicy-attached-to-some-backends-not-all">Traffic Splitting with BackendLBPolicy attached to some Backends (not all)</h4>
+<p>Consider the scenario where a route is traffic splitting between two backends, and additionally, a
+<code>BackendLBPolicy</code> with <code>sessionPersistence</code> config is attached to one of the services:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>split-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>servicev2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">50</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>BackendLBPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>lbp-split-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRef</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">Name</span>:<span style="color:#bbb"> </span>servicev1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">sessionPersistence</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sessionName</span>:<span style="color:#bbb"> </span>split-route-cookie<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Cookie<span style="color:#bbb">
+</span></span></span></code></pre></div><p>In this traffic splitting scenario within a single route rule, this GEP leaves the decision to the implementation. An
+implementation MUST choose one of the following:</p>
+<ol>
+<li>Apply session persistence configured in <code>BackendLBPolicy</code> to <code>servicev1</code> and <code>servicev2</code> equally</li>
+<li>Reject the session persistence configured in <code>BackendLBPolicy</code> so that <code>servicev1</code> does not have session persistence</li>
+<li>Apply session persistence for only <code>servicev1</code>, potentially causing all traffic to eventually migrate to <code>servicev1</code></li>
+</ol>
+<p>This is also described in <a href="/ko/geps/gep-1619/#traffic-splitting">Traffic Splitting</a>.</p>
+<h4 id="a-service-s-selector-is-dynamically-updated">A Service's Selector is Dynamically Updated</h4>
+<p>In Kubernetes, it's possible to modify the <a href="https://kubernetes.io/docs/concepts/services-networking/service/#services-in-kubernetes">selector</a>
+of a service after the gateway has established persistent sessions with it.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">selector</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">app.kubernetes.io/name</span>:<span style="color:#bbb"> </span>MyApp<span style="color:#bbb"> </span><span style="color:#080;font-style:italic"># Service selector can change</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>The expected behavior is that the gateway SHOULD retain existing persistent sessions, even if the pod is no longer
+selected, and establish new persistent sessions after a selector update. This use case is uncommon and may not be
+supported by some implementations due to their current designs.</p>
+<h3 id="conformance-details">Conformance Details</h3>
+<p>TODO</p>
+<h3 id="open-questions">Open Questions</h3>
+<ul>
+<li>What happens when session persistence causes traffic splitting scenarios to overload a backend?</li>
+<li>Should we add status somewhere when a user gets into a &quot;risky&quot; configuration with session persistence?</li>
+<li>Should there be an API configuration field that specifies how already established sessions are handled?</li>
+<li>How do implementations drain established sessions during backend upgrades without disruption?
+<ul>
+<li>Do we need a &quot;session draining timeout&quot; as documented by <a href="https://github.com/grpc/proposal/blob/master/A55-xds-stateful-session-affinity.md#background">A55: xDS-Based Stateful Session Affinity for Proxyless gRPC</a>
+defined in this API?</li>
+</ul>
+</li>
+<li>How do we provide a standard way to communicate that an implementation does not support Route Rule API?
+<ul>
+<li>Do we want something conceptually similar to the <code>IncompatibleFilters</code> reason?</li>
+</ul>
+</li>
+</ul>
+<h2 id="todo">TODO</h2>
+<p>The following are items that we intend to resolve in future revisions:</p>
+<ul>
+<li>We need to identify and document requirements regarding session draining and migration.</li>
+<li>We need to document sessions with Java in greater detail. Java standardized the API and behavior of session persistence long ago and would be worth examining.</li>
+<li>We need to add a small section on compliance regarding the browser and client relationship.</li>
+<li>We need to finish enumerating all the edge cases in <a href="/ko/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a> and identify
+potential scenarios where session persistence could break so an implementation can implement session persistence in a
+predicable way.</li>
+<li>We need to clean up the <a href="/ko/geps/gep-1619/#implementations">Implementations</a> table to make it more organized and readable.</li>
+<li>We need to revisit how to indicate to a user that a <code>BackendLBPolicy</code> configuration is being overridden by a route
+configuration via a warning status or log.
+<ul>
+<li>This might require addressing as part of an update to <a href="/ko/geps/gep-2648/">GEP-2648</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="alternatives">Alternatives</h2>
+<h3 id="sessionpersistence-api-alternative">SessionPersistence API Alternative</h3>
+<p>Taking a different approach, this GEP could design a more specific policy for configuring session persistence. Rather
+than containing all load balancing configuration within a single metaresource, we could opt for a more specific design
+with a metaresource called <code>SessionPersistencePolicy</code>, specifically to handle session persistence configuration.</p>
+<p>The advantage of <code>SessionPersistencePolicy</code> is that it is more specific, which may enable a smoother transition to
+attaching to routes in the future (see <a href="/ko/geps/gep-1619/#route-attachment-future-work">Route Attachment Future Work</a>).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// SessionPersistencePolicy provides a way to define session persistence rules</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// for a service or route.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> SessionPersistencePolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>    metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Spec defines the desired state of SessionPersistencePolicy.</span>
+</span></span><span style="display:flex;"><span>    Spec SessionPersistencePolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Status defines the current state of SessionPersistencePolicy.</span>
+</span></span><span style="display:flex;"><span>    Status PolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// SessionPersistencePolicySpec defines the desired state of</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// SessionPersistencePolicy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Note: there is no Override or Default policy configuration.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> SessionPersistencePolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// TargetRef identifies an API object to apply policy to.</span>
+</span></span><span style="display:flex;"><span>    TargetRef gatewayv1a2.PolicyTargetReference <span style="color:#b44">`json:&#34;targetRef&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SessionName defines the name of the persistent session token</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// (e.g. a cookie name).</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=4096</span>
+</span></span><span style="display:flex;"><span>    SessionName String <span style="color:#b44">`json:&#34;sessionName,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="httpcookie-api-alternative">HTTPCookie API Alternative</h3>
+<p>Alternatively, the API for session persistence could be tightly coupled to cookies rather than being generic as
+described in <a href="/ko/geps/gep-1619/#api-granularity">API Granularity</a>. The advantage here is the API's ability to offer greater control
+through specific cookie attributes and configuration, catering to the needs of advanced users. However, there could be
+challenges with implementations adhering to an API that is closely tied to cookies. This alternative could apply to the
+current <a href="/ko/geps/gep-1619/#api"><code>BackendLBPolicy</code></a> design or the <a href="/ko/geps/gep-1619/#sessionpersistence-api-alternative"><code>SessionPersistencePolicy</code></a>
+alternative.</p>
+<p>The cookie attributes can be defined either as a loosely-typed list of attributes or as strongly-typed attribute fields.
+A loosely-typed list approach offers a more flexible specification, particularly when new attributes need to be
+introduced. However, loosely-typed lists may not be as user-friendly due to the lack of validation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// HttpCookie defines a cookie to achieve session persistence.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> HttpCookie <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Name defines the cookie&#39;s name.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=4096</span>
+</span></span><span style="display:flex;"><span>    Name String <span style="color:#b44">`json:&#34;name,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieAttributes defines the cookie&#39;s attributes.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    CookieAttributes []CookieAttribute <span style="color:#b44">`json:cookieAttributes`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// CookieAttribute defines the cookie&#39;s attributes.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> CookieAttribute <span style="color:#a2f;font-weight:bold">map</span>[<span style="color:#0b0;font-weight:bold">string</span>][]<span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Strongly-typed attribute fields provide a more user-friendly experience by offering stronger validation for each of the
+fields. A strongly-type cookie API could be a mix of individual fields and listed attributes. More specifically, we
+could separate the key attributes with no value into a list. This approach is taken by <a href="https://haproxy-ingress.github.io/docs/configuration/keys/#affinity">Haproxy Ingress</a>
+with their <code>session-cookie-keywords</code> field. This provides flexibility for simple boolean-typed attributes, while
+validating attributes that have values. However, this approach may be confusing to users as uses two different API
+patterns for cookie attributes.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// HttpCookie defines a cookie to achieve session persistence.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> HttpCookie <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Name defines the cookie&#39;s name.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=4096</span>
+</span></span><span style="display:flex;"><span>    Name String <span style="color:#b44">`json:&#34;name,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// SameSite defines the cookie&#39;s SameSite attribute.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:Enum=Strict;Lax;None</span>
+</span></span><span style="display:flex;"><span>    SameSite SameSiteType <span style="color:#b44">`json:&#34;sameSite,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Domain defines the cookie&#39;s Domain attribute.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxLength=4096</span>
+</span></span><span style="display:flex;"><span>    Domain String <span style="color:#b44">`json:&#34;domain,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieKeywords defines the cookie&#39;s attributes that have no value.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>    CookieKeywords []CookieKeyword <span style="color:#b44">`json:cookieKeywords`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// CookieKeyword defines the cookie&#39;s attributes that have no value.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> CookieKeyword <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieKeywordsHttpOnly specifies the HttpOnly cookie attribute.</span>
+</span></span><span style="display:flex;"><span>    CookieKeywordsHttpOnly HttpOnlyMode = <span style="color:#b44">&#34;HttpOnly&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// CookieKeywordsSecure specifies the Secure cookie attribute.</span>
+</span></span><span style="display:flex;"><span>    CookieKeywordsSecure HttpOnlyMode = <span style="color:#b44">&#34;Secure&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="alternate-naming">Alternate Naming</h3>
+<p>This GEP describes session persistence and session affinity as the idea of strong and weak connection persistence respectively. Other technologies use different names or define persistence and affinity differently:</p>
+<ul>
+<li>Envoy defines <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/stateful_session/cookie/v3/cookie.proto">stateful sessions</a> as what we've defined as session persistence</li>
+<li>Google Cloud Run defines <a href="https://cloud.google.com/run/docs/configuring/session-affinity">session affinity</a> as what we've defined as session persistence</li>
+<li>Nginx defines <a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#enabling-session-persistence">session persistence</a> as what we've defined as both session persistence and affinity</li>
+<li>Traefik defines <a href="https://doc.traefik.io/traefik/routing/services/#sticky-sessions">sticky sessions</a> as what we've defined as session persistence</li>
+<li>Apache httpd defines <a href="https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html">sticky sessions or stickiness</a> as what we've defined as session persistence</li>
+<li>Kubernetes defines <a href="https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity">session affinity</a> based on client IP hashing (same as our session affinity)</li>
+<li>Microsoft Application Gateway defines <a href="https://learn.microsoft.com/en-us/azure/application-gateway/for-containers/session-affinity?tabs=session-affinity-gateway-api">session affinity, session persistence, and sticky sessions</a> as what we've defined as session persistence</li>
+</ul>
+<p>Though session persistence is a ubiquitous name, session affinity is more inconsistently used. An alternate decision could be made to use a different name for session affinity based on the prevalence of other naming conventions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://static.sched.com/hosted_files/kccnceu2023/c4/Autoscaling%20Elastic%20Kubernetes%20Infrastructure%20for%20Stateful%20Applications%20using%20Proxyless%20gRPC%20and%20Istio.pdf#page=25">LBPolicy</a> (proposed extension for session persistence API)</li>
+<li><a href="https://github.com/grpc/proposal/blob/master/A55-xds-stateful-session-affinity.md">gRPC Stateful Session Affinity Proposal</a> (info on session draining and session persistence in gRPC)</li>
+<li><a href="https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity">Kube-Proxy Session Affinity</a></li>
+<li><a href="/ko/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc6265">RFC6265</a></li>
+<li><a href="/ko/reference/policy-attachment/">Policy Attachment</a></li>
+<li><a href="https://docs.google.com/document/d/1IU4b76AgOXijNa4sew1gfBfSiOMbZNiEt5Dhis8QpYg/edit#heading=h.sobqsca7i45e">Envoy Session Persistence Design Doc</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/16698">Envoy Session Persistence Issue</a></li>
+</ul>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

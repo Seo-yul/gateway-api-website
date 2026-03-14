@@ -1,0 +1,1776 @@
+<!doctype html>
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>GEP-713: Metaresources and Policy Attachment | Kubernetes Gateway API</title>
+<meta name="description" content="GEP-713: Metaresources and Policy Attachment (Memorandum)">
+<meta property="og:url" content="/geps/gep-713/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="GEP-713: Metaresources and Policy Attachment">
+  <meta property="og:description" content="GEP-713: Metaresources and Policy Attachment (Memorandum)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="geps">
+
+  <meta itemprop="name" content="GEP-713: Metaresources and Policy Attachment">
+  <meta itemprop="description" content="GEP-713: Metaresources and Policy Attachment (Memorandum)">
+  <meta itemprop="wordCount" content="13398">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GEP-713: Metaresources and Policy Attachment">
+  <meta name="twitter:description" content="GEP-713: Metaresources and Policy Attachment (Memorandum)">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/gep-713/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-geps-gep-713").addClass("active"); 
+    $("#td-section-nav #m-geps-gep-713-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-geps-gep-713").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-geps-gep-713-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-geps-gep-713-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/">한국어 (Korean)</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-li">
+  <a href="/geps/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-geps"><span class="">Enhancements</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-overview-li">
+  <input type="checkbox" id="m-geps-overview-check" checked/>
+  <label for="m-geps-overview-check"><a href="/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-overview"><span class="">Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-list-li">
+  <input type="checkbox" id="m-geps-list-check" checked/>
+  <label for="m-geps-list-check"><a href="/geps/list/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-list"><span class="">List</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-by-state-li">
+  <input type="checkbox" id="m-geps-by-state-check" checked/>
+  <label for="m-geps-by-state-check"><a href="/geps/by-state/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-geps-by-state"><span class="">By State</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-standard-li">
+  <input type="checkbox" id="m-geps-by-state-standard-check" checked/>
+  <label for="m-geps-by-state-standard-check"><a href="/geps/by-state/standard/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-standard"><span class="">Standard</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-memorandum-li">
+  <input type="checkbox" id="m-geps-by-state-memorandum-check" checked/>
+  <label for="m-geps-by-state-memorandum-check"><a href="/geps/by-state/memorandum/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-memorandum"><span class="">Memorandum</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-experimental-li">
+  <input type="checkbox" id="m-geps-by-state-experimental-check" checked/>
+  <label for="m-geps-by-state-experimental-check"><a href="/geps/by-state/experimental/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-experimental"><span class="">Experimental</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-implementable-li">
+  <input type="checkbox" id="m-geps-by-state-implementable-check" checked/>
+  <label for="m-geps-by-state-implementable-check"><a href="/geps/by-state/implementable/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-implementable"><span class="">Implementable</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-provisional-li">
+  <input type="checkbox" id="m-geps-by-state-provisional-check" checked/>
+  <label for="m-geps-by-state-provisional-check"><a href="/geps/by-state/provisional/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-provisional"><span class="">Provisional</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/en/geps/gep-713/index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/en/geps/gep-713/index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/en/geps/gep-713/index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=GEP-713:%20Metaresources%20and%20Policy%20Attachment" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a id="print" href="/geps/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#tl-dr">TL;DR</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#user-stories">User stories</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#out-of-scope">Out of scope</a></li>
+      </ul>
+    </li>
+    <li><a href="#concepts">Concepts</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#implementation-guide">Implementation guide</a>
+      <ul>
+        <li><a href="#responsibility">Responsibility</a></li>
+        <li><a href="#policy-structure">Policy structure</a></li>
+        <li><a href="#scoping-the-intent">Scoping the intent</a></li>
+        <li><a href="#the-targetrefs-stanza">The <code>targetRefs</code> stanza</a></li>
+        <li><a href="#resolving-conflicts">Resolving conflicts</a></li>
+        <li><a href="#policy-discoverability">Policy discoverability</a></li>
+        <li><a href="#status-reporting">Status reporting</a></li>
+      </ul>
+    </li>
+    <li><a href="#end-to-end-examples">End-to-end examples</a>
+      <ul>
+        <li><a href="#example-1-direct-policy">Example 1. Direct Policy</a></li>
+        <li><a href="#example-2-defaults-overrides">Example 2. Defaults &amp; Overrides</a></li>
+        <li><a href="#example-3-merged-specs">Example 3. Merged specs</a></li>
+      </ul>
+    </li>
+    <li><a href="#current-use-of-policies">Current use of policies</a>
+      <ul>
+        <li><a href="#implementations">Implementations</a></li>
+        <li><a href="#other-metaresource-and-policy-like-implementations">Other metaresource and policy-like implementations</a></li>
+      </ul>
+    </li>
+    <li><a href="#tools">Tools</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/geps/">Enhancements</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/geps/gep-713/" aria-disabled="true" class="btn-link disabled">GEP-713: Metaresources and Policy Attachment</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>GEP-713: Metaresources and Policy Attachment</h1>
+	<div class="lead">GEP-713: Metaresources and Policy Attachment (Memorandum)</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<ul>
+<li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/713">#713</a></li>
+<li>Status: Memorandum</li>
+</ul>
+<p>(See status definitions <a href="/geps/overview/#gep-states">here</a>)</p>
+<h2 id="tl-dr">TL;DR</h2>
+<p>This GEP aims to standardize terminology and processes around &quot;metaresources&quot;, i.e., using one Kubernetes object to modify the functions of one or more other objects.</p>
+<p>It lays out guidelines for Gateway API implementations and other stakeholders for the design and/or handling of custom resources in compliance with a pattern known as Policy Attachment.</p>
+<p>This GEP specifies a <em>pattern</em>, not an API field or new object. It defines some terms, including <em>Metaresource</em>, <em>Policies</em> and <em>Policy Attachment</em>, and their related concepts.</p>
+<p>This pattern is currently unique to the Gateway API community. It's possible that, in the future, a better and broader form of extending Kubernetes APIs will emerge that could make this one obsolete.</p>
+<p>Policy attachment is the best way we've found to extend Gateway API resources so far, but it does come with meaningful challenges, such as the <a href="/geps/gep-713/#policy-discoverability">Discoverability problem</a> and the <a href="/geps/gep-713/#fanout-status-update-problems">Fanout status update problem</a>.</p>
+<p>In many cases, it will be better to work to include configuration directly inside upstream APIs instead of resorting to policy attachment.</p>
+<p>Some of the features of Metaresources and Policy Attachment are <strong>Standard</strong> features of Gateway API, while others are <strong>Experimental</strong> or even <strong>Provisional</strong>, still lacking wider adoption by the implementations. Features supported by the <a href="/geps/gep-1897/">BackendTLSPolicy (GEP-1897)</a> kind are examples of Standard features.</p>
+<p>While this GEP tries to focus on features that are at least Experimental, it also lays out some Provisional features and features that are merely examples of known practices adopted by some individual Policy implementations. The latter are still provided as reference though despite some of these features never being expected to become core in Gateway API, due to one of the inherent natures of Metaresources and Policies of being a framework for introducing gateway capabilities that are implementation-specific. These examples are still useful to the overall community though, which can draw analogies for their own particular cases and designs.</p>
+<h2 id="overview">Overview</h2>
+<h3 id="background">Background</h3>
+<p>When designing Gateway API, a recurring challenge became apparent. There was often a need to change or augment the behavior of objects without modifying their specs.</p>
+<p>There are several cases where this happens, such as:</p>
+<ul>
+<li>when changing the spec of the object to hold the new piece of information is not possible (e.g., <code>ReferenceGrant</code>, from <a href="/geps/gep-709/">GEP-709</a>, when affecting Secrets and Services);</li>
+<li>when the new specification applies at different scopes (different object kinds), making it more maintainable if the declaration is extracted to a separate object, rather than adding new fields representing the same functionality across multiple objects;</li>
+<li>when the augmented behavior is intended to <a href="/geps/gep-713/#spanning-behavior-across-relationships-of-a-target">span across relationships of an object</a> other than the object that is directly referred in the declaration;</li>
+<li>when the augmented behavior is subject to different RBAC rules than the object it refers to;</li>
+<li>to circumvent having to enforce hard changes to established implementations.</li>
+</ul>
+<p>To put this another way, sometimes we need ways to be able to affect how an object is interpreted in the API, without representing the description of those effects inside the spec of the object. This document describes the ways to design objects to meet use cases like these.</p>
+<p>This document introduces the concept of a &quot;metaresource&quot;, a term used to describe the class of objects that <em>only</em> augment the behavior of another Kubernetes object, regardless of what they are targeting.</p>
+<p>&quot;Meta&quot; here is used in its Greek sense of &quot;more comprehensive&quot; or &quot;transcending&quot;, and &quot;resource&quot; rather than &quot;object&quot; because &quot;metaresource&quot; is more pronounceable than &quot;meta object&quot;.</p>
+<p>Moreover, this document defines a particular class of metaresource, called &quot;policies&quot;. Policy kinds have a well-defined structure and behavior, both specified in this GEP.</p>
+<p>From policies emerges the concept of Policy Attachment, which consists of augmenting the behavior of other Kubernetes resources by attaching policies to them.</p>
+<p>After multiple iterations of Gateway API experimenting with policies—whether through common kinds of policies like <code>BackendTLSPolicy</code> and <code>XBackendTrafficPolicy</code>, or various implementation-specific ones (see <a href="/geps/gep-713/#current-use-of-policies">Current use of policies</a>)—and after rounds of discussion (such as <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/2927">kubernetes-sigs/gateway-api/discussions#2927</a>), the pattern has evolved into its current form.</p>
+<h3 id="user-stories">User stories</h3>
+<ul>
+<li>
+<p><a href="/overview/concepts/roles-and-personas/#ana">Ana</a> or <a href="/overview/concepts/roles-and-personas/#chihiro">Chihiro</a> would like to specify some new behavior for a standard Kubernetes resource, but that resource doesn't have a way to specify the behavior and neither Ana nor Chihiro can modify it.
+E.g., Ana may want to add a rate limit to a Kubernetes Service. The Service object itself doesn't have a field for rate limiting, and Ana can't modify the Service object's definition.</p>
+</li>
+<li>
+<p>A Gateway API implementer would like to define some implementation-specific behaviors for Gateway API objects that are already standard.
+E.g., an implementer might want to provide a way for Chihiro to plug in a WebAssembly module to a particular Gateway listener, including all the configuration required by the module. Support for WebAssembly modules is a feature of this implementation specifically and the Gateway listener spec does not contain fields to declare WebAssembly configuration.</p>
+</li>
+<li>
+<p>Chihiro would like a way to allow Ana to specify certain behaviors, but not others, in a very fine-grained way.
+E.g., Chihiro might want to allow Ana to specify rate limits for a Service, but not to specify the Service's ports.</p>
+</li>
+<li>
+<p>A Gateway API implementer would like to define a way to specify a behavior that applies to a whole hierarchy of objects.
+E.g., an implementer might want to define a way to specify a behavior that applies to all HTTPRoutes that are attached to a Gateway.</p>
+</li>
+<li>
+<p>A Gateway API implementer would like to define a way to specify a behavior that applies to multiple kinds of objects with a single declaration.
+E.g., an implementer might want to define a way to specify a behavior that applies to selected HTTPRoutes and selected TCPRoutes. Even though the HTTPRoute object could otherwise be extended via an implementation-specific filter, the TCPRoute object cannot.</p>
+</li>
+<li>
+<p>A third-party provider would like to offer a way to independently extend the behavior of Gateways controlled by one or more Gateway API implementers.
+E.g., a provider that knows how to configure Gateways controlled by one or more Gateway API implementers might want to define a way for Gateway API users to activate this feature in a standard way across the supported implementations, without direct involvement of the implementers.</p>
+</li>
+</ul>
+<p>All <a href="/geps/gep-713/#tldr">risks and caveats</a> considered, these are in general a few reasons for using metaresources and policies over another (possibly more direct) way to modify the spec (&quot;augment the behavior&quot;) of an object:</p>
+<ul>
+<li>Extending otherwise stable APIs－e.g. to specify additional network settings for the Kubernetes Service object.</li>
+<li>Defining implementation-specific functionalities for otherwise common APIs－e.g. to specify implementation-specific behavior for Gateway API HTTPRoute objects.</li>
+<li>Decoupling concerns for targeting personas with specific functionality and configuration－delegation of responsibilities, fine-grained RBAC, etc.</li>
+<li>Decoupling responsibility over the management and implementation of the metaresources themselves.</li>
+<li>Avoid alternatives based on annotations which are often non-standardized, poorly documented, and generally hard to maintain, in favor of proper, expressive APIs (self-documenting intents) instead.</li>
+</ul>
+<h3 id="goals">Goals</h3>
+<ul>
+<li>Establish a pattern which will be used for any Policy resources included in the Gateway API spec.</li>
+<li>Establish a pattern that should be adopted for any implementation-specific Policy resources used with Gateway API resources.</li>
+<li>Discuss the problems with communicating status for metaresource and policy objects, and suggest mechanisms that APIs can use to mitigate some of them.</li>
+<li>Provide a way to distinguish between required and default values for all policy API implementations.</li>
+<li>Enable Policy Attachment at all relevant scopes in Gateway API, including Gateways, Routes, Backends, along with how values should flow across a hierarchy if necessary.</li>
+<li>Ensure the Policy Attachment specification is generic and forward thinking enough that it could be easily adapted to other grouping mechanisms like Namespaces in the future.</li>
+<li>Provide a means of attachment that works for both ingress and mesh implementations of Gateway API.</li>
+<li>Provide a consistent specification that will ensure familiarity between both API-defined and implementation-specific Policy resources so they can both be interpreted the same way.</li>
+<li>Provide a reference pattern to other implementations of metaresource and policy APIs outside of Gateway API, that are based on similar concepts (i.e., augmenting the behavior of other Kubernetes objects, attachment points, nested contexts and inheritance, Defaults &amp; Overrides, etc.)</li>
+<li>Facilitate the development of tooling that help circumvent known challenges of Policy Attachment such as the <a href="/geps/gep-713/#policy-discoverability">Discoverability problem</a> without requiring any predefined understanding or awareness of the implementation-specific policies.</li>
+</ul>
+<h3 id="out-of-scope">Out of scope</h3>
+<ul>
+<li>Define all potential metaresource and/or policy kinds that may be attached to resources.</li>
+</ul>
+<h2 id="concepts">Concepts</h2>
+<h4 id="metaresource">Metaresource</h4>
+<p>A resource that augments the behavior of another resource without modifying the definition of the augmented resource. Metaresources typically specify a <em>target</em> and an <em>intent</em>:</p>
+<ul>
+<li>The <em>target</em> of a metaresource is the resource or resources whose behavior the metaresource intends to augment.</li>
+<li>The <em>intent</em> of a metaresource is what augmentation the metaresource will apply.</li>
+</ul>
+<h4 id="policy">Policy</h4>
+<p>An instance of a subclass of metaresources (&quot;policies&quot;) whose intent is to specify <em>rules that control the behavior</em> of the target resources.</p>
+<p>Policies are Custom Resource Definitions (CRDs) that MUST comply with a particular <a href="/geps/gep-713/#policy-structure">structure</a>. This structure includes standardized fields for specifying the target(s), policy-specific fields to describe the intended augmentation, and standardized status fields to communicate whether or not the augmentation is happening.</p>
+<p>Policy kinds are typically named <em>xPolicy</em>, such as <code>BackendTLSPolicy</code> (a policy kind implemented by Gateway API to augment Backends with TLS configuration.)</p>
+<h4 id="policy-attachment">Policy Attachment</h4>
+<p>The application of policies, implemented by a controller, to augment the behavior of other Kubernetes objects.</p>
+<h4 id="policy-scope">Policy scope</h4>
+<p>A resource (or resource section) that belongs to a hierarchy whose root is targeted by a policy, within the range of effect of the policy kind across levels of the hierarchy. Also known as <em>effective target</em> of a policy (as opposed to the <em>declared target</em> of the policy). It is not the same as the target of the policy.</p>
+<h4 id="merge-strategy">Merge strategy</h4>
+<p>A function that receives two policy specs and returns a new spec, i.e., <code>𝑓(spec, spec) → spec</code>.</p>
+<p>Merge strategies are often invoked to resolve conflicts and thus compute an <em>effective policy</em> to enforce at particular scope.</p>
+<p>This GEP defines the following basic merge strategies:</p>
+<ul>
+<li><strong>Defaults:</strong> (Standard) a policy spec that challenges an accepted and established another as the one to specify the behavior to augment a particular scope with <em>wins</em> over the accepted and established other.</li>
+<li><strong>Overrides:</strong> (Experimental) a policy spec that is accepted and established and is challenged by another as the one to specify the behavior to augment a particular scope with <em>wins</em> over the challenger other.</li>
+</ul>
+<p>Implementations MAY derive variations of the basic merge strategies with different levels of <em>granularity</em> other than the full policy spec treated as an atomic unit. For example, instead of (or additionally to) a challenger policy spec fully winning over an established one (<em>Atomic defaults</em>), an implementation MAY support merging the two policy specs together by applying <a href="https://datatracker.ietf.org/doc/html/rfc7386">JSON Merge Patch (RFC 7386)</a> strategy.</p>
+<p>These other merge strategies, such as <strong>None</strong> and <strong>Custom</strong> are further described in section <em>Implementation guide</em> &gt; <a href="/geps/gep-713/#designing-a-merge-strategy">Designing a merge strategy</a>.</p>
+<h4 id="effective-policy">Effective policy</h4>
+<p>A combinatorial spec computed from a set of policies that affect a same policy scope, by orderly invoking defined merge strategies to resolve the conflict.</p>
+<p>See <em>Implementation guide</em> &gt; <a href="/geps/gep-713/#understanding-effective-policies">Understanding Effective policies</a> for details.</p>
+<h4 id="classes-of-policies">Classes of policies</h4>
+<p>While the notion of classes of policy kinds was more central in previous iterations of this GEP (see <a href="/geps/gep-2648/">GEP-2648</a> and <a href="/geps/gep-2649/">GEP-2649</a>), it here serves primarily as a communicative and organizational aid. The classification reflects patterns that emerge from the properties and behaviors described in sections of this GEP, but it does not impose any prescriptive or normative requirements on the implementations. These classes—namely <em>Direct</em> and <em>Inherited</em>—remain in the specification to support clarity and shared understanding, especially for implementations and users familiar with earlier versions.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Direct</th>
+      <th>Inherited</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li>A single kind supported in <code>spec.targetRefs.kind</code></li>
+          <li>Effects of the policies do not <a href="#spanning-behavior-across-relationships-of-a-target">span across the hierarchy</a>, i.e. the <i>Declared target kind</i> is equal to the <i>Effective target kind</i></li>
+          <li><b>None</b> is the only merge strategy supported</li>
+          <li>If supported, could typically be implemented by directly extending the API of the target kind with the fields otherwise defined at the policy (e.g. Gateway API xRoute filter)</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Superset of <i>Direct</i></li>
+          <li>Any policy kind that do not comply with at least one characteristic of the Direct class of policies</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="implementation-guide">Implementation guide</h2>
+<p>As defined above, a metaresource is a resource whose purpose is to augment the behavior of some other resource. At its most basic level, the metaresource pattern consists of:</p>
+<ul>
+<li>A user defines a metaresource describing both the target resource(s) they want to augment, and the intent of the augmentation.</li>
+<li>The controller(s) implementing the metaresource notices the metaresource and applies the intent to the target resource(s).</li>
+<li>The controller(s) implementing the metaresource reports the status of the metaresource, indicating whether or not the intent is being applied.</li>
+</ul>
+<p>In the real world, of course, things can be much more complex. There may be multiple conflicting metaresources, or the user might attempt to apply a metaresource that they aren't allowed to, or there may be errors in the metaresources. The controller(s) implementing the metaresources MUST be able to handle all of these cases, and MUST communicate status correctly in all situations.</p>
+<p>This section describes concepts and aspects for implementing metaresource and policy objects.</p>
+<h3 id="responsibility">Responsibility</h3>
+<p>Metaresources and policies are typically implemented and managed by a custom controller. This controller can be the same controller that is responsible for managing the objects that are targeted by the metaresources or another controller specifically responsible for the aspect of the object that the metaresource augments or modifies. For policy kinds of metaresources, this controller is often referred to as the &quot;policy controller&quot;.</p>
+<p>Ultimately, it is the responsibility of the controller to provide enough information to resource owners that help circumvent or mitigate the discoverability problem (described in the next section). This typically involves populating the status stanza of the target objects, although may as well resort to additional tools (e.g. CRDs, CLI tools) that help visualize the hierarchical topology of target objects and policies, effective policies, etc.</p>
+<h3 id="policy-structure">Policy structure</h3>
+<p>since this GEP defines a pattern rather than an API field or resource, it is not possible to enumerate all possible metaresource and/or policy kinds in this GEP. This means that policies MUST follow a well-known structure so that Gateway API users and implementations can work with them in a consistent way, and this GEP focuses on that well-known structure.</p>
+<p>A typical Policy resource contains:</p>
+<ul>
+<li>Kubernetes metadata elements: <code>apiVersion</code>, <code>kind</code>, and <code>metadata</code>;</li>
+<li>a <code>spec</code> stanza, where the targets and other fields (&quot;spec proper&quot;) of the policy are declared;</li>
+<li>a <code>status</code> stanza.</li>
+</ul>
+<p>A particular Policy resource might look like the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>policies.example.com/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ColorPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-color-policy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRefs</span>:<span style="color:#bbb"> </span><span style="color:#080;font-style:italic">## target objects whose behaviour to augment</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">color</span>:<span style="color:#bbb"> </span>blue<span style="color:#bbb"> </span><span style="color:#080;font-style:italic">## the &#34;spec proper&#34;, i.e., one or more fields that specify the intent – e.g. to color the traffic flowing through the my-gateway Gateway blue</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">conditions</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Accepted<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;True&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">reason</span>:<span style="color:#bbb"> </span>Accepted<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">message</span>:<span style="color:#bbb"> </span>Policy has been accepted<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Programmed<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;False&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">reason</span>:<span style="color:#bbb"> </span>Reconciling<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">message</span>:<span style="color:#bbb"> </span>Policy is being reconciled<span style="color:#bbb">
+</span></span></span></code></pre></div><p><em>(This is a hypothetical example: no ColorPolicy resource is defined in Gateway API.)</em></p>
+<ul>
+<li>Every policy MUST include a <a href="/geps/gep-713/#the-targetrefs-stanza"><code>targetRefs</code></a> stanza specifying which resource(s) the policy intends to augment.</li>
+<li>Every policy MUST include one or more implementation-specific fields specifying how the policy will augment the behavior of the target resource(s). This is informally referred to as the &quot;spec proper.&quot;</li>
+<li>A policy MAY include additional fields specifying a so-called <a href="/geps/gep-713/#designing-a-merge-strategy"><em>merge strategy</em></a>, i.e., how the policy should be combined with other policies that affect the same target resource(s). This typically include directives for dealing with conflicting and/or missing specs.</li>
+<li>A policy MUST include a <a href="/geps/gep-713/#the-status-stanza-of-policy-objects"><code>status</code></a> stanza.</li>
+</ul>
+<h3 id="scoping-the-intent">Scoping the intent</h3>
+<p>The targets of a policy must be interpreted within a given semantics that is proper to the policy kind. Sometimes the declared targets directly define the scope of application of the policy and no other. Inversely, a policy kind may use the targets as indirections to the actual scope of application of its policy objects.</p>
+<p>The <em>scope</em> of a policy is the most granular unit perceived by users/owners of target resources, which an implementation either requires to build configuration for, for conditionally enforcing the policy, and/or chooses to adopt for reasoning about the status of the policy. It is a resource (or resource section) that belongs to a hierarchy whose root is targeted by a policy, within the range of effect of the policy kind across levels of this hierarchy.</p>
+<p>Users do not specify <em>scopes</em> in the policy objects; they declare an intent in association to a <em>target</em> (or list of targets). Therefore, implementations MUST calculate the scope (multiple scopes) of effect of a policy for each declared target, given a <em>hierarchy of nested contexts</em>. In its simplest form, there is one scope for each target.</p>
+<h4 id="spanning-behavior-across-relationships-of-a-target">Spanning behavior across relationships of a target</h4>
+<p>Typically, the relationships between direct and indirect target kinds are organized in a <em>hierarchy of nested contexts</em>.</p>
+<p>An example of such is a policy that targets a Namespace. Depending on the design of the policy kind, the policy object may declare intent to affect the behavior of the namespace itself (for what concerns the implementation of Namespaces in Kubernetes) or alternatively it can act as a means to affect the behavior of other objects that exist in the referred namespace (e.g. ConfigMaps). While in the former case, the (direct) target object is the Namespace itself, in the latter the (indirect) target is a set of objects of a different kind (e.g. ConfigMaps.)</p>
+<p>Another example of this semantic difference in the context of Gateway API objects is a policy that targets the <code>Gateway</code> kind, which can be:</p>
+<ul>
+<li>a way to augment the behavior of the <code>Gateway</code> object itself (e.g. reconcile cloud infrastructure provider settings from the spec declared by the <code>Gateway</code> according to the rules specified by the policy attached to the <code>Gateway</code>), or</li>
+<li>a means to augment the behavior of all <code>HTTPRoute</code> objects attached to the <code>Gateway</code> (in a way that every new <code>HTTPRoute</code> that gets created or modified so it enters the context of the <code>Gateway</code> is automatically put in the scope of the policy.)</li>
+</ul>
+<p>Objects may participate in multiple hierarchies, including other hierarchies not targeted by a policy. This means an object may be partially <em>in the scope</em> of a policy and partially <em>outside of the scope</em> of the policy. For example, for a policy kind that <em>targets</em> a Gateway resource ultimately with <em>intent</em> to augment the behavior of xRoute rules, any individual route rule under the targeted gateway object is in the scope of the policy. Inversely, any route rule and route object not linked to the targeted gateway are outside of the scope of the policy. Similarly, this same set of routes and route rules, that are <em>in the scope of the policy</em> when activated within the context of the target gateway, if a route has a second gateway as parent which is not targeted by the policy, then this route and route rules are <em>outside the scope of the policy</em> within the context of the non-target gateway.</p>
+<h4 id="declared-targets-versus-effective-targets">Declared targets versus Effective targets</h4>
+<p>The target kinds specified in the <code>targetRefs</code> stanza of a policy are referred to as <em>Declared target</em> kinds.</p>
+<p>These are distinct from <em>Effective target</em> kinds, which are the kinds of target objects whose behaviors are actually augmented by the policy. That occurs when declared targets are not equal to the actual targets augmented by the policy, but rather serve as a means for reaching other levels (typically lower levels) of a hierarchy of related object kinds (&quot;hierarchy of nested contexts&quot;).</p>
+<p>To avoid ambiguity in the interpretation of the targets, policy designs MUST clearly define the extent of the effects of the policy respectively to the object kinds they can target (semantics of scoping a policy). This can be done via documentation and it typically refers to a known hierarchy of resource kinds.</p>
+<h3 id="the-targetrefs-stanza">The <code>targetRefs</code> stanza</h3>
+<p><em>Status:</em> Standard</p>
+<p>The targets of a Policy object are other Kubernetes objects (or parts of objects), including virtual kinds. They are referenced in the policies by name or using other referencing mechanisms.</p>
+<p>To conform with this specification, targets MUST be declared in a <code>targetRefs</code> field within the spec of the Policy object.</p>
+<p>Alternatively, a singular <code>targetRef</code> field MAY be used in Policy objects that are not intended to support multiple targets. However, relying on the singular form can lead to duplication of Policy objects when users want to repeatedly apply policy specs across multiple targets, increasing the risk of inconsistency and maintenance burden. Additionally, transitioning from <code>targetRef</code> to <code>targetRefs</code> at a later stage may introduce compatibility and migration challenges.</p>
+<p>All kinds of references SHOULD also specify Group, Version and Kind (GVK) information as part of the target (unless the API ensures no more than one kind of object can be targeted).</p>
+<h4 id="reference-by-name">Reference by name</h4>
+<p>The target reference includes the exact name of an object whose behavior to augment. E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>policies.example.com/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ColorPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-color-policy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-gateway<span style="color:#bbb"> </span><span style="color:#080;font-style:italic">## name of the target object of Gateway kind</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">color</span>:<span style="color:#bbb"> </span>blue<span style="color:#bbb">
+</span></span></span></code></pre></div><details>
+  <summary>Implementation tip</summary>
+<p>This targeting method can be implemented in Golang by using a type such as Gateway API's <a href="https://pkg.go.dev/sigs.k8s.io/gateway-api/apis/v1alpha2#LocalPolicyTargetReference"><code>LocalPolicyTargetReference</code></a> type. E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">package</span> color
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>  metav1 <span style="color:#b44">&#34;k8s.io/apimachinery/pkg/apis/meta/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  gatewayapiv1alpha2 <span style="color:#b44">&#34;sigs.k8s.io/gateway-api/apis/v1alpha2&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>  metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Spec defines the desired state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Spec ColorPolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Status defines the current state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Status ColorPolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// TargetRefs specify the targets of the policy by name.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// The following kinds are supported: …</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listType=map</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=group</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=kind</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinItems=1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxItems=16</span>
+</span></span><span style="display:flex;"><span>  TargetRefs []gatewayapiv1alpha2.LocalPolicyTargetReference <span style="color:#b44">`json:&#34;targetRefs&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// rest of the spec (&#34;spec proper&#34;)…</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></details>
+<h4 id="cross-namespace-references">Cross namespace references</h4>
+<p>Policies can opt for allowing instances to target objects across Kubernetes namespaces, in which case an optional <code>namespace</code> field MUST be defined with the target reference.</p>
+<div class="alert alert-danger" role="note">Although not strictly forbidden, this is in general discouraged due to <a href="/#policy-discoverability">discoverability</a> issues and security implications. Cross namespace references can often lead to escalation of privileges associated with the <a href="https://en.wikipedia.org/wiki/Confused_deputy_problem">Confused deputy problem</a>.</div>
+
+<p>Implementations that opt for designing policies that allow for cross namespace references MUST support one of the following combined approaches, to address the security concern:</p>
+<ul>
+<li>The policy is paired with <a href="https://gateway-api.sigs.k8s.io/api-types/referencegrant/?h=referencegrant">ReferenceGrants</a> or some other form of equivalent handshake that ensures that the target is accepting the policy.</li>
+<li>The policy applied is client-side and does not grant the client any additional access or permissions than it would otherwise have.</li>
+</ul>
+<details>
+  <summary>Implementation tip</summary>
+<p>This targeting method can be implemented in Golang by using a type such as Gateway API's <a href="https://pkg.go.dev/sigs.k8s.io/gateway-api/apis/v1alpha2#NamespacedPolicyTargetReference"><code>NamespacedPolicyTargetReference</code></a> type. E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">package</span> color
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>  metav1 <span style="color:#b44">&#34;k8s.io/apimachinery/pkg/apis/meta/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  gatewayapiv1alpha2 <span style="color:#b44">&#34;sigs.k8s.io/gateway-api/apis/v1alpha2&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>  metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Spec defines the desired state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Spec ColorPolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Status defines the current state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Status ColorPolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// TargetRefs specify the targets of the policy by name.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// The following kinds are supported: …</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listType=map</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=group</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=kind</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=namespace</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinItems=1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxItems=16</span>
+</span></span><span style="display:flex;"><span>  TargetRefs []gatewayapiv1alpha2.NamespacedPolicyTargetReference <span style="color:#b44">`json:&#34;targetRefs&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// rest of the spec (&#34;spec proper&#34;)…</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></details>
+<h4 id="targeting-sections-of-an-object">Targeting sections of an object</h4>
+<p>Policy CRDs can offer the option to target a section of an object whose spec defines sections uniquely identifiable by name. These policies typically include a field <code>spec.targetRefs.sectionName</code> that can be used along with compatible kinds.</p>
+<p>This pattern is known to work better with target kinds that specify exactly one list of named subobjects annotated as <code>listType=map</code>. The meaning of <code>sectionName</code> beyond those kinds of resources is implementation-specific.</p>
+<p>E.g. – a policy that specifies additional behaviour for a given listener of a Gateway object, though not for all listeners of the Gateway, MUST (i) require the Gateway listener to be uniquely named and (ii) provide the <code>sectionName</code> field of target reference with the name of the targeted listener.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>policies.example.com/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ColorPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-color-policy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sectionName</span>:<span style="color:#bbb"> </span>https<span style="color:#bbb"> </span><span style="color:#080;font-style:italic">## unique name of a listener specified in the object of Gateway kind</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">color</span>:<span style="color:#bbb"> </span>blue<span style="color:#bbb">
+</span></span></span></code></pre></div><details>
+  <summary>Implementation tip</summary>
+<p>This targeting method can be implemented in Golang by using a type such as Gateway API's <a href="https://pkg.go.dev/sigs.k8s.io/gateway-api/apis/v1alpha2#LocalPolicyTargetReferenceWithSectionName"><code>LocalPolicyTargetReferenceWithSectionName</code></a> type. E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">package</span> color
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>  metav1 <span style="color:#b44">&#34;k8s.io/apimachinery/pkg/apis/meta/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  gatewayapiv1alpha2 <span style="color:#b44">&#34;sigs.k8s.io/gateway-api/apis/v1alpha2&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicy <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  metav1.TypeMeta   <span style="color:#b44">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>  metav1.ObjectMeta <span style="color:#b44">`json:&#34;metadata,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Spec defines the desired state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Spec ColorPolicySpec <span style="color:#b44">`json:&#34;spec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Status defines the current state of the policy.</span>
+</span></span><span style="display:flex;"><span>  Status ColorPolicyStatus <span style="color:#b44">`json:&#34;status,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> ColorPolicySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// TargetRefs specify the targets of the policy by name.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// The following kinds are supported: …</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listType=map</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=group</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=kind</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +listMapKey=sectionName</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MinItems=1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:MaxItems=16</span>
+</span></span><span style="display:flex;"><span>  TargetRefs []gatewayapiv1alpha2.LocalPolicyTargetReferenceWithSectionName <span style="color:#b44">`json:&#34;targetRefs&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// rest of the spec (&#34;spec proper&#34;)…</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></details>
+<h4 id="targeting-virtual-types">Targeting virtual types</h4>
+<p><em>Virtual types</em> are defined as those with a group unknown by the Kubernetes API server. They can be used to apply policies to objects that are not actual Kubernetes resources nor Kubernetes custom resources. Rather, virtual types have a meaning for the controller(s) responsible for implementing the policy.</p>
+<p>An example of such, from Gateway API mesh case, would be a hypothetical need for defining a policy to &quot;color requests&quot; to external services. To accomplish this, implementations MAY choose to support a reference to a virtual resource type <code>ExternalService</code>, unknown by the Kubernetes API server but known by the controller. E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>policies.example.com/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ColorPolicy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-color-policy<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">targetRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>networking.acme.io<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ExternalService<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>foo.com<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">color</span>:<span style="color:#bbb"> </span>blue<span style="color:#bbb">
+</span></span></span></code></pre></div><p>As a pattern, targeting virtual types has prior art in Kubernetes with the Role Based Access Control (RBAC), where Roles and ClusterRoles can be used to specify permissions regarding any kind of resource including non-Kubernetes resources.</p>
+<h3 id="resolving-conflicts">Resolving conflicts</h3>
+<p>With policies (and metaresources in general), declaring additional specifications to objects from the outside will often yield conflicts that need to be addressed.</p>
+<ul>
+<li>
+<p>Multiple policy resources may (directly or indirectly) affect the same object (same scope), thus posing a conflict to be resolved regarding which amongst the two declared intents the controller shall honor, i.e. which spec to use to augment the behavior of the object.</p>
+</li>
+<li>
+<p>Another way that conflicts may arise is by allowing policies to target different levels of the same hierarchy. This includes hierarchies between different kinds of objects, as well as hierarchies between objects and sections of these objects.</p>
+</li>
+</ul>
+<p>Conflicts MUST be resolved according to a defined <a href="/geps/gep-713/#designing-a-merge-strategy">merge strategy</a>. This is typically done by traversing a <a href="/geps/gep-713/#hierarchy-of-target-kinds">hierarchy of target resources</a> and calculating an <a href="/geps/gep-713/#understanding-effective-policies">effective policy</a> for each relevant policy scope.</p>
+<p>This section identifies the key concepts involved in this process and guides implementations through the mechanics of resolving policy conflicts.</p>
+<h4 id="hierarchy-of-target-kinds">Hierarchy of target kinds</h4>
+<p>Policy CRDs MUST clearly define the hierarchy of target resources they have effects upon, as well as the <a href="/geps/gep-713/#scoping-the-intent">semantics</a> of targeting each kind in this hierarchy.</p>
+<p>The best way to visualize this hierarchy－and therefore the instances of objects organized by the hierarchy－is in the form of a Directed Acyclic Graph (DAG) whose roots are the least specific objects and the leaves are the most specific ones (and ultimately the effective targets of the policies). Using a DAG to represent the hierarchy of effective targets ensures that all the relevant objects are represented, and makes the calculation of corresponding combinatorial specs much easier.</p>
+<p>Example of a DAG for Gateway API resources:</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+    gc@{ shape: rect, label: "GatewayClass 1" }
+    g@{ shape: rect, label: "Gateway 1" }
+    r1@{ shape: rect, label: "Route 1" }
+    r2@{ shape: rect, label: "Route 2" }
+    b@{ shape: rect, label: "Backend 1" }
+
+    gc --> g
+    g --> r1
+    g --> r2
+    r1 --> b
+    r2 --> b
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>For any given path within the DAG, nodes closer to a root are considered &quot;higher&quot; in the hierarchy, while nodes closer to a leaf are &quot;lower.&quot; Higher nodes define broader, less specific configurations, whereas lower nodes define more specific ones.</p>
+<p>Lower levels in a hierarchy (e.g., more specific kinds) <em>inherit</em> the definitions applied at the higher levels (e.g. less specific kinds), in such a way that higher level rules may be understood as having an &quot;umbrella effect&quot; over everything beneath.</p>
+<p>E.g., given the Gateway API's hierarchy of network resources for the ingress use case <code>GatewayClass</code> &gt; <code>Gateway</code> &gt; <code>HTTPRoute</code> &gt; <code>Backend</code>. A policy that attaches to a <code>GatewayClass</code> object, if defined as a policy kind ultimately to augment the behavior of <code>HTTPRoute</code> objects, affects all <code>Gateways</code> under the <code>GatewayClass</code>, as well as all <code>HTTPRoutes</code> under those <code>Gateways</code>. Any other instance of this policy kind targeting a lower level than the <code>GatewayClass</code> (e.g. <code>Gateway</code> or <code>HTTPRoute</code>, assuming it's supported) should be treated as a conflict against the higher level policy spec in the specific scope that is rooted at the lower level target, i.e., for the subset of the topology that is affected by both policies.</p>
+<p>In the face of a conflict due to multiple policy objects of a kind targeting different levels or same level in the hierarchy, the conflicting policy specs MUST be organized into <a href="/geps/gep-713/#established-and-challenger-policy-specs"><em>established</em> specs and <em>challenger</em> ones</a>, so a single <a href="/geps/gep-713/#understanding-effective-policies">effective policy</a> can be calculated for each affected scope, give one or more <a href="/geps/gep-713/#designing-a-merge-strategy">merge strategies</a> applicable in the process. The next subsections guide implementations through these remaining concepts and the process that links them together.</p>
+<h4 id="established-and-challenger-policy-specs"><em>Established</em> and <em>challenger</em> policy specs</h4>
+<p>In a conflict resolution scenario between two specs (two policies), one spec MUST be assigned as the <em>established</em> spec and the other one as the <em>challenger</em> spec.</p>
+<p>Knowing the distinction between <em>established</em> and <em>challenger</em> is useful to determine which and how a particular merge strategy will be applied.</p>
+<p>With the exception of the <a href="/geps/gep-713/#merge-strategy-none"><strong>None</strong></a> merge strategy, the following rules, continuing on ties, MUST be followed to assign which spec (which policy object) is the <em>established</em> and which one is the <em>challenger</em>:</p>
+<ol>
+<li>Between two policies targeting at different levels of the hierarchy, the one attached higher (less specific) MUST be assigned as the <em>established</em> one.</li>
+<li>Between two policies targeting at the same level of the hierarchy, the older policy based on creation timestamp MUST be assigned as the <em>established</em> one.</li>
+<li>Between two policies targeting at the same level of the hierarchy and identical creation timestamps, the policy appearing first in alphabetical order by <code>{namespace}/{name}</code> MUST be assigned as the <em>established</em> one.</li>
+</ol>
+<p>For Policy CRDs that let users specify merge strategies at individual Policy CRs, the spec assigned as <em>established</em> MUST dictate the merge strategy to apply to resolve a conflict. I.e., <code>established ⇒ 𝑓</code>.</p>
+<h4 id="understanding-effective-policies">Understanding effective policies</h4>
+<p>The DAG that represents the hierarchy of targetable objects works as a map to orderly resolve, for each <a href="/geps/gep-713/#declared-targets-versus-effective-targets">effective target</a>, a combinatorial spec that MUST be computed from the set of policies affecting the target. This combinatorial spec of each effective target is referred to as the <em>Effective policy</em>.</p>
+<p>The process of calculating Effective policies consists of walking the hierarchy of target objects, from least specific to most specific (i.e., &quot;top-down&quot; or, equivalently, from the roots towards the leaves of the DAG of target objects) or from most specific to least specific (&quot;bottom-up&quot;), map reducing to a single policy spec each pair of policies adjacent to each other in the hierarchy, by applying at each step one of the supported merge strategies (described below), until no more than one spec remains for each effective target.</p>
+<p>Example of Effective policies based on a hierarchy of Gateway API resources:</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+    gc@{ shape: rect, label: "GatewayClass 1" }
+    g@{ shape: rect, label: "Gateway 1" }
+    r1@{ shape: rect, label: "Route 1" }
+    r2@{ shape: rect, label: "Route 2" }
+    b@{ shape: rect, label: "Backend 1" }
+    p1@{ shape: stadium, label: "Policy 1" }
+    p2@{ shape: stadium, label: "Policy 2" }
+
+    gc --> g
+    g --> r1
+    g --> r2
+    r1 --> b
+    r2 --> b
+
+    p1 -.-> g
+    p2 -.-> r1
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>The above yields 2 Effective policies:</p>
+<ul>
+<li>For <code>Route 1</code>: some combination of <code>Policy 1</code> and <code>Policy 2</code>, according to a selected merge strategy</li>
+<li>For <code>Route 2</code>: equal to <code>Policy 1</code></li>
+</ul>
+<h4 id="abstract-process-for-calculating-effective-policies">Abstract process for calculating Effective policies</h4>
+<p><em>Status:</em> Provisional</p>
+<p>The following is a provisional abstract process for calculating effective policies, based on an example DAG for a hierarchy of target objects and policies.</p>
+<p>Given:</p>
+<ul>
+<li>the target resource kinds <code>A</code>, <code>B</code> and <code>C</code>, organized in a hierarchy of resource kinds where <code>A</code> &gt; <code>B</code> &gt; <code>C</code>, i.e. <code>A</code> is the least specific kind (roots of the hierarchical tree) and <code>C</code> is the most specific kind (leaves of the tree)－without loss of generality for cases where these kinds are not necessarily proper Kubernetes kinds, but also possibly named sections of a proper Kubernetes kind or virtual kinds;</li>
+<li>the policy kind <code>P</code>, whose instances can target resources of kind <code>A</code>, <code>B</code> or <code>C</code>, ultimately intending to augment the behavior of instances of resource kind <code>C</code>;</li>
+<li>the tree of targetable resources <code>a1</code> &gt; (<code>b1</code> &gt; <code>c1</code>, <code>b2</code> &gt; (<code>c1</code>, <code>c2</code>)), where <code>x</code> &gt; <code>Y</code> represents all the directed relationships from targetable resource <code>x</code> of kind <code>X</code> and its children, and recursively for <code>Y</code>, without loss of generality for any other set of instances of target resources;</li>
+<li>the policy objects <code>p1</code> → <code>a1</code> and <code>p2</code> → <code>b2</code>, where <code>p</code> → <code>y</code> represents the attachment of policy <code>p</code> of kind <code>P</code> to the target resource <code>y</code> of kind <code>A</code>, <code>B</code> or <code>C</code>, without loss of generality for any other set of instances of policies.</li>
+</ul>
+<p>Depicted in the following Directed Acyclic Graph (DAG):</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+    a1@{ shape: rect }
+    b1@{ shape: rect }
+    b2@{ shape: rect }
+    c1@{ shape: rect }
+    c2@{ shape: rect }
+    p1@{ shape: stadium }
+    p2@{ shape: stadium }
+
+    a1 --> b1
+    a1 --> b2
+    b1 --> c1
+    b2 --> c1
+    b2 --> c2
+
+    p1 -.-> a1
+    p2 -.-> b2
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>For each expanded context that is induced by the instances of targetable resource of kind <code>C</code> and its relationships given by the hierarchy, i.e. for each of: <code>a1</code> &gt; <code>b1</code> &gt; <code>c1</code>, <code>a1</code> &gt; <code>b2</code> &gt; <code>c1</code>, and <code>a1</code> &gt; <code>b2</code> &gt; <code>c2</code>, stack the policies targeting the context at any level, ordered from the most specific level (i.e. <code>C</code>) to the least specific one (i.e. <code>A</code>), applying the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a> described before if necessary:</p>
+<ol>
+<li>Pop two policies from the stack and combine them into one effective policy.</li>
+<li>Push the calculated effective policy back into the stack.</li>
+<li>Repeat until there is no more than one policy in the stack.</li>
+</ol>
+<p>The last policy in each stack (if any) specifies the intended augmented behavior for the effective target resource of kind <code>C</code> within that corresponding context.</p>
+<p>The following diagram generalizes the described process for calculating Effective policies:</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+  A[Start: Given a DAG of target objects and set of policies] --> sub
+  sub --> L["Output result: mapping of each leaf of the DAG to its corresponding Effective policy (if any)"]
+
+  subgraph sub["For each path of target objects in the DAG"]
+    C["Order policies affecting the objects in the path from most specific to least specific, applying conflict resolution if necessary"] --> D["Push ordered policies to stack (least specific policy on top of the stack)"]
+    D --> E{More than one policy in stack?}
+    E -- Yes --> F[Pop two policies _pA_ and _pB_]
+    F --> G["Combine _pA_ and _pB_ into policy _pX_ by applying the merge strategy (predefined or dictated by _pA_ if more than one is supported)"]
+    G --> H[If more than one merge strategy is supported, make the merge strategy specified by _pB_ the merge strategy of _pX_]
+    H --> I[Push _pX_ back into the stack]
+    I --> E
+    E -- No --> J[Map the end of the path to a single policy remaining in the stack or none]
+  end
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>In the example above, the expected outcome of the process is:</p>
+<ul>
+<li><code>c1</code> is augmented by <code>p1</code>, whenever activated in the context of <code>b1</code>;</li>
+<li><code>c1</code> is augmented by the combination of <code>p1</code> + <code>p2</code>, whenever activated in the context of <code>b2</code>;</li>
+<li><code>c2</code> is augmented by the combination of <code>p1</code> + <code>p2</code>.</li>
+</ul>
+<p>In the most trivial case where policies can only directly target the objects whose behavior they intend to augment (i.e. instances of <code>C</code> without any indirections) and no policy specs are merged at all, the outcome of the process of calculating effective policies is simplified to a 1:1 mapping between policy and target object at most, where the declared policy equals the effective one, with no combinatorial specs nor contextual variations.</p>
+<h4 id="designing-a-merge-strategy">Designing a merge strategy</h4>
+<p>Policy CRDs MUST implement at least one of the merge strategies described in this section.</p>
+<p>Policy CRD that implement more than one merge strategy MUST provide a way for users to <a href="/geps/gep-713/#selecting-a-merge-strategy-at-runtime">select the merge strategy at runtime</a>. This typically involves defining additional fields that users can configure at individual Policy CRs or settings of the controllers implementing the policy.</p>
+<h5 id="merge-strategy-none">Merge strategy: None</h5>
+<p><em>Status:</em> Standard</p>
+<p><em>None</em> is often used to describe the absence of a defined merge strategy, meaning the conflict cannot be strictly resolved.</p>
+<p>Implementation-wise, the spec (policy resource) with the oldest creation timestamp MUST be considered the <em>established</em> spec and that spec beats all <em>challenger</em> specs (policy resources with newer creation timestamps). In short: <code>𝑓(established = oldest, challenger) → established</code>.</p>
+<p>In case the conflicting policy resources have identical creation timestamps, the one appearing first in alphabetical order by <code>{namespace}/{name}</code> MUST be considered as the <em>established</em> one and that spec beats all others (i.e., beats all <em>challenger</em> specs).</p>
+<p>In other words, for the <strong>None</strong> merge strategy, rules ② → ③ of the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a> MUST be used to assign the <em>established</em> and <em>challenger</em> specs, and the <em>established</em> spec (policy resource) always wins. All <em>challenger</em> specs (policy resources) MUST be rejected.</p>
+<p>For all policies rejected due the application of the <strong>None</strong> merge strategy, the <a href="/geps/gep-713/#status-conditions"><code>Accepted</code></a> status condition of the policy SHOULD be set to false.</p>
+<p>The <strong>None</strong> merge strategy MUST NOT be implemented in combination with any other merge strategy. I.e., if the Policy CRD implements the <strong>None</strong> merge strategy, then no other merge strategy MUST be implemented by the Policy CRD.</p>
+<p>Policy kinds that do not specify any merge strategy and only support targeting a single kind, with <a href="/geps/gep-713/#declared-targets-versus-effective-targets">Declared target equal to Effective target</a>, by default MUST implement the <strong>None</strong> merge strategy. (See definition of the <em>Direct</em> <a href="/geps/gep-713/#classes-of-policies">class of policies</a>.)</p>
+<h5 id="merge-strategy-atomic-defaults">Merge strategy: Atomic defaults</h5>
+<p><em>Status:</em> Standard</p>
+<p>Between two specs (two policy resources) in conflict, the <em>challenger</em> spec beats the <em>established</em> one. The conflicting specs MUST be treated as atomic units (indivisible), therefore the effective policy's spec proper MUST be set to equal to the winning spec in its entirety (rather than parts ot it.) In short: <code>𝑓(established, challenger) → challenger</code>.</p>
+<p>For example, if two policies are attached at different levels of the hierarchy, e.g. <code>Gateway</code> and <code>HTTPRoute</code>, by application of the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a>, the policy attached to the <code>Gateway</code> (higher, less specific level) will be considered the <em>established</em> spec, whereas the policy attached to the <code>HTTPRoute</code> (lower, more specific level) will be considered the <em>challenger</em> spec. By applying the <strong>Atomic defaults</strong> merge strategy, the effective policy is set to equal to the spec proper of the policy attached to the <code>HTTPRoute</code>, and the policy attached to the <code>Gateway</code> MUST NOT be enforced in the scope of the <code>HTTPRoute</code> augmented by the effective policy (although occasionally it might in the scope of other effective targets, i.e., other HTTPRoutes).</p>
+<p>Policy kinds that do not specify any merge strategy and support targeting multiple effective kinds MUST by default implement the <strong>Atomic Defaults</strong> merge strategy.</p>
+<h5 id="merge-strategy-atomic-overrides">Merge strategy: Atomic overrides</h5>
+<p><em>Status:</em> Experimental</p>
+<p>Between two specs (two policy resources) in conflict, the <em>established</em> spec beats the <em>challenger</em> one. The conflicting specs MUST be treated as atomic units (indivisible), therefore the effective policy's spec proper MUST be set to equal to the winning spec in its entirety (rather than parts ot it.) In short: <code>𝑓(established, challenger) → established</code>.</p>
+<p>For example, if two policies are attached at different levels of the hierarchy, e.g. <code>Gateway</code> and <code>HTTPRoute</code>, by application of the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a>, the policy attached to the <code>Gateway</code> (higher, less specific level) will be considered the <em>established</em> spec, whereas the policy attached to the <code>HTTPRoute</code> (lower, more specific level) will be considered the <em>challenger</em> spec. By applying the <strong>Atomic overrides</strong> merge strategy, the effective policy is set to equal to the spec proper of the policy attached to the <code>Gateway</code>, and the policy attached to the <code>HTTPRoute</code> MUST NOT be enforced in the scope of the <code>Gateway</code> augmented by the effective policy (although occasionally it might in the scope of other effective targets, i.e., other Gateways).</p>
+<h5 id="merge-strategy-patch-defaults">Merge strategy: Patch defaults</h5>
+<p><em>Status:</em> Experimental</p>
+<p>Between two specs (two policy resources) in conflict, the <em>challenger</em> spec is applied onto the <em>established</em> one in a <a href="https://datatracker.ietf.org/doc/html/rfc7386">JSON Merge Patch (RFC 7386)</a> operation. Therefore, the effective policy's spec proper MUST be set to a combination of both specs where the <em>challenger</em> spec beats the <em>established</em> one only for all conflicting fields, at the scalar level, with non-conflicting fields from both specs occasionally remaining. In short: <code>𝑓(established, challenger) → rfc7386(target = established, patch = challenger)</code>.</p>
+<p>For example, if two policies are attached at different levels of the hierarchy, e.g. <code>Gateway</code> and <code>HTTPRoute</code>, by application of the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a>, the policy attached to the <code>Gateway</code> (higher, less specific level) will be considered the <em>established</em> spec, whereas the policy attached to the <code>HTTPRoute</code> (lower, more specific level) will be considered the <em>challenger</em> spec. By applying the <strong>Patch defaults</strong> merge strategy, the effective policy is set to equal to the spec of the policy attached to the <code>Gateway</code> JSON-merge-patched using the spec of the policy attached to the <code>HTTPRoute</code>, i.e., with any conflicting fields at the scalar level set to their values as specified in the policy attached to the <code>HTTPRoute</code>.</p>
+<h5 id="merge-strategy-patch-overrides">Merge strategy: Patch overrides</h5>
+<p><em>Status:</em> Experimental</p>
+<p>Between two specs (two policy resources) in conflict, the <em>established</em> spec is applied onto the <em>challenger</em> one in a <a href="https://datatracker.ietf.org/doc/html/rfc7386">JSON Merge Patch (RFC 7386)</a> operation. Therefore, the effective policy's spec proper MUST be set to a combination of both specs where the <em>established</em> spec beats the <em>challenger</em> one only for all conflicting fields, at the scalar level, with non-conflicting fields from both specs occasionally remaining. In short: <code>𝑓(established, challenger) → rfc7386(target = challenger, patch = established)</code>.</p>
+<p>For example, if two policies are attached at different levels of the hierarchy, e.g. <code>Gateway</code> and <code>HTTPRoute</code>, by application of the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a>, the policy attached to the <code>Gateway</code> (higher, less specific level) will be considered the <em>established</em> spec, whereas the policy attached to the <code>HTTPRoute</code> (lower, more specific level) will be considered the <em>challenger</em> spec. By applying the <strong>Patch overrides</strong> merge strategy, the effective policy is set to equal to the spec of the policy attached to the <code>HTTPRoute</code> JSON-merge-patched using the spec of the policy attached to the <code>Gateway</code>, i.e., with any conflicting fields at the scalar level set to their values as specified in the policy attached to the <code>Gateway</code>.</p>
+<h5 id="custom-merge-strategies">Custom merge strategies</h5>
+<p><em>Status:</em> Implementation-specific</p>
+<p>Implementations MAY specify <strong>Custom</strong> merge strategies. These are implementation-specific strategies where the specs of two policies in conflict are resolved into one following a custom merge algorithm specified by the policy kind.</p>
+<h5 id="selecting-a-merge-strategy-at-runtime">Selecting a merge strategy at runtime</h5>
+<p><em>Status:</em> Experimental</p>
+<p>Implementations that support multiple merge strategies associated with a particular Policy kind MUST define how a particular merge strategy can be selected at runtime. I.e., how users can specify their preferred merge strategy to use to resolve the conflicts between Policy CRs of that kind. One of the following approaches SHOULD be adopted for this:</p>
+<ul>
+<li>The Policy CRD allows specifying, at any individual Policy CR, one and only one of the merge strategies associated with the Policy CRD, and that specified merged strategy MUST be used to resolve conflicts involving this Policy CR according to the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a> specified in this GEP.</li>
+<li>The controller implementing the policy has its own predefined way to determine among multiple implemented merge strategies which merge strategy to apply to resolve the conflicts between the Policy CRs according to the <a href="/geps/gep-713/#established-and-challenger-policy-specs">conflict resolution rules between established and challenger specs</a> specified in this GEP. This approach MAY include configurations of the controller implementing the Policy kind or any other way other than specifying the merge strategy at individual Policy CRs.</li>
+</ul>
+<p>Policy CRDs that let users specify at any individual Policy CR one of multiple implemented merge strategies MUST define a clear structure for the users to do so.</p>
+<p>User MUST NOT be allowed to specify at any individual Policy CR more than one merge strategy at a time.</p>
+<p>Two known patterns adopted by Policy implementations that support specifying one of multiple merge strategies in the Policy CRs are:</p>
+<ul>
+<li>The definition of <code>defaults</code> and/or <code>overrides</code> fields within the <code>spec</code> of the policy, wrapping the &quot;spec proper&quot; fields. (This is the pattern originally proposed by previous versions of this GEP.)</li>
+<li>The definition of a <code>strategy</code> field in the <code>spec</code> stanza of the Policy, or equivalently a <code>mergeType</code> field. (See, for example, <a href="/geps/gep-713/#kuadrant">Kuadrant</a> and <a href="/geps/gep-713/#envoy-gateway">Envoy Gateway</a> kinds of policies respectively)</li>
+</ul>
+<p>Policy CRDs that define a <code>defaults</code> field to specify the merge strategy at individual Policy CRs, in the lack of further discrimination of a more specific strategy, SHOULD assume the <strong>Atomic Defaults</strong> merge strategy whenever this field is used to determine the merge strategy.</p>
+<p>Policy CRDs that define an <code>overrides</code> field to specify the merge strategy at individual Policy CRs, in the lack of further discrimination of a more specific strategy, SHOULD assume the <strong>Atomic Overrides</strong> merge strategy whenever this field is used to determine the merge strategy.</p>
+<p>For Policy kinds that implement multiple merge strategies, whenever the merge strategy is not specified, the first of the following merge strategies associated with the Policy kind, in order, SHOULD be assumed:</p>
+<ul>
+<li>Atomic Defaults</li>
+<li>Patch Defaults</li>
+<li>Atomic Overrides</li>
+<li>Patch Overrides</li>
+<li>Custom</li>
+</ul>
+<h4 id="reflecting-the-applied-merge-strategy-in-the-status-stanza-of-the-policy">Reflecting the applied merge strategy in the status stanza of the policy</h4>
+<p><em>Status:</em> Experimental</p>
+<p>Policy implementations SHOULD reflect in the <code>status</code> stanza of the policies how the applied merge strategies are altering the effectiveness of the policy spec declared in that particular policy object. Merge strategies referred in the status message MUST use the same name of strategy as defined in this GEP.</p>
+<p>Whenever possible, each scope targeted by a policy SHOULD be explained in the <code>status</code> stanza regarding how they are being affected by the policy due to applying the merge strategies.</p>
+<p>Examples of policy status conditions include if a policy has been successfully programmed to be enforced or if has been overridden, partially or completely, given all the different scopes targeted by the policy and variations to the spec after occasionally merging with other policies.</p>
+<p>See the section on <a href="/geps/gep-713/#the-status-stanza-of-policy-objects">policy status</a> for more details.</p>
+<h3 id="policy-discoverability">Policy discoverability</h3>
+<p>A well-known problem of declaring specifications into separate objects, that ultimately will reshape or govern the behavior of their targeted ones, regards the discoverability of metaresources. That is, how an object owner gets to know what metaresource (or set of metaresources) is affecting their object and with what content.</p>
+<p>Part of the solution involves <a href="/geps/gep-713/#status-reporting">status reporting</a>, though it may require more than that. Even though Kubernetes has always had analogous problems－the most obvious example being Role Based Access Control (RBAC)－, the discoverability issue remains a challenging one to be addressed. To better understand it, consider the following parable described in the context of Gateway API, with thanks to <a href="https://github.com/kflynn">Flynn</a>:</p>
+<h4 id="the-discoverability-problem-a-parable">The discoverability problem • A Parable</h4>
+<p>It's a sunny Wednesday afternoon, and the lead microservices developer for Evil Genius Cupcakes is windsurfing. Work has been eating Ana alive for the past two and a half weeks, but after successfully deploying version 3.6.0 of the <code>baker</code> service this morning, she's escaped early to try to unwind a bit.</p>
+<p>Her shoulders are just starting to unknot when her phone pings with a text from Chihiro, down in the NOC. Waterproof phones are a blessing, but also a curse.</p>
+<p><strong>Chihiro</strong>: <em>Hey Ana. Things are still running, more or less, but latencies on everything in the <code>baker</code> namespace are crazy high after your last rollout, and <code>baker</code> itself has a weirdly high load. Sorry to interrupt you on the lake but can you take a look? Thanks!!</em></p>
+<p>Ana stares at the phone for a long moment, heart sinking, then sighs and turns back to shore.</p>
+<p>What she finds when dries off and grabs her laptop is strange. <code>baker</code> does seem to be taking much more load than its clients are sending, and its clients report much higher latencies than they’d expect. She doublechecks the Deployment, the Service, and all the HTTPRoutes around <code>baker</code>; everything looks good. <code>baker</code>’s logs show her mostly failed requests... with a lot of duplicates? Ana checks her HTTPRoute again, though she's pretty sure you can't configure retries there, and finds nothing. But it definitely looks like clients are retrying when they shouldn’t be.</p>
+<p>She pings Chihiro.</p>
+<p><strong>Ana</strong>: <em>Hey Chihiro. Something weird is up, looks like requests to <code>baker</code> are failing but getting retried??</em></p>
+<p>A minute later they answer.</p>
+<p><strong>Chihiro</strong>: 🤷 <em>Did you configure retries?</em></p>
+<p><strong>Ana</strong>: <em>Dude. I don’t even know how to.</em> 😂</p>
+<p><strong>Chihiro</strong>: <em>You just attach a RetryPolicy to your HTTPRoute.</em></p>
+<p><strong>Ana</strong>: <em>Nope. Definitely didn’t do that.</em></p>
+<p>She types <code>kubectl get retrypolicy -n baker</code> and gets a permission error.</p>
+<p><strong>Ana</strong>: <em>Huh, I actually don’t have permissions for RetryPolicy.</em> 🤔</p>
+<p><strong>Chihiro</strong>: 🤷 <em>Feels like you should but OK, guess that can’t be it.</em></p>
+<p>Minutes pass while both look at logs.</p>
+<p><strong>Chihiro</strong>: <em>I’m an idiot. There’s a RetryPolicy for the whole namespace – sorry, too many policies in the dashboard and I missed it. Deleting that since you don’t want retries.</em></p>
+<p><strong>Ana</strong>: <em>Are you sure that’s a good–</em></p>
+<p>Ana’s phone shrills while she’s typing, and she drops it. When she picks it up again she sees a stack of alerts. She goes pale as she quickly flips through them: there’s one for every single service in the <code>baker</code> namespace.</p>
+<p><strong>Ana</strong>: <em>PUT IT BACK!!</em></p>
+<p><strong>Chihiro</strong>: <em>Just did. Be glad you couldn't hear all the alarms here.</em> 😕</p>
+<p><strong>Ana</strong>: <em>What the hell just happened??</em></p>
+<p><strong>Chihiro</strong>: <em>At a guess, all the workloads in the <code>baker</code> namespace actually fail a lot, but they seem OK because there are retries across the whole namespace?</em> 🤔</p>
+<p>Ana's blood runs cold.</p>
+<p><strong>Chihiro</strong>: <em>Yeah. Looking a little closer, I think your <code>baker</code> rollout this morning would have failed without those retries.</em> 😕</p>
+<p>There is a pause while Ana's mind races through increasingly unpleasant possibilities.</p>
+<p><strong>Ana</strong>: <em>I don't even know where to start here. How long did that RetryPolicy go in? Is it the only thing like it?</em></p>
+<p><strong>Chihiro</strong>: <em>Didn’t look closely before deleting it, but I think it said a few months ago. And there are lots of different kinds of policy and lots of individual policies, hang on a minute...</em></p>
+<p><strong>Chihiro</strong>: <em>Looks like about 47 for your chunk of the world, a couple hundred system-wide.</em></p>
+<p><strong>Ana</strong>: 😱 <em>Can you tell me what they’re doing for each of our services? I can’t even</em> look <em>at these things.</em> 😕</p>
+<p><strong>Chihiro</strong>: <em>That's gonna take awhile. Our tooling to show us which policies bind to a given workload doesn't go the other direction.</em></p>
+<p><strong>Ana</strong>: <em>...wait. You have to</em> build tools <em>to know if retries are turned on??</em></p>
+<p>Pause.</p>
+<p><strong>Chihiro</strong>: <em>Policy Attachment is more complex than we’d like, yeah.</em> 😐 <em>Look, how about roll back your <code>baker</code> change for now? We can get together in the morning and start sorting this out.</em></p>
+<p>Ana shakes her head and rolls back her edits to the <code>baker</code> Deployment, then sits looking out over the lake as the deployment progresses.</p>
+<p><strong>Ana</strong>: <em>Done. Are things happier now?</em></p>
+<p><strong>Chihiro</strong>: <em>Looks like, thanks. Reckon you can get back to your sailboard.</em> 🙂</p>
+<p>Ana sighs.</p>
+<p><strong>Ana</strong>: <em>Wish I could. Wind’s died down, though, and it'll be dark soon. Just gonna head home.</em></p>
+<p><strong>Chihiro</strong>: <em>Ouch. Sorry to hear that.</em> 😐</p>
+<p>One more look out at the lake.</p>
+<p><strong>Ana</strong>: <em>Thanks for the help. Wish we’d found better answers.</em> 😢</p>
+<h4 id="the-problem-restated">The Problem, restated</h4>
+<p>What this parable makes clear is that, in the absence of information about what metaresource is affecting an object, it’s very easy to make poor decisions.</p>
+<p>It’s critical that this proposal solve the problem of showing up to three things, listed in increasing order of desirability:</p>
+<ul>
+<li><em>That</em> some metaresource/policy is affecting a particular object</li>
+<li><em>Which</em> metaresource/policy is (or metaresources/policies are) affecting a particular object</li>
+<li><em>What</em> settings in the metaresource/policy are affecting the object.</li>
+</ul>
+<p>In the parable, if Ana and Chihiro had known that there were policies affecting the relevant object, then they could have gone looking for the relevant policies and things would have played out differently. If they knew which policies, they would need to look less hard, and if they knew what the settings being applied were, then the parable would have been able to be very short indeed.</p>
+<p>(There’s also another use case to consider, in that Chihiro should have been able to see that the metaresource on the namespace was in use in many places before deleting it.)</p>
+<p>To put this another way, Metaresources and Policy Attachment is effectively adding another persona among the stakeholders, the Policy Admin, and without a solution to the discoverability problem, their actions are largely invisible to the Application Developer. Not only that, but their concerns cut across the previously established levels.</p>
+<p><img src="/geps/gep-713/images/713-the-diagram-with-policy-admin.png" alt="Gateway API diagram with Policy Admin"></p>
+<p>From the Policy Admin’s point of view, they need to know across their whole remit (which conceivably could be the whole cluster):</p>
+<ul>
+<li><em>What</em> metaresource/policy has been created</li>
+<li><em>Where</em> it’s applied</li>
+<li><em>What</em> the resultant (effective) metaresource/policy is saying</li>
+</ul>
+<p>Which again, comes down to discoverability, and can probably be addressed in similar ways at an API level to the Application Developer's concerns.</p>
+<p>An important note here is that a key piece of information for Policy Admins and Cluster Operators is &quot;How many things does this Policy affect?&quot;. In the parable, this would have enabled Chihiro to know that deleting the Namespace policy would affect many other people than just Ana.</p>
+<h4 id="gateway-api-personas-and-the-discoverability-problem">Gateway API personas and the discoverability problem</h4>
+<p>Let's go through the various users of Gateway API and what they need to know about policies affecting their objects.</p>
+<p>In all of these cases, keeping the troubleshooting distance low is desired; that is, that there should be a minimum of hops required between objects from the one owned by the user to the one responsible for a setting.</p>
+<p>Another way to think of the troubleshooting distance in this context is &quot;How many <code>kubectl</code> commands would the user need to do to understand that a policy is relevant, which policy is relevant, and what configuration the full set of policy is setting?&quot;</p>
+<h5 id="application-developer-discoverability">Application Developer Discoverability</h5>
+<p>How does Ana, or any Application Developer who owns one or more Route objects know that their object is affected by a policy, which policy is affecting it, and what the content of the policy is?</p>
+<p>The best outcome is that Ana needs to look only at a specific route to know what policy settings are being applied to that Route, and where they come from. However, some of the other problems below make it very difficult to achieve this.</p>
+<h5 id="policy-admin-discoverability">Policy Admin Discoverability</h5>
+<p>How does the Policy Admin know what policy is applied where, and what the content of that policy is? How do they validate that the policy is being used in ways acceptable to their organization? For any given policy object, how do they know how many places it is being used?</p>
+<h5 id="cluster-admin-discoverability">Cluster Admin Discoverability</h5>
+<p>The Cluster Admin has similar concerns to the Policy Admin, but with a focus on being able to determine what's relevant when something is broken.</p>
+<p>How does the Cluster Admin know what policy is applied where, and what the content of that policy is?</p>
+<p>For any given policy object, how do they know how many places it is being used?</p>
+<h4 id="hinting-on-a-solution-for-the-discoverability-problem">Hinting on a solution for the discoverability problem</h4>
+<p>Querying the status of objects stored in the cluster may be the Kubernetes way of knowing the state of the system, in a world where objects are declarative and there are only so many links between objects to hop in between. However, this is still a proxy used to model a real life problem that often has otherwise different ways to be thought about as well.</p>
+<p>In the context of traffic networking, for example, often the question asked by users is <em>&quot;What happens when a network request X comes in?&quot;</em>. There is an implicit expectation that a set of Kubernetes resources suffices to represent all the rules for a given workload to be activated and thus process request X, and often that is the case. For more complex cases however (e.g, multiple personas, application concerns separated into dedicated resource kinds, interaction between groups of users, etc), real life can get more complicated than a simple <code>kubectl get x</code>, or at least additional steps must be automated to encompass complexity into what can be achieved with a single declarative object.</p>
+<p>With that in mind, a possible solution for the discoverability problem may involve designing tools (e.g. CLI tools/plugins), new CRDs, etc that let users ask questions in terms of the real life problems they have to deal with on a daily basis, rather than shaped by the underlying technologies used in the process. For instance, a simple Kubernetes object that is used to declare the rules to process a HTTP request cannot have its status reported simply as Ready/Not ready. By being a complex object composed of multiple routing rules, potentially affected by specifications declared from other objects as well, its status MUST account for that complexity and be structured in such a way that informs the owner with respect to each possible case, whether the ones induced by the internal specification declared by the object itself or its external relationships.</p>
+<p>In other words, the discoverability problem exists and must be addressed in light of the complexity associated with the topology of nested contexts induced by a set of hierarchically related resources. One should always have that topology in mind while asking questions regarding the behavior of a given resource, because just like a routing object (e.g. HTTPRoute) does not exist independently from its parent contexts (e.g. Gateways) or its children (e.g. Backends), any resource in focus may be just a part of a whole.</p>
+<h3 id="status-reporting">Status reporting</h3>
+<h4 id="the-status-stanza-of-policy-objects">The <code>status</code> stanza of policy objects</h4>
+<p><em>Status:</em> Standard</p>
+<p>Policy CRDs MUST define a <code>status</code> stanza, and the <code>status</code> stanza MUST contain a <code>conditions</code> stanza, using the standard Condition format, to report the status of the policy.</p>
+<h5 id="status-conditions">Status conditions</h5>
+<p>Policy implementations SHOULD use the following status conditions and reasons for policy objects are (represented in Go code):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyConditionType is a type of condition for a policy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> PolicyConditionType <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyConditionReason is a reason for a policy condition.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> PolicyConditionReason <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyConditionAccepted indicates whether the policy has passed both syntactic validation by the</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// API server and semantic validation enforced by the controller, such as whether the target objects exist.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be True are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be False are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Conflicted&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Invalid&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;TargetNotFound&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Non-accepted policy objects are also not **Programmed** and not **Overridden**</span>
+</span></span><span style="display:flex;"><span>  PolicyConditionAccepted PolicyConditionType = <span style="color:#b44">&#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonAccepted is used with the &#34;Accepted&#34; condition when the policy has been</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// accepted by the targeted resource.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonAccepted PolicyConditionReason = <span style="color:#b44">&#34;Accepted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonConflicted is used with the &#34;Accepted&#34; condition when the policy has not</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// been accepted by a targeted resource because there is another policy that targets the same</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// resource and a merge is not possible.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonConflicted PolicyConditionReason = <span style="color:#b44">&#34;Conflicted&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonInvalid is used with the &#34;Accepted&#34; condition when the policy is syntactically</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// or semantically invalid.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonInvalid PolicyConditionReason = <span style="color:#b44">&#34;Invalid&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonTargetNotFound is used with the &#34;Accepted&#34; condition when the policy is attached to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// an invalid target resource</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonTargetNotFound PolicyConditionReason = <span style="color:#b44">&#34;TargetNotFound&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyConditionProgrammed indicated whether the policy&#39;s spec is guaranteed by the controller to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// be fully programmed for enforcement.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be True are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Programmed&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;PartiallyProgrammed&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Possible reasons for this condition to be False are:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Reconciling&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// * &#34;Overridden&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  PolicyConditionProgrammed PolicyConditionType = <span style="color:#b44">&#34;Programmed&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonProgrammed is used with the &#34;Programmed&#34; condition when the full spec of the policy has been</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// programmed to affect the entire scope under the associated target for the status, with no parts of the</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// policy overridden during conflict resolution against other policies of the same kind.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Inversely, it is used with the &#34;Overridden&#34; condition when the policy is not overridden due to been programmed.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonProgrammed PolicyConditionReason = <span style="color:#b44">&#34;Programmed&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonPartiallyProgrammed is used with the &#34;Programmed&#34; condition when parts of the policy&#39;s spec have</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// been programmed, while other parts are known to have been superseded by other specs during conflict resolution,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// and/or only parts of the scope under the associated target for the status are expected to be affected by</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// the policy spec, with other parts of the scope affected by other specs preferred during conflict resolution.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// The status message SHOULD include details highlighting which parts of the policy/scope are reconciled and</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// which parts have been superseded, with the references to all other related policies.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonPartiallyProgrammed PolicyConditionReason = <span style="color:#b44">&#34;PartiallyProgrammed&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonReconciling is used with the &#34;Programmed&#34; condition to indicate the policy is currently being</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// reconciled by the controller.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonReconciling PolicyConditionReason = <span style="color:#b44">&#34;Reconciling&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// PolicyReasonOverridden is used with the &#34;Programmed&#34; condition to indicate the policy has been fully</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// overridden by other specs during conflict resolution.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// The status message SHOULD include the references to the other related policies.</span>
+</span></span><span style="display:flex;"><span>  PolicyReasonOverridden PolicyConditionReason = <span style="color:#b44">&#34;Overridden&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>The following table summarizes the possible statuses:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Accepted</th>
+          <th style="text-align: center">Programmed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">False (Conflicted / Invalid / TargetNotFound)</td>
+          <td style="text-align: center">∅</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">True</td>
+          <td style="text-align: center">False (Reconciling / Overridden)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">True</td>
+          <td style="text-align: center">True (Programmed / PartiallyProgrammed)</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="using-upstream-policyancestorstatus-struct">Using upstream <code>PolicyAncestorStatus</code> struct</h5>
+<p><em>Status:</em> Experimental</p>
+<p>Policy objects SHOULD use the upstream <code>PolicyAncestorStatus</code> struct in their respective Status structs. Please see the included <code>PolicyAncestorStatus</code> struct, and its use in the <code>BackendTLSPolicy</code> object for detailed examples. Included here is a representative version.</p>
+<p>This pattern enables different conditions to be set for different &quot;Ancestors&quot; of the target resource. This is particularly helpful for policies that may be implemented by multiple controllers or attached to resources with different effects or capabilities. For example a Policy that could attach to Route or Service to set load balancing properties may be reconciled by multiple controllers, and so needs further namespacing of its status. This pattern also provides a clear view of what resources a policy is affecting.</p>
+<p>For the best integration with community tooling and consistency across the broader community, we recommend that all implementations transition to Policy status with this kind of nested structure.</p>
+<p>This is an <code>Ancestor</code> status rather than a <code>Parent</code> status, as in the Route status, because, for Policy Attachment, the relevant object may or may not be the direct parent.</p>
+<p>For example, <code>BackendTLSPolicy</code> directly attaches to a Service, which may be included in multiple Routes, in multiple Gateways. However, for many implementations, the status of the <code>BackendTLSPolicy</code> will be different only at the Gateway level, so Gateway is the relevant Ancestor for the status. Each Gateway that has a Route that includes a backend with an attached <code>BackendTLSPolicy</code> SHOULD have a separate <code>PolicyAncestorStatus</code> section in the <code>BackendTLSPolicy</code>'s <code>status.ancestors</code> stanza, which mandates that entries must be distinct using the combination of the <code>AncestorRef</code> and the <code>ControllerName</code> fields as a key. See <a href="/geps/gep-1897/">GEP-1897</a> for the exact details.</p>
+<p>For other kinds of policies, <code>Ancestor</code> status may coincide with <code>Parent</code> status, as in having exactly one block of status conditions for each target in the <code>targetRefs</code> stanza of the policy suffices. This is usually the case of policy kinds that allow targeting only <code>Gateway</code> and/or gateway listeners (i.e. <code>Gateway</code> + <code>sectionName</code>).</p>
+<h4 id="target-object-status">Target object status</h4>
+<p><em>Status:</em> Experimental</p>
+<p>To facilitate <a href="/geps/gep-713/#policy-discoverability">policy discoverability</a>, implementations of Policies kinds SHOULD put a condition into <code>status.Conditions</code> of any objects affected by the policy.</p>
+<p>That condition, if added, MUST be named according to the pattern <code>&lt;metaresource-kind&gt;Affected</code> (e.g. <code>colors.controller.k8s.io/ColorPolicyAffected</code>), and SHOULD include an <code>observedGeneration</code> field kept up to date when the spec of the target object changes.</p>
+<p>Implementations SHOULD use their own unique domain prefix for this condition type. Gateway API implementations, for instance, SHOULD use the same domain as in the <code>controllerName</code> field on <code>GatewayClass</code> (or some other implementation-unique domain for implementations that do not use <code>GatewayClass</code>.)</p>
+<p>E.g. – given a <code>Gateway</code> object that is targeted by a hypothetical <code>ColorPolicy</code> policy object named <code>policy-namespace/my-policy</code>, which is owned by a <code>colors.controller.k8s.io</code> controller and with status <code>Programmed</code> or <code>PartiallyProgrammed</code>. The controller SHOULD add to the status of the <code>Gateway</code> object a condition <code>colors.controller.k8s.io/ColorPolicyAffected: true</code>, and reason ideally referring to the <code>policy-namespace/my-policy</code> by name.</p>
+<p>Similarly, for a hypothetical <code>ColorPolicy</code> policy that targets a specific named section of the <code>Gateway</code> object (e.g., <code>http-listener</code>), the controller SHOULD add to the status of the listener section within the <code>Gateway</code> object a condition <code>colors.controller.k8s.io/ColorPolicyAffected: true</code>.</p>
+<p>For objects that do not have a <code>status.Conditions</code> field available (<code>Secret</code> is a good example), that object SHOULD instead have an annotation of <code>colors.controller.k8s.io/ColorPolicyAffected: true</code> added instead.</p>
+<h4 id="status-needs-to-be-namespaced-by-implementation">Status needs to be namespaced by implementation</h4>
+<p><em>Status:</em> Experimental</p>
+<p>Because an object can be affected by multiple implementations at once, any added status, to the policy objects or targets, MUST be namespaced by the implementation.</p>
+<p>In Gateway API's Route Parent status, <code>parentRef</code> plus the controller name have been used for this.</p>
+<p>For policies, something similar can be done, namespacing by the reference to the implementation's controller name.</p>
+<h4 id="a-note-on-status-representation-patterns-for-the-policy-and-target-object-statuses">A note on status representation patterns for the policy and target object statuses</h4>
+<p>Defining a <em>common</em> pattern for including the details of an <em>arbitrarily defined</em> object, to be included in a library for all possible implementations, is challenging, to say the least.</p>
+<p>Structured data cannot be used because there is no way of knowing what the structure will be beforehand. This suggests a need to use unstructured data for representing the main body of the arbitrary policy objects. Practically, this will have to be a string representation of the YAML form (or JSON, equivalently) of the body of the policy object (absent the metadata part of every Kubernetes object).</p>
+<p>Metaresources and Policy Attachment does not mandate anything about the design of the object's top level except that it must be a Kubernetes object, so the only possible thing to rely upon here is the presence of the Kubernetes metadata elements: <code>apiVersion</code>, <code>kind</code>, and <code>metadata</code>.</p>
+<p>Therefore, a string representation of the rest of the file is likely the best that can be done here.</p>
+<h4 id="fanout-status-update-problems">Fanout status update problems</h4>
+<p>The fanout problem is that, when an update takes place in a single object (a policy, or an object with a policy attached), an implementation may need to update <em>many</em> objects if it needs to place details of what policy applies, or what the resultant set of policies is on <em>every</em> object.</p>
+<p>Historically, this is a risky strategy and needs to be carefully applied, as it's an excellent way to create apiserver load problems, which can produce a large range of bad effects for cluster stability.</p>
+<p>This does not mean that nothing at all that affects multiple objects can be done, but that careful consideration of what information is stored in status, so that <em>every</em> policy update does not require a corresponding status update, is advised.</p>
+<h2 id="end-to-end-examples">End-to-end examples</h2>
+<p>This section presents a series of synthetic examples of applications of policies for different kinds of topologies and contexts. The examples are implementations of the <a href="/geps/gep-713/#abstract-process-for-calculating-effective-policies">Abstract process for calculating effective policies</a>. They are not prescriptive on exactly how policies must be designed, but rather illustrational of the different types of merge strategy and mechanics for calculating effective policies.</p>
+<p>Consider for all the examples, the following hierarchy of network resource kinds: <code>Gateway</code> (<code>g</code>) &gt; <code>Route</code> (<code>r</code>) &gt; <code>Backend</code> (<code>b</code>), where <code>Gateway</code> is the least specific kind (instances denoted &quot;<code>gX</code>&quot;) and <code>Backend</code> is the most specific kind (instances denoted &quot;<code>bX</code>&quot;).</p>
+<p>Moreover, a <code>ColorPolicy</code> kind is defined with variations in its semantics across examples to accommodate for each case. Instances of the <code>ColorPolicy</code> kind (denoted &quot;<code>pX[spec]</code>&quot; and referred to simply as &quot;policies&quot;) may target one or more kinds of targetable resources, depending on each end-to-end example. A policy represents an intent to &quot;color&quot; the network traffic that flows through the portion of the network corresponding to the target with a given color or color set that is specified in the policy.</p>
+<h3 id="example-1-direct-policy">Example 1. Direct Policy</h3>
+<p>In this example, the <code>ColorPolicy</code> policy kind is defined as an instance of the Direct class of policies. Instances of the <code>ColorPolicy</code> kind in this example can only target <code>Backend</code> resources.</p>
+<p>Given:</p>
+<p>the following state of targetable resources:</p>
+<ul>
+<li><code>g1</code> &gt; <code>r1</code> &gt; <code>b1</code></li>
+<li><code>g1</code> &gt; <code>r2</code> &gt; <code>b2</code></li>
+</ul>
+<p>and the following state of <code>ColorPolicy</code> objects, where <code>pX[spec]</code> → <code>bX</code> denotes a policy <code>pX</code> attached to (&quot;targeting&quot;) a <code>Backend</code> resource <code>bX</code>, intending to augment <code>bX</code>‘s behavior with <code>spec</code>:</p>
+<ul>
+<li><code>p1[color:red]</code> → <code>b1</code></li>
+<li><code>p2[color:blue]</code> → <code>b1</code> (conflicting policy, <code>p2.creationTimestamp</code> &gt; <code>p1.creationTimestamp</code>)</li>
+</ul>
+<p>Depicted in the following Directed Acyclic Graph (DAG):</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+  g1@{ shape: rect }
+  r1@{ shape: rect }
+  r2@{ shape: rect }
+  b1@{ shape: rect }
+  b2@{ shape: rect }
+  p1@{ shape: stadium, label: "**p1**\ncolor:red\ncreationTimestamp:t" }
+  p2@{ shape: stadium, label: "**p2**\ncolor:blue\ncreationTimestamp:t+Δ" }
+
+  g1 --> r1
+  g1 --> r2
+  r1 --> b1
+  r2 --> b2
+
+  p1 -.-> b1
+  p2 -.-> b1
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>The expected outcome to be implemented by the controller is:</p>
+<ol>
+<li>All traffic directed to <code>Backend</code> <code>b1</code> must be colored <code>red</code>.</li>
+<li>Status of <code>Backend</code> <code>b1</code> should be reported as affected by the <code>ColorPolicy</code> <code>p1</code>.</li>
+<li>Status of <code>Backend</code> <code>b2</code> should NOT be reported as affected by any policy.</li>
+<li>Status of <code>ColorPolicy</code> <code>p1</code> must be reported as enforced.</li>
+<li>Status of <code>ColorPolicy</code> <code>p2</code> must be reported as NOT enforced, due to conflict with <code>ColorPolicy</code> <code>p1</code>.</li>
+</ol>
+<h3 id="example-2-defaults-overrides">Example 2. Defaults &amp; Overrides</h3>
+<p>In this example, the <code>ColorPolicy</code> policy kind is defined as an instance of the Inherited class of policies. Instances of the <code>ColorPolicy</code> kind in this example can target resources of the <code>Gateway</code> and <code>Route</code> kinds, always aiming to augment the behavior of resources of the <code>Backend</code> kind in the hierarchy. The policies can specify either <code>defaults</code> (assumed unless specified otherwise) or <code>overrides</code>, that are always treated at the atomic level.</p>
+<p>Given:</p>
+<p>the following state of targetable resources:</p>
+<ul>
+<li><code>g1</code> &gt; <code>r1</code> &gt; <code>b1</code></li>
+<li><code>g1</code> &gt; <code>r2</code> &gt; <code>b1</code></li>
+<li><code>g2</code> &gt; <code>r3</code> &gt; <code>b1</code></li>
+<li><code>g2</code> &gt; <code>r4</code> &gt; <code>b2</code></li>
+</ul>
+<p>and the following state of <code>ColorPolicy</code> objects, where <code>pX[spec]</code> → <code>yX</code> denotes a policy <code>pX</code> attached to (&quot;targeting&quot;) a resource <code>yX</code>, <code>y</code> ∈ {<code>g</code>, <code>r</code>}, intending to augment with <code>spec</code> the behavior of <code>Backend</code> resources when activated via <code>yX</code>:</p>
+<ul>
+<li><code>p1[color:red]</code> → <code>g1</code></li>
+<li><code>p2[color:blue]</code> → <code>r1</code></li>
+<li><code>p3[overrides:{color:yellow}]</code> → <code>g2</code></li>
+<li><code>p4[color:green]</code> → <code>r4</code></li>
+</ul>
+<p>Depicted in the following Directed Acyclic Graph (DAG):</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+  g1@{ shape: rect }
+  r1@{ shape: rect }
+  r2@{ shape: rect }
+  r3@{ shape: rect }
+  r4@{ shape: rect }
+  b1@{ shape: rect }
+  b2@{ shape: rect }
+  p1@{ shape: stadium, label: "**p1**\ncolor:red" }
+  p2@{ shape: stadium, label: "**p2**\ncolor:blue" }
+  p3@{ shape: stadium, label: "**p3**\noverrides:{color:yellow}" }
+  p4@{ shape: stadium, label: "**p4**\ncolor:green" }
+
+  g1 --> r1
+  r1 --> b1
+  g1 --> r2
+  r2 --> b1
+  g2 --> r3
+  r3 --> b1
+  g2 --> r4
+  r4 --> b2
+
+  p1 -.-> g1
+  p2 -.-> r1
+  p3 -.-> g2
+  p4 -.-> r4
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>The expected outcome to be implemented by the controller is:</p>
+<ol>
+<li>Traffic directed to <code>g1</code> &gt; <code>r1</code> &gt; <code>b1</code> must be colored <code>blue</code> (more specific <code>p2</code> spec beats less specific defaults at <code>p1</code>).</li>
+<li>Traffic directed to <code>g1</code> &gt; <code>r2</code> &gt; <code>b1</code> must be colored <code>red</code> (implicit defaults specified at <code>p1</code> not replaced by any other policy).</li>
+<li>Traffic directed to <code>g2</code> &gt; <code>r3</code> &gt; <code>b1</code> must be colored <code>yellow</code> (overrides specified at <code>p3</code> not replaced by any other policy).</li>
+<li>Traffic directed to <code>g2</code> &gt; <code>r4</code> &gt; <code>b2</code> must be colored <code>yellow</code> (overrides specified at <code>p3</code> beats more specific policy <code>p4</code>).</li>
+<li>Status of <code>Backend</code> <code>b1</code> should be reported as affected by the <code>ColorPolicy</code> resources <code>p1</code>, <code>p2</code> and <code>p3</code>.</li>
+<li>Status of <code>Backend</code> <code>b2</code> should be reported as affected by the <code>ColorPolicy</code> resource <code>p3</code>.</li>
+<li>Status of <code>ColorPolicy</code> <code>p1</code> must be reported as partially enforced, due to in some cases beaten by <code>p2</code>.</li>
+<li>Status of <code>ColorPolicy</code> <code>p2</code> must be reported as enforced.</li>
+<li>Status of <code>ColorPolicy</code> <code>p3</code> must be reported as enforced.</li>
+<li>Status of <code>ColorPolicy</code> <code>p4</code> must be reported as NOT enforced, due to being overridden by <code>ColorPolicy</code> <code>p3</code>.</li>
+</ol>
+<h3 id="example-3-merged-specs">Example 3. Merged specs</h3>
+<p>In this example, the <code>ColorPolicy</code> policy kind is defined as an instance of the Inherited class of policies. Instances of the <code>ColorPolicy</code> kind in this example can target resources of the <code>Gateway</code> and <code>Route</code> kinds, always aiming to augment the behavior of resources of the <code>Backend</code> kind in the hierarchy. The policies can specify either <code>defaults</code> (assumed unless specified otherwise) or <code>overrides</code>. Moreover, policies specify a complex color scheme composed of <code>dark</code> and <code>light</code> entries, as well as a <code>strategy</code> field to specify one of two supported merge strategies, <code>atomic</code> (assumed unless specified otherwise) or <code>patch</code>.</p>
+<p>Given:</p>
+<p>the following state of targetable resources:</p>
+<ul>
+<li><code>g1</code> &gt; <code>r1</code> &gt; <code>b1</code></li>
+<li><code>g1</code> &gt; <code>r2</code> &gt; <code>b1</code></li>
+<li><code>g2</code> &gt; <code>r3</code> &gt; <code>b1</code></li>
+<li><code>g2</code> &gt; <code>r4</code> &gt; <code>b2</code></li>
+</ul>
+<p>and the following state of <code>ColorPolicy</code> objects, where <code>pX[spec]</code> → <code>yX</code> denotes a policy <code>pX</code> attached to (&quot;targeting&quot;) a resource <code>yX</code>, <code>y</code> ∈ {<code>g</code>, <code>r</code>}, intending to augment with <code>spec</code> the behavior of <code>Backend</code> resources when activated via <code>yX</code>:</p>
+<ul>
+<li><code>p1[colors:{dark:brown,light:red},strategy:atomic]</code> → <code>g1</code></li>
+<li><code>p2[colors:{light:blue}]</code> → <code>r1</code></li>
+<li><code>p3[overrides:{colors:{light:yellow},strategy:patch}]</code> → <code>g2</code></li>
+<li><code>p4[colors:{dark:olive,light:green}]</code> → <code>r4</code></li>
+</ul>
+<p>Depicted in the following Directed Acyclic Graph (DAG):</p>
+<figure>
+<div class="mermaid">
+    
+---
+config:
+  look: handDrawn
+  theme: neutral
+---
+graph
+  g1@{ shape: rect }
+  r1@{ shape: rect }
+  r2@{ shape: rect }
+  r3@{ shape: rect }
+  r4@{ shape: rect }
+  b1@{ shape: rect }
+  b2@{ shape: rect }
+  p1@{ shape: stadium, label: "**p1**\ncolors:{dark:brown light:red}\nstrategy:atomic" }
+  p2@{ shape: stadium, label: "**p2**\ncolors:{light:blue}" }
+  p3@{ shape: stadium, label: "**p3**\noverrides:{\ncolors:{light:yellow}\nstrategy:patch}" }
+  p4@{ shape: stadium, label: "**p4**\ncolors:{dark:olive light:green}" }
+
+  g1 --> r1
+  r1 --> b1
+  g1 --> r2
+  r2 --> b1
+  g2 --> r3
+  r3 --> b1
+  g2 --> r4
+  r4 --> b2
+
+  p1 -.-> g1
+  p2 -.-> r1
+  p3 -.-> g2
+  p4 -.-> r4
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>The expected outcome to be implemented by the controller is:</p>
+<ol>
+<li>Traffic directed to <code>g1</code> &gt; <code>r1</code> &gt; <code>b1</code> must be colored <code>dark:UNDEFINED,light:blue</code> (more specific <code>p2</code> spec beats less specific atomic defaults from <code>p1</code>.</li>
+<li>Traffic directed to <code>g1</code> &gt; <code>r2</code> &gt; <code>b1</code> must be colored <code>dark:brown,light:red</code> (implicit atomic defaults specified at <code>p1</code> not replaced by any other policy).</li>
+<li>Traffic directed to <code>g2</code> &gt; <code>r3</code> &gt; <code>b1</code> must be colored <code>dark:UNDEFINED,light:yellow</code> (patch overrides specified at <code>p3</code> not replaced, nor extended by any other policy).</li>
+<li>Traffic directed to <code>g2</code> &gt; <code>r4</code> &gt; <code>b2</code> must be colored <code>dark:olive,light:yellow</code> (patch overrides specified by <code>p3</code> beats more specific policy <code>p4</code>, which still extends the spec with a specific value for <code>dark</code>.</li>
+<li>Status of <code>Backend</code> <code>b1</code> should be reported as affected by the <code>ColorPolicy</code> resources <code>p1</code>, <code>p2</code> and <code>p3</code>.</li>
+<li>Status of <code>Backend</code> <code>b2</code> should be reported as affected by the <code>ColorPolicy</code> resource <code>p3</code> and <code>p4</code>.</li>
+<li>Status of <code>ColorPolicy</code> <code>p1</code> must be reported as partially enforced, due to in some cases atomically beaten by <code>p2</code>.</li>
+<li>Status of <code>ColorPolicy</code> <code>p2</code> must be reported as enforced.</li>
+<li>Status of <code>ColorPolicy</code> <code>p3</code> must be reported as enforced.</li>
+<li>Status of <code>ColorPolicy</code> <code>p4</code> must be reported as partially enforced, due to being partially overridden by <code>ColorPolicy</code> <code>p3</code>.</li>
+</ol>
+<h2 id="current-use-of-policies">Current use of policies</h2>
+<h3 id="implementations">Implementations</h3>
+<p>These are a few known implementations of policies in compliance with this GEP.</p>
+<p>Users should refer to the official documentation from each implementation for more up to date information.</p>
+<h4 id="gateway-api-core">Gateway API (core)</h4>
+<p>Gateway API defines two kinds of Direct policies, both for augmenting the behavior of Kubernetes <code>Service</code> resources:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>BackendTLSPolicy</strong></td>
+          <td>TLS configuration of the connection from the Gateway to a backend pod (set of pods) via the Service API object.</td>
+          <td>Service, <em>Port</em></td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+      <tr>
+          <td><strong>XBackendTrafficPolicy</strong></td>
+          <td>Configuration for how traffic to a target backend should be handled (retries and session persistence)</td>
+          <td><em>Port</em></td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="envoy-gateway">Envoy Gateway</h4>
+<p><a href="https://gateway.envoyproxy.io/docs/api/extension_types/">https://gateway.envoyproxy.io/docs/api/extension_types/</a></p>
+<p>Gateway API implementation that defines the following kinds of policies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ClientTrafficPolicy</strong></td>
+          <td>Configure the behavior of the connection between the downstream client and Envoy Proxy listener.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>Atomic defaults</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>BackendTrafficPolicy</strong></td>
+          <td>Configure the behavior of the connection between the Envoy Proxy listener and the backend service.</td>
+          <td>Gateway, HTTPRoute, GRPCRoute, UDPRoute, TCPRoute, TLSRoute</td>
+          <td>Patch defaults, Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>EnvoyExtensionPolicy</strong></td>
+          <td>Configure various envoy extensibility options for the Gateway.</td>
+          <td>Gateway, HTTPRoute, GRPCRoute, UDPRoute, TCPRoute, TLSRoute</td>
+          <td>Atomic defaults, Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>EnvoyPatchPolicy</strong></td>
+          <td>Modify the generated Envoy xDS resources by Envoy Gateway using this patch API.</td>
+          <td>GatewayClass, Gateway</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>SecurityPolicy</strong></td>
+          <td>Configure various security settings for a Gateway.</td>
+          <td>Gateway, HTTPRoute, GRPCRoute</td>
+          <td>Atomic defaults</td>
+          <td>Inherited</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="istio">Istio</h4>
+<p><a href="https://istio.io/latest/reference/config/">https://istio.io/latest/reference/config/</a></p>
+<p>Gateway API implementation that defines the following kinds of policies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>EnvoyFilter</strong></td>
+          <td>Customize the Envoy configuration generated by istiod, e.g. modify values for certain fields, add specific filters, or even add entirely new listeners, clusters.</td>
+          <td>GatewayClass, Gateway, Service, ServiceEntry</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>RequestAuthentication</strong></td>
+          <td>Define request authentication methods supported by a workload.</td>
+          <td>GatewayClass, Gateway, Service, ServiceEntry</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>AuthorizationPolicy</strong></td>
+          <td>Enable access control on workloads in the mesh.</td>
+          <td>GatewayClass, Gateway, Service, ServiceEntry</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>WasmPlugin</strong></td>
+          <td>Extend the functionality provided by the Istio proxy through WebAssembly filters.</td>
+          <td>GatewayClass, Gateway, Service, ServiceEntry</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>Telemetry</strong></td>
+          <td>Defines how telemetry (metrics, logs and traces) is generated for workloads within a mesh.</td>
+          <td>GatewayClass, Gateway, Service, ServiceEntry</td>
+          <td>Custom</td>
+          <td>Inherited</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="nginx-gateway-fabric">NGINX Gateway Fabric</h4>
+<p><a href="https://docs.nginx.com/nginx-gateway-fabric/overview/custom-policies/">https://docs.nginx.com/nginx-gateway-fabric/overview/custom-policies/</a></p>
+<p>Gateway API implementation that supports Gateway API’s <code>BackendTLSPolicy</code> as well as the following kinds of policies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ClientSettingsPolicy</strong></td>
+          <td>Define settings related to tracing, metrics, or logging.</td>
+          <td>Gateway, HTTPRoute, GRPCRoute</td>
+          <td>Patch defaults</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>ObservabilityPolicy</strong></td>
+          <td>Configure connection behavior between client and NGINX.</td>
+          <td>HTTPRoute, GRPCRoute</td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+      <tr>
+          <td><strong>UpstreamSettingsPolicy</strong></td>
+          <td>Configure connection behavior between NGINX and backend.</td>
+          <td>Service</td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="gloo-gateway">Gloo Gateway</h4>
+<p><a href="https://docs.solo.io/gateway/latest/about/custom-resources/#policies">https://docs.solo.io/gateway/latest/about/custom-resources/#policies</a></p>
+<p>Gateway API implementation that defines the following kinds of policies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ListenerOption</strong></td>
+          <td>Augment behavior of one, multiple, or all gateway listeners.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+      <tr>
+          <td><strong>HTTPListenerOption</strong></td>
+          <td>Augment behavior of one, multiple, or all HTTP and HTTPS listeners.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+      <tr>
+          <td><strong>RouteOption</strong></td>
+          <td>Augment behavior of one, multiple, or all routes in an HTTPRoute resource.</td>
+          <td>HTTPRoute</td>
+          <td>None</td>
+          <td>Direct</td>
+      </tr>
+      <tr>
+          <td><strong>VirtualHostOption</strong></td>
+          <td>Augment behavior of the hosts on one, multiple, or all gateway listeners.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>Atomic defaults</td>
+          <td>Inherited</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="kuadrant">Kuadrant</h4>
+<p><a href="https://docs.kuadrant.io">https://docs.kuadrant.io</a></p>
+<p>First Gateway API integration entirely based on the Metaresources and Policy Attachment pattern. Defines the following kinds of policies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Policy kind</th>
+          <th>Description</th>
+          <th>Target kinds</th>
+          <th>Merge strategies</th>
+          <th>Policy class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>DNSPolicy</strong></td>
+          <td>Manage the lifecycle of DNS records in external DNS providers such as AWS Route53, Google DNS, and Azure DNS.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>Atomic defaults</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>TLSPolicy</strong></td>
+          <td>Manage the lifecycle of TLS certificate configuration on gateways using CertManager.</td>
+          <td>Gateway, <em>Listener</em></td>
+          <td>Atomic defaults</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>AuthPolicy</strong></td>
+          <td>Specify authentication and authorization rules for Gateways and Routes</td>
+          <td>Gateway, <em>Listener</em>, HTTPRoute, HTTPRouteRule</td>
+          <td>Atomic defaults, Custom</td>
+          <td>Inherited</td>
+      </tr>
+      <tr>
+          <td><strong>RateLimitPolicy</strong></td>
+          <td>Specify rate limiting rules for Gateways and Routes</td>
+          <td>Gateway, <em>Listener</em>, HTTPRoute, HTTPRouteRule</td>
+          <td>Atomic defaults, Custom</td>
+          <td>Inherited</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="other-metaresource-and-policy-like-implementations">Other metaresource and policy-like implementations</h3>
+<h4 id="network-policy-api-working-group-sig-network">Network Policy API (Working Group, SIG-NETWORK)</h4>
+<p><a href="https://network-policy-api.sigs.k8s.io/">https://network-policy-api.sigs.k8s.io/</a></p>
+<p>Defines two kinds of metaresources respectively for specifying <em>default</em> and <em>override</em> of networking policy rules: <strong>AdminNetworkPolicy</strong> and <strong>BaselineAdminNetworkPolicy</strong>. Builds on top of Kubernetes core <code>NetworkPolicy</code> kind.</p>
+<p>Although the Network Policy API custom resources do not strictly implement the Metaresources and Policy Attachment pattern, they are based on similar concepts that involve policy rules for augmenting the behavior of other Kubernetes objects (pods), attachment points, nested contexts (through namespaces and pod selectors), and Defaults &amp; Overrides.</p>
+<h4 id="open-cluster-management">Open Cluster Management</h4>
+<p><a href="https://open-cluster-management.io/docs/getting-started/integration/policy-controllers/policy-framework/">https://open-cluster-management.io/docs/getting-started/integration/policy-controllers/policy-framework/</a></p>
+<p>Does not implement Metaresources and Policy Attachment. However, defines a virtual policy kind (<strong>ConfigurationPolicy</strong>) and supports distributing other third-party kinds of policies such as Gatekeeper's <strong>ConstraintTemplate</strong> kind, via a <strong>Policy</strong> resource whose targets are nonetheless controlled by a separate set of resource (<strong>Placement</strong> and <strong>PlacementBinding</strong>).</p>
+<h2 id="tools">Tools</h2>
+<p>The following tools can be useful for implementing and supporting policies and policy custom controllers.</p>
+<h4 id="gwctl">gwctl</h4>
+<p><a href="https://github.com/kubernetes-sigs/gwctl">https://github.com/kubernetes-sigs/gwctl</a></p>
+<p>CLI tool for visualizing and managing Gateway API resources in a Kubernetes cluster. Includes commands to visualize effective policies affecting the resources in compliance with the Metaresources and Policy Attachment pattern.</p>
+<h4 id="policy-machinery">policy-machinery</h4>
+<p><a href="https://github.com/Kuadrant/policy-machinery">https://github.com/Kuadrant/policy-machinery</a></p>
+<p>Golang library for implementing policy controllers. Defines types and functions to build Directed Acyclic Graphs (DAG) to represent hierarchies of targetable resources and attached policies, calculate effective policies based on standard and custom merge strategies, etc. Includes helpers for applications based on Gateway API.</p>
+<h2 id="references">References</h2>
+<p><strong>Issues</strong></p>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/gateway-api/issues/611">Extensible Service Policy and Configuration</a></li>
+</ul>
+<p><strong>Docs</strong></p>
+<ul>
+<li><a href="https://docs.google.com/document/d/13fyptUtO9NV_ZAgkoJlfukcBf2PVGhsKWG37yLkppJo/edit?resourcekey=0-Urhtj9gBkGBkSL1gHgbWKw">Policy Attachment and Binding</a></li>
+</ul>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,989 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<link rel="canonical" type="text/html" href="/contributing/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Contributing | Kubernetes Gateway API</title>
+<meta name="description" content="How to get involved with the Gateway API project">
+<meta property="og:url" content="/contributing/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="Contributing">
+  <meta property="og:description" content="How to get involved with the Gateway API project">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Contributing">
+  <meta itemprop="description" content="How to get involved with the Gateway API project">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contributing">
+  <meta name="twitter:description" content="How to get involved with the Gateway API project">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/contributing/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/contributing/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Contributing</h1>
+<div class="lead">How to get involved with the Gateway API project</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-f6e5f4fbbb791e9197c80684e8481c44">How to Get Involved</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-30d1901c99e162c3576518a235d602a9">Developer Guide</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-a5f5e719136e808c450208c329801355">Documentation Style Guide</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-a1e1d2072933662c7bbaaffdd6133311">Enhancement Requests</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-373b20ad147ed1343fd883b9082b79c1">Release Cycle</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-78322858caff2b110c872d103178461f">Contributor Ladder</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-f6e5f4fbbb791e9197c80684e8481c44">1 - How to Get Involved</h1>
+    
+	<p>This page contains links to all of the meeting notes, design docs and related
+discussions around the APIs. If you're interested in working towards a formal
+role in the project, refer to the <a href="/contributing/contributor-ladder/">Contributor
+Ladder</a>.</p>
+<h2 id="feedback-and-questions">Feedback and Questions</h2>
+<p>For general feedback, questions or to share ideas please feel free to <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/new">create a
+new discussion</a>.</p>
+<h2 id="bug-reports">Bug Reports</h2>
+<p>Bug reports should be filed as <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new/choose">GitHub Issues</a> on this repo.</p>
+<p><strong>NOTE</strong>: If you're reporting a bug that applies to a specific implementation of
+Gateway API and not the API specification itself, please check our
+<a href="../implementations.md">implementations page</a> to find links to the repositories where
+you can get help with your specific implementation.</p>
+<h2 id="communications">Communications</h2>
+<p>Major discussions and notifications will be sent on the <a href="https://groups.google.com/a/kubernetes.io/g/sig-network">SIG-NETWORK mailing
+list</a>.</p>
+<p>We also have a <a href="https://kubernetes.slack.com/archives/CR0H13KGA">Slack channel (sig-network-gateway-api)</a> on k8s.io for day-to-day
+questions, discussions.</p>
+<h2 id="meetings">Meetings</h2>
+<p>Gateway API community meetings happen on alternating weeks:</p>
+<ul>
+<li><strong>Week A</strong>: Mondays at 3pm Pacific Time (23:00 UTC, <a href="http://www.thetimezoneconverter.com/?t=15:00&amp;tz=PT%20%28Pacific%20Time%29">convert to your timezone</a>)</li>
+<li><strong>Week B</strong>: Tuesdays at 8am Pacific Time (16:00 UTC, <a href="http://www.thetimezoneconverter.com/?t=08:00&amp;tz=PT%20%28Pacific%20Time%29">convert to your timezone</a>)</li>
+</ul>
+<p>Being the main meeting for Gateway API, the topics can vary here and often this
+is where new topics and ideas are discussed, including both ingress and service
+mesh use cases. Meetings will be moderated by the <a href="https://github.com/kubernetes-sigs/gateway-api/blob/main/OWNERS_ALIASES#L12">Gateway API maintainers</a>
+with notes taken by a volunteer.</p>
+<ul>
+<li><a href="https://zoom.us/j/441530404">Zoom link</a> (passcode in <a href="https://docs.google.com/document/d/1eg-YjOHaQ7UD28htdNxBR3zufebozXKyI28cl2E11tU/edit">meeting notes</a> doc)</li>
+<li><a href="https://calendar.google.com/calendar/u/0/r?cid=88fe1l3qfn2b6r11k8um5am76c@group.calendar.google.com">Add to your calendar</a></li>
+</ul>
+<p>The calendar includes <em>all</em> SIG Network meetings (which therefore includes all
+Gateway API meetings, in addition to other subgroup meetings).</p>
+<iframe
+  src="https://calendar.google.com/calendar/embed?src=88fe1l3qfn2b6r11k8um5am76c%40group.calendar.google.com"
+  style="border: 0" width="800" height="600" frameborder="0"
+  scrolling="no">
+</iframe>
+<h3 id="meeting-notes-and-recordings">Meeting Notes and Recordings</h3>
+<p>Meeting agendas and notes are maintained in the <a href="https://docs.google.com/document/d/1eg-YjOHaQ7UD28htdNxBR3zufebozXKyI28cl2E11tU/edit">meeting notes</a> doc. Feel free
+to add topics for discussion at an upcoming meeting.</p>
+<p>All meetings are recorded and automatically uploaded to the
+<a href="https://www.youtube.com/playlist?list=PL69nYSiGNLP1GgO7k02ipPGZUFpSzGaHH">Gateway API meetings YouTube playlist</a>.</p>
+<h4 id="early-meetings">Early Meetings</h4>
+<p>Some early community meetings were uploaded to a <a href="https://www.youtube.com/playlist?list=PL7KjrPTDcs4Xe6SZj-51WvBfufKf-la1O">separate YouTube
+playlist</a>, and then to the <a href="https://www.youtube.com/playlist?list=PL69nYSiGNLP2E8vmnqo5MwPOY25sDWIxb">SIG Network YouTube playlist</a>.</p>
+<p>Meeting notes for early <a href="/overview/mesh/gamma/">GAMMA</a> meetings focused on Gateway API for
+service mesh use cases can be found in a separate
+<a href="https://docs.google.com/document/d/1s5hQU0CB9ehjFukRmRHQ41f1FA8GX5_1Rv6nHW6NWAA/edit">meeting notes doc</a>.</p>
+<h4 id="initial-design-discussions">Initial Design Discussions</h4>
+<ul>
+<li><a href="https://docs.google.com/document/d/1l_SsVPLMBZ7lm_T4u7ZDBceTTUY71-iEQUPWeOdTAxM/preview">Kubecon 2019 San Diego: API evolution design discussion</a></li>
+<li><a href="https://docs.google.com/document/d/1AqBaxNX0uS0fb_fSpVL9c8TmaSP7RYkWO8U_SdJH67k/preview">SIG-NETWORK: Ingress Evolution Sync</a></li>
+<li><a href="https://docs.google.com/document/d/1n8AaDiPXyZHTosm1dscWhzpbcZklP3vd11fA6L6ajlY/preview">Kubecon 2019 Barcelona: SIG-NETWORK discussion (general topics, includes V2)</a></li>
+</ul>
+<h2 id="presentations-and-talks">Presentations and Talks</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Mar, 2024</td>
+          <td>Kubecon 2024 Paris: Configuring Your Service Mesh with Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=UMGRp0fGk3o">video</a></td>
+      </tr>
+      <tr>
+          <td>Mar, 2024</td>
+          <td>Kubecon 2024 Paris: Gateway API: Beyond GA</td>
+          <td><a href="https://www.youtube.com/watch?v=LITg6TvctjM">video</a></td>
+      </tr>
+      <tr>
+          <td>Mar, 2024</td>
+          <td>Kubecon 2024 Paris: Tutorial: Configuring Your Service Mesh with Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=UMGRp0fGk3o">video</a></td>
+      </tr>
+      <tr>
+          <td>Oct, 2023</td>
+          <td>Kubecon 2023 Chicago: Gateway API: The Most Collaborative API in Kubernetes History Is GA</td>
+          <td><a href="https://www.youtube.com/watch?v=V3Vu_FWb4l4">video</a></td>
+      </tr>
+      <tr>
+          <td>May, 2023</td>
+          <td>Kubecon 2023 Amsterdam: Emissary-Ingress: Self-Service APIs and the Kubernetes Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=piDYmZObh_M">video</a></td>
+      </tr>
+      <tr>
+          <td>May, 2023</td>
+          <td>Kubecon 2023 Amsterdam: Exiting Ingress 201: A Primer on Extension Mechanisms in Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=7P55G8GsYRs:">video</a></td>
+      </tr>
+      <tr>
+          <td>Oct, 2022</td>
+          <td>Kubecon 2022 Detroit: One API To Rule Them All? What the Gateway API Means For Service Meshes</td>
+          <td><a href="https://www.youtube.com/watch?v=vYGP5XdP2TA">video</a></td>
+      </tr>
+      <tr>
+          <td>Oct, 2022</td>
+          <td>Kubecon 2022 Detroit: Exiting Ingress With the Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=sTQv4QOC-TI">video</a></td>
+      </tr>
+      <tr>
+          <td>Oct, 2022</td>
+          <td>Kubecon 2022 Detroit: Flagger, Linkerd, And Gateway API: Oh My!</td>
+          <td><a href="https://www.youtube.com/watch?v=9Ag45POgnKw">video</a></td>
+      </tr>
+      <tr>
+          <td>May, 2022</td>
+          <td>Kubecon 2022 Valencia: Gateway API: Beta to GA</td>
+          <td><a href="https://www.youtube.com/watch?v=YPiuicxC8UU">video</a></td>
+      </tr>
+      <tr>
+          <td>May, 2021</td>
+          <td>Kubecon 2021 Virtual: Google Cloud - Multi-cluster, Blue-green Traffic Splitting with the Gateway API</td>
+          <td><a href="https://www.youtube.com/watch?v=vs8YrjdRJJU">video</a></td>
+      </tr>
+      <tr>
+          <td>May, 2021</td>
+          <td>Kubecon 2021 Virtual: Gateway API: A New Set of Kubernetes APIs for Advanced Traffic Routing</td>
+          <td><a href="https://www.youtube.com/watch?v=lCRuzWFJBO0">video</a></td>
+      </tr>
+      <tr>
+          <td>November, 2019</td>
+          <td>Kubecon 2019 San Diego: Evolving the Kubernetes Ingress APIs to GA and Beyond</td>
+          <td><a href="https://www.youtube.com/watch?v=cduG0FrjdJA">video</a></td>
+      </tr>
+      <tr>
+          <td>November, 2019</td>
+          <td>Kubecon 2019 San Diego: SIG-NETWORK Service/Ingress Evolution Discussion</td>
+          <td><a href="https://docs.google.com/presentation/d/1s0scrQCCFLJMVjjGXGQHoV6_4OIZkaIGjwj4wpUUJ7M">slides</a></td>
+      </tr>
+      <tr>
+          <td>May, 2019</td>
+          <td><a href="https://kccnceu19.sched.com/event/MPb6/ingress-v2-and-multicluster-services-rohit-ramkumar-bowei-du-google">Kubecon 2019 Barcelona: Ingress V2 and Multicluster Services</a></td>
+          <td><a href="https://static.sched.com/hosted_files/kccnceu19/97/%5Bwith%20speaker%20notes%5D%20Kubecon%20EU%202019_%20Ingress%20V2%20%26%20Multi-Cluster%20Services.pdf">slides</a>, <a href="https://www.youtube.com/watch?v=Ne9UJL6irXY&amp;t=1s">video</a></td>
+      </tr>
+      <tr>
+          <td>March, 2018</td>
+          <td>SIG-NETWORK: Ingress user survey</td>
+          <td><a href="https://github.com/bowei/k8s-ingress-survey-2018">data</a>, <a href="https://github.com/bowei/k8s-ingress-survey-2018/blob/master/survey.pdf">slides</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="code-of-conduct">Code of conduct</h2>
+<p>Participation in the Kubernetes community is governed by the <a href="https://github.com/kubernetes/community/blob/master/code-of-conduct.md">Kubernetes Code of
+Conduct</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-30d1901c99e162c3576518a235d602a9">2 - Developer Guide</h1>
+    
+	<h2 id="project-management">Project Management</h2>
+<p>We are using the GitHub issues and project dashboard to manage the list of TODOs
+for this project:</p>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/gateway-api/issues">Open issues</a></li>
+<li><a href="https://github.com/kubernetes-sigs/gateway-api/projects">Project dashboard</a></li>
+</ul>
+<p>Issues labeled <code>good first issue</code> and <code>help wanted</code> are especially good for a
+first contribution.</p>
+<p>We use <a href="https://github.com/kubernetes-sigs/gateway-api/milestones">milestones</a> to track our progress towards releases.
+These milestones are generally labeled according to the <a href="https://semver.org/">semver</a>
+release version tag that they represent, meaning that in general we only focus
+on the next release in the sequence until it is closed and the release is
+finished. Only Gateway API maintainers are able to create and attach issues to
+milestones.</p>
+<p>We use <a href="https://github.com/kubernetes-sigs/gateway-api/labels?q=priority">priority labels</a> to help indicate the timing importance of
+resolving an issue, or whether an issue needs more support from its creator or
+the community to be prioritized. These labels can be set with the <a href="https://prow.k8s.io/command-help?repo=kubernetes-sigs%2Fgateway-api">/priority
+command in PR and issue comments</a>. For example,
+<code>/priority important-soon</code>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you start developing with Gateway API, we'd recommend having the
+following prerequisites installed:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kind">KinD</a>: This is a standalone local Kubernetes cluster. At least one container runtime is required.</li>
+<li><a href="https://docs.docker.com/engine/install/">Docker</a>: This is a prerequisite for running KinD. While you can opt for alternatives like <a href="https://podman.io/docs/installation">Podman</a>, please be aware that doing so is at your own risk.</li>
+<li><a href="https://github.com/docker/buildx">BuildX</a>: Prerequisite for <code>make verify</code> to run.</li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Kubectl</a>: This is the Kubernetes command-line tool.</li>
+<li><a href="https://golang.org/doc/install">Go</a>: It is the main programming language in this project. Please check this <a href="https://github.com/kubernetes-sigs/gateway-api/blob/main/go.mod#L3">file</a> to find out the least <code>Go</code> version otherwise you might encounter compilation errors.</li>
+<li><a href="https://metacpan.org/pod/Digest::SHA">Digest::SHA</a>: It is a required dependency. You can obtain it by installing the <code>perl-Digest-SHA</code> package.</li>
+</ul>
+<h2 id="development-building-deploying-testing-and-verifying">Development: Building, Deploying, Testing, and Verifying</h2>
+<p>Clone the repo:</p>
+<pre tabindex="0"><code>mkdir -p $GOPATH/src/sigs.k8s.io
+cd $GOPATH/src/sigs.k8s.io
+git clone https://github.com/kubernetes-sigs/gateway-api
+cd gateway-api
+</code></pre><p>This project works with Go modules; you can choose to setup your environment
+outside $GOPATH as well.</p>
+<h3 id="build-the-code">Build the Code</h3>
+<p>The project uses <code>make</code> to drive the build. <code>make</code> will clean up previously generated code, run code generators, and
+run static analysis against the code and generate Kubernetes CRDs. You can kick
+off an overall build from the top-level makefile:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>make generate
+</span></span></code></pre></div><h4 id="add-experimental-fields">Add Experimental Fields</h4>
+<p>All additions to the API must start in the Experimental release channel.
+Experimental fields must be marked with the <code>&lt;gateway:experimental&gt;</code> annotation
+in Go type definitions. Gateway API CRD generation will only include these
+fields in the experimental set of CRDs.</p>
+<p>If experimental fields are removed or renamed, the original field name should be
+removed from the go struct, with a tombstone comment ensuring the field name will not be reused.</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// DeprecatedField is tombstoned to show why 16 is reserved protobuf tag.</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// DeprecatedField string `json:&#34;deprecatedField,omitempty&#34; protobuf:&#34;bytes,16,opt,name=deprecatedField&#34;`</span>
+</span></span></code></pre></div><h3 id="deploy-the-code">Deploy the Code</h3>
+<p>Use the following command to deploy CRDs to the preexisting <code>Kind</code> cluster.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>make crd
+</span></span></code></pre></div><p>Use the following command to check if the CRDs have been deployed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get crds
+</span></span></code></pre></div><h3 id="test-manually">Test Manually</h3>
+<p>Install a <a href="../implementations.md">gateway API implementation</a> and test out the change. Take a look at some
+<a href="/guides/">examples</a>.</p>
+<h3 id="verify">Verify</h3>
+<p>Make sure you run the static analysis over the repo before submitting your
+changes. The <a href="https://github.com/kubernetes/test-infra/tree/master/config/jobs/kubernetes-sigs/gateway-api">Prow presubmit</a> will not let your change merge if
+verification fails.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>make verify
+</span></span></code></pre></div><h2 id="post-development-pull-request-documentation-and-more-tests">Post-Development: Pull Request, Documentation, and more Tests</h2>
+<h3 id="submit-a-pull-request">Submit a Pull Request</h3>
+<p>Gateway API follows a similar pull request process as
+<a href="https://github.com/kubernetes/community/blob/master/contributors/guide/pull-requests.md">Kubernetes</a>.
+Merging a pull request requires the following steps to be completed before the
+pull request will be merged automatically.</p>
+<ul>
+<li><a href="https://git.k8s.io/community/CLA.md">Sign the CLA</a> (prerequisite)</li>
+<li><a href="https://help.github.com/articles/about-pull-requests/">Open a pull request</a></li>
+<li>Pass <a href="/contributing/devguide/#verify">verification</a> tests</li>
+<li>Get all necessary approvals from reviewers and code owners</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<p>The site documentation is written in Markdown and compiled with
+<a href="https://www.mkdocs.org/">mkdocs</a>. Each PR will automatically include a
+<a href="https://netlify.com/">Netlify</a> deploy preview. When new code merges, it will
+automatically be deployed with Netlify to
+<a href="">gateway-api.sigs.k8s.io</a>. If you want to
+manually preview docs changes locally, you can install mkdocs and run:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> make docs
+</span></span></code></pre></div><p>To make it easier to use the right version of mkdocs, you can build and serve the docs in a container:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ make build-docs
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>INFO    -  Documentation built in 6.73 seconds
+</span></span><span style="display:flex;"><span>$ make live-docs
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>INFO    -  <span style="color:#666">[</span>15:16:59<span style="color:#666">]</span> Serving on http://0.0.0.0:3000/
+</span></span></code></pre></div><p>You can then view the docs at http://localhost:3000/.</p>
+<p>For more information on how documentation should be written, refer to our
+<a href="/contributing/style-guide/">Documentation Style Guide</a>.</p>
+<h3 id="conformance-tests">Conformance Tests</h3>
+<p>To develop or run conformance tests, refer to the <a href="/overview/concepts/conformance/#running-tests">Conformance Test
+Documentation</a>.</p>
+<h3 id="adding-new-tools">Adding new tools</h3>
+<p>The tools used to build and manage this project are self-contained on their own
+directory at the <code>tools</code> directory.</p>
+<p>To add a new tool, use <code>go get -tool -modfile tools/go.mod the.tool.repo/toolname@version</code>
+and tidy the specific module with <code>go mod tidy -modfile=tools/go.mod</code>.</p>
+<p>To execute the new tool, use <code>go tool -modfile=tools/go.mod toolname</code>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a5f5e719136e808c450208c329801355">3 - Documentation Style Guide</h1>
+    
+	<p>Gateway API aims to adhere to the upstream <a href="https://kubernetes.io/docs/contribute/style/style-guide/">Kubernetes Documentation Style
+Guide</a> wherever
+possible. This guide should be considered an extension of that guide. Whenever
+there is conflicting guidance, the information contained in this guide has
+precedence for Gateway API documentation.</p>
+<h2 id="name-of-the-project">Name of the Project</h2>
+<p>This project is named &quot;Gateway API&quot;, not &quot;the Gateway API&quot;. As such, the only
+time it is acceptable to use &quot;the Gateway API&quot; is when it is part of a broader
+term, such as &quot;the Gateway API maintainers&quot;.</p>
+<h2 id="callouts">Callouts</h2>
+<p>To implement callouts in documentation, we make use of Hugo shortcodes
+such as <code>{{&lt; note &gt;}}</code> and <code>{{&lt; warning &gt;}}</code>.</p>
+<h3 id="release-channels">Release Channels</h3>
+<p>Wherever possible, we try to clearly state which release channel a resource or
+feature is currently included in, and which version it was introduced to that
+channel. To accomplish that, we use the <code>channel-version</code> shortcode:</p>
+<details class="alert alert-success channel-version channel-standard" open>
+<summary class="alert-heading">Standard Channel since v0.5.0</summary>The <code>HTTPRoute</code> resource is GA and has been part of the Standard Channel
+since <code>v0.5.0</code>. For more information on release channels, refer to our
+<a href="/overview/concepts/versioning/">versioning guide</a>.</details>
+
+<details class="alert alert-example channel-version channel-experimental" open>
+<summary class="alert-heading">Experimental Channel since v0.3.0</summary>The <code>TLSRoute</code> resource is Alpha and has been part of the Experimental
+Channel since <code>v0.3.0</code>. For more information on release channels, refer to
+our <a href="/overview/concepts/versioning/">versioning guide</a>.</details>
+
+<h2 id="diagrams">Diagrams</h2>
+<p>In many cases, diagrams are the best way to explain a concept. Unfortunately
+they can be hard to maintain and update. To ensure diagrams are more
+maintainable, we strongly recommend using the built-in support for
+<a href="https://mermaid.js.org/">Mermaid</a> diagrams. Here is a simple example of a
+diagram:</p>
+<div class="mermaid">flowchart TD
+    Start --> Stop
+</div>
+<p>Whenever it's not practical to use Mermaid diagrams, we ask that you link to
+a source that enables anyone to make a copy and edit as needed.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a1e1d2072933662c7bbaaffdd6133311">4 - Enhancement Requests</h1>
+    
+	<p>Inspired by <a href="https://github.com/kubernetes/enhancements">Kubernetes enhancements</a>, Gateway API provides a process for
+introducing new functionality or considerable changes to the project. The
+enhancement process will evolve over time as the project matures.</p>
+<p>Enhancements provides the basis of a community roadmap. Enhancements may be
+filed by anyone, but require approval from a maintainer to accept the
+enhancement into the project.</p>
+<h2 id="what-is-considered-an-enhancement">What is Considered an Enhancement?</h2>
+<p>An enhancement is generally anything that:</p>
+<ul>
+<li>Introduces changes to an API.</li>
+<li>Needs significant effort to implement.</li>
+<li>Requires documentation to utilize.</li>
+<li>Impacts how a system is operated including addition or removal of significant
+capabilities.</li>
+</ul>
+<p>It is unlikely to require an enhancement if it:</p>
+<ul>
+<li>Fixes a bug</li>
+<li>Adds more testing</li>
+<li>Code refactors</li>
+</ul>
+<p>If you're unsure the proposed work requires an enhancement, file an issue
+and ask.</p>
+<h2 id="new-enhancement-process">New Enhancement Process</h2>
+<p>The process for creating new enhancement proposals is documented on the
+<a href="/geps/overview/">GEP Overview</a> page. Please see that page for all the details about how
+to log a new GEP, and the process it will follow on its journey towards
+Completed status.</p>
+<p>A <strong>documented</strong> discussion of some form <strong>must</strong> exist prior to submitting a
+request for enhancement if that enhancement is non-trivial (which we will define
+as either: <em>implicates changes to the API specification</em>
+OR <em>has some kind of end-user impact</em>).</p>
+<p>Please use our <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/new/choose">GitHub Discussions</a> forum as the initial place to
+start, and feel free to bring that discussion up for synchronous conversation in
+one of our <a href="/contributing/#meetings">community meetings</a>. If the created request doesn't
+include reference to a discussion and/or recordings of discussion in our
+community meetings, please note that it <em>may</em> get closed with a request to
+create an initial discussion first.</p>
+<h2 id="when-are-enhancements-accepted">When are Enhancements Accepted?</h2>
+<p>Gateway API has a predictable release cycle that includes multiple phases. New
+enhancements are only considered in the early phases of that release cycle while
+the scope of a release is being determined. For more information, refer to our
+<a href="/contributing/release-cycle/">release cycle documentation</a>.</p>
+<h2 id="why-are-enhancements-tracked">Why are Enhancements Tracked</h2>
+<p>As the project evolves, it's important that the community understands how the
+enhancement affects the project.  Individually, it's hard to understand how all
+parts of the system interact, but as a community we can work together to build
+the right design and approach before getting too deep into an implementation.</p>
+<h2 id="when-to-comment-on-an-enhancement-issue">When to Comment on an Enhancement Issue</h2>
+<p>Please comment on the enhancement issue to:</p>
+<ul>
+<li>Request a review or clarification on the process</li>
+<li>Update status of the enhancement effort</li>
+<li>Link to relevant issues in other repos</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-373b20ad147ed1343fd883b9082b79c1">5 - Release Cycle</h1>
+    
+	<p>In Gateway API 1.2+, we will be following a more structured and predictable
+release cycle that is inspired by the <a href="https://kubernetes.io/releases/release/">upstream Kubernetes release
+cycle</a>.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>Ensure a predictable release schedule that enables 2-3 releases a year</li>
+<li>Minimize the amount of time required from upstream API approvers and make it
+more predictable</li>
+<li>Avoid last minute additions to the scope of a release</li>
+<li>Prevent experimental channel from growing by requiring GEPs to leave or
+graduate before new ones can be added</li>
+<li>Ensure that SIG-Network TLs are in the loop throughout the process, and have a
+meaningful opportunity to review changes before a release</li>
+<li>Provide more advance notice to everyone (SIG-Network TLs, Docs Reviewers,
+Implementations, etc)</li>
+</ul>
+<h2 id="phases">Phases</h2>
+<h3 id="1-scoping">1. Scoping</h3>
+<p><strong>Timeline:</strong> 4-6 weeks</p>
+<p>In this phase, the Gateway API maintainers and community will be responsible
+for determining the set of features we want to include in the release. Although
+we can always lessen scope after this point, we will avoid expanding the scope
+of the release at a later point unless it is absolutely necessary (critical flaw
+in design, security issue, etc).</p>
+<p>A key guideline in this phase is that we want to avoid expanding the size of the
+Experimental release channel. That means that each new experimental feature
+should be accompanied by the graduation or removal of an enhancement that is
+already in the Experimental channel.</p>
+<p>Note that in many cases, this scoping work will require some initial work on
+GEPs to determine their viability before committing to including them in a
+release.</p>
+<h3 id="2-gep-iteration-and-review">2. GEP Iteration and Review</h3>
+<p><strong>Timeline:</strong> 5-7 weeks</p>
+<p>In this phase, the Gateway API community will work to update GEPs and meet
+graduation criteria for each feature that has been deemed in scope for the
+release cycle. As we're working on new features, we will bring these discussions
+to the broader SIG-Network meetings for feedback throughout our development
+process. If a GEP has not merged with the target status by the end of this
+phase, it will be pulled from the scope of the release.</p>
+<h3 id="3-api-refinement-and-documentation">3. API Refinement and Documentation</h3>
+<p><strong>Timeline:</strong> 3-5 weeks</p>
+<p>This phase is entirely focused on translating the concepts defined in the GEP
+(previous phase) into both API specification and documentation. This offers one
+final chance for the Gateway API community to refine the details that have
+already been agreed to in the GEP, but any modifications at this stage should be
+minor. If either documentation or API Spec have not merged by the end of this
+phase, this enhancement will be pulled from the scope of the release.</p>
+<h3 id="4-sig-network-review-and-release-candidates">4. SIG-Network Review and Release Candidates</h3>
+<p><strong>Timeline:</strong> 2-4 weeks</p>
+<p>This phase officially begins with the review session scheduled with SIG-Network
+TLs several weeks earlier in phase 3. In that review session, Gateway API
+maintainers and SIG-Network TLs should reach an agreement on the following:</p>
+<ol>
+<li>Any blockers for an initial release candidate</li>
+<li>How much time, if any, SIG-Network TLs want to review any changes in this
+release</li>
+<li>A time after which we can assume lazy consensus and move on with the final
+release of the API</li>
+</ol>
+<p>In general, we expect each minor release to be preceded by two release
+candidates. These release candidates will enable implementations to test against
+our release, work out any bugs, and gather early feedback on the viability of
+the release.</p>
+<h2 id="what-happens-when-geps-are-unable-to-meet-a-timeline">What happens when GEPs are unable to meet a timeline?</h2>
+<p>There will be situations where the above phases and timelines can't be met by
+a GEP for one reason or another. In special circumstances (particularly, when it
+is is anticipated that only a little bit more time is needed to meet the goal) a
+time extension <em>might</em> be granted if requested by the GEP authors, at the
+discretion of the maintainers.</p>
+<p>In the normal case however, when a GEP misses the timeline for a phase it will
+be pulled out of the release to maximize bandwidth and reduce disruptions to the
+overall release timeline. In such a case, the Gateway API maintainers will stop
+progression and set the status of the GEP to a halted status (such as <code>Deferred</code>
+or <code>Declined</code>) with a note on the GEP explaining why it reached this status and
+what it would take to get it re-approved for work in a later iteration.</p>
+<h2 id="contributions-welcome-in-each-phase">Contributions Welcome in Each Phase</h2>
+<p>The following table illustrates when different kinds of contributions will be
+welcome. There will be some exceptions to this, but it should be useful as an
+overall guideline:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th style="text-align: center">1. Scope</th>
+          <th style="text-align: center">2. GEP</th>
+          <th style="text-align: center">3. API</th>
+          <th style="text-align: center">4. Review</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>New GEPs</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>Major GEP Updates</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>GEP Refinement</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>API Spec Additions</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>New Conformance Tests</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>Bug Fixes</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+      <tr>
+          <td>Documentation</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+      <tr>
+          <td>Review</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="timeline">Timeline</h2>
+<p>Given the above, we expect each release to take 14-22 weeks (4-5 months). At
+least initially, Gateway API maintainers will set end dates for each phase as we
+are beginning the phase. In future releases, we may choose to set all dates for
+the release in advance.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-78322858caff2b110c872d103178461f">6 - Contributor Ladder</h1>
+    
+	<p>Within the Kubernetes community, the concept of a contributor ladder has been
+developed to define how individuals can earn formal roles within the project.
+The Gateway API contributor ladder largely follows the <a href="https://github.com/kubernetes/community/blob/master/community-membership.md">roles defined by the
+broader Kubernetes
+community</a>,
+though there are some aspects that are unique to this community.</p>
+<h2 id="goals">Goals</h2>
+<p>We hope that this doc will provide an initial step towards the following goals:</p>
+<ul>
+<li>Ensure the long term health of the Gateway API community</li>
+<li>Encourage new contributors to work towards formal roles and responsibilities
+in the project</li>
+<li>Clearly define the path towards leadership roles</li>
+<li>Develop a strong leadership pipeline so we have great candidates to fill
+project leadership roles</li>
+</ul>
+<h2 id="scope">Scope</h2>
+<p>The following repositories are covered by this doc:</p>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/gateway-api">kubernetes-sigs/gateway-api</a></li>
+<li><a href="https://github.com/kubernetes-sigs/ingress2gateway">kubernetes-sigs/ingress2gateway</a></li>
+<li><a href="https://github.com/kubernetes-sigs/gwctl">kubernetes-sigs/gwctl</a></li>
+<li><a href="https://github.com/kubernetes-sigs/blixt">kubernetes-sigs/blixt</a></li>
+</ul>
+<p>Within each of these projects, there are opportunities to become an approver or
+reviewer for either the entire project, or a subset of that project. For
+example, you could become a reviewer or approver focused on just docs, GEPs, API
+changes, or conformance tests.</p>
+<h2 id="general-guidelines">General Guidelines</h2>
+<h3 id="1-everyone-is-welcome">1. Everyone is welcome</h3>
+<p>We appreciate all contributions. You don't need to have a formal role in the project to make or review pull requests, and help with issues or discussions. Accepting a formal role within the project is entirely optional.</p>
+<h3 id="2-these-roles-require-continued-contributions">2. These roles require continued contributions</h3>
+<p>Applying for one of the roles defined above should only be done if you intend to
+continue to contribute at a level that would merit that role. If for any reason
+you are unable to continue in one of the roles above, please resign. Members
+with an extended period away from the project with no activity will be removed
+from the Kubernetes GitHub Organizations and will be required to go through the
+org membership process again after re-familiarizing themselves with the current
+state.</p>
+<h3 id="3-don-t-merge-without-consensus">3. Don't merge without consensus</h3>
+<p>If you have reason to believe that a change may be contentious, please wait for
+additional perspectives from others before merging any PRs. Even if you have
+access to merge a PR, it doesn't mean you should. Although we can't have PRs
+blocked indefinitely, we need to make sure everyone has had a chance to present
+their perspective.</p>
+<h3 id="4-start-a-discussion">4. Start a discussion</h3>
+<p>If you're interested in working towards one of these roles, please reach out to
+a Gateway API maintainer on Slack.</p>
+<h2 id="contributor-ladder">Contributor Ladder</h2>
+<p>The Gateway API contributor ladder has the following steps:</p>
+<ol>
+<li>Member</li>
+<li>Reviewer</li>
+<li>Approver</li>
+<li>Maintainer</li>
+</ol>
+<p>This is also a GAMMA-specific leadership role that does not fit as cleanly on
+this ladder. All of these roles will be defined in more detail below.</p>
+<h2 id="member-reviewer-and-approver">Member, Reviewer, and Approver</h2>
+<p>The first steps on the contributor ladder are already <a href="https://github.com/kubernetes/community/blob/master/community-membership.md#community-membership">clearly defined in the
+upstream Kubernetes
+Community</a>.
+Gateway API follows those guidelines along with the rest of the Kubernetes
+community. Within Gateway API, there are a variety of areas one can become a
+reviewer or approver, this includes:</p>
+<ul>
+<li>Conformance</li>
+<li>Documentation</li>
+<li>GEPs</li>
+</ul>
+<h2 id="maintainers-and-mesh-leads">Maintainers and Mesh Leads</h2>
+<p>The final steps on the contributor ladder represent large overall leadership
+roles within the project as a whole. The spaces available for these roles are
+limited (generally 3-4 people in each role is ideal). Wherever possible, we try
+to ensure that different companies are represented in these roles.</p>
+<h3 id="maintainers">Maintainers</h3>
+<p>Gateway API Maintainers are known as <a href="https://github.com/kubernetes/community/blob/master/community-membership.md#subproject-owner">Subproject
+Owners</a>
+within the Kubernetes community. To become a Gateway API Maintainer, the most
+important things we expect are:</p>
+<ul>
+<li>Long term, sustained contributions to Gateway API for at least 6 months</li>
+<li>Deep understanding of technical goals and direction of the project</li>
+<li>Successfully authored and led significant enhancement proposals</li>
+<li>Approver for at least 3 months</li>
+<li>Ability to lead community meetings</li>
+</ul>
+<p>In addition to all of the expectations described above, we expect maintainers to
+set the technical direction and goals for the project. This role is critical to
+the health of the project, maintainers should mentor new approvers and
+reviewers, and ensure that there are healthy processes in place for discussion
+and decision making. Finally, maintainers are ultimately responsible for
+releasing new versions of the API.</p>
+<h2 id="mesh-leads">Mesh Leads</h2>
+<p>The concept of Mesh Leads does not have a perfect parallel on the upstream
+Kubernetes community ladder. They are essentially Subproject Owners, but for the
+GAMMA (Gateway API for Mesh Management and Administration, which also known as Gateway for Mesh) initiative, which is a major initiative within Gateway API.</p>
+<p>To become a Mesh lead, the most important thing we expect are:</p>
+<ul>
+<li>Significant experience with Service Mesh implementation(s)</li>
+<li>Deep understanding of technical goals and direction of the project</li>
+<li>Long term, sustained contributions to the GAMMA initiative for at least 6 months</li>
+<li>Ability to lead community meetings</li>
+</ul>
+<p>In addition to all of the expectations described above, we expect Mesh Leads to
+set the technical direction and goals for the GAMMA initiative. They should
+ensure that there are healthy processes in place for discussion and decision
+making and that the release goals and milestones are clearly defined.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

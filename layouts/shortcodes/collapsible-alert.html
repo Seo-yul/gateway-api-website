@@ -1,0 +1,12 @@
+{{- $_hugo_config := `{ "version": 1 }` -}}
+{{- $color := .Get "color" | default "primary" -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $open := .Get "open" | default "" -}}
+<details class="alert alert-{{ $color }}"{{ if eq $open "true" }} open{{ end }}>
+{{- with $title -}}<summary class="alert-heading">{{- . | safeHTML -}}</summary>{{- end -}}
+{{- if eq .Page.File.Ext "md" -}}
+    {{- .Inner | markdownify -}}
+{{- else -}}
+    {{- .Inner | htmlUnescape | safeHTML -}}
+{{- end -}}
+</details>

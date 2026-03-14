@@ -1,0 +1,101 @@
+# i18n strings for the Korean translation of Gateway API docs.
+# NOTE: Please keep the entries in alphabetical order when editing
+
+[caution]
+other = "주의:"
+
+[channel_experimental]
+other = "실험 채널"
+
+[channel_since]
+other = "부터"
+
+[channel_standard]
+other = "표준 채널"
+
+[danger]
+other = "위험:"
+
+[docs_label_browse]
+other = "문서 둘러보기"
+
+[docs_label_contributors]
+other = "컨트리뷰터"
+
+[example]
+other = "실험:"
+
+[error_404_were_you_looking_for]
+other = "무엇과 관련된 정보를 찾으시나요?"
+
+[feedback_heading]
+other = "피드백"
+
+[info]
+other = "정보:"
+
+[feedback_no]
+other = "아니요"
+
+[feedback_question]
+other = "이 페이지가 도움이 되었나요?"
+
+[feedback_yes]
+other = "네"
+
+[layouts_docs_partials_feedback_improvement]
+other = "개선 제안이 가능합니다."
+
+[layouts_docs_partials_feedback_issue]
+other = "원한다면 GitHub 리포지터리에 이슈를 열어서"
+
+[layouts_docs_partials_feedback_or]
+other = "또는"
+
+[layouts_docs_partials_feedback_problem]
+other = "문제 리포트"
+
+[layouts_docs_partials_feedback_thanks]
+other = "피드백 감사합니다. Gateway API 사용에 대해 질문이 있다면, Kubernetes Slack의 #sig-network-gateway-api 채널에서 질문하세요."
+
+[layouts_docs_search_fetching]
+other = "결과를 가져오는 중.."
+
+[main_by]
+other = ", 다음 변경에 의해서:"
+
+[main_contribute]
+other = "기여하기"
+
+[main_github_view_on]
+other = "GitHub에서 보기"
+
+[main_page_history]
+other = "페이지 변경 이력"
+
+[main_page_last_modified_on]
+other = "최종 수정일시"
+
+[main_read_more]
+other = "더 읽기"
+
+[note]
+other = "참고:"
+
+[post_create_issue]
+other = "이슈 생성"
+
+[seealso_heading]
+other = "더 보기"
+
+[success]
+other = "표준:"
+
+[ui_search]
+other = "검색하기"
+
+[warning]
+other = "경고:"
+
+[whatsnext_heading]
+other = "다음 내용"

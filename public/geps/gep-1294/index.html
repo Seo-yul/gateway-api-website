@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>GEP-1294: xRoutes Mesh Binding | Kubernetes Gateway API</title>
+<meta name="description" content="GEP-1294: xRoutes Mesh Binding (Standard)">
+<meta property="og:url" content="/geps/gep-1294/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="GEP-1294: xRoutes Mesh Binding">
+  <meta property="og:description" content="GEP-1294: xRoutes Mesh Binding (Standard)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="geps">
+
+  <meta itemprop="name" content="GEP-1294: xRoutes Mesh Binding">
+  <meta itemprop="description" content="GEP-1294: xRoutes Mesh Binding (Standard)">
+  <meta itemprop="wordCount" content="4493">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GEP-1294: xRoutes Mesh Binding">
+  <meta name="twitter:description" content="GEP-1294: xRoutes Mesh Binding (Standard)">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/gep-1294/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-geps-gep-1294").addClass("active"); 
+    $("#td-section-nav #m-geps-gep-1294-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-geps-gep-1294").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-geps-gep-1294-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-geps-gep-1294-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/">한국어 (Korean)</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-li">
+  <a href="/geps/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-geps"><span class="">Enhancements</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-overview-li">
+  <input type="checkbox" id="m-geps-overview-check" checked/>
+  <label for="m-geps-overview-check"><a href="/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-overview"><span class="">Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-list-li">
+  <input type="checkbox" id="m-geps-list-check" checked/>
+  <label for="m-geps-list-check"><a href="/geps/list/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-list"><span class="">List</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-by-state-li">
+  <input type="checkbox" id="m-geps-by-state-check" checked/>
+  <label for="m-geps-by-state-check"><a href="/geps/by-state/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-geps-by-state"><span class="">By State</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-standard-li">
+  <input type="checkbox" id="m-geps-by-state-standard-check" checked/>
+  <label for="m-geps-by-state-standard-check"><a href="/geps/by-state/standard/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-standard"><span class="">Standard</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-memorandum-li">
+  <input type="checkbox" id="m-geps-by-state-memorandum-check" checked/>
+  <label for="m-geps-by-state-memorandum-check"><a href="/geps/by-state/memorandum/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-memorandum"><span class="">Memorandum</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-experimental-li">
+  <input type="checkbox" id="m-geps-by-state-experimental-check" checked/>
+  <label for="m-geps-by-state-experimental-check"><a href="/geps/by-state/experimental/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-experimental"><span class="">Experimental</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-implementable-li">
+  <input type="checkbox" id="m-geps-by-state-implementable-check" checked/>
+  <label for="m-geps-by-state-implementable-check"><a href="/geps/by-state/implementable/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-implementable"><span class="">Implementable</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-provisional-li">
+  <input type="checkbox" id="m-geps-by-state-provisional-check" checked/>
+  <label for="m-geps-by-state-provisional-check"><a href="/geps/by-state/provisional/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-provisional"><span class="">Provisional</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/en/geps/gep-1294/index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/en/geps/gep-1294/index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/en/geps/gep-1294/index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=GEP-1294:%20xRoutes%20Mesh%20Binding" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a id="print" href="/geps/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#personas">Personas</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#non-goals">Non-Goals</a></li>
+    <li><a href="#implementation-details-and-constraints">Implementation Details and Constraints</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#why-service">Why Service?</a></li>
+      </ul>
+    </li>
+    <li><a href="#api">API</a>
+      <ul>
+        <li><a href="#route-presence">Route presence</a></li>
+        <li><a href="#allowed-service-types">Allowed service types</a></li>
+        <li><a href="#parentref-conformance-levels"><code>parentRef</code> Conformance Levels</a></li>
+        <li><a href="#route-types">Route types</a></li>
+        <li><a href="#ports">Ports</a></li>
+        <li><a href="#hostnames-field"><code>hostnames</code> field</a></li>
+        <li><a href="#namespace-boundaries">Namespace boundaries</a></li>
+        <li><a href="#multiple-routes-for-a-service">Multiple routes for a Service</a></li>
+        <li><a href="#drawbacks">Drawbacks</a></li>
+      </ul>
+    </li>
+    <li><a href="#alternatives">Alternatives</a>
+      <ul>
+        <li><a href="#new-meshservice-or-httpservice-virtualservice-servicebinding-resource-as-parentref">New <code>MeshService</code> (or <code>HttpService</code>, <code>VirtualService</code>, <code>ServiceBinding</code>) resource as <code>parentRef</code></a></li>
+        <li><a href="#mesh-resource-as-parentref"><code>Mesh</code> resource as <code>parentRef</code></a></li>
+        <li><a href="#new-field-on-httproute-for-service-binding">New field on <code>HTTPRoute</code> for <code>Service</code> binding</a></li>
+        <li><a href="#gateway-resource-with-class-mesh-as-parentref"><code>Gateway</code> resource with <code>class: mesh</code> as <code>parentRef</code></a></li>
+        <li><a href="#serviceprojection-resource-as-parentref-and-backendrefs"><code>ServiceProjection</code> resource as <code>parentRef</code> and <code>backendRefs</code></a></li>
+        <li><a href="#implicit-backendref">Implicit backendRef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/geps/">Enhancements</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/geps/gep-1294/" aria-disabled="true" class="btn-link disabled">GEP-1294: xRoutes Mesh Binding</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>GEP-1294: xRoutes Mesh Binding</h1>
+	<div class="lead">GEP-1294: xRoutes Mesh Binding (Standard)</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<ul>
+<li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1294">#1294</a></li>
+<li>Status: Standard</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Similar to how <code>xRoutes</code> bind to <code>Gateways</code> and manage North/South traffic flows in Gateway API’s ingress use-case, it would be natural to adopt a similar model for traffic routing concerns in service mesh deployments. The purpose of this GEP is to add a mechanism to the Gateway API spec for the purpose of associating the various <code>xRoute</code> types to a service mesh and offering a model for service owners to manage traffic splitting configurations.</p>
+<p>This GEP is intended to establish an implementable, but experimental, baseline for supporting basic service mesh traffic routing functionality through the Gateway API spec.</p>
+<h2 id="personas">Personas</h2>
+<p>This GEP uses the <a href="/overview/concepts/security/#roles-and-personas">roles and personas</a> defined in the Gateway API security model, and the service &quot;producer&quot; and &quot;consumer&quot; roles defined in <a href="/geps/gep-1324/#producer-and-consumer">GEP-1324: Service Mesh in Gateway API</a>.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>MUST allow <code>xRoute</code> traffic rules to be configurable for a mesh service by the application owner/producer.</li>
+<li>SHOULD allow control by the cluster operator (mesh administrator) to grant permission for whether <code>xRoute</code> resources in a given namespace are allowed to configure mesh traffic routing.</li>
+<li>SHOULD NOT require downstream &quot;consumer&quot; services to update configuration or DNS addresses for traffic to follow &quot;producer&quot; mesh routing rules configured by upstream services.</li>
+<li>SHOULD NOT require reconfiguring existing <code>xRoute</code> resources for North/South Gateway configuration.</li>
+</ul>
+<h2 id="non-goals">Non-Goals</h2>
+<ul>
+<li>Supporting &quot;egress&quot; use cases, which is currently a deferred goal, including:
+<ul>
+<li>Defining how &quot;consumer&quot; traffic rules which could override routing for service upstreams only within the local scope of a namespace or service might be configured.</li>
+<li>Redirecting calls from arbitrary custom domains to an in-cluster service.</li>
+</ul>
+</li>
+<li>Defining how multiple <code>Services</code> or <code>EndpointSlices</code> representing instances of a single &quot;logical&quot; service should present an identity for AuthN/AuthZ or be associated with each other beyond routing rules.</li>
+<li>Defining how AuthZ should be implemented to secure East/West traffic between services.</li>
+<li>Defining how <a href="/reference/policy-attachment/">Policy Attachment</a> would bind to <code>xRoute</code>, services or a mesh.</li>
+<li>Defining how <code>Routes</code> configured for East/West service mesh traffic management might integrate with North/South <code>Gateways</code>.
+<ul>
+<li>This is a bit tricky in that it's effectively a form of delegation as described in <a href="https://github.com/kubernetes-sigs/gateway-api/pull/1085">GEP-1058: Route Inclusion and Delegation</a>, and is planned to be explored in a future GEP.</li>
+</ul>
+</li>
+<li>Handling East/West traffic outside the cluster (VMs, etc).</li>
+</ul>
+<h2 id="implementation-details-and-constraints">Implementation Details and Constraints</h2>
+<ul>
+<li>MUST set a status field on <code>xRoute</code> to show if the routing configuration has been applied to the mesh.</li>
+<li>MUST only be allowed to configure &quot;producer&quot; traffic rules for a <code>Service</code> in the same namespace as the <code>xRoute</code>.
+<ul>
+<li>Traffic routing configuration defined in this way SHOULD be respected by ALL consumer services in all namespaces in the mesh.</li>
+</ul>
+</li>
+<li>MAY assume that a mesh implements &quot;transparent proxy&quot; functionality to redirect calls to the Kubernetes DNS address for a <code>Service</code> through mesh routing rules.</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>It is proposed that an application owner should configure traffic rules for a mesh service by configuring an <code>xRoute</code> with a Kubernetes <code>Service</code> resource as a <code>parentRef</code>.</p>
+<p>This approach is dependent on both the &quot;frontend&quot; role of the Kubernetes <code>Service</code> resource as defined in <a href="/geps/gep-1324/#service">GEP-1324: Service Mesh in Gateway API</a> when used as a <code>parentRef</code> and the &quot;backend&quot; role of <code>Service</code> when used as a <code>backendRef</code>. The conformant implementation would use the Kubernetes <code>Service</code> name to match traffic for meshes, but the <code>backendRef</code> endpoints would ultimately be used for the canonical IP address(es) to which traffic should be redirected by rules defined in this <code>xRoute</code>. This approach leverages the existing points of extensibility within the Gateway API spec, and would not require introducing any API changes or new resources, only defining expected behavior.</p>
+<h3 id="why-service">Why Service?</h3>
+<p>The GAMMA initiative has been working to bring service mesh use-cases to the Gateway API spec, taking the best practices and learnings from mesh implementations and codifying them in a spec. Most mesh users are familiar with using the Kubernetes Service resource as the foundation for traffic routing: not only do service meshes take advantage of the IP address management and corresponding DNS functionality provided by Service, but one of the key value propositions of service meshes is that they can be added &quot;on top&quot; of preexisting deployments, which are almost certain to already be using Service resources. This architecture is generally a simple, effective way for service meshes to operate.</p>
+<p>Add to that the ubiquity of Service in the Kubernetes ecosystem as well as the time and effort needed to get support for a new resource into the ecosystem (especially true for managed Kubernetes providers), and it's clearly impractical to force GAMMA to wait for a replacement for Service.</p>
+<p>Unfortunately, Service is a badly overloaded resource. It orchestrates not only IP address allocation and DNS but also endpoint collection and propagation, load balancing, etc. For this reason, it cannot be the only long-term answer for <code>parentRef</code> binding -- however, it is the only feasible option that mesh implementations have today, and as such the graduated GAMMA specification MUST support Service as a <code>parentRef</code>.</p>
+<p>We expect this situation to change -- and, indeed, we plan to be a part of that change. Luckily, <code>parentRef</code> is flexible enough to support additional resources in the future, which allows work on adding a Service alternative in GAMMA to begin and continue in parallel with the graduation of this spec. In fact, we believe that GAMMA's use case can serve as an excellent basis for developing and trialing new, more composable mechanisms for managing IP address allocation and DNS.</p>
+<h2 id="api">API</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>foo-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>store<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">parentRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>foo<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>foo<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">90</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>foo-v2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">weight</span>:<span style="color:#bbb"> </span><span style="color:#666">10</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>In the example above, routing rules have been configured to direct 90% of traffic for the <code>foo</code> <code>Service</code> to the default &quot;backend&quot; endpoints specified by the <code>foo</code> <code>Service</code> <a href="https://kubernetes.io/overview/concepts/services-networking/service/#defining-a-service"><code>selector</code></a> field, and 10% to the <code>foo-v2</code> <code>Service</code>. This is determined based on the <code>ClusterIP</code> (for <code>Service</code>) and <code>ClusterSetIP</code> (for <code>ServiceImport</code>) matching, and for &quot;transparent proxy&quot; mesh implementations would match all requests to <code>foo.svc.cluster.local</code> (or arbitrary custom suffix, as the hostname is not specified manually) from within the same namespace, all requests to <code>foo.store.svc.cluster.local</code> from other namespaces, and all requests to <code>foo.store.svc.clusterset.local</code> for multicluster services, within the scope of the service mesh.</p>
+<h3 id="route-presence">Route presence</h3>
+<p>When no <code>xRoute</code> resources are defined, all traffic should implicitly work - this is just how Kubernetes functions. When you create an <code>xRoute</code> targeting a service as a <code>parentRef</code> you are replacing that implicit logic - not adding to it. Therefore, you may be reshaping or restricting traffic via an <code>xRoute</code> configuration (which should be noted, is distinct from <em>disallowing</em> traffic by AuthZ).</p>
+<h3 id="allowed-service-types">Allowed service types</h3>
+<p>Services valid to be selected as a <code>parentRef</code> SHOULD have a way to identify traffic to them - typically by one or more virtual IP(s), DNS hostname(s), or name(s).</p>
+<p>Implementations SHOULD support the default <a href="https://kubernetes.io/overview/concepts/services-networking/service/#publishing-services-service-types"><code>ClusterIP</code></a> <code>Service</code> type as a <code>parentRef</code>, with or without selectors.</p>
+<p><a href="https://kubernetes.io/overview/concepts/services-networking/service/#headless-services">&quot;Headless&quot; <code>Services</code></a> SHOULD NOT be supported as a <code>parentRef</code>, because they do not implement the &quot;frontend&quot; functionality of a service.</p>
+<p><code>Service</code> resource with <a href="https://kubernetes.io/overview/concepts/services-networking/service/#type-nodeport"><code>type: NodePort</code></a> or <a href="https://kubernetes.io/overview/concepts/services-networking/service/#loadbalancer"><code>type: LoadBalancer</code></a> MAY be allowed as <code>parentRefs</code> or <code>backendRefs</code>, as these do provision virtual IPs and are effectively <code>ClusterIP</code> services with additional functionality, but it should typically be preferred to expose services publicly through the North/South Gateway API interfaces instead.</p>
+<p><code>Service</code> resources with <a href="https://kubernetes.io/overview/concepts/services-networking/service/#externalname"><code>type: ExternalName</code></a> SHOULD NOT be allowed as <code>parentRefs</code> or <code>backendRefs</code> due to <a href="https://github.com/kubernetes/kubernetes/issues/103675">security concerns</a>, although might eventually play some role in <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1070">configuring egress functionality</a>.</p>
+<p>Services supported as <code>backendRefs</code> SHOULD be consistent with expectations for North/South Gateway API implementations, and MUST have associated endpoints. <code>ClusterIP</code> <code>Services</code> with selectors SHOULD be supported as a <code>backendRef</code>.</p>
+<h4 id="serviceimport-as-backendref"><code>ServiceImport</code> as <code>backendRef</code></h4>
+<p>Implementations that support <a href="/geps/gep-1748/">GEP-1748: Gateway API Interaction with Multi-Cluster Services</a> MAY allow <code>ServiceImport</code> to be used as a <code>backendRef</code>. When supported, the semantics MUST follow GEP-1748. Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec.</p>
+<h4 id="service-without-selectors"><code>Service</code> without selectors</h4>
+<p>An alternate pattern additionally supported by this approach would be to target a <code>Service</code> without selectors as the <code>parentRef</code>. This could be a clean way to create a pure routing construct and abstract a logical frontend, as traffic would resolve to a <code>backendRef</code> <code>Service</code> with selectors defined on the <code>HTTPRoute</code>, or receive a 4xx/5xx error response if no matching path or valid backend was found.</p>
+<h3 id="parentref-conformance-levels"><code>parentRef</code> Conformance Levels</h3>
+<p>Currently (v0.7.0), this spec only considers the <code>Service</code> resource to be under Core conformance as a <code>parentRef</code>. However, Service is not the only resource that can fulfill the frontend role. While the Gateway API spec couldn’t possibly enumerate every existing (and future) frontend-like resource, it can specify a subset of resources that implementations MUST support as parentRefs under as a part of core conformance. Meshes MAY support other implementation-specific resources as parentRefs. The spec maintainers also reserve the right to add additional resources to core conformance as the spec evolves.</p>
+<h4 id="extended-conformance">Extended Conformance</h4>
+<p>In addition to Service, there are other optional parentRef resources that, if used by implementations, MUST adhere to the spec’s prescriptions. At the time of writing (v0.7.0), there is one resource in extended conformance: <code>ServiceImport</code> (part of the <a href="https://github.com/kubernetes-sigs/mcs-api">MCS API</a>, currently in alpha). The semantics of <code>ServiceImport</code> <code>parentRef</code> binding can be found in <a href="/geps/gep-1748/">GEP-1748</a> (Note: Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec).</p>
+<h5 id="why-not-ipaddress">Why not <code>IPAddress</code></h5>
+<p>In Kubernetes 1.27, there will be a new IPAddress resource added to networking.k8s.io/v1alpha1 as part of <a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/1880-multiple-service-cidrs#proposal">KEP 1880</a>. Naturally, it makes sense to examine whether or not this new resource makes sense as a GAMMA aware parentRef. At first glance, IPAddress seems to be an appropriate abstraction for the “frontend” role we’ve been discussing; every Kubernetes Service is accessed over the network via one of its ip addresses. Furthermore, the fact that the Service resource auto-creates an IPAddress is encouraging. However, the fact that the name of the IPAddress is simply the decimal/hex ip address and not a human-readable Service name makes the UX untenable as a spec-supported parentRef. However, <code>IPAddress</code> is NOT disallowed; implementations may use it if they wish.</p>
+<h4 id="implementation-specific-parentrefs">Implementation-specific <code>parentRef</code>s</h4>
+<p>If mesh implementations wish to enable an implementation-specific resource as a parentRef, they may do so as long as that resource meets certain conditions. Recall that the frontend role of a (generic) service is how one calls the service. In the service mesh transparent proxy context, the frontend role (and parentRef by extension) is effectively the matching mechanism for the specified route. For the Service parentRef, this means that the mesh should apply a particular xRoute’s configuration if the destination ip address for a given connection is the ClusterIP of that parentRef Service. If a mesh wishes to use an implementation-specific resource for parentRef, that resource MUST contain layer-appropriate information suitable for traffic matching (e.g. no Host header capture in TCPRoute). For example, the following HTTPRoute with an Istio <code>ServiceEntry</code> as a parentRef would be a valid implementation-specific reference:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>networking.istio.io/v1beta1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ServiceEntry<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>internal-svc-httpbin<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">namespace </span>:<span style="color:#bbb"> </span>egress<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">hosts</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- example.com<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">exportTo</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#b44">&#34;.&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">location</span>:<span style="color:#bbb"> </span>MESH_INTERNAL<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">number</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>http<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">protocol</span>:<span style="color:#bbb"> </span>HTTP<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">resolution</span>:<span style="color:#bbb"> </span>DNS<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00f;font-weight:bold">---</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1beta1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>mongo-internal<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">parentRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>ServiceEntry<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">group</span>:<span style="color:#bbb"> </span>networking.istio.io/v1beta1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>internal-svc-httpbin<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>egress<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">sectionName</span>:<span style="color:#bbb"> </span>http<span style="color:#bbb"> </span><span style="color:#080;font-style:italic"># referencing the port name</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>internal-example<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span></span></span></code></pre></div><h5 id="gateways"><code>Gateways</code></h5>
+<p>There has been much discussion around cluster local Gateways (i.e. Gateways not associated with a traditional load balancer). While there are various potential UX impairments (e.g. what’s the difference between a GAMMA HTTPRoute with a Gateway parentRef and an ingress implementation’s HTTPRoute?), there is no technical reason why a Gateway cannot be a valid GAMMA parentRef if an implementation wishes to do so.</p>
+<h3 id="route-types">Route types</h3>
+<p>All types currently defined in the gateway-api core (<code>HTTP</code>, <code>GRPC</code>, <code>TCP</code>, <code>TLS</code>, and <code>UDP</code>) are available for use in a Mesh implementation.</p>
+<p>If multiple routes with different types both bind to the same Service and Port pair, only a single route type should be applied. The rejected routes should be ignored and have the <code>RouteConditionAccepted</code> status set to the (new) reason <code>RouteReasonConflicted</code>.</p>
+<p>Route type specificity is defined in the following order (first one wins):</p>
+<ol>
+<li>GRPCRoute</li>
+<li>HTTPRoute</li>
+<li>TLSRoute</li>
+<li>TCPRoute</li>
+</ol>
+<p>Because UDP is its own protocol, it is orthogonal to these precedence order. Since there is only one UDP-based route, there is currently no conflicts possible; if other UDP-based routes are added a similar ordering will be defined.</p>
+<p>Note: these conflicts only occur when multiple <em>different</em> route types apply to the same Service+Port pair. Multiple routes of the same type are valid, and merge according to the route-specific merging semantics.</p>
+<h3 id="ports">Ports</h3>
+<p>By default, a <code>Service</code> attachment applies to all ports in the service. Users may want to attach routes to only a <em>specific</em> port in a Service. To do so, the <code>parentRef.port</code> field should be used.</p>
+<p>If <code>port</code> is set, the implementation MUST associate the route only with that port.
+If <code>port</code> is not set, the implementation MUST associate the route with all ports defined in the Service.</p>
+<h3 id="hostnames-field"><code>hostnames</code> field</h3>
+<p>GAMMA implementations SHOULD NOT infer any functionality from the <code>hostnames</code> field on <code>xRoute</code>s (currently, <code>TLSRoute</code>, <code>HTTPRoute</code>, and <code>GRPCRoute</code> have this field) due to current under-specification and reserved potential for future usage or API changes.</p>
+<p>For the use case of filtering incoming traffic from selected HTTP hostnames, it is recommended to guide users toward configuring <a href="/reference/spec/#httpheadermatch"><code>HTTPHeaderMatch</code></a> rules for the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host"><code>Host</code></a> header. Functionality to be explored in future GEPs may include supporting concurrent usage of an <code>xRoute</code> traffic configuration for multiple North/South <code>Gateways</code> and East/West mesh use cases or redirection of egress traffic to an in-cluster <code>Service</code>.</p>
+<h3 id="namespace-boundaries">Namespace boundaries</h3>
+<p>In a mesh, routes can be configured by two personas:</p>
+<ul>
+<li>Service producers, who want to modify behavior of <em>inbound</em> requests to their services</li>
+<li>Service consumers, who want to modify behavior of <em>outbound</em> requests to other services.</li>
+</ul>
+<p>While these concepts are not directly exposed in the API, a route is implicitly fulfilling one of these roles and behaves differently depending on the role.</p>
+<p>A route is a producer route when the <code>parentRef</code> refers to a service in the <em>same namespace</em>. This route SHOULD apply to all incoming requests to the service, including from clients in other namespaces.</p>
+<p>Note: Some implementations may only be able to apply routes on client-side proxies. As a result, these will likely only apply to requests from clients who are also in the mesh.</p>
+<p>A route is a consumer route when the <code>parentRef</code> refers to a service in <em>another namespace</em>. Unlike producer routes, consumer routes are scoped only the same namespace. This ensures that for traffic between two namespaces, another unrelated namespace cannot modify their traffic.</p>
+<p>Routes of either type can send traffic to <code>backendRefs</code> in any namespace. Unlike <code>Gateway</code> bound routes, this is allowed without a <code>ReferenceGrant</code>. In <code>Gateway</code>-bound routes (North-South), routes are opt-in; by default, no Services are exposed (often to the public internet), and a service producer must explicitly opt-in by creating a route themselves, or allowing another namespace to via <code>ReferenceGrant</code>. For mesh, routes <em>augment</em> existing Services, rather than exposing them to a broader scope. As a result, a <code>ReferenceGrant</code> is not required in most mesh implementations. Access control, if desired, is handled by other mechanism such as <code>NetworkPolicy</code>. While uncommon, if a mesh implementation <em>does</em> expose the ability to access a broader scope than would otherwise be reachable, then <code>ReferenceGrant</code> must be used for cross namespaces references.</p>
+<h3 id="multiple-routes-for-a-service">Multiple routes for a Service</h3>
+<p>A service may be used as a <code>parentRef</code> (where we attach to the &quot;Service Frontend&quot;) or as a <code>backendRef</code> (where we attach to the &quot;Service Backend&quot;).</p>
+<p>In general, when a request is sent to a Service frontend (ex: <code>curl svc</code>), it should utilize a Route bound to that Service.
+However, when sent to a Service backend (ex: <code>curl pod-ip</code>), it would not.</p>
+<p>Similarly, if we have multiple &quot;levels&quot; of Routes defined, only the first will be used, as that is the only one that accesses the Service frontend.</p>
+<p>Consider a cluster with routes for a Service in both a Gateway, consumer namespace, and producer namespace:</p>
+<ul>
+<li>Requests from the Gateway will utilize the (possibly merged) set of routes attached to the Gateway</li>
+<li>Requests from a namespace with consumer routes will utilize the (possibly merged) set of routes in the consumer namespace</li>
+<li>Requests from other namespaces will utilize the (possibly merged) set of routes in the producer namespace</li>
+</ul>
+<p>The merging of routes occurs only within groups of the same type of routes (Gateway bound, producer, or consumer), and follows the standard route merging behavior already defined.</p>
+<p>Note: a possible future extension is to allow <code>backendRefs</code> to explicitly target a &quot;frontend&quot; or &quot;backend&quot;. This could allow chaining multiple routes together. However, this is out of scope for the current GEP.</p>
+<h3 id="drawbacks">Drawbacks</h3>
+<ul>
+<li>The fact that this pattern is used for mesh configuration is implicit - this may benefit from some additional configuration to map the <code>HTTPRoute</code> to a particular mesh implementation rather than being picked up by any or all GAMMA meshes present in a cluster. Possible approaches include:</li>
+<li><a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a> may be one path to associating a <code>Service</code> with a mesh, but likely wouldn't be able to handle the application of multiple <code>HTTPRoutes</code> for the same <code>Service</code>, but each intended for different mesh implementations
+<ul>
+<li>It's currently unclear how relevant this constraint may be, but associating an <code>HTTPRoute</code> with a mesh by this method would additionally require an extra graph traversal step.</li>
+</ul>
+</li>
+<li>Expecting a <code>Mesh</code> <code>parentRef</code> or similar reference as proposed in <a href="https://docs.google.com/document/d/1oyA9uUH7pNNxxwy3WZGSWx-edHDBLrujcezr8q3el70/edit">GEP-1291: Mesh Representation</a> may be a preferred eventual path forward, but wouldn't be required initially, with the assumption that only one mesh should typically be present in a cluster.</li>
+<li>No mechanism for egress redirection of traffic from arbitrary hostnames to a mesh service within this approach (but could still be implemented separately).</li>
+</ul>
+<h2 id="alternatives">Alternatives</h2>
+<h3 id="new-meshservice-or-httpservice-virtualservice-servicebinding-resource-as-parentref">New <code>MeshService</code> (or <code>HttpService</code>, <code>VirtualService</code>, <code>ServiceBinding</code>) resource as <code>parentRef</code></h3>
+<p>Introduce a new resource to represent the &quot;frontend&quot; role of a service as defined in <a href="https://docs.google.com/document/d/1oyA9uUH7pNNxxwy3WZGSWx-edHDBLrujcezr8q3el70/edit">GEP-1291: Mesh Representation</a>.</p>
+<h4 id="controller-manages-new-dns-hostname">Controller manages new DNS hostname</h4>
+<p>A controller could create a matching selector-less <code>Service</code> (i.e. no endpoints), to create a <code>.cluster.local</code> name, or could interact with <a href="https://github.com/kubernetes-sigs/external-dns">external-dns</a> to create a DNS name in an owned domain.</p>
+<p>Ownership/trust would remain based on naming pattern: <code>serviceName.namespace.svc.[USER_DOMAIN]</code></p>
+<p>Separate <code>HttpService</code>, <code>TlsService</code> and <code>TcpService</code> resources could have the benefit of allowing us to define protocol specific elements to the spec along with an embedded <code>CommonServiceSpec</code>, similar to <a href="/reference/spec/#commonroutespec"><code>CommonRouteSpec</code></a>, and keep similar patterns as <code>Service</code>.</p>
+<h5 id="drawbacks-1">Drawbacks</h5>
+<ul>
+<li>May require reconfiguring existing applications to point to a new mesh service hostname - adoption wouldn't be &quot;transparent&quot;.</li>
+<li>The pattern of creating a new pure routing construct would still be implementable following the proposed approach, by manually creating and targeting a new <code>Service</code> without selectors as a <code>parentRef</code>, without the overhead of introducing a new resource.</li>
+</ul>
+<h4 id="manage-dns-by-binding-to-an-existing-service">Manage DNS by binding to an existing <code>Service</code></h4>
+<p>A new <code>ServiceBinding</code> resource would directly reference an existing <code>Service</code> to determine which traffic should be intercepted and redirected following configured service mesh routing rules and facilitate &quot;transparent proxy&quot; functionality. This resource could possibly share similar responsibilities as the need identified in <a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a>.</p>
+<pre tabindex="0"><code>kind: ServiceBinding
+metadata:
+  name: foo_binding
+spec:
+  parentRefs:
+  - kind: Service
+    name: foo
+---
+spec:
+  parentRefs:
+  - kind: ServiceBinding
+    name: foo_binding
+  rules:
+    backendRefs:
+    - kind: Service
+      name: foo
+      weight: 90
+    - kind: Service
+      name: foo_v2
+      weight: 10
+</code></pre><p>While the <code>HTTPRoute</code> does not directly reference a particular mesh implementation in this approach, it would be possible to design the <code>ServiceBinding</code> resource to specify that.</p>
+<h5 id="drawbacks-2">Drawbacks</h5>
+<ul>
+<li>Introduces an extra layer of abstraction while still having several of the same fundamental drawbacks as a direct <code>parentRef</code> binding to <code>Service</code>.</li>
+<li>May require reconfiguring <code>Gateway</code> <code>HTTPRoutes</code> to specify <code>ServiceBindings</code> as <code>backendRefs</code>.</li>
+</ul>
+<h4 id="drawbacks-3">Drawbacks</h4>
+<ul>
+<li>The split frontend/backend role of <code>Service</code> is fundamentally an issue with the <code>Service</code> resource, and while upstream changes may be quite slow, this would likely be best addressed through an upstream KEP - introducing a new resource to GAMMA now would likely result in API churn if we expect a similar proposal to be upstreamed eventually.</li>
+<li>Adopting the proposed <code>Service</code> as <code>parentRef</code> approach wouldn't foreclose the possibility of migrating to a new frontend-only resource in the future, and wouldn't even require a breaking change to <code>HTTPRoute</code>, just adding support for a new <code>parentRef</code> <code>Kind</code>.</li>
+<li>Would be less clear how to integrate with transparent proxy functionality - it may be possible to design some way to select a <code>Service</code> or hostname to intercept, but abstraction through a separate resource would make configuration more complex.</li>
+</ul>
+<h3 id="mesh-resource-as-parentref"><code>Mesh</code> resource as <code>parentRef</code></h3>
+<p>This binds an <code>HTTPRoute</code> directly to a cluster-scoped <code>Mesh</code> object as defined in <a href="https://docs.google.com/document/d/1oyA9uUH7pNNxxwy3WZGSWx-edHDBLrujcezr8q3el70/edit">GEP-1291: Mesh Representation</a>.</p>
+<pre tabindex="0"><code>spec:
+  parentRefs:
+  - kind: Mesh
+    name: cool-mesh
+</code></pre><p>It is currently undefined how this approach may interact with either explicitly configured <a href="/reference/spec/#httproutespec"><code>hostnames</code></a> or implicit &quot;transparent proxy&quot; routing for Kubernetes <code>Services</code> to determine how traffic should be intercepted and redirected.</p>
+<p>This approach is not entirely abandoned, as it could supplement the proposed approach if explicit attachment to a specific mesh is deemed necessary. Additionally, this approach may offer a future option for attaching an <code>HTTPRoute</code> to a mesh, but not a specific service (e.g. to implement mesh-wide egress functionality for all requests to a specific hostname).</p>
+<h4 id="peer-to-service-resource-parentref">Peer to <code>Service</code> resource <code>parentRef</code></h4>
+<p>An <code>HTTPRoute</code> could specify a <code>Mesh</code> resource <code>parentRef</code> as a peer to a <code>Service</code> resource <code>parentRef</code>.</p>
+<pre tabindex="0"><code>spec:
+  parentRefs:
+  - kind: Mesh
+    name: cool-mesh
+  - kind: Service
+    name: foo
+</code></pre><h5 id="drawbacks-4">Drawbacks</h5>
+<ul>
+<li>Would require separate <code>HTTPRoute</code> resources to explicitly define <em>different</em> traffic routing rules for the same service on different meshes.</li>
+</ul>
+<h4 id="nested-services-and-hostnames-fields-in-parentreference">Nested <code>services</code> and <code>hostnames</code> fields in <a href="/reference/spec/#parentreference"><code>ParentReference</code></a></h4>
+<p>In core conformance, the <code>services</code> would only be valid for <code>Mesh</code> types, and <code>hostnames</code> field only for <code>Gateway</code>. Mesh implementations could still use a <code>Host</code> header match if they wanted limit rules to specific hostnames.</p>
+<pre tabindex="0"><code>parentRefs:
+- kind: Mesh
+  name: coolmesh
+  services:
+  - name: foo
+    kind: Service
+- kind: Gateway
+  name: staging
+  hostnames: [staging.example.com]
+- kind: Gateway
+  name: prod
+  hostnames: [prod.example.com]
+# Top level hostnames field removed
+</code></pre><p>Moving the <code>hostnames</code> field from <code>HTTPRoute</code> to <code>ParentReference</code> might introduce a clean path for concurrently using a route across North/South and mesh use cases,  even without introducing the <code>services</code> field or a new <code>Mesh</code> resource, and even makes pure North/South implementations more flexible by allowing a hostname-per-<code>Gateway</code> scope.</p>
+<h5 id="drawbacks-5">Drawbacks</h5>
+<ul>
+<li>Substantial API change, impacting even North/South use cases</li>
+<li>Extending this functionality to support mesh-wide egress or arbitrary redirection may still require some sort of bidirectional handshake with a <code>Hostname</code> resource to support configuration across namespaces and limit conflicting configuration.</li>
+</ul>
+<h4 id="phantom-parentref">Phantom <code>parentRef</code></h4>
+<pre tabindex="0"><code>spec:
+  parentRefs:
+  - kind: Mesh
+    name: istio
+</code></pre><p>This is done by configuring the <code>parentRef</code>, to point to the <code>istio</code> <code>Mesh</code>. This resource does not actually exist in the cluster and is only used to signal that the Istio mesh should be used. In Istio's <a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/#mesh-traffic">experimental implementation</a>, the <code>hostnames</code> field on <code>HTTPRoute</code> is used to match mesh service traffic to the routing rules.</p>
+<h3 id="new-field-on-httproute-for-service-binding">New field on <code>HTTPRoute</code> for <code>Service</code> binding</h3>
+<p>A new field <code>serviceBinding</code> would be added to <code>HTTPRoute</code> to attach to the <code>Service</code>. Alternatively, this could be a new field in <a href="/reference/spec/#httproutematch"><code>HTTPRouteMatch</code></a>. As with the proposed implementation, this approach could be combined with a <code>Mesh</code> resource or similar as the <code>parentRef</code>, which would just define that the route would be applied to a mesh.</p>
+<pre tabindex="0"><code>spec:
+  serviceBinding:
+    name: my-service
+</code></pre><p>OR</p>
+<pre tabindex="0"><code>spec:
+  matches:
+    service:
+      name: my-service
+</code></pre><p>For either implementation, the type of the <code>serviceBinding</code> or <code>service</code> field should likely be a struct with <code>Group</code> (defaulting to the Kubernetes core API group when unspecified), <code>Kind</code> (defaulting to <code>Service</code> when unspecified) and <code>Name</code> fields, to allow for extensibility to <code>ServiceImport</code> or custom mesh service types.</p>
+<h4 id="drawbacks-6">Drawbacks</h4>
+<ul>
+<li>API addition required, which is somewhat awkwardly ignored for North/South use cases, and could complicate potential for concurrent use of an <code>HTTPRoute</code> across both North/South and mesh use cases.</li>
+<li>Adding new fields to a relatively stable resource like <code>HTTPRoute</code> could be difficult to do in an experimental way.</li>
+<li>Following this pattern may lead to subsequent additional fields to further clarify or extend behavior.</li>
+</ul>
+<h3 id="gateway-resource-with-class-mesh-as-parentref"><code>Gateway</code> resource with <code>class: mesh</code> as <code>parentRef</code></h3>
+<p>To support arbitrary DNS names (owned by a &quot;domain owner persona&quot;) we would need a similar mechanism to what <code>Gateway</code> is using for delegating management of <code>HTTPRoutes</code> to namespaces. Instead of duplicating everything - we could use <code>Gateway</code> as is, with <code>class: mesh</code> (or matching the mesh implementation desired name).</p>
+<pre tabindex="0"><code>kind: Gateway
+spec:
+  class: mesh
+  listeners:
+  - name: example
+    hostname: &#34;example.com&#34;
+---
+kind: HTTPRoute
+spec:
+  parentRefs:
+    name: foo_gateway
+    sectionName: example
+  hostnames: [&#34;example.com&#34;, &#34;foo.svc.cluster.local&#34;]
+</code></pre><p>Functionally such a mesh could be implemented using the existing gateway spec - a GAMMA implementation would only remove the extra hop through the <code>Gateway</code>, using sidecars, or it may use a specialized per-namespace gateway to isolate the mesh traffic (like <a href="https://istio.io/latest/blog/2022/introducing-ambient-mesh/">Istio Ambient</a>). Proxyless gRPC could also use this to route directly.</p>
+<p>This solution could work well for both non-<code>cluster.local</code> names but also for egress, where a <code>Gateway</code> with <code>class: egress</code> could define names that are external to the mesh and need to either have policies applied or go to a dedicated egress gateway.</p>
+<h4 id="drawbacks-7">Drawbacks</h4>
+<ul>
+<li>Using the <code>HTTPRoute</code> <code>hostnames</code> field to match mesh traffic breaks from the typical Gateway API pattern of explicit Kubernetes resource references, is extremely implicit, and could reduce portability of configuration.</li>
+<li>Potentially unclear translation between conceptual resource and concrete implementation, particularly for &quot;proxyless&quot; mesh implementations.</li>
+<li>Service meshes may wish to express <a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/">egress</a> or <a href="https://www.consul.io/docs/connect/gateways">other &quot;in-mesh&quot; gateways</a> through an API like this, and it could be confusing to overload this resource too much or conflate different personas who may wish to manage mesh service traffic routing as an application owner separately from egress rules as a service consumer or cluster operator.</li>
+</ul>
+<h3 id="serviceprojection-resource-as-parentref-and-backendrefs"><code>ServiceProjection</code> resource as <code>parentRef</code> and <code>backendRefs</code></h3>
+<p>This approach is similar to the above <code>ServiceBinding</code> proposal with a couple of major differences:</p>
+<ul>
+<li><code>ServiceProjection</code> encapsulates both &quot;frontend&quot; and &quot;backend&quot; roles of the <code>Service</code> resource</li>
+<li><code>ServiceProjection</code> could handle the full responsibilities described in <a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a></li>
+</ul>
+<pre tabindex="0"><code>kind: ServiceProjection
+metadata:
+    name: foo
+    namespace: store
+spec:
+    serviceRef:
+        name: foo
+        kind: Service|ServiceImport
+    roles:
+        frontend:
+       backend:
+            loadbalancerConfig:
+                strategy: RoundRobin
+             clientTLS:
+                secretRef:
+                    ...
+---
+kind: HTTPRoute
+metadata:
+  name: foo_route
+  namespace: store
+spec:
+  parentRefs:
+  - kind: ServiceProjection
+    name: foo
+    role: frontend
+  rules:
+    backendRefs:
+    - kind: ServiceProjection
+      name: foo
+      role: backend
+      weight: 90
+    - kind: ServiceProjection
+      role: backend
+      name: foo_v2
+      weight: 10
+</code></pre><p>For convenience, <code>ServiceProjection</code> could have a <code>meshRef</code> field that, when set instead of <code>serviceRef</code>, makes all configuration within the <code>ServiceProjection</code> apply to all services in the mesh (the mesh control plane would need to read the <code>Mesh</code> resource). Pursuant to the changes to status semantics in <a href="/geps/gep-1364/">GEP-1364: Status and Conditions Update</a>, it is necessary for the route to attach to something; in this case, the route attaches to the specific role or profile of the <code>ServiceProjection</code> and the mesh control plane should update the route status to reflect that.</p>
+<h4 id="drawbacks-8">Drawbacks</h4>
+<ul>
+<li>May require reconfiguring <code>Gateway</code> <code>HTTPRoutes</code> to specify <code>ServiceProjections</code> as <code>backendRefs</code>.</li>
+<li>Verbose boilerplate for each service.</li>
+</ul>
+<h3 id="implicit-backendref">Implicit backendRef</h3>
+<p>An initial iteration of this GEP had the ability to omit a <code>backendRef</code> and have it implicitly be set the same as the <code>parentRef</code>.
+This has been removed due to inconsistency with Gateway <code>parentRefs</code> and tight coupling of the &quot;frontend&quot; and &quot;backend&quot; roles.</p>
+<p>Implementations MUST respect the standard <code>backendRef</code> rules as defined by the existing spec.</p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

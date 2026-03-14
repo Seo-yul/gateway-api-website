@@ -1,0 +1,531 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<link rel="canonical" type="text/html" href="/reference/api-types/policy/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Policy | Kubernetes Gateway API</title>
+<meta name="description" content="Gateway API Policy resources">
+<meta property="og:url" content="/reference/api-types/policy/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="Policy">
+  <meta property="og:description" content="Gateway API Policy resources">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Policy">
+  <meta itemprop="description" content="Gateway API Policy resources">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Policy">
+  <meta name="twitter:description" content="Gateway API Policy resources">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/reference/api-types/policy/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/reference/api-types/policy/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Policy</h1>
+<div class="lead">Gateway API Policy resources</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-d386d80cdd3748cee9b3ce368cb2190f">BackendTLSPolicy</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-590e4093e8a8acdb20a26f5735271cc3">BackendTrafficPolicy</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-d386d80cdd3748cee9b3ce368cb2190f">1 - BackendTLSPolicy</h1>
+    <div class="lead">Configuring TLS connections from Gateway to backend pods</div>
+	
+<div class="alert alert-info" role="note">The <code>BackendTLSPolicy</code> resource is GA and has been part of the Standard
+Channel since <code>v1.4.0</code>. For more information on release channels, refer
+to our <a href="/overview/concepts/versioning/">versioning guide</a>.</div>
+
+<p><a href="/reference/spec/#backendtlspolicy">BackendTLSPolicy</a> is a Gateway API type for specifying the TLS configuration
+of the connection from the Gateway to a backend pod(s) via the Service API object.</p>
+<p>Implementations may also decide to support the usage of <code>BackendTLSPolicy</code> for specifying the TLS configuration
+of the connection from the Gateway to services not connected via HTTPRoute, and any
+other kind of backend like <a href="https://gateway-api-inference-extension.sigs.k8s.io/reference/spec/#inferencepool">InferencePool</a></p>
+<h2 id="background">Background</h2>
+<p><code>BackendTLSPolicy</code> specifically addresses the configuration of TLS in order to convey HTTPS from the Gateway
+dataplane to the backend. This is referred to as &quot;backend TLS termination&quot; and enables the Gateway to know
+how to connect to a backend pod that has its own certificate.</p>
+<p>While there are other API objects provided for TLS to be configured for <strong>passthrough</strong> and <strong>edge</strong> termination,
+this API object allows users to specifically configure <strong>backend</strong> TLS termination.  For more information on TLS
+configuration in Gateway API, see <a href="/guides/user-guides/tls/">TLS Configuration</a>.</p>
+<p><img src="/images/tls-termination-types.png" alt="Image showing three TLS Termination Types"></p>
+<p>BackendTLSPolicy is a Direct <a href="/reference/policy-attachment/">PolicyAttachment</a> without defaults or overrides,
+applied to a Service that accesses a backend, where the BackendTLSPolicy resides in the same namespace as the
+Service to which it is applied. The BackendTLSPolicy and the Service must reside in the same namespace in order
+to prevent the complications involved with sharing trust across namespace boundaries.</p>
+<p>Additionally, implementations may use BackendTLSPolicy for specifying the TLS configuration
+of the connection from the Gateway to services not connected via HTTPRoute, and any other
+kind of backend, but this behavior is optional and may not be available on all implementations.</p>
+<p>All Gateway API Routes that point to a referenced Service should respect a configured BackendTLSPolicy.</p>
+<h2 id="spec">Spec</h2>
+<p>The specification of a <a href="/reference/spec/#backendtlspolicy">BackendTLSPolicy</a> consists of:</p>
+<ul>
+<li><a href="/reference/spec/#localpolicytargetreferencewithsectionname">TargetRefs</a> - Defines the targeted API object of the policy.</li>
+<li><a href="/reference/spec/#backendtlspolicyvalidation">Validation</a> - Defines the configuration for TLS, including hostname, CACertificateRefs, and
+WellKnownCACertificates.</li>
+<li><a href="/reference/spec/#precisehostname">Hostname</a> - Defines the Server Name Indication (SNI) that the Gateway uses to connect to the backend.</li>
+<li><a href="/reference/spec/#subjectaltname">SubjectAltNames</a> - Specifies one or more Subject Alternative Names that the backend certificate must match. When specified, the certificate must have at least one matching SAN. This field enables separation between SNI (hostname) and certificate identity validation.  A maximum of 5 SANs are allowed.</li>
+<li><a href="/reference/spec/#localobjectreference">CACertificateRefs</a> - Defines one or more references to objects that contain PEM-encoded TLS certificates,
+which are used to establish a TLS handshake between the Gateway and backend Pod.  Either CACertificateRefs or
+WellKnownCACertificates may be specified, but not both.</li>
+<li><a href="/reference/spec/#localobjectreference">WellKnownCACertificates</a> - Specifies whether system CA certificates may be used in the TLS
+handshake between the Gateway and backend Pod.  Either CACertificateRefs or WellKnownCACertificates may be specified, but not both.</li>
+<li><a href="/reference/spec/#backendtlspolicyspec">Options</a> - A map of key/value pairs enabling extended TLS configuration for implementations that choose to provide support.  Check your implementation's documentation for details.</li>
+</ul>
+<p>The following chart outlines the object definitions and relationship:
+<figure>
+<div class="mermaid">
+    
+flowchart LR
+    backendTLSPolicy[["<b>backendTLSPolicy</b> <hr><align=left>BackendTLSPolicySpec: spec<br>PolicyStatus: status</align>"]]
+    spec[["<b>spec</b><hr>PolicyTargetReferenceWithSectionName: targetRefs <br> BackendTLSPolicyValidation: tls"]]
+    status[["<b>status</b><hr>[ ]PolicyAncestorStatus: ancestors"]]
+    validation[["<b>tls</b><hr>LocalObjectReference: caCertificateRefs<br>wellKnownCACertificatesType: wellKnownCACertificates<br>PreciseHostname: hostname<br>[]SubjectAltName: subjectAltNames"]]
+    ancestorStatus[["<b>ancestors</b><hr>AncestorRef: parentReference<br>GatewayController: controllerName<br>[]Condition: conditions"]]
+    targetRefs[[<b>targetRefs</b><hr>]]
+    service["<b>service</>"]
+    backendTLSPolicy -->spec
+    backendTLSPolicy -->status
+    spec -->targetRefs & validation
+    status -->ancestorStatus
+    targetRefs -->service
+    note[<em>choose only one<hr> caCertificateRefs OR wellKnownCACertificates</em>]
+    style note fill:#fff
+    validation -.- note
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript></p>
+<p>The following illustrates a BackendTLSPolicy that configures TLS for a Service serving a backend:
+<figure>
+<div class="mermaid">
+    
+flowchart LR
+    client(["client"])
+    gateway["Gateway"]
+    httproute["HTTP<BR>Route"]
+    service["Service"]
+    pod1["Pod"]
+    pod2["Pod"]
+    client -.->|HTTP <br> request| gateway
+    gateway --> httproute
+    httproute -.->|BackendTLSPolicy|service
+    service --> pod1 & pod2
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript></p>
+<h3 id="targeting-backends">Targeting backends</h3>
+<p>A BackendTLSPolicy targets a backend Pod (or set of Pods) via one or more TargetRefs to a Service.  This TargetRef is a
+required object reference that specifies a Service by its Name, Kind (Service), and optionally its Namespace and Group.
+TargetRefs identify the Service(s) for which your HTTPRoute requires TLS.</p>
+
+<div class="alert alert-info" role="note"><ul>
+<li>Cross-namespace certificate references are not allowed.</li>
+</ul>
+</div>
+
+<h3 id="backendtlspolicyvalidation">BackendTLSPolicyValidation</h3>
+<p>A BackendTLSPolicyValidation is the specification for the BackendTLSPolicy and defines the configuration for TLS,
+including hostname (for server name indication) and certificates.</p>
+<h4 id="hostname">Hostname</h4>
+<p>Hostname defines the server name indication (SNI) the Gateway should use in order to connect to the backend, and must
+match the certificate served by the backend pod. A hostname is the fully qualified domain name of a network host, as
+defined by <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>. Note the following deviations from the &quot;host&quot; part of the URI as defined in the RFC:</p>
+<ul>
+<li>IP addresses are not allowed.</li>
+</ul>
+<p>Also note:</p>
+
+<div class="alert alert-info" role="note"><ul>
+<li>Wildcard hostnames are not allowed.</li>
+</ul>
+</div>
+
+<h4 id="subject-alternative-names">Subject Alternative Names</h4>
+<p>
+<div class="alert alert-info" role="note">This field was added to BackendTLSPolicy in <code>v1.2.0</code></div>
+
+The subjectAltNames field enables basic mutual TLS configuration between Gateways and backends, as well as the optional use of SPIFFE. When subjectAltNames is specified, the certificate served by the backend must have at least one Subject Alternative Name matching one of the specified values. This is particularly useful for SPIFFE implementations where URI-based SANs may not be valid SNIs.
+Subject Alternative Names may contain one of either a Hostname or URI field, and must contain a Type specifying whether Hostname or URI is chosen.</p>
+
+<div class="alert alert-info" role="note"><ul>
+<li>IP addresses and wildcard hostnames are not allowed. (see the description for Hostname above for more details).</li>
+<li>Hostname: DNS name format</li>
+<li>URI: URI format (e.g., SPIFFE ID)</li>
+</ul>
+</div>
+
+<h4 id="tls-options">TLS Options</h4>
+<p>
+<div class="alert alert-info" role="note">This field was added to BackendTLSPolicy in <code>v1.2.0</code></div>
+
+The options field allows specification of implementation-specific TLS configurations. This can include:</p>
+<ul>
+<li>Vendor-specific mutual TLS automation configuration</li>
+<li>Minimum supported TLS version restrictions</li>
+<li>Supported cipher suite configurations</li>
+</ul>
+<p>Check your implementation documentation for details.</p>
+<h3></h3>
+<h4 id="certificates">Certificates</h4>
+<p>The BackendTLSPolicyValidation must contain a certificate reference of some kind, and contains two ways to configure the
+certificate to use for backend TLS, CACertificateRefs and WellKnownCACertificates.  Only one of these may be used per
+BackendTLSPolicyValidation.</p>
+<h5 id="cacertificaterefs">CACertificateRefs</h5>
+<p>CACertificateRefs refer to one or more PEM-encoded TLS certificates.</p>
+
+<div class="alert alert-info" role="note"><ul>
+<li>Cross-namespace certificate references are not allowed.</li>
+</ul>
+</div>
+
+<h5 id="wellknowncacertificates">WellKnownCACertificates</h5>
+<p>If you are working in an environment where specific TLS certificates are not required, and your Gateway API
+implementation allows system or default certificates to be used, e.g. in a development environment, you may
+set WellKnownCACertificates to &quot;System&quot; to tell the Gateway to use a set of trusted CA Certificates. There may be
+some variation in which system certificates are used by each implementation. Refer to documentation from your
+implementation of choice for more information.</p>
+<h3 id="policystatus">PolicyStatus</h3>
+<p>Status defines the observed state of the BackendTLSPolicy and is not user-configurable.  Check status in the same
+way you do for other Gateway API objects to verify correct operation.  Note that the status in BackendTLSPolicy
+uses <code>PolicyAncestorStatus</code> to allow you to know which parentReference set that particular status.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-590e4093e8a8acdb20a26f5735271cc3">2 - BackendTrafficPolicy</h1>
+    <div class="lead">Configuring backend traffic behavior including retry budgets</div>
+	<details class="alert alert-example channel-version channel-experimental" open>
+<summary class="alert-heading">Experimental Channel since v1.3.0</summary>The <code>BackendTrafficPolicy</code> resource is a part of the Experimental Channel
+since <code>v1.3.0</code>. For more information on release channels, refer to our
+<a href="/overview/concepts/versioning/">versioning guide</a>.</details>
+
+<p><a href="/reference/specx/#xbackendtrafficpolicy">BackendTrafficPolicy</a> is a Gateway API type to configure
+the behavior of clients when targeting a valid backend resource.</p>
+<h2 id="background">Background</h2>
+<p><code>BackendTrafficPolicy</code> is used to configure the behavior of clients when making
+requests targeting a backend, a grouping of like endpoints. Currently, this
+policy includes the ability to configure a <code>RetryConstraint</code>, which can
+dynamically limit the number of active retries targeting the specified backend,
+by defining a &quot;retry budget&quot;. Additional features may be added in the future.</p>
+<h3 id="retry-constraint">Retry Constraint</h3>
+<p>While client-side retries are important for allowing requests to be
+successfully retried in
+periods of intermittent failure, excessive retries can quickly overwhelm a
+system, leading to cascading failures such as retry storms. Specifying a
+<code>RetryConstraint</code> within <code>BackendTrafficPolicy</code> allows application
+developers to dynamically calculate a limit on active client-side retries as a percentage of
+the overall active request volume. While the retry stanza within the
+<a href="/references/spec/#httproute">HTTPRouteRule</a> resource allows specifying whether a request
+<em>should</em> be retried, as well as the maximum number of
+retries that may be performed for a failed request, budgeted
+retries instead act as a
+fail-safe in order to ensure that the targeted backend will not be overwhelmed
+by the <em>overall</em> volume of retries from the client.</p>
+<p>The retry budget is calculated based on the percentage of incoming traffic
+composed of retries over a given time interval. Retrying the same original
+request multiple times within the retry budget interval will lead to each retry
+being counted towards calculating the budget. Once the budget is exceeded,
+additional retries to the backend will be rejected and MUST return a 503
+response to the client. The parameters of the retry budget calculation can be
+configured within <code>RetryConstraint</code>.</p>
+<p>BackendTrafficPolicy is a Direct
+<a href="/reference/policy-attachment/">PolicyAttachment</a>. All Gateway API Routes
+that target the referenced Backend should respect a configured
+BackendTrafficPolicy. Additional configurations for defining a constraint on
+retries MAY be defined in the future.</p>
+<h2 id="spec">Spec</h2>
+<p>The specification of a <a href="/reference/specx/#xbackendtrafficpolicy">BackendTrafficPolicy</a> consists of:</p>
+<ul>
+<li><a href="/references/spec/#localpolicytargetreference">TargetRefs</a> - Defines the targeted API object(s) of the policy.
+Backends (A grouping of like endpoints such as Service,
+ServiceImport, or any implementation-specific backendRef) are the only valid
+API target references.</li>
+<li><a href="/reference/specx/#retryconstraint">RetryConstraint</a> - Defines the configuration for how a retry budget should be calculated, by specifying BudgetDetails and MinRetryRate.</li>
+<li><a href="/references/spec/#sessionpersistence">SessionPersistence</a> - Defines the session persistence for the backend.</li>
+</ul>
+<p>The following chart outlines the object definitions and relationship:
+<figure>
+<div class="mermaid">
+    
+flowchart LR
+    backendTrafficPolicy[["<b>backendTrafficPolicy</b> <hr><align=left>BackendTrafficPolicySpec: spec<br>PolicyStatus: status</align>"]]
+    spec[["<b>spec</b><hr>LocalPolicyTargetReference: targetRefs <br> RetryConstraint: retryConstraint" <br> SessionPersistence: sessionPersistence]]
+    status[["<b>status</b><hr>[ ]PolicyAncestorStatus: ancestors"]]
+    budget[["<b>budget</b><hr>int: budgetPercent<br>Duration: budgetInterval"]]
+    retryConstraint[["<b>retryConstraint</b><hr>BudgetDetails: budget<br>MinRetryRate: RequestRate"]]
+    ancestorStatus[["<b>ancestors</b><hr>AncestorRef: parentReference<br>GatewayController: controllerName<br>[]Condition: conditions"]]
+    targetRefs[[<b>targetRefs</b><hr>]]
+    backendRef["one of:<hr>" Service OR ServiceImport OR an implementation-specific backendRef]
+    backendTrafficPolicy -->spec
+    backendTrafficPolicy -->status
+    spec -->targetRefs & retryConstraint
+    retryConstraint -->budget
+    status -->ancestorStatus
+    targetRefs -->backendRef
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript></p>
+<h3 id="targeting-backends">Targeting backends</h3>
+<p><code>BackendTrafficPolicy</code> targets a group of backend Pods via one or more
+TargetRefs such as Service, ServiceImport, or implementation-specific
+backendRef. TargetRefs is a required object reference, specifying a Backend via
+its Name, Kind, and Group. Currently, TargetRefs cannot be scoped to
+specific ports on a service.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

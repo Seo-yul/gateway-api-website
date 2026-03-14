@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en" class="no-js" dir="ltr">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Versioning | Kubernetes Gateway API</title>
+<meta name="description" content="How Gateway API versions, release channels, and graduation criteria work.">
+<meta property="og:url" content="//localhost:1313/docs/concepts/versioning/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="Versioning">
+  <meta property="og:description" content="How Gateway API versions, release channels, and graduation criteria work.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="Versioning">
+  <meta itemprop="description" content="How Gateway API versions, release channels, and graduation criteria work.">
+  <meta itemprop="wordCount" content="1326">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Versioning">
+  <meta name="twitter:description" content="How Gateway API versions, release channels, and graduation criteria work.">
+
+
+
+
+
+<link href="/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-docs-concepts-versioning").addClass("active"); 
+    $("#td-section-nav #m-docs-concepts-versioning-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-docs-concepts-versioning").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-docs-concepts-versioning-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-docs-concepts-versioning-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/">한국어 (Korean)</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-li">
+  <a href="/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-concepts-li">
+  <input type="checkbox" id="m-docs-concepts-check"/>
+  <label for="m-docs-concepts-check"><a href="/docs/concepts/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-concepts"><span class="">Concepts</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-api-overview-li">
+  <input type="checkbox" id="m-docs-concepts-api-overview-check"/>
+  <label for="m-docs-concepts-api-overview-check"><a href="/docs/concepts/api-overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-api-overview"><span class="">API Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-roles-and-personas-li">
+  <input type="checkbox" id="m-docs-concepts-roles-and-personas-check"/>
+  <label for="m-docs-concepts-roles-and-personas-check"><a href="/docs/concepts/roles-and-personas/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-roles-and-personas"><span class="">Roles and Personas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-conformance-li">
+  <input type="checkbox" id="m-docs-concepts-conformance-check"/>
+  <label for="m-docs-concepts-conformance-check"><a href="/docs/concepts/conformance/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-conformance"><span class="">Conformance</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-glossary-li">
+  <input type="checkbox" id="m-docs-concepts-glossary-check"/>
+  <label for="m-docs-concepts-glossary-check"><a href="/docs/concepts/glossary/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-glossary"><span class="">Glossary</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-hostnames-li">
+  <input type="checkbox" id="m-docs-concepts-hostnames-check"/>
+  <label for="m-docs-concepts-hostnames-check"><a href="/docs/concepts/hostnames/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-hostnames"><span class="">Hostnames</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-security-li">
+  <input type="checkbox" id="m-docs-concepts-security-check"/>
+  <label for="m-docs-concepts-security-check"><a href="/docs/concepts/security/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-security"><span class="">Security</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-tooling-li">
+  <input type="checkbox" id="m-docs-concepts-tooling-check"/>
+  <label for="m-docs-concepts-tooling-check"><a href="/docs/concepts/tooling/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-tooling"><span class="">Tooling</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-traffic-matching-li">
+  <input type="checkbox" id="m-docs-concepts-traffic-matching-check"/>
+  <label for="m-docs-concepts-traffic-matching-check"><a href="/docs/concepts/traffic-matching/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-traffic-matching"><span class="">Traffic Matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-troubleshooting-li">
+  <input type="checkbox" id="m-docs-concepts-troubleshooting-check"/>
+  <label for="m-docs-concepts-troubleshooting-check"><a href="/docs/concepts/troubleshooting/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-troubleshooting"><span class="">Troubleshooting</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-use-cases-li">
+  <input type="checkbox" id="m-docs-concepts-use-cases-check"/>
+  <label for="m-docs-concepts-use-cases-check"><a href="/docs/concepts/use-cases/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-use-cases"><span class="">Use Cases</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-concepts-versioning-li">
+  <input type="checkbox" id="m-docs-concepts-versioning-check"/>
+  <label for="m-docs-concepts-versioning-check"><a href="/docs/concepts/versioning/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-concepts-versioning"><span class="">Versioning</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-guides-li">
+  <input type="checkbox" id="m-docs-guides-check"/>
+  <label for="m-docs-guides-check"><a href="/docs/guides/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-guides"><span class="">Guides</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-api-design-li">
+  <input type="checkbox" id="m-docs-guides-api-design-check"/>
+  <label for="m-docs-guides-api-design-check"><a href="/docs/guides/api-design/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-api-design"><span class="">API Design Guide</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-backend-protocol-li">
+  <input type="checkbox" id="m-docs-guides-backend-protocol-check"/>
+  <label for="m-docs-guides-backend-protocol-check"><a href="/docs/guides/backend-protocol/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-backend-protocol"><span class="">Backend Protocol</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-crd-management-li">
+  <input type="checkbox" id="m-docs-guides-crd-management-check"/>
+  <label for="m-docs-guides-crd-management-check"><a href="/docs/guides/crd-management/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-crd-management"><span class="">CRD Management</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-grpc-routing-li">
+  <input type="checkbox" id="m-docs-guides-grpc-routing-check"/>
+  <label for="m-docs-guides-grpc-routing-check"><a href="/docs/guides/grpc-routing/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-grpc-routing"><span class="">gRPC Routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-cors-li">
+  <input type="checkbox" id="m-docs-guides-http-cors-check"/>
+  <label for="m-docs-guides-http-cors-check"><a href="/docs/guides/http-cors/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-cors"><span class="">Cross-Origin Resource Sharing (CORS)</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-header-modifier-li">
+  <input type="checkbox" id="m-docs-guides-http-header-modifier-check"/>
+  <label for="m-docs-guides-http-header-modifier-check"><a href="/docs/guides/http-header-modifier/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-header-modifier"><span class="">HTTP Header Modifiers</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-method-matching-li">
+  <input type="checkbox" id="m-docs-guides-http-method-matching-check"/>
+  <label for="m-docs-guides-http-method-matching-check"><a href="/docs/guides/http-method-matching/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-method-matching"><span class="">HTTP Method Matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-query-param-matching-li">
+  <input type="checkbox" id="m-docs-guides-http-query-param-matching-check"/>
+  <label for="m-docs-guides-http-query-param-matching-check"><a href="/docs/guides/http-query-param-matching/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-query-param-matching"><span class="">HTTP Query Parameter Matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-redirect-rewrite-li">
+  <input type="checkbox" id="m-docs-guides-http-redirect-rewrite-check"/>
+  <label for="m-docs-guides-http-redirect-rewrite-check"><a href="/docs/guides/http-redirect-rewrite/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-redirect-rewrite"><span class="">HTTP Path Redirects and Rewrites</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-request-mirroring-li">
+  <input type="checkbox" id="m-docs-guides-http-request-mirroring-check"/>
+  <label for="m-docs-guides-http-request-mirroring-check"><a href="/docs/guides/http-request-mirroring/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-request-mirroring"><span class="">HTTP Request Mirroring</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-routing-li">
+  <input type="checkbox" id="m-docs-guides-http-routing-check"/>
+  <label for="m-docs-guides-http-routing-check"><a href="/docs/guides/http-routing/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-routing"><span class="">HTTP Routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-http-timeouts-li">
+  <input type="checkbox" id="m-docs-guides-http-timeouts-check"/>
+  <label for="m-docs-guides-http-timeouts-check"><a href="/docs/guides/http-timeouts/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-http-timeouts"><span class="">HTTP Timeouts</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-implementers-li">
+  <input type="checkbox" id="m-docs-guides-implementers-check"/>
+  <label for="m-docs-guides-implementers-check"><a href="/docs/guides/implementers/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-implementers"><span class="">Implementer&#39;s Guide</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-infrastructure-li">
+  <input type="checkbox" id="m-docs-guides-infrastructure-check"/>
+  <label for="m-docs-guides-infrastructure-check"><a href="/docs/guides/infrastructure/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-infrastructure"><span class="">Gateway Infrastructure Labels and Annotations</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-listener-set-li">
+  <input type="checkbox" id="m-docs-guides-listener-set-check"/>
+  <label for="m-docs-guides-listener-set-check"><a href="/docs/guides/listener-set/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-listener-set"><span class="">ListenerSet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-multiple-ns-li">
+  <input type="checkbox" id="m-docs-guides-multiple-ns-check"/>
+  <label for="m-docs-guides-multiple-ns-check"><a href="/docs/guides/multiple-ns/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-multiple-ns"><span class="">Cross-Namespace Routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-tcp-li">
+  <input type="checkbox" id="m-docs-guides-tcp-check"/>
+  <label for="m-docs-guides-tcp-check"><a href="/docs/guides/tcp/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-tcp"><span class="">TCP Routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-tls-routing-li">
+  <input type="checkbox" id="m-docs-guides-tls-routing-check"/>
+  <label for="m-docs-guides-tls-routing-check"><a href="/docs/guides/tls-routing/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-tls-routing"><span class="">TLS Routing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-tls-li">
+  <input type="checkbox" id="m-docs-guides-tls-check"/>
+  <label for="m-docs-guides-tls-check"><a href="/docs/guides/tls/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-tls"><span class="">TLS Configuration</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-traffic-splitting-li">
+  <input type="checkbox" id="m-docs-guides-traffic-splitting-check"/>
+  <label for="m-docs-guides-traffic-splitting-check"><a href="/docs/guides/traffic-splitting/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-traffic-splitting"><span class="">HTTP Traffic Splitting</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-guides-getting-started-li">
+  <input type="checkbox" id="m-docs-guides-getting-started-check"/>
+  <label for="m-docs-guides-getting-started-check"><a href="/docs/guides/getting-started/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-guides-getting-started"><span class="">Getting Started</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-getting-started-migrating-from-ingress-nginx-li">
+  <input type="checkbox" id="m-docs-guides-getting-started-migrating-from-ingress-nginx-check"/>
+  <label for="m-docs-guides-getting-started-migrating-from-ingress-nginx-check"><a href="/docs/guides/getting-started/migrating-from-ingress-nginx/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-getting-started-migrating-from-ingress-nginx"><span class="">A Welcome Guide for Ingress-NGINX Users</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-getting-started-migrating-from-ingress-li">
+  <input type="checkbox" id="m-docs-guides-getting-started-migrating-from-ingress-check"/>
+  <label for="m-docs-guides-getting-started-migrating-from-ingress-check"><a href="/docs/guides/getting-started/migrating-from-ingress/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-getting-started-migrating-from-ingress"><span class="">Migrating from Ingress</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-guides-getting-started-simple-gateway-li">
+  <input type="checkbox" id="m-docs-guides-getting-started-simple-gateway-check"/>
+  <label for="m-docs-guides-getting-started-simple-gateway-check"><a href="/docs/guides/getting-started/simple-gateway/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-guides-getting-started-simple-gateway"><span class="">Deploying a Simple Gateway</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-reference-li">
+  <input type="checkbox" id="m-docs-reference-check"/>
+  <label for="m-docs-reference-check"><a href="/docs/reference/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-reference"><span class="">Reference</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-policy-attachment-li">
+  <input type="checkbox" id="m-docs-reference-policy-attachment-check"/>
+  <label for="m-docs-reference-policy-attachment-check"><a href="/docs/reference/policy-attachment/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-policy-attachment"><span class="">Policy Attachment</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-reference-api-types-li">
+  <input type="checkbox" id="m-docs-reference-api-types-check"/>
+  <label for="m-docs-reference-api-types-check"><a href="/docs/reference/api-types/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-reference-api-types"><span class="">API Types</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-backendtlspolicy-li">
+  <input type="checkbox" id="m-docs-reference-api-types-backendtlspolicy-check"/>
+  <label for="m-docs-reference-api-types-backendtlspolicy-check"><a href="/docs/reference/api-types/backendtlspolicy/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-backendtlspolicy"><span class="">BackendTLSPolicy</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-backendtrafficpolicy-li">
+  <input type="checkbox" id="m-docs-reference-api-types-backendtrafficpolicy-check"/>
+  <label for="m-docs-reference-api-types-backendtrafficpolicy-check"><a href="/docs/reference/api-types/backendtrafficpolicy/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-backendtrafficpolicy"><span class="">BackendTrafficPolicy</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-gateway-li">
+  <input type="checkbox" id="m-docs-reference-api-types-gateway-check"/>
+  <label for="m-docs-reference-api-types-gateway-check"><a href="/docs/reference/api-types/gateway/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-gateway"><span class="">Gateway</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-gatewayclass-li">
+  <input type="checkbox" id="m-docs-reference-api-types-gatewayclass-check"/>
+  <label for="m-docs-reference-api-types-gatewayclass-check"><a href="/docs/reference/api-types/gatewayclass/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-gatewayclass"><span class="">GatewayClass</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-grpcroute-li">
+  <input type="checkbox" id="m-docs-reference-api-types-grpcroute-check"/>
+  <label for="m-docs-reference-api-types-grpcroute-check"><a href="/docs/reference/api-types/grpcroute/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-grpcroute"><span class="">GRPCRoute</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-httproute-li">
+  <input type="checkbox" id="m-docs-reference-api-types-httproute-check"/>
+  <label for="m-docs-reference-api-types-httproute-check"><a href="/docs/reference/api-types/httproute/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-httproute"><span class="">HTTPRoute</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-listenerset-li">
+  <input type="checkbox" id="m-docs-reference-api-types-listenerset-check"/>
+  <label for="m-docs-reference-api-types-listenerset-check"><a href="/docs/reference/api-types/listenerset/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-listenerset"><span class="">ListenerSet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-referencegrant-li">
+  <input type="checkbox" id="m-docs-reference-api-types-referencegrant-check"/>
+  <label for="m-docs-reference-api-types-referencegrant-check"><a href="/docs/reference/api-types/referencegrant/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-referencegrant"><span class="">ReferenceGrant</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-api-types-tlsroute-li">
+  <input type="checkbox" id="m-docs-reference-api-types-tlsroute-check"/>
+  <label for="m-docs-reference-api-types-tlsroute-check"><a href="/docs/reference/api-types/tlsroute/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-api-types-tlsroute"><span class="">TLSRoute</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-reference-spec-li">
+  <input type="checkbox" id="m-docs-reference-spec-check"/>
+  <label for="m-docs-reference-spec-check"><a href="/docs/reference/spec/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-reference-spec"><span class="">API Specification</span></a></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-spec-li">
+  <input type="checkbox" id="m-docs-reference-spec-spec-check"/>
+  <label for="m-docs-reference-spec-spec-check"><a href="/docs/reference/spec/spec/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-spec"><span class="">API Reference</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-reference-spec-v1-4-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-4-check"/>
+  <label for="m-docs-reference-spec-v1-4-check"><a href="/docs/reference/spec/v1.4/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-reference-spec-v1-4"><span class="">v1.4</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-v1-4-spec-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-4-spec-check"/>
+  <label for="m-docs-reference-spec-v1-4-spec-check"><a href="/docs/reference/spec/v1.4/spec/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-v1-4-spec"><span class="">API Reference (v1.4)</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-v1-4-specx-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-4-specx-check"/>
+  <label for="m-docs-reference-spec-v1-4-specx-check"><a href="/docs/reference/spec/v1.4/specx/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-v1-4-specx"><span class="">Experimental API Reference (v1.4)</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-reference-spec-v1-5-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-5-check"/>
+  <label for="m-docs-reference-spec-v1-5-check"><a href="/docs/reference/spec/v1.5/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-reference-spec-v1-5"><span class="">v1.5</span></a></label>
+  
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-v1-5-spec-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-5-spec-check"/>
+  <label for="m-docs-reference-spec-v1-5-spec-check"><a href="/docs/reference/spec/v1.5/spec/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-v1-5-spec"><span class="">API Reference (v1.5)</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-v1-5-specx-li">
+  <input type="checkbox" id="m-docs-reference-spec-v1-5-specx-check"/>
+  <label for="m-docs-reference-spec-v1-5-specx-check"><a href="/docs/reference/spec/v1.5/specx/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-v1-5-specx"><span class="">Experimental API Reference (v1.5)</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-reference-spec-specx-li">
+  <input type="checkbox" id="m-docs-reference-spec-specx-check"/>
+  <label for="m-docs-reference-spec-specx-check"><a href="/docs/reference/spec/specx/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-reference-spec-specx"><span class="">Experimental API Reference</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-mesh-li">
+  <input type="checkbox" id="m-docs-mesh-check"/>
+  <label for="m-docs-mesh-check"><a href="/docs/mesh/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-mesh"><span class="">Service Mesh</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-mesh-gamma-li">
+  <input type="checkbox" id="m-docs-mesh-gamma-check"/>
+  <label for="m-docs-mesh-gamma-check"><a href="/docs/mesh/gamma/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-mesh-gamma"><span class="">The GAMMA Initiative</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-mesh-service-facets-li">
+  <input type="checkbox" id="m-docs-mesh-service-facets-check"/>
+  <label for="m-docs-mesh-service-facets-check"><a href="/docs/mesh/service-facets/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-mesh-service-facets"><span class="">Service Facets</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-contributing-li">
+  <input type="checkbox" id="m-docs-contributing-check"/>
+  <label for="m-docs-contributing-check"><a href="/docs/contributing/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-contributing"><span class="">Contributing</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-contributing-devguide-li">
+  <input type="checkbox" id="m-docs-contributing-devguide-check"/>
+  <label for="m-docs-contributing-devguide-check"><a href="/docs/contributing/devguide/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-contributing-devguide"><span class="">Developer Guide</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-contributing-style-guide-li">
+  <input type="checkbox" id="m-docs-contributing-style-guide-check"/>
+  <label for="m-docs-contributing-style-guide-check"><a href="/docs/contributing/style-guide/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-contributing-style-guide"><span class="">Documentation Style Guide</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-contributing-enhancement-requests-li">
+  <input type="checkbox" id="m-docs-contributing-enhancement-requests-check"/>
+  <label for="m-docs-contributing-enhancement-requests-check"><a href="/docs/contributing/enhancement-requests/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-contributing-enhancement-requests"><span class="">Enhancement Requests</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-contributing-release-cycle-li">
+  <input type="checkbox" id="m-docs-contributing-release-cycle-check"/>
+  <label for="m-docs-contributing-release-cycle-check"><a href="/docs/contributing/release-cycle/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-contributing-release-cycle"><span class="">Release Cycle</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-contributing-contributor-ladder-li">
+  <input type="checkbox" id="m-docs-contributing-contributor-ladder-check"/>
+  <label for="m-docs-contributing-contributor-ladder-check"><a href="/docs/contributing/contributor-ladder/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-contributing-contributor-ladder"><span class="">Contributor Ladder</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-faq-li">
+  <input type="checkbox" id="m-docs-faq-check"/>
+  <label for="m-docs-faq-check"><a href="/docs/faq/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-faq"><span class="">FAQ</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-geps-li">
+  <input type="checkbox" id="m-docs-geps-check"/>
+  <label for="m-docs-geps-check"><a href="/docs/geps/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docs-geps"><span class="">Gateway Enhancement Proposals (GEPs)</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-overview-li">
+  <input type="checkbox" id="m-docs-geps-overview-check"/>
+  <label for="m-docs-geps-overview-check"><a href="/docs/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-overview"><span class="">GEP Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-91-li">
+  <input type="checkbox" id="m-docs-geps-gep-91-check"/>
+  <label for="m-docs-geps-gep-91-check"><a href="/docs/geps/gep-91/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-91"><span class="">GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-696-li">
+  <input type="checkbox" id="m-docs-geps-gep-696-check"/>
+  <label for="m-docs-geps-gep-696-check"><a href="/docs/geps/gep-696/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-696"><span class="">GEP-696: GEP template</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-709-li">
+  <input type="checkbox" id="m-docs-geps-gep-709-check"/>
+  <label for="m-docs-geps-gep-709-check"><a href="/docs/geps/gep-709/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-709"><span class="">GEP-709: Cross Namespace References from Routes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-713-li">
+  <input type="checkbox" id="m-docs-geps-gep-713-check"/>
+  <label for="m-docs-geps-gep-713-check"><a href="/docs/geps/gep-713/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-713"><span class="">GEP-713: Metaresources and Policy Attachment</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-718-li">
+  <input type="checkbox" id="m-docs-geps-gep-718-check"/>
+  <label for="m-docs-geps-gep-718-check"><a href="/docs/geps/gep-718/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-718"><span class="">GEP-718: Rework forwardTo segment in routes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-724-li">
+  <input type="checkbox" id="m-docs-geps-gep-724-check"/>
+  <label for="m-docs-geps-gep-724-check"><a href="/docs/geps/gep-724/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-724"><span class="">GEP-724: Refresh Route-Gateway Binding</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-726-li">
+  <input type="checkbox" id="m-docs-geps-gep-726-check"/>
+  <label for="m-docs-geps-gep-726-check"><a href="/docs/geps/gep-726/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-726"><span class="">GEP-726: Add Path Redirects and Rewrites</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-735-li">
+  <input type="checkbox" id="m-docs-geps-gep-735-check"/>
+  <label for="m-docs-geps-gep-735-check"><a href="/docs/geps/gep-735/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-735"><span class="">GEP-735: TCP and UDP addresses matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-746-li">
+  <input type="checkbox" id="m-docs-geps-gep-746-check"/>
+  <label for="m-docs-geps-gep-746-check"><a href="/docs/geps/gep-746/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-746"><span class="">GEP-746: Replace Cert Refs on HTTPRoute with Cross Namespace Refs from Gateway</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-820-li">
+  <input type="checkbox" id="m-docs-geps-gep-820-check"/>
+  <label for="m-docs-geps-gep-820-check"><a href="/docs/geps/gep-820/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-820"><span class="">GEP-820: Drop extension points from Route matches</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-851-li">
+  <input type="checkbox" id="m-docs-geps-gep-851-check"/>
+  <label for="m-docs-geps-gep-851-check"><a href="/docs/geps/gep-851/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-851"><span class="">GEP-851: Allow Multiple Certificate Refs per Gateway Listener</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-917-li">
+  <input type="checkbox" id="m-docs-geps-gep-917-check"/>
+  <label for="m-docs-geps-gep-917-check"><a href="/docs/geps/gep-917/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-917"><span class="">GEP-917: Gateway API Conformance Testing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-922-li">
+  <input type="checkbox" id="m-docs-geps-gep-922-check"/>
+  <label for="m-docs-geps-gep-922-check"><a href="/docs/geps/gep-922/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-922"><span class="">GEP-922: Gateway API Versioning</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-957-li">
+  <input type="checkbox" id="m-docs-geps-gep-957-check"/>
+  <label for="m-docs-geps-gep-957-check"><a href="/docs/geps/gep-957/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-957"><span class="">GEP-957: Destination Port Matching</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-995-li">
+  <input type="checkbox" id="m-docs-geps-gep-995-check"/>
+  <label for="m-docs-geps-gep-995-check"><a href="/docs/geps/gep-995/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-995"><span class="">GEP-995: Named route rules</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1016-li">
+  <input type="checkbox" id="m-docs-geps-gep-1016-check"/>
+  <label for="m-docs-geps-gep-1016-check"><a href="/docs/geps/gep-1016/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1016"><span class="">GEP-1016: GRPCRoute</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1282-li">
+  <input type="checkbox" id="m-docs-geps-gep-1282-check"/>
+  <label for="m-docs-geps-gep-1282-check"><a href="/docs/geps/gep-1282/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1282"><span class="">GEP-1282: Describing Backend Properties</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1294-li">
+  <input type="checkbox" id="m-docs-geps-gep-1294-check"/>
+  <label for="m-docs-geps-gep-1294-check"><a href="/docs/geps/gep-1294/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1294"><span class="">GEP-1294: xRoutes Mesh Binding</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1323-li">
+  <input type="checkbox" id="m-docs-geps-gep-1323-check"/>
+  <label for="m-docs-geps-gep-1323-check"><a href="/docs/geps/gep-1323/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1323"><span class="">GEP-1323: Response Header Filter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1324-li">
+  <input type="checkbox" id="m-docs-geps-gep-1324-check"/>
+  <label for="m-docs-geps-gep-1324-check"><a href="/docs/geps/gep-1324/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1324"><span class="">GEP-1324: Service Mesh in Gateway API</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1364-li">
+  <input type="checkbox" id="m-docs-geps-gep-1364-check"/>
+  <label for="m-docs-geps-gep-1364-check"><a href="/docs/geps/gep-1364/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1364"><span class="">GEP-1364: Status and Conditions Update</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1494-li">
+  <input type="checkbox" id="m-docs-geps-gep-1494-check"/>
+  <label for="m-docs-geps-gep-1494-check"><a href="/docs/geps/gep-1494/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1494"><span class="">GEP-1494: HTTP Auth in Gateway API</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1619-li">
+  <input type="checkbox" id="m-docs-geps-gep-1619-check"/>
+  <label for="m-docs-geps-gep-1619-check"><a href="/docs/geps/gep-1619/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1619"><span class="">GEP-1619: Session Persistence</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1651-li">
+  <input type="checkbox" id="m-docs-geps-gep-1651-check"/>
+  <label for="m-docs-geps-gep-1651-check"><a href="/docs/geps/gep-1651/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1651"><span class="">GEP-1651: Gateway Routability</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1686-li">
+  <input type="checkbox" id="m-docs-geps-gep-1686-check"/>
+  <label for="m-docs-geps-gep-1686-check"><a href="/docs/geps/gep-1686/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1686"><span class="">GEP-1686: Mesh conformance testing plan</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1709-li">
+  <input type="checkbox" id="m-docs-geps-gep-1709-check"/>
+  <label for="m-docs-geps-gep-1709-check"><a href="/docs/geps/gep-1709/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1709"><span class="">GEP-1709: Conformance Profiles</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1713-li">
+  <input type="checkbox" id="m-docs-geps-gep-1713-check"/>
+  <label for="m-docs-geps-gep-1713-check"><a href="/docs/geps/gep-1713/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1713"><span class="">GEP-1713: ListenerSets (Standard Mechanism to Merge Gateways)</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1731-li">
+  <input type="checkbox" id="m-docs-geps-gep-1731-check"/>
+  <label for="m-docs-geps-gep-1731-check"><a href="/docs/geps/gep-1731/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1731"><span class="">GEP-1731: HTTPRoute Retries</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1742-li">
+  <input type="checkbox" id="m-docs-geps-gep-1742-check"/>
+  <label for="m-docs-geps-gep-1742-check"><a href="/docs/geps/gep-1742/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1742"><span class="">GEP-1742: HTTPRoute Timeouts</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1748-li">
+  <input type="checkbox" id="m-docs-geps-gep-1748-check"/>
+  <label for="m-docs-geps-gep-1748-check"><a href="/docs/geps/gep-1748/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1748"><span class="">GEP-1748: Gateway API Interaction with Multi-Cluster Services</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1762-li">
+  <input type="checkbox" id="m-docs-geps-gep-1762-check"/>
+  <label for="m-docs-geps-gep-1762-check"><a href="/docs/geps/gep-1762/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1762"><span class="">GEP-1762: In Cluster Gateway Deployments</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1767-li">
+  <input type="checkbox" id="m-docs-geps-gep-1767-check"/>
+  <label for="m-docs-geps-gep-1767-check"><a href="/docs/geps/gep-1767/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1767"><span class="">GEP-1767: CORS Filter</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1867-li">
+  <input type="checkbox" id="m-docs-geps-gep-1867-check"/>
+  <label for="m-docs-geps-gep-1867-check"><a href="/docs/geps/gep-1867/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1867"><span class="">GEP-1867: Per-Gateway Infrastructure</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1897-li">
+  <input type="checkbox" id="m-docs-geps-gep-1897-check"/>
+  <label for="m-docs-geps-gep-1897-check"><a href="/docs/geps/gep-1897/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1897"><span class="">GEP-1897: BackendTLSPolicy - Explicit Backend TLS Connection Configuration</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-1911-li">
+  <input type="checkbox" id="m-docs-geps-gep-1911-check"/>
+  <label for="m-docs-geps-gep-1911-check"><a href="/docs/geps/gep-1911/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-1911"><span class="">GEP-1911: Backend Protocol Selection</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2162-li">
+  <input type="checkbox" id="m-docs-geps-gep-2162-check"/>
+  <label for="m-docs-geps-gep-2162-check"><a href="/docs/geps/gep-2162/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2162"><span class="">GEP-2162: Supported features in GatewayClass Status</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2257-li">
+  <input type="checkbox" id="m-docs-geps-gep-2257-check"/>
+  <label for="m-docs-geps-gep-2257-check"><a href="/docs/geps/gep-2257/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2257"><span class="">GEP-2257: Gateway API Duration Format</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2627-li">
+  <input type="checkbox" id="m-docs-geps-gep-2627-check"/>
+  <label for="m-docs-geps-gep-2627-check"><a href="/docs/geps/gep-2627/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2627"><span class="">GEP-2627: DNS configuration for Gateway API</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2643-li">
+  <input type="checkbox" id="m-docs-geps-gep-2643-check"/>
+  <label for="m-docs-geps-gep-2643-check"><a href="/docs/geps/gep-2643/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2643"><span class="">GEP-2643: TLS based passthrough Route / TLSRoute</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2648-li">
+  <input type="checkbox" id="m-docs-geps-gep-2648-check"/>
+  <label for="m-docs-geps-gep-2648-check"><a href="/docs/geps/gep-2648/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2648"><span class="">GEP-2648: Direct Policy Attachment</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2649-li">
+  <input type="checkbox" id="m-docs-geps-gep-2649-check"/>
+  <label for="m-docs-geps-gep-2649-check"><a href="/docs/geps/gep-2649/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2649"><span class="">GEP-2649: Inherited Policy Attachment</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2659-li">
+  <input type="checkbox" id="m-docs-geps-gep-2659-check"/>
+  <label for="m-docs-geps-gep-2659-check"><a href="/docs/geps/gep-2659/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2659"><span class="">GEP-2659: Document and improve the GEP process</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2722-li">
+  <input type="checkbox" id="m-docs-geps-gep-2722-check"/>
+  <label for="m-docs-geps-gep-2722-check"><a href="/docs/geps/gep-2722/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2722"><span class="">GEP-2722: Goals and UX for gwctl</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-2907-li">
+  <input type="checkbox" id="m-docs-geps-gep-2907-check"/>
+  <label for="m-docs-geps-gep-2907-check"><a href="/docs/geps/gep-2907/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-2907"><span class="">GEP-2907: TLS Configuration Placement and Terminology</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-3155-li">
+  <input type="checkbox" id="m-docs-geps-gep-3155-check"/>
+  <label for="m-docs-geps-gep-3155-check"><a href="/docs/geps/gep-3155/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-3155"><span class="">GEP-3155: Complete Backend mutual TLS Configuration</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-3171-li">
+  <input type="checkbox" id="m-docs-geps-gep-3171-check"/>
+  <label for="m-docs-geps-gep-3171-check"><a href="/docs/geps/gep-3171/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-3171"><span class="">GEP-3171: Percentage-based Request Mirroring</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-3388-li">
+  <input type="checkbox" id="m-docs-geps-gep-3388-check"/>
+  <label for="m-docs-geps-gep-3388-check"><a href="/docs/geps/gep-3388/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-3388"><span class="">GEP-3388: Retry Budgets</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-3567-li">
+  <input type="checkbox" id="m-docs-geps-gep-3567-check"/>
+  <label for="m-docs-geps-gep-3567-check"><a href="/docs/geps/gep-3567/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-3567"><span class="">GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-geps-gep-3779-li">
+  <input type="checkbox" id="m-docs-geps-gep-3779-check"/>
+  <label for="m-docs-geps-gep-3779-check"><a href="/docs/geps/gep-3779/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-geps-gep-3779"><span class="">GEP-3779: Identity Based Authz for east-west traffic</span></a></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-test-shortcodes-li">
+  <input type="checkbox" id="m-docs-test-shortcodes-check"/>
+  <label for="m-docs-test-shortcodes-check"><a href="/docs/test-shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docs-test-shortcodes"><span class="">Shortcode Test Page</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/en/docs/concepts/versioning.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/en/docs/concepts/versioning.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/en/docs/concepts/versioning.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=Versioning" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a id="print" href="//localhost:1313/docs/concepts/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#release-channels">Release Channels</a></li>
+        <li><a href="#api-versions">API Versions</a></li>
+      </ul>
+    </li>
+    <li><a href="#release-process">Release Process</a>
+      <ul>
+        <li><a href="#standard-channel-releases">Standard Channel Releases</a></li>
+        <li><a href="#monthly-experimental-releases">Monthly Experimental Releases</a></li>
+        <li><a href="#semver-releases">SemVer Releases</a></li>
+      </ul>
+    </li>
+    <li><a href="#version-indicators">Version Indicators</a></li>
+    <li><a href="#what-can-change">What Can Change</a>
+      <ul>
+        <li><a href="#patch-version-e-g-v0-4-0-v0-4-1">Patch Version (e.g. v0.4.0 -&gt; v0.4.1)</a></li>
+        <li><a href="#minor-version-e-g-v0-4-0-v0-5-0">Minor Version (e.g. v0.4.0 -&gt; v0.5.0)</a></li>
+        <li><a href="#major-version-e-g-v0-x-to-v1-0">Major Version (e.g. v0.x to v1.0)</a></li>
+      </ul>
+    </li>
+    <li><a href="#graduation-criteria">Graduation Criteria</a></li>
+    <li><a href="#supported-versions">Supported Versions</a></li>
+    <li><a href="#crd-management">CRD Management</a></li>
+    <li><a href="#out-of-scope">Out of Scope</a>
+      <ul>
+        <li><a href="#unreleased-apis">Unreleased APIs</a></li>
+        <li><a href="#source-code">Source Code</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="//localhost:1313/docs/">Documentation</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="//localhost:1313/docs/concepts/">Concepts</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="//localhost:1313/docs/concepts/versioning/" aria-disabled="true" class="btn-link disabled">Versioning</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>Versioning</h1>
+	<div class="lead">How Gateway API versions, release channels, and graduation criteria work.</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<h2 id="overview">Overview</h2>
+<p>Each new release of Gateway API is defined with a &quot;bundle version&quot; that
+represents the Git tag of a release, such as v1.0.0. This contains the
+following:</p>
+<ul>
+<li>API Types (Go bindings for the resources)</li>
+<li>CRDs (Kubernetes definitions of the resources)</li>
+</ul>
+<h3 id="release-channels">Release Channels</h3>
+<p>Release channels are used to indicate feature stability within Gateway API. All
+new features and resources start in the Experimental release channel. From that
+point, these may graduate to the Standard release channel or be dropped from the
+API entirely.</p>
+<p>The following diagram provides a high level overview of the lifecycle of a
+feature or resource proposed by a new GEP (enhancement
+proposal) in Gateway API:</p>
+<figure>
+<div class="mermaid">
+    
+flowchart TD
+    0([Provisional GEP]) --> 1([Sponsors Committed])
+    1 --> 2([Implementable GEP])
+    2 --> A
+    A>Experimental Channel] --> B([Widely used and working well?])
+    B -->|Yes| C>Standard Channel]
+    B -->|No| D([Could Changes Help?])
+    D -->|Yes| E([Adjust and try again])
+    D -->|No| F>Remove From API]
+    E -->A
+    A -- No progress in 6 months --> G(["Auto-dropped"])
+
+style A fill:#eeb
+style C fill:#beb
+style F fill:#ebb
+style G fill:#ebb
+
+</div>
+</figure>
+
+<noscript>
+  <div class="alert alert-secondary callout" role="note">
+    <em class="javascript-required"></em>
+  </div>
+</noscript>
+<p>The Standard release channel includes:</p>
+<ul>
+<li>Resources that have graduated to Beta or GA API Versions (note that Beta API
+versions are being phased out in Gateway API)</li>
+<li>All fields that have graduated to Standard from the Experimental Channel</li>
+</ul>
+<p>The Experimental release channel includes everything in the Standard release
+channel, plus:</p>
+<ul>
+<li>Resources with Alpha API Versions</li>
+<li>All new fields before they graduate to Standard Channel</li>
+</ul>
+<p><img src="/images/release-channel-overlap.svg" alt="Release Channel Overlap"></p>
+<!-- Source: https://docs.google.com/presentation/d/1sfZTV-vlisDUIie_iK_B2HqKia_querT6m6T2_vbAk0/edit -->
+<p>We recommend using the Standard Channel by default as it will provide a stable
+experience. Many implementations also provide support for the Experimental
+Channel which enables us to iterate on new features quickly. Note that this
+channel makes no backwards compatibility guarantees and breaking changes may be
+released at any point.</p>
+<h4 id="validating-admission-policies-vap">Validating Admission Policies (VAP)</h4>
+<p>Gateway API uses Validating Admission Policies to protect channel boundaries:</p>
+<ul>
+<li><strong>Upgrade VAP</strong>: Prevents applying experimental-channel CRDs over
+standard-channel CRDs. If you need to do this, you'll have to remove this VAP.</li>
+<li><strong>Guardrails VAP</strong>: Prevents setting any experimental fields of a resource
+unless an annotation is also present. Without the annotation, you get
+standard-channel functionality only.</li>
+</ul>
+<h3 id="api-versions">API Versions</h3>
+<p>Upstream Kubernetes APIs have 3 levels of stability, denoted by alpha, beta, and
+GA API versions. In Gateway API, we've narrowed this down to 2 levels of
+stability, expressed by our release channels as described above.</p>
+<p>In general, this means that when resources graduate from the Experimental
+channel to the Standard Channel, they'll also be graduating from an Alpha API
+Version (v1alpha2) to a GA API Version (v1).</p>
+<h4 id="rationale">Rationale</h4>
+<p>We're phasing out beta for the following reasons:</p>
+<ol>
+<li>In most cases there are effectively two levels of API stability - installed
+by default (stable), and alpha/experimental (unstable). It's not obvious
+what value an intermediate (Beta) state would have for Gateway API.</li>
+<li>The further we separate the &quot;stable&quot; and &quot;experimental&quot; APIs, the longer it
+takes to get meaningful feedback on new features.</li>
+<li>Each unique API version we maintain comes with significant additional cost
+for users, implementers, and maintainers.</li>
+</ol>
+<h4 id="beta">Beta</h4>
+<p>Although some Gateway API resources already received a Beta API version when
+they graduated to the Standard Channel, that will not be the case for any
+additional resources. All future resources that graduate to Standard Channel
+will include a v1 API version as part of that process.</p>
+<p>The resources that already have a beta API version (v1beta1) are:</p>
+<ul>
+<li>HTTPRoute</li>
+<li>Gateway</li>
+<li>GatewayClass</li>
+<li>ReferenceGrant</li>
+</ul>
+<p>In the v1.0 release, HTTPRoute, Gateway, and GatewayClass all graduated to
+include a GA API Version (v1).</p>
+<p>ReferenceGrant is a special case since it is in the process of <a href="https://github.com/kubernetes/enhancements/issues/3766">transitioning
+into an upstream Kubernetes
+API</a> that is owned by
+<a href="https://github.com/kubernetes/community/blob/master/sig-auth/README.md">sig-auth</a>.
+Until that is resolved, it is likely that ReferenceGrant will be effectively
+frozen as beta in Gateway API. When it is widely available as a built-in
+Kubernetes API, we will likely remove it from the Standard Channel of Gateway
+API.</p>
+<h2 id="release-process">Release Process</h2>
+<h3 id="standard-channel-releases">Standard Channel Releases</h3>
+<p>We target a 4-months cadence for standard channel releases. The release date is
+chosen in advance and will not slip; however, the content is flexible. Whatever
+content is ready to go at the release date will ship; content that isn't ready
+will wait for the next release. The release number is ideally chosen at the
+point when its content is known.</p>
+<h3 id="monthly-experimental-releases">Monthly Experimental Releases</h3>
+<p>Gateway API publishes monthly releases of the Experimental channel, tagged as
+<code>monthly-$year-$month</code> (e.g., <code>monthly-2025-11</code>). These releases:</p>
+<ul>
+<li>Only include <code>experimental-install.yaml</code></li>
+<li>Are not allowed to change the Standard channel</li>
+<li>Are snapshots of the main branch</li>
+<li>Do not receive backports of bugfixes (upgrade to a newer monthly instead)</li>
+<li>Do not use SemVer release numbers, as breaking changes to experimental
+resources and fields are always allowed between monthlies</li>
+</ul>
+<p>The purpose of monthly releases is to enable faster iteration in the
+Experimental channel.</p>
+<h3 id="semver-releases">SemVer Releases</h3>
+<p>Gateway API publishes SemVer releases (e.g., <code>1.5.0</code>, <code>1.6.0</code>) on a regular
+cadence. While we use semantic versioning to structure release numbers, our
+versioning scheme differs from strict SemVer due to our release channels. See
+<a href="/docs/concepts/versioning/#what-can-change">What Can Change</a> for details on breaking changes that may
+occur in minor releases within the Experimental channel.</p>
+<p>SemVer releases:</p>
+<ul>
+<li>Include both <code>experimental-install.yaml</code> and <code>standard-install.yaml</code></li>
+<li>Use release branches to allow for backporting bugfixes</li>
+<li>Most likely have an <code>experimental-install.yaml</code> identical to the monthly release immediately before it, though that is not required</li>
+</ul>
+<h2 id="version-indicators">Version Indicators</h2>
+<p>Each CRD will be published with annotations that indicate their bundle version
+and channel:</p>
+<pre tabindex="0"><code>gateway.networking.k8s.io/bundle-version: v0.4.0
+gateway.networking.k8s.io/channel: standard|experimental
+</code></pre><h2 id="what-can-change">What Can Change</h2>
+<p>When using or implementing this API, it is important to understand what can
+change across bundle versions.</p>
+<h3 id="patch-version-e-g-v0-4-0-v0-4-1">Patch Version (e.g. v0.4.0 -&gt; v0.4.1)</h3>
+<ul>
+<li>API Spec:
+<ul>
+<li>Clarifications</li>
+<li>Correcting typos</li>
+</ul>
+</li>
+<li>Bug fixes:
+<ul>
+<li>Correcting validation</li>
+<li>Fixes to release process or artifacts</li>
+</ul>
+</li>
+<li>Conformance tests:
+<ul>
+<li>Fixes for existing tests</li>
+<li>Additional conformance test coverage for existing features</li>
+</ul>
+</li>
+</ul>
+<h3 id="minor-version-e-g-v0-4-0-v0-5-0">Minor Version (e.g. v0.4.0 -&gt; v0.5.0)</h3>
+<ul>
+<li>Everything that is valid in a patch release</li>
+<li>Experimental Channel:
+<ul>
+<li>Adding new API fields or resources</li>
+<li>Breaking changes for existing API fields or resources</li>
+<li>Removing API fields or resources without prior deprecation</li>
+</ul>
+</li>
+<li>Standard Channel:
+<ul>
+<li>Graduation of fields or resources from Experimental to Standard Channel</li>
+<li>Removal of an API resource following <a href="https://kubernetes.io/docs/reference/using-api/deprecation-policy/">Kubernetes deprecation
+policy</a></li>
+</ul>
+</li>
+<li>All Channels:
+<ul>
+<li>Changes to recommended conditions or reasons in status</li>
+<li>Loosened validation (including making required fields optional)</li>
+<li>Changes to conformance tests to match spec updates</li>
+<li>Introduction of a new API version which may include renamed fields or
+anything else that is valid in a <a href="https://kubernetes.io/docs/reference/using-api/#api-versioning">new Kubernetes API
+version</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="major-version-e-g-v0-x-to-v1-0">Major Version (e.g. v0.x to v1.0)</h3>
+<ul>
+<li>There are no API compatibility guarantees when the major version changes.</li>
+</ul>
+<h2 id="graduation-criteria">Graduation Criteria</h2>
+<p>For a resource, field, or feature to graduate from Experimental to Standard, it
+must meet the following criteria:</p>
+<ul>
+<li>Full conformance test coverage.</li>
+<li>Multiple conformant implementations.</li>
+<li>Widespread implementation and usage.</li>
+<li>At least 6 months of soak time as an alpha API.</li>
+<li>No significant changes for at least 1 minor release and 3 months.</li>
+<li>Approval from subproject owners + KEP reviewers.</li>
+</ul>
+<h2 id="supported-versions">Supported Versions</h2>
+<p>This project aims to provide support for a wide range of Kubernetes versions with
+consistent upgrade experiences across versions. To accomplish that, we commit to:</p>
+<ol>
+<li>Support a minimum of the most recent 5 Kubernetes minor versions.</li>
+<li>Ensure that all Standard Channel changes between v1beta1 and v1 are fully
+compatible and convertible.</li>
+<li>Take every possible effort to avoid introduction of a conversion webhook. If
+a conversion webhook needs to be introduced, it will be supported for the
+lifetime of the API, or at least until an alternative is available.</li>
+</ol>
+<h2 id="crd-management">CRD Management</h2>
+<p>For information on how to manage Gateway API CRDs in your clusters, refer to our
+<a href="//localhost:1313/docs/guides/crd-management/">CRD Management Guide</a>.</p>
+<h2 id="out-of-scope">Out of Scope</h2>
+<h3 id="unreleased-apis">Unreleased APIs</h3>
+<p>This project will have frequent updates to the main branch. There are no
+compatibility guarantees associated with code in any branch, including main,
+until it has been released. For example, changes may be reverted before a
+release is published. For the best results, use the latest published release of
+this project.</p>
+<h3 id="source-code">Source Code</h3>
+<p>We do not provide stability guarantees for source code imports. The Interfaces
+and behavior may change in an unexpected and backwards-incompatible way in any
+future release.</p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Kubernetes Website" aria-label="Kubernetes Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.io" aria-label="Kubernetes Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/messages/sig-network-gateway-api" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.js"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.145.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>GEP-3793: Default Gateways | Kubernetes Gateway API</title>
+<meta name="description" content="GEP-3793: Default Gateways (Implementable)">
+<meta property="og:url" content="/geps/gep-3793/">
+  <meta property="og:site_name" content="Kubernetes Gateway API">
+  <meta property="og:title" content="GEP-3793: Default Gateways">
+  <meta property="og:description" content="GEP-3793: Default Gateways (Implementable)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="geps">
+
+  <meta itemprop="name" content="GEP-3793: Default Gateways">
+  <meta itemprop="description" content="GEP-3793: Default Gateways (Implementable)">
+  <meta itemprop="wordCount" content="4465">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GEP-3793: Default Gateways">
+  <meta name="twitter:description" content="GEP-3793: Default Gateways (Implementable)">
+
+
+
+
+<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
+<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg width="1450" height="250" viewBox="0 0 2416.6667 416.66667" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="svg12" sodipodi:docname="Gateway API Logo Large Text Horizontal White.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" inkscape:export-filename="Gateway API Logo Text Horizontal Lowercase.png" inkscape:export-xdpi="20.571428" inkscape:export-ydpi="20.571428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview12" pagecolor="#56ffff" bordercolor="#000000" borderopacity=".25" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom=".54894796" inkscape:cx="846.164" inkscape:cy="87.439982" inkscape:window-width="1772" inkscape:window-height="1139" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g3" showguides="true" showgrid="false"/><defs id="defs12"><marker style="overflow:visible" id="marker8" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path8"/></marker><marker style="overflow:visible" id="Triangle" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="Triangle" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path135"/></marker><marker style="overflow:visible" refX="0" refY="0" orient="auto-start-reverse" inkscape:stockid="marker8-939207134" markerWidth=".40000001" markerHeight=".40000001" viewBox="0 0 1 1" inkscape:isstock="true" inkscape:collect="always" preserveAspectRatio="xMidYMid" id="marker8-939207134"><path transform="scale(0.5)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt" d="M5.77.0-2.88 5V-5z" id="path17"/></marker></defs><g transform="matrix(0.901034,0,0,0.901034,37.1122,37.1122)" id="g5" inkscape:label="k8s-logo" style="clip-rule:evenodd;display:none;mix-blend-mode:difference;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5"><path id="path3059" d="m389.467 272.057c-8.458.001-15.316 7.619-15.315 17.017.0.144.03.282.033.425-.013 1.277-.074 2.815-.033 3.927.202 5.42 1.383 9.569 2.094 14.563 1.289 10.688 2.368 19.548 1.702 27.783-.648 3.105-2.935 5.945-4.974 7.919l-.36 6.48c-9.191.761-18.443 2.156-27.685 4.254-39.767 9.029-74.005 29.513-100.072 57.17-1.692-1.154-4.651-3.277-5.531-3.927-2.734.37-5.498 1.213-9.097-.883-6.854-4.614-13.097-10.982-20.65-18.653-3.461-3.67-5.967-7.164-10.079-10.701-.934-.804-2.359-1.89-3.403-2.717-3.215-2.563-7.007-3.899-10.669-4.025-4.708-.161-9.24 1.68-12.206 5.4-5.273 6.613-3.585 16.721 3.763 22.58.075.059.154.105.229.164 1.01.818 2.247 1.867 3.175 2.552 4.363 3.222 8.349 4.871 12.697 7.429 9.16 5.656 16.753 10.347 22.776 16.002 2.352 2.507 2.763 6.925 3.077 8.836l4.908 4.385c-26.277 39.546-38.439 88.393-31.252 138.164l-6.414 1.865c-1.69 2.183-4.079 5.618-6.578 6.643-7.88 2.482-16.749 3.394-27.456 4.516-5.027.418-9.364.169-14.693 1.178-1.173.223-2.807.648-4.091.949-.044.009-.086.023-.131.033-.07.016-.161.05-.229.065-9.027 2.182-14.826 10.479-12.959 18.654 1.868 8.176 10.685 13.149 19.766 11.191.066-.015.161-.017.229-.032.103-.024.193-.073.295-.098 1.266-.278 2.852-.587 3.959-.884 5.24-1.403 9.034-3.464 13.745-5.269 10.133-3.634 18.526-6.67 26.703-7.854 3.415-.267 7.013 2.108 8.803 3.109l6.676-1.145c15.362 47.629 47.557 86.126 88.324 110.282l-2.782 6.676c1.003 2.592 2.109 6.1 1.362 8.66-2.973 7.708-8.064 15.845-13.862 24.916-2.808 4.191-5.681 7.443-8.214 12.239-.607 1.148-1.379 2.91-1.964 4.123-3.936 8.422-1.049 18.122 6.512 21.762 7.609 3.663 17.053-.2 21.141-8.639.006-.012.027-.021.032-.033.004-.009-.004-.023.0-.033.583-1.196 1.407-2.769 1.898-3.894 2.17-4.971 2.892-9.231 4.418-14.039 4.052-10.179 6.279-20.859 11.857-27.514 1.528-1.822 4.018-2.523 6.6-3.214l3.469-6.283c35.54 13.641 75.321 17.302 115.06 8.279 9.066-2.058 17.817-4.722 26.278-7.919.975 1.729 2.787 5.053 3.273 5.89 2.623.854 5.487 1.294 7.821 4.745 4.173 7.13 7.027 15.566 10.504 25.754 1.527 4.808 2.281 9.068 4.451 14.039.495 1.133 1.315 2.728 1.898 3.927 4.079 8.467 13.553 12.343 21.173 8.672 7.56-3.642 10.451-13.341 6.512-21.762-.585-1.212-1.39-2.975-1.996-4.123-2.534-4.796-5.406-8.016-8.214-12.206-5.798-9.071-10.608-16.606-13.581-24.315-1.243-3.975.21-6.448 1.178-9.032-.58-.664-1.821-4.419-2.552-6.185 42.366-25.015 73.616-64.948 88.291-111.068 1.982.312 5.426.921 6.545 1.146 2.304-1.519 4.421-3.501 8.574-3.174 8.177 1.182 16.57 4.219 26.703 7.853 4.711 1.805 8.505 3.899 13.745 5.302 1.107.296 2.694.573 3.96.851.101.025.192.075.294.098.068.015.164.018.229.033 9.082 1.955 17.901-3.015 19.766-11.192 1.865-8.176-3.932-16.475-12.959-18.653-1.313-.299-3.175-.806-4.451-1.048-5.329-1.009-9.666-.76-14.693-1.178-10.707-1.122-19.576-2.034-27.456-4.516-3.213-1.246-5.499-5.069-6.611-6.643l-6.185-1.8c3.207-23.2 2.343-47.345-3.207-71.503-5.6-24.384-15.498-46.685-28.699-66.333 1.586-1.443 4.582-4.096 5.432-4.876.248-2.748.035-5.63 2.88-8.672 6.023-5.656 13.617-10.346 22.776-16.003 4.348-2.558 8.367-4.206 12.73-7.428.987-.729 2.334-1.883 3.371-2.717 7.346-5.86 9.038-15.968 3.763-22.58-5.274-6.612-15.495-7.235-22.842-1.374-1.045.828-2.464 1.908-3.403 2.716-4.112 3.537-6.651 7.031-10.112 10.701-7.553 7.672-13.796 14.072-20.649 18.686-2.97 1.729-7.32 1.131-9.294 1.014l-5.825 4.156c-33.216-34.83-78.44-57.098-127.136-61.424-.136-2.041-.314-5.729-.36-6.84-1.993-1.907-4.401-3.536-5.007-7.657-.666-8.235.447-17.095 1.735-27.783.711-4.994 1.893-9.143 2.094-14.563.046-1.232-.027-3.02-.032-4.352-.001-9.398-6.858-17.018-15.316-17.017zm-19.176 118.791-4.549 80.339-.327.164c-.306 7.187-6.221 12.926-13.483 12.926-2.975.0-5.721-.955-7.952-2.585l-.131.065-65.875-46.698c20.246-19.908 46.142-34.621 75.987-41.397 5.452-1.238 10.901-2.156 16.33-2.814zm38.386.0c34.843 4.285 67.067 20.063 91.76 44.244l-65.45 46.403-.229-.098c-5.809 4.243-13.994 3.19-18.522-2.487-1.855-2.326-2.828-5.06-2.945-7.821l-.066-.033zm-154.592 74.219 60.148 53.8-.065.327c5.429 4.72 6.229 12.91 1.701 18.588-1.854 2.326-4.337 3.886-7.003 4.614l-.065.262-77.1 22.253c-3.924-35.882 4.533-70.763 22.384-99.844zm270.339.033c8.937 14.486 15.704 30.664 19.733 48.204 3.981 17.329 4.98 34.627 3.338 51.345l-77.492-22.318-.065-.328c-6.94-1.896-11.204-8.955-9.589-16.035.662-2.9 2.202-5.354 4.287-7.166l-.033-.164zM377.13 523.023h24.642l15.315 19.144-5.498 23.889-22.122 10.636-22.187-10.669-5.498-23.889zm78.998 65.515c1.047-.053 2.089.041 3.108.229l.131-.164 79.751 13.483c-11.672 32.791-34.006 61.198-63.846 80.208l-30.958-74.776.098-.131c-2.844-6.607.002-14.356 6.545-17.507 1.675-.807 3.425-1.254 5.171-1.342zm-133.943.327c6.086.086 11.545 4.31 12.959 10.505.662 2.9.34 5.774-.752 8.312l.229.294L303.99 682c-28.638-18.377-51.448-45.892-63.649-79.652l79.063-13.417.13.163c.885-.162 1.782-.241 2.651-.229zm66.791 32.431c2.12-.078 4.272.357 6.316 1.341 2.681 1.291 4.751 3.323 6.054 5.76h.295l38.975 70.423c-5.058 1.696-10.258 3.145-15.577 4.353-29.808 6.768-59.521 4.717-86.426-4.451L377.49 628.43h.065c2.333-4.361 6.757-6.963 11.421-7.134z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="k8s" transform="matrix(0.99607624,0,0,0.99607624,-12.953433,-158.50639)"/></g><g id="g3" transform="translate(-80.048691,1.562507)" inkscape:label="gateway-api-logo"><g id="g13" inkscape:label="base" style="clip-rule:evenodd;fill-rule:evenodd;stroke:#fff;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.53788169,0,0,0.53788169,110.91215,5.0642561)"><path id="path3055" d="m386.932 178.598c-6.507.328-12.882 1.941-18.751 4.745l-255.875 122.26c-13.407 6.402-23.162 18.533-26.475 32.921L22.705 613.15c-2.943 12.778-.545 26.21 6.643 37.208.864 1.332 1.792 2.62 2.782 3.862l177.106 220.205c9.281 11.534 23.377 18.263 38.256 18.26L531.51 892.62c14.873.01 28.968-6.705 38.255-18.228L746.806 654.154c9.285-11.54 12.771-26.675 9.458-41.069L693.039 338.458C689.727 324.071 679.972 311.94 666.565 305.537L410.657 183.343c-7.382-3.527-15.541-5.159-23.725-4.745z" style="clip-rule:evenodd;display:inline;fill:#326ce5;fill-rule:nonzero;stroke:#fff;stroke-width:22.2842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" inkscape:label="septagon" transform="matrix(0.89749856,0,0,0.89749856,25.440716,-105.70745)"/></g><g id="g12" inkscape:label="arrows" transform="matrix(0.53788169,0,0,0.53788169,110.91215,-0.88057534)"><g id="g14" inkscape:label="left" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(0.93889305,0,0,1.0068906,7.8476083,-2.369358)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l232.68275-52.36309" id="path13" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="M200.97459 242.82667 391.04865 385.76524" id="path13-9" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="l-line"/></g><g id="g2" inkscape:label="right" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" transform="matrix(-0.93889305,0,0,1.0068906,742.87026,-2.0241999)"><path style="fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Triangle)" d="M158.3659 438.12833l233.44635-52.70588" id="path1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-end="#g11" sodipodi:nodetypes="cc" inkscape:label="r-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:35;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none;stroke-opacity:1" d="M201.73818 242.68203 391.81225 385.42245" id="path2" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="r-line" inkscape:connection-end="#g11"/></g><g id="g15" inkscape:label="middle"><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1" d="m375 157.18502-.49437 213.8605" id="path4" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-line"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8)" d="M368.59471 397.24705 279.23475 590.81597" id="path3" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-left-arrow"/><path style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:#fff;stroke-width:34.0304;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8-939207134)" d="m385.77249 403.0904 88.02804 188.75906" id="path3-1" inkscape:connector-type="polyline" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" inkscape:label="middle-right-arrow"/></g></g><g transform="matrix(-0.13137922,0,0,-0.13137922,362.10505,254.07745)" id="g11" style="clip-rule:evenodd;display:inline;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" inkscape:label="circles"><path d="m144.534 76.837c31.985.0 57.953 25.968 57.953 57.952.0 31.985-25.968 57.953-57.953 57.953-31.984.0-57.952-25.968-57.952-57.953.0-31.984 25.968-57.952 57.952-57.952zm0 10.873c25.984.0 47.08 21.095 47.08 47.079s-21.096 47.08-47.08 47.08c-25.984.0-47.079-21.096-47.079-47.08.0-25.984 21.095-47.079 47.079-47.079z" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:.83px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="path5" transform="matrix(-12.517799,0,0,-12.517799,2185.9269,2047.3448)" inkscape:label="outer circle"/><g id="g9" inkscape:label="inner" transform="matrix(1.2637463,0,0,1.2637463,-99.348755,-94.971501)"><circle cx="383.57401" cy="382.97501" r="37.626999" style="clip-rule:evenodd;display:inline;fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1.67px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="circle9" transform="matrix(-4.3433243,0,0,-4.3433243,2042.6693,2023.4712)" inkscape:label="inner circle"/><path d="m376.673 284.828c2.753-.009 60.047 27.921 61.608 29.669 1.516 1.698 15.732 64.728 15.215 66.665-.538 2.016-40.619 52.618-42.633 53.461-2.182.913-66.537.954-68.38.0-1.922-.994-42.273-51.719-42.634-53.461-.348-1.678 13.665-64.853 15.216-66.665 1.481-1.731 58.799-29.659 61.608-29.669z" style="fill:#326ce5;stroke:#326ce5;stroke-width:1.67px" id="path10" inkscape:label="septagon"/></g></g><text style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;line-height:.9;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:1.3;stroke-dasharray:none" x="603.53143" y="299.25082" id="text1"><tspan sodipodi:role="line" x="603.53143" y="299.25082" id="tspan2" style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:320px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#fff;fill-opacity:1;stroke-width:0">gateway api</tspan></text></g></svg></span><span class="navbar-brand__name">Kubernetes Gateway API</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/overview/"><span>Overview</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/guides/"><span>Guides</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/reference/"><span>Reference</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/geps/"><span>Enhancements</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/contributing/"><span>Contributing</span></a>
+      </li>
+      <li class="nav-item dropdown mr-4 d-none d-lg-block">
+        
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/gep-3793/">한국어 (Korean)</a>
+	
+</div></li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside id="sidebarnav" class="td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-geps-gep-3793").addClass("active"); 
+    $("#td-section-nav #m-geps-gep-3793-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-geps-gep-3793").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-geps-gep-3793-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-geps-gep-3793-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	English
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/ko/geps/">한국어 (Korean)</a>
+	
+</div>
+    </div>
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-li">
+  <a href="/geps/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-geps"><span class="">Enhancements</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-overview-li">
+  <input type="checkbox" id="m-geps-overview-check" checked/>
+  <label for="m-geps-overview-check"><a href="/geps/overview/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-overview"><span class="">Overview</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-list-li">
+  <input type="checkbox" id="m-geps-list-check" checked/>
+  <label for="m-geps-list-check"><a href="/geps/list/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-list"><span class="">List</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-geps-by-state-li">
+  <input type="checkbox" id="m-geps-by-state-check" checked/>
+  <label for="m-geps-by-state-check"><a href="/geps/by-state/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-geps-by-state"><span class="">By State</span></a></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-standard-li">
+  <input type="checkbox" id="m-geps-by-state-standard-check" checked/>
+  <label for="m-geps-by-state-standard-check"><a href="/geps/by-state/standard/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-standard"><span class="">Standard</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-memorandum-li">
+  <input type="checkbox" id="m-geps-by-state-memorandum-check" checked/>
+  <label for="m-geps-by-state-memorandum-check"><a href="/geps/by-state/memorandum/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-memorandum"><span class="">Memorandum</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-experimental-li">
+  <input type="checkbox" id="m-geps-by-state-experimental-check" checked/>
+  <label for="m-geps-by-state-experimental-check"><a href="/geps/by-state/experimental/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-experimental"><span class="">Experimental</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-implementable-li">
+  <input type="checkbox" id="m-geps-by-state-implementable-check" checked/>
+  <label for="m-geps-by-state-implementable-check"><a href="/geps/by-state/implementable/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-implementable"><span class="">Implementable</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-geps-by-state-provisional-li">
+  <input type="checkbox" id="m-geps-by-state-provisional-check" checked/>
+  <label for="m-geps-by-state-provisional-check"><a href="/geps/by-state/provisional/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-geps-by-state-provisional"><span class="">Provisional</span></a></label>
+  
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </aside>
+          <aside class="d-none d-xl-block td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/kubernetes-sigs/gateway-api/tree/main/content/en/geps/gep-3793/index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/en/geps/gep-3793/index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/en/geps/gep-3793/index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=GEP-3793:%20Default%20Gateways" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a id="print" href="/geps/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#user-story">User Story</a></li>
+    <li><a href="#definitions">Definitions</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#non-goals">Non-Goals</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#prior-art">Prior Art</a></li>
+        <li><a href="#debugging-and-visibility">Debugging and Visibility</a></li>
+      </ul>
+    </li>
+    <li><a href="#api">API</a>
+      <ul>
+        <li><a href="#gateway-for-ingress-north-south">Gateway for Ingress (North/South)</a></li>
+        <li><a href="#gateway-for-mesh-east-west">Gateway For Mesh (East/West)</a></li>
+      </ul>
+    </li>
+    <li><a href="#conformance-details">Conformance Details</a>
+      <ul>
+        <li></li>
+        <li><a href="#conformance-tests">Conformance tests</a></li>
+      </ul>
+    </li>
+    <li><a href="#alternatives">Alternatives</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main id="maindoc" class="pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/geps/">Enhancements</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/geps/gep-3793/" aria-disabled="true" class="btn-link disabled">GEP-3793: Default Gateways</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>GEP-3793: Default Gateways</h1>
+	<div class="lead">GEP-3793: Default Gateways (Implementable)</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	<ul>
+<li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3793">#3793</a></li>
+<li>Status: Implementable</li>
+</ul>
+<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
+&quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
+document are to be interpreted as described in BCP 14 (<a href="https://www.rfc-editor.org/rfc/rfc8174">RFC8174</a>) when, and
+only when, they appear in all capitals, as shown here.</p>
+<h2 id="user-story">User Story</h2>
+<p><strong><a href="../../concepts/roles-and-personas/#ana">Ana</a> wants a concept of a default Gateway.</strong></p>
+<p>Gateway API currently requires every north/south Route object to explicitly
+specify its parent Gateway. This is helpful in that it removes ambiguity, but
+it's less helpful in that <a href="../../concepts/roles-and-personas/#ana">Ana</a> is stuck constantly explicitly configuring a
+thing that she probably doesn't care much about: in a great many cases, Ana
+just wants to create a Route that &quot;works from the outside world&quot; and she
+really doesn't care what the Gateway is called.</p>
+<p>Therefore, Ana would like a way to be able to rely on a default Gateway that
+she doesn't have to explicitly name, and can simply trust to exist. Ana
+recognizes that this will involve <strong>giving up</strong> a certain amount of control
+over how requests reach her workloads. She's OK with that, and she understands
+that it means that relying on a default Gateway is not always appropriate: for
+example, if she needs to be sure that her Route is protected by specific
+authorization policies, she should confer with Chihiro to make sure that she
+explicitly specifies a Gateway that meets those requirements.</p>
+<p>In the future, it may also be important to distinguish different kinds of
+default Gateways -- for example, a default ingress Gateway or a default egress
+Gateway. This GEP deliberately defines only a single <em>scope</em> of default
+Gateway (<code>All</code>) but recognizes the need to at least consider the possibility
+of multiple scopes in the future.</p>
+<h2 id="definitions">Definitions</h2>
+<ul>
+<li>
+<p><strong>defaulted Route</strong>: a Route that Ana creates without explicitly specifying
+a Gateway</p>
+</li>
+<li>
+<p><strong>default Gateway</strong>: a Gateway that Chihiro has configured to accept
+defaulted Routes</p>
+</li>
+<li>
+<p><strong>default Gateway scope</strong>: the scope within which a default Gateway is
+applicable</p>
+</li>
+</ul>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>
+<p>Give Ana a way to use Gateway API without having to explicitly specify a
+Gateway for every Route, ideally without mutating Routes. (In other words,
+give Ana an easy way to create a defaulted Route.)</p>
+</li>
+<li>
+<p>Give Ana an easy way to define the scope for a defaulted Route.</p>
+</li>
+<li>
+<p>Give Ana an easy way to determine which default Gateways are present in the
+cluster, if any, and which of her Routes are currently bound to these
+Gateways.</p>
+</li>
+<li>
+<p>Continue supporting multiple Gateways in a cluster, while allowing zero or
+more of them to be configured as default Gateways.</p>
+</li>
+<li>
+<p>Allow <a href="../../concepts/roles-and-personas/#chihiro">Chihiro</a> to retain control over which Gateways accept defaulted
+Routes, so that they can ensure that all Gateways meet their requirements
+for security, performance, and other operational concerns.</p>
+</li>
+<li>
+<p>Allow Chihiro to choose not to provide any default Gateways at all.</p>
+</li>
+<li>
+<p>Allow Chihiro to define the scope of a default Gateway.</p>
+</li>
+<li>
+<p>Allow Chihiro to rename, reconfigure, or replace any default Gateway at
+runtime.</p>
+<ul>
+<li>
+<p>While Kubernetes does not allow renaming a resource, Chihiro MUST be able
+to duplicate a default Gateway under a new name, then remove the old
+default Gateway, without disrupting routing. Ana MUST NOT need to go
+update all her Routes just because Chihiro is being indecisive about
+naming.</p>
+</li>
+<li>
+<p>Determine how (or if) to signal changes in functionality if a default
+Gateway's implementation is changed. For example, suppose that Chihiro
+switches a default Gateway from an implementation that supports the
+<code>HTTPRoutePhaseOfTheMoon</code> filter to an implementation that does not.</p>
+<p>(Note that this problem is not unique to default Gateways; it affects
+explicitly-named Gateways as well.)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Allow Chihiro to control which Routes may bind to a default Gateway, and to
+enumerate which Routes are currently bound to a default Gateway.</p>
+</li>
+<li>
+<p>Support easy interoperation with common CI/CD and GitOps workflows.</p>
+</li>
+<li>
+<p>Define how (or if) listener and Gateway merging applies to a default
+Gateway.</p>
+</li>
+</ul>
+<h2 id="non-goals">Non-Goals</h2>
+<ul>
+<li>
+<p>Allow Ana to override Chihiro's choices for default Gateways for a given
+Route without explicitly specifying the Gateway: a Route can either be
+defaulted, or it MUST specify a Gateway explicitly.</p>
+</li>
+<li>
+<p>Require that every possible routing use case be met by a Route using a
+default Gateway. There will be a great many situations that require Ana to
+explicitly choose a Gateway; the existence of a default Gateway is not a
+guarantee that it will be correct for any given use case.</p>
+</li>
+<li>
+<p>Allow for &quot;default Gateway&quot; functionality without a Gateway controller
+installed. Just as with any other Gateway, a default Gateway requires an
+implementation to be installed.</p>
+</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Gateway API currently requires every north/south Route object to explicitly
+specify its parent Gateway. This is a wonderful example of a fundamental
+tension in Gateway API:</p>
+<ul>
+<li>
+<p><a href="../../concepts/roles-and-personas/#chihiro">Chihiro</a> and <a href="../../concepts/roles-and-personas/#ian">Ian</a> value <em>explicit definition</em> of everything, because it
+makes it easier for them to reason about the system and ensure that it meets
+the standards they set for it.</p>
+</li>
+<li>
+<p><a href="../../concepts/roles-and-personas/#ana">Ana</a>, on the other hand, values <em>simplicity</em> and <em>ease of use</em>, because
+she just wants to get her job done without having to think about every little
+detail.</p>
+</li>
+</ul>
+<p>At present, Gateway API is heavily weighted towards the point of view of
+Chihiro and Ian. This causes friction for Ana: for example, she can't write
+examples or documentation for her colleagues (or her counterparts at other
+companies) without telling them that they'll need to be sure to edit the
+Gateway name in every Route. Nor can she write a Helm chart that includes a
+Route without requiring the person using the chart to know the specific name
+for the Gateway to use.</p>
+<p>The root cause of this friction is a difference in perspective: to Chihiro and
+Ian, the Gateway is a first-class thing that they think about regularly, while
+to Ana, it's an implementation detail that she doesn't care about. Neither
+point of view is wrong, but they are in tension with each other.</p>
+<p>In practice, the trick is to find a usable balance between explicitness and
+simplicity, while managing ambiguity. A good example is the humble URL, where
+the port number is not always explicit, but it <em>is</em> always unambiguous.
+Requiring everyone to type <code>:80</code> or <code>:443</code> at the end of the host portion of
+every URL wouldn't actually help anyone, though allowing it to be specified
+explicitly when needed definitely does help people.</p>
+<h3 id="prior-art">Prior Art</h3>
+<ul>
+<li>
+<p><strong>Ingress</strong></p>
+<p>The Ingress resource is the most obvious example of prior art: it permitted
+specifying a default IngressClass, allowing users to create Ingress
+resources that didn't specify the IngressClass explicitly. As with a great
+many things in the Ingress API, this caused problems:</p>
+<ol>
+<li>
+<p>Ingress never defined how conflicts between multiple Ingress resources
+should be handled. Many (most?) implementations merged conflicting
+resources, which is arguably the worst possible choice.</p>
+</li>
+<li>
+<p>Ingress also never defined a way to allow users to see which IngressClass
+was being used by a given Ingress resource, which made it difficult for
+users to understand what was going on if they were using the default
+IngressClass.</p>
+</li>
+</ol>
+<p>(Oddly enough, Ingress' general lack of attention to separation of concerns
+wasn't really one of the problems here, since IngressClass was a separate
+resource.)</p>
+</li>
+<li>
+<p><strong>Emissary Mapping</strong></p>
+<p>Emissary-ingress turns this idea on its head: it assumes that app developers
+will almost never care about which specific Emissary they're using, and will
+instead only care about the hostnames and ports involved.</p>
+<p>In Emissary:</p>
+<ul>
+<li>a Listener resource defines which ports and protocols are in play;</li>
+<li>a Host resource defines hostnames, TLS certificates, etc.;</li>
+<li>a Mapping resource is roughly analogous to a Route.</li>
+</ul>
+<p>The Listener resource has selectors to control which Hosts it will claim;
+Mappings, though, are claimed by Hosts based on the hostname that the
+Mapping specifies. In other words, Mappings are not bound to a Listener
+explicitly, but rather are bound to a Listener implicitly based on the
+hostname that the Mapping specifies. There is no way to <em>explicitly</em> specify
+which Listener a Mapping wants to be claimed by.</p>
+<p>This is obviously a very different model from Gateway API, shifting almost
+all the work of controlling route binding away from the application
+developer onto the cluster operator.</p>
+</li>
+<li>
+<p><strong>Service</strong></p>
+<p>We could also consider a Service of <code>type: LoadBalancer</code> as a kind of prior
+art: in many cases, Ana can directly create these Services and use them to
+provide direct, completely unmediated access to a workload, without
+worrying about the specifics of how her cluster provider implements them.</p>
+<p>Service's major disadvantages here are that it doesn't support Layer 7
+functionality, and that each Service of type <code>LoadBalancer</code> has direct
+costs in many cases. In other words, Service allows Ana to rely on the
+cluster provider to create the load balancer, while forcing Ana to shoulder
+the burden of basically everything else.</p>
+</li>
+</ul>
+<h3 id="debugging-and-visibility">Debugging and Visibility</h3>
+<p>It's also critical to note that visibility is critical when debugging: if Ana
+can't tell which Gateway is being used by a given Route, then her ability to
+troubleshoot problems is <em>severely</em> hampered. Of course, one of the major
+strengths of Gateway API is that it <em>does</em> provide visibility into what's
+going on in the <code>status</code> stanzas of its resources: every Route already has a
+<code>status</code> showing exactly which Gateways it is bound to. Making certain that
+Ana has easy access to this information, and that it's clear enough for her to
+understand, is clearly important for many more reasons than just default
+Gateways.</p>
+<h2 id="api">API</h2>
+<p>The main challenge in the API design is to find a way to allow Ana to use
+Routes without requiring her to specify the Gateway explicitly, while still
+allowing Chihiro and Ian to retain control over Gateways and their
+configurations.</p>
+<p>An additional concern is CD tools and GitOps workflows. In very broad terms,
+these tools function by applying manifests from a Git repository to a
+Kubernetes cluster, and then monitoring the cluster for changes. If a tool
+like Argo CD or Flux detects a change to a resource in the cluster, it will
+attempt to reconcile that change with the manifest in the Git repository --
+which means that changes to the <code>spec</code> of an HTTPRoute that are made by code
+running in the cluster, rather than by a user with a Git commit, can
+potentially trip up these tools.</p>
+<p>These tools generally ignore strict additions: if a field in <code>spec</code> is not
+present in the manifest in Git, but is added by code running in the cluster,
+the tools know to ignore it. So, for example, if <code>spec.parentRefs</code> is not
+present at all in the manifest in Git, CD tools can probably tolerate having a
+Gateway controller write a new <code>parentRefs</code> stanza to the resource.</p>
+<p>There has been (much!) <a href="https://github.com/kubernetes-sigs/gateway-api/pull/3852#discussion_r2140117567">discussion</a> about whether the ideal API for this
+feature will mutate the <code>parentRefs</code> of a Route using a default Gateway to
+reflect the Gateway chosen, or whether it should not, relying instead on the
+<code>status</code> stanza to carry this information. Ultimately, mutating the <code>spec</code> of
+a Kubernetes resource introduces complexity which we should avoid if it's not
+required. Since we can gracefully provide default-Gateway functionality
+without mutating <code>parentRefs</code>, we will rely on <code>status</code> instead of mutating
+<code>parentRefs</code>.</p>
+<h3 id="gateway-for-ingress-north-south">Gateway for Ingress (North/South)</h3>
+<p>There are three main aspects to the API design for default Gateways:</p>
+<ol>
+<li>
+<p>Giving Ana a way to indicate that a Route should be defaulted.</p>
+</li>
+<li>
+<p>Giving Chihiro a way to control which Gateways (if any) will accept
+defaulted Routes.</p>
+</li>
+<li>
+<p>Give anyone with read access to Routes (Ana, Chihiro, or Ian) a way to
+enumerate which Routes are bound to the default Gateways.</p>
+</li>
+</ol>
+<p>We will describe each of these aspects in turn, laying out changes to Gateway
+API behaviors and resources that are necessary to support them. <strong>Any behavior
+not explicitly discussed in this GEP is intended to remain unchanged;</strong> the
+GEP covers <strong>all</strong> intended changes to Gateway API behavior.</p>
+<h4 id="1-creating-a-defaulted-route">1. Creating a Defaulted Route</h4>
+<p>Since Ana must be able to choose whether a Route is defaulted or not, marking
+a Route as defaulted must be an active configuration step she takes, rather
+than any kind of implicit behavior. To that end, the <code>CommonRouteSpec</code>
+resource will gain a new field, <code>UseDefaultGateway</code>, which defines the
+<em>scope</em> for the defaulted Route:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// GatewayDefaultScope defines the set of default scopes that a Gateway</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// can claim, for use in any Route type. At present the only supported</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// scopes are &#34;All&#34; and &#34;None&#34;. &#34;None&#34; is a special scope which</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// explicitly means that the Route MUST NOT be defaulted.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> GatewayDefaultScope <span style="color:#0b0;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// GatewayDefaultScopeAll indicates that a Gateway can claim absolutely</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// any Route asking for a default Gateway.</span>
+</span></span><span style="display:flex;"><span>  GatewayDefaultScopeAll GatewayDefaultScope = <span style="color:#b44">&#34;All&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// GatewayDefaultScopeNone indicates that a Gateway MUST NOT claim</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// any Route asking for a default Gateway.</span>
+</span></span><span style="display:flex;"><span>  GatewayDefaultScopeNone GatewayDefaultScope = <span style="color:#b44">&#34;None&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> CommonRouteSpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// ... other fields ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// UseDefaultGateways indicates the default Gateway scope to use for this</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Route. If unset (the default), set to an empty string (`&#34;&#34;`), or set to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// None, the Route will not be attached to any default Gateway; if set, it</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// will be attached to any default Gateway supporting the named scope,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// subject to the usual rules about which Routes a Gateway is allowed to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// claim.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// &lt;gateway:experimental&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// +kubebuilder:validation:Enum=All;None</span>
+</span></span><span style="display:flex;"><span>  UseDefaultGateways GatewayDefaultScope <span style="color:#b44">`json:&#34;useDefaultGateways,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For Ana to indicate that a Route should use a default Gateway, she MUST set
+the Route's <code>spec.useDefaultGateways</code> to the desired scope:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">...</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">useDefaultGateways</span>:<span style="color:#bbb"> </span>All<span style="color:#bbb">
+</span></span></span></code></pre></div><p>A defaulted Route MUST be accepted only by Gateways that have been configured
+with a matching <code>spec.useDefaultGateways</code> scope.</p>
+<p>A Route MAY include explicit <code>parentRefs</code> in addition to setting
+<code>spec.useDefaultGateways</code>. In this case, the Route will be a candidate for
+being bound to default Gateways, but it will also be bound to its
+explicitly-specified <code>parentRefs</code>. This allows Ana to create a single Route
+that handles N/S traffic via the default Gateways and also handles E/W traffic
+via a Service, for example.</p>
+<p>All other characteristics of a defaulted Route MUST behave the same as if all
+default Gateways were explicitly specified in <code>parentRefs</code>.</p>
+<h5 id="examples">Examples</h5>
+<p><strong>Simple N/S Route</strong>: The following HTTPRoute would route <em>all</em> HTTP traffic
+arriving at any default Gateway to <code>my-service</code> on port 80:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">useDefaultGateways</span>:<span style="color:#bbb"> </span>All<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p><strong>N/S and E/W Route</strong>: The following HTTPRoute would be bound to both any
+default Gateways and to a Service named <code>face</code> in the <code>faces</code> namespace,
+permitting a single Route to handle both N/S traffic (via the default Gateway)
+and E/W traffic (via the Service):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>ns-ew-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">useDefaultGateways</span>:<span style="color:#bbb"> </span>All<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">parentRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>face<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>faces<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>face<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p><strong>Multiple Gateways</strong>: A defaulted Route MAY both set <code>useDefaultGateways</code> and
+name other Gateways in <code>parentRefs</code>, although this is not expected to be
+common in practice:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>HTTPRoute<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>multi-gateway-route<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">useDefaultGateways</span>:<span style="color:#bbb"> </span>All<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">parentRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>default<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">rules</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-service<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span></span></span></code></pre></div><h5 id="status-for-a-defaulted-route"><code>status</code> for a Defaulted Route</h5>
+<p>When a defaulted Route is claimed by a default Gateway, the Gateway MUST use
+<code>status.parents</code> to announce that it has claimed the Route, for example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">parents</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>my-default-gateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">namespace</span>:<span style="color:#bbb"> </span>default<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">controllerName</span>:<span style="color:#bbb"> </span>gateway.networking.k8s.io/some-gateway-controller<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">conditions</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>Accepted<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;True&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">lastTransitionTime</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;2025-10-01T12:00:00Z&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">message</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;Route is bound to default Gateway&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><h5 id="other-considerations">Other Considerations</h5>
+<p>A default Gateway MUST NOT modify the <code>parentRefs</code> of a defaulted Route to
+indicate that the Route has been claimed by a default Gateway. This becomes
+important if the set of default Gateways changes, or (in some situations) if
+GitOps tools are in play.</p>
+<p>If there are no default Gateways in the cluster, <code>spec.useDefaultGateways</code>
+MUST be treated as if it were unset in all Routes, parallel to the situation
+where a Route specifies a Gateway by name, but no Gateway of that name exists
+in the cluster.</p>
+<h4 id="2-controlling-which-gateways-accept-defaulted-routes">2. Controlling which Gateways accept Defaulted Routes</h4>
+<p>Since Chihiro must be able to control which Gateways accept defaulted Routes,
+configuring a Gateway to accept defaulted Routes must be an active
+configuration step taken by Chihiro, rather than any kind of implicit
+behavior. To that end, the Gateway resource will gain a new field,
+<code>spec.defaultScope</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> GatewaySpec <span style="color:#a2f;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// ... other fields ...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// DefaultScope, when set, configures the Gateway as a default Gateway,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// meaning it will dynamically and implicitly have Routes (e.g. HTTPRoute)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// attached to it, according to the scope configured here.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// If unset (the default), set to an empty string (`&#34;&#34;`), or set to None,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// the Gateway will not act as a default Gateway; if set, the Gateway will</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// claim any Route with a matching scope set in its UseDefaultGateway</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// field, subject to the usual rules about which routes the Gateway can</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// attach to.</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#080;font-style:italic">//</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#080;font-style:italic">// +optional</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#080;font-style:italic">// &lt;gateway:experimental&gt;</span>
+</span></span><span style="display:flex;"><span>  DefaultScope GatewayDefaultScope <span style="color:#b44">`json:&#34;defaultScope,omitempty&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Again, the only currently-defined scopes are <code>All</code> and <code>None</code>, with <code>None</code>
+explicitly disabling default-Gateway functionality.</p>
+<p>If <code>spec.defaultScope</code> is set, the Gateway MUST claim Routes that have set
+<code>spec.useDefaultGateways</code> to a matching value (subject to the usual Gateway
+API rules about which Routes may be bound to a Gateway), and it MUST update
+its own <code>status</code> with a <code>condition</code> of type <code>DefaultGateway</code> and <code>status</code> true
+to indicate that it is a default Gateway and what its scope is, for example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">conditions</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>DefaultGateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;True&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">lastTransitionTime</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;2025-10-01T12:00:00Z&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">message</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;Gateway has default scope All&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>If <code>spec.defaultScope</code> is not present, the Gateway MUST NOT claim Routes that
+do not name it specifically in <code>parentRefs</code>, and it MUST NOT set the
+<code>DefaultGateway</code> condition in its <code>status</code>.</p>
+<h5 id="access-to-a-default-gateway">Access to a Default Gateway</h5>
+<p>The rules for which Routes may bind to a Gateway do not change for a default
+Gateway. In particular, if a default Gateway should accept Routes from other
+namespaces, then it MUST include the appropriate <code>AllowedRoutes</code> definition,
+and without such an <code>AllowedRoutes</code>, a default Gateway MUST accept only Routes
+from its own namespace.</p>
+<h5 id="behavior-with-no-default-gateway">Behavior with No Default Gateway</h5>
+<p>If no Gateway has <code>spec.defaultScope</code> set, then all Gateways MUST ignore
+<code>spec.useDefaultGateways</code> in all Routes. A Route will be bound to only those
+Gateways that it specifically names in <code>parentRefs</code> entries.</p>
+<h5 id="deleting-a-default-gateway">Deleting a Default Gateway</h5>
+<p>Deleting a default Gateway MUST behave the same as deleting any other Gateway:
+all Routes that were bound to that Gateway MUST be unbound, and the <code>Accepted</code>
+conditions in the <code>status</code> of those Routes SHOULD be removed.</p>
+<h5 id="multiple-default-gateways">Multiple Default Gateways</h5>
+<p>Support for multiple default Gateways in a cluster was not one of the original
+goals of this GEP. However, allowing Chihiro full control over which Gateways
+accept defaulted Routes - including being able to change the set of default
+Gateways at runtime, without requiring downtime - has always been a goal, and
+this turns out to require support for multiple default Gateways.</p>
+<p>Kubernetes itself will not prevent setting <code>spec.defaultScope</code> on multiple
+Gateways in a cluster, and it also doesn't support any atomic swap mechanisms.
+If we want to enforce only a single default Gateway, the Gateway controllers
+will have to implement that enforcement logic. There are three possible
+options here.</p>
+<ol>
+<li>
+<p>Don't bother with any enforcement logic.</p>
+<p>In this case, a Route that sets <code>spec.useDefaultGateways</code> would be bound to
+<em>all</em> Gateways that have <code>spec.defaultScope</code> set a matching scope. Since
+Gateway API already allows a Route to be bound to multiple Gateways, and
+the Route <code>status</code> is already designed for it, this should function
+without difficulty.</p>
+</li>
+<li>
+<p>Treat multiple Gateways with <code>spec.defaultScope</code> set as if no Gateway has
+<code>spec.defaultScope</code> set.</p>
+<p>If we assume that all Gateway controllers in a cluster can see all the
+Gateways in the cluster, then detecting that multiple Gateways have
+<code>spec.defaultScope</code> set is relatively straightforward.</p>
+<p>In this case, every Gateway with <code>spec.defaultScope</code> set would ignore it,
+with the final effect being the same as if no Gateway had
+<code>spec.defaultScope</code> set: all Gateways would ignore
+<code>spec.useDefaultGateways</code> in all Routes, and each Gateway would only accept
+Routes that explicitly named it in <code>parentRefs</code>.</p>
+<p>Each Gateway with <code>spec.defaultScope</code> set would also update its <code>status</code>
+with a <code>condition</code> of type <code>DefaultGateway</code> and <code>status</code> false to indicate
+that it is not the default Gateway, for example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">conditions</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">type</span>:<span style="color:#bbb"> </span>DefaultGateway<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">status</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;False&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">lastTransitionTime</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;2025-10-01T12:00:00Z&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">message</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;Multiple Gateways are marked as default&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div></li>
+<li>
+<p>Perform conflict resolution as with Routes.</p>
+<p>In this case, the oldest Gateway with <code>spec.defaultScope</code> set would be
+considered the only default Gateway. That oldest Gateway would be the only
+one that honors <code>spec.useDefaultGateways</code> in Routes, and all other
+Gateways with <code>spec.defaultScope</code> set would ignore
+<code>spec.useDefaultGateways</code> in every Route.</p>
+<p>The oldest default Gateway would update its <code>status</code> to reflect that it
+the default Gateway; all other Gateways with <code>spec.defaultScope</code> set to
+<code>true</code> will update their <code>status</code> as in Option 2.</p>
+</li>
+</ol>
+<p>Unfortunately, option 2 will almost certainly cause downtime in any case where
+Chihiro wants to change the implementation behind a default Gateway:</p>
+<ul>
+<li>
+<p>If Chihiro deletes the old Gateway resource before creating the new one,
+then all routes using that Gateway will be unbound during the time between
+deletion and recreation, resulting in errors for any requests using those
+Routes.</p>
+</li>
+<li>
+<p>If Chihiro creates the new Gateway resource before deleting the old one,
+then all Routes using the old default Gateway will still be unbound during
+the time that both Gateways exist.</p>
+</li>
+</ul>
+<p>Option 3 gives Chihiro a way to change the default Gateway without downtime:
+when they create the new default Gateway resource, it will not take effect
+until the old default Gateway resource is deleted. However, it doesn't give
+Chihiro any way to test the Routes through the new default Gateway before
+deleting the old Gateway.</p>
+<p>Reluctantly, we must therefore conclude that option 1 is the only viable
+choice. Therefore: Gateways MUST NOT attempt to enforce a single default
+Gateway, and MUST allow Routes that set <code>spec.useDefaultGateway</code> to bind to
+<em>all</em> Gateways that have <code>spec.defaultScope</code> set a matching scope. This is
+simplest to implement, it permits zero-downtime changes to the default
+Gateway, it allows for testing of the new default Gateway before the old one
+is deleted, and it doesn't cause trouble with respect to security posture
+(since Ana already accepts that she's giving up some control over how her
+Routes are handled when she's using default Gateways).</p>
+<h5 id="changes-in-functionality">Changes in Functionality</h5>
+<p>If Chihiro changes a default Gateway to a different implementation that does
+not support all the functionality of the previous default Gateway, then the
+Routes that were bound to the previous default Gateway will no longer function
+as expected. This is not a new problem: it already exists when Ana changes a
+Route's <code>parentRefs</code>, or when Chihiro changes the implementation of a Gateway
+that is explicitly specified in a Route's <code>parentRefs</code>.</p>
+<p>At present, we do not propose any solution to this problem, other than to note
+that <code>gwctl</code> or similar tools SHOULD be able to show Ana not just the Gateways
+to which a Route is bound, but also the features supported by those Gateways.
+This will at least give Ana some visibility into whether she's trying to use
+Gateways that don't support a feature that she needs. This is a definitely an
+area for future work, and it is complicated by the fact that Ana may not have
+access to read Gateway resources in the cluster at all.</p>
+<h5 id="listeners-listenersets-and-merging">Listeners, ListenerSets, and Merging</h5>
+<p>Setting <code>spec.defaultScope</code> on a Gateway affects which Routes will bind to the
+Gateway, not where the Gateway listens for traffic. As such, setting
+<code>spec.defaultScope</code> MUST NOT alter a Gateway's behavior with respect to
+Listeners, ListenerSets, or merging.</p>
+<p>In the future, we may want to consider allowing default ListenerSets rather
+than only default Gateways, but that is not in scope for this GEP. Even if it
+is considered later, the guiding principle SHOULD be that <code>spec.defaultScope</code>
+SHOULD NOT affect where a Gateway listens for traffic or whether it can be
+merged with other Gateways.</p>
+<h4 id="4-enumerating-routes-bound-to-default-gateways">4. Enumerating Routes Bound to Default Gateways</h4>
+<p>To enumerate Routes bound to the default Gateways, any of Ana, Chihiro, or Ian
+can look for Routes that set <code>spec.useDefaultGateways</code> to <code>true</code>, and then
+check the <code>status.parents</code> of those Routes to see if the Route has been
+claimed. Since this will also show <em>which</em> Gateways have claimed a given
+defaulted Route, it neatly solves the problem of allowing Ana to determine
+which default Gateway(s) her Route is using even if she doesn't have RBAC to
+query Gateway resources directly.</p>
+<p>While this is possible with <code>kubectl get -o yaml</code>, it's not exactly a friendly
+user experience, so adding this functionality to a tool like <code>gwctl</code> would be
+a dramatic improvement. In fact, looking at the <code>status</code> of a Route is very
+much something that we should expect any user of Gateway API to do often,
+whether or not default Gateways are in play; <code>gwctl</code> or something similar
+SHOULD be able to show her which Routes are bound to which Gateways in every
+case, not just with default Gateways.</p>
+<h3 id="gateway-for-mesh-east-west">Gateway For Mesh (East/West)</h3>
+<p>Mesh traffic is defined by using a Service as a <code>parentRef</code> rather than a
+Gateway. As such, there is no case where a default Gateway would be used for
+mesh traffic.</p>
+<p>As noted above, a Route MAY both set <code>spec.useDefaultGateways</code> <em>and</em> include a
+<code>Service</code> <code>parentRef</code> entry, allowing a single Route to handle both N/S and
+E/W traffic. In this case, the Route will be bound to both the default Gateway
+and the mesh, and the <code>status</code> will show both parents.</p>
+<h2 id="conformance-details">Conformance Details</h2>
+<h4 id="feature-names">Feature Names</h4>
+<p>The default-gateway feature will be named <code>HTTPRouteDefaultGateway</code> and
+<code>GRPCRouteDefaultGateway</code>. It is unlikely that an implementation would support
+one of these Route types without the other, but <code>GatewayDefaultGateway</code> does
+not seem like a good choice.</p>
+<h3 id="conformance-tests">Conformance tests</h3>
+<p>TBD.</p>
+<h2 id="alternatives">Alternatives</h2>
+<ul>
+<li>A possible alternative API design is to modify the behavior of Listeners or
+ListenerSets; rather than having a &quot;default Gateway&quot;, perhaps we would have
+&quot;<a href="https://github.com/kubernetes-sigs/gateway-api/pull/3852#discussion_r2149056246">default Listeners</a>&quot;. One challenge here is that the Route <code>status</code> doesn't
+currently expose information about which Listener is being used, though it
+does show which Gateway is being used.</li>
+</ul>
+<ul>
+<li>
+<p>We could define the default Gateway as a Gateway with a magic name, e.g.
+&quot;default&quot;. This doesn't actually make things that much simpler for Ana
+(she'd still have to specify <code>parentRefs</code>), and it raises questions about
+Chihiro's ability to control which Routes can bind to the default Gateway,
+as well as how namespacing would work -- it's especially unhelpful for Ana
+if she has to know the namespace of the default Gateway in order to use it.</p>
+<p>(Also, this is a breaking change if Chihiro has already created a
+non-default Gateway with whatever name we choose to use for the convention.)</p>
+</li>
+<li>
+<p>A default Gateway could overwrite a defaulted Route's <code>parentRefs</code> to point
+to the default Gateway. The main challenge with this approach is that once
+the <code>parentRefs</code> are overwritten, it's no longer possible to know what Ana
+originally intended. Using the <code>status</code> to indicate that the Route is bound
+to the default Gateway instead both preserves Ana's original intent and also
+makes it possible to change the default Gateway without requiring Ana to
+recreate all her Routes.</p>
+</li>
+</ul>
+<h2 id="references">References</h2>
+<p>TBD.</p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-6 text-center order-2 footer-main">
+        
+        
+        
+          
+        
+        <p class="mt-2"><small class="text-white">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage" target="_blank" rel="noopener">Trademark Usage page</a>.</small></p>
+      </div>
+      <div class="col-6 col-sm-6 text-right text-xs-center order-3">
+        
+        
+        
+<ul class="list-inline mb-0 footer-icons">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gateway API Website" aria-label="Gateway API Website">
+    <a class="text-white" target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/" aria-label="Gateway API Website">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="https://kubernetes.slack.com/archives/CR0H13KGA" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/gateway-api" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+
+<script src="/js/split-1.6.0.js"></script>
+<script>
+  let splitInstance = null;
+
+  function enableSplitter(mediaQuery) {
+    if (mediaQuery.matches) {
+      if (!splitInstance) {
+        splitInstance = Split(["#sidebarnav", "#maindoc"], {
+          sizes: [20, 80],
+          minSize: 100,
+        });
+      }
+    } else {
+      if (splitInstance) {
+        splitInstance.destroy();
+        splitInstance = null;
+      }
+    }
+  }
+
+  const screenWidthMediaQuery = window.matchMedia("(min-width: 768px)");
+  const eleNav = document.getElementById("sidebarnav");
+  if (eleNav !== null) {
+    enableSplitter(screenWidthMediaQuery);
+    screenWidthMediaQuery.addListener(enableSplitter);
+  }
+</script>
+
+  </body>
+</html>

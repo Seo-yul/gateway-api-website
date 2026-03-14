@@ -1,0 +1,22 @@
+# English translations
+
+[channel_experimental]
+other = "Experimental Channel"
+
+[channel_since]
+other = "since"
+
+[channel_standard]
+other = "Standard Channel"
+
+[danger]
+other = "Danger:"
+
+[example]
+other = "Example:"
+
+[info]
+other = "Info:"
+
+[success]
+other = "Success:"
