@@ -1,10 +1,10 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<link rel="canonical" type="text/html" href="/overview/mesh/">
+<link rel="canonical" type="text/html" href="//localhost:1313/overview/mesh/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -21,7 +21,7 @@
 
 <title>Service Mesh | Kubernetes Gateway API</title>
 <meta name="description" content="Using Gateway API for service mesh">
-<meta property="og:url" content="/overview/mesh/">
+<meta property="og:url" content="//localhost:1313/overview/mesh/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="Service Mesh">
   <meta property="og:description" content="Using Gateway API for service mesh">
@@ -30,6 +30,7 @@
 
   <meta itemprop="name" content="Service Mesh">
   <meta itemprop="description" content="Using Gateway API for service mesh">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Service Mesh">
   <meta name="twitter:description" content="Using Gateway API for service mesh">
@@ -37,8 +38,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -179,19 +180,19 @@ cases has been part of the Standard Channel since v1.1.0 and is considered
 GA. For more information refer to our <a href="/overview/concepts/versioning/">versioning guide</a>.</p>
 </details>
 
-<p>The &quot;<a href="/overview/mesh/gamma/">GAMMA initiative</a>&quot; refers to the group that is defining how
+<p>The &quot;<a href="//localhost:1313/overview/mesh/gamma/">GAMMA initiative</a>&quot; refers to the group that is defining how
 Gateway API can be used for Service Mesh. To date, this group has been able to
 define service mesh support in the Gateway API with relatively small changes.
 The most significant change that GAMMA has introduced to date is that, when
-configuring a service mesh, individual route resources (such as <a href="/reference/api-types/httproute/">HTTPRoute</a>) are
+configuring a service mesh, individual route resources (such as <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute</a>) are
 <a href="/overview/mesh/overview/#gateway-api-for-mesh">associated directly with Service resources</a>.</p>
 <p>This is primarily because there will typically only be one mesh active in the
-cluster, so the <a href="/reference/api-types/gateway/">Gateway</a> and <a href="/reference/api-types/gatewayclass/">GatewayClass</a> resources are not used when
+cluster, so the <a href="//localhost:1313/reference/api-types/gateway/">Gateway</a> and <a href="//localhost:1313/reference/api-types/gatewayclass/">GatewayClass</a> resources are not used when
 working with a mesh. In turn, this leaves the Service resource as the most
 universal binding point for routing information.</p>
 <p>Since the Service resource is unfortunately complex, with several overloaded
 or underspecified aspects, GAMMA has also found it critical to formally define
-the <a href="/overview/mesh/service-facets/">Service <em>frontend</em> and <em>backend</em> facets</a>. In brief:</p>
+the <a href="//localhost:1313/overview/mesh/service-facets/">Service <em>frontend</em> and <em>backend</em> facets</a>. In brief:</p>
 <ul>
 <li>The Service frontend is its name and cluster IP, and</li>
 <li>The Service backend is its collection of endpoint IPs.</li>
@@ -234,16 +235,16 @@ important:</p>
 <ul>
 <li>
 <p>Same Namespace {#producer-routes}</p>
-<p>A Route in the same Namespace as its Service is called a <a href="/overview/glossary/#producer-route">producer route</a>,
+<p>A Route in the same Namespace as its Service is called a <a href="//localhost:1313/overview/glossary/#producer-route">producer route</a>,
 since it is typically created by the creator of the workload in order to
-define acceptable usage of the workload (for example, <a href="/overview/concepts/roles-and-personas/#ana">Ana</a> would deploy
+define acceptable usage of the workload (for example, <a href="//localhost:1313/overview/concepts/roles-and-personas/#ana">Ana</a> would deploy
 both the workload and the Route). All requests from any client of the
 workload, from any Namespace, will be affected by this Route.</p>
 <p>The Route shown above is a producer route.</p>
 </li>
 <li>
 <p>Different Namespaces {#consumer-routes}</p>
-<p>A Route in a different Namespace than its Service is called a <a href="/overview/glossary/#consumer-route">consumer
+<p>A Route in a different Namespace than its Service is called a <a href="//localhost:1313/overview/glossary/#consumer-route">consumer
 route</a>. Typically, this is a Route meant to refine how a consumer of a given
 workload makes request of that workload (for example, configuring custom
 timeouts for that consumer's use of the workload). This Route will only
@@ -269,7 +270,7 @@ in the <code>fast-clients</code> Namespace to have a 100ms timeout:</p>
 </ul>
 <p>One important note about Routes bound to Services is that multiple Routes for
 the same Service in a single Namespace - whether producer routes or consumer
-routes - will be combined according to the Gateway API <a href="/reference/api-types/httproute/#merging">Route merging rules</a>. As
+routes - will be combined according to the Gateway API <a href="//localhost:1313/reference/api-types/httproute/#merging">Route merging rules</a>. As
 such, it is not currently possible to define distinct consumer routes for
 multiple consumers in the same Namespace.</p>
 <p>For example, if the <code>blender</code> workload and the <code>mixer</code> workload both live in the
@@ -278,7 +279,7 @@ it is not currently possible for <code>blender</code> and <code>mixer</code> to 
 different timeouts for their calls to the <code>oven</code> workload. <code>blender</code> and <code>mixer</code>
 would need to be moved into separate Namespaces to allow this.</p>
 <h2 id="request-flow">Request Flow</h2>
-<p>A typical <a href="/overview/glossary/#eastwest-traffic">east/west</a> API request flow when a GAMMA-compliant mesh is in use
+<p>A typical <a href="//localhost:1313/overview/glossary/#eastwest-traffic">east/west</a> API request flow when a GAMMA-compliant mesh is in use
 looks like:</p>
 <ol>
 <li>
@@ -300,7 +301,7 @@ request is rejected.</p>
 </li>
 <li>
 <p>The data plane routes the request on to the destination workload (most likely
-using <a href="/overview/glossary/#endpoint-routing">endpoint routing</a>, but it is allowed to use <a href="/overview/glossary/#service-routing">Service routing</a>).</p>
+using <a href="//localhost:1313/overview/glossary/#endpoint-routing">endpoint routing</a>, but it is allowed to use <a href="//localhost:1313/overview/glossary/#service-routing">Service routing</a>).</p>
 </li>
 </ol>
 
@@ -322,16 +323,16 @@ using <a href="/overview/glossary/#endpoint-routing">endpoint routing</a>, but i
     <div class="lead">Gateway API for Service Mesh (GAMMA)</div>
 	<p>Gateway API was originally designed to manage traffic from clients outside the
 cluster to services inside the cluster -- the <em>ingress</em> or
-<a href="/overview/glossary/#northsouth-traffic"><em>north/south</em></a> case. Over time, though, interest from
-<a href="/overview/glossary/#service-mesh">service mesh</a> users prompted the creation of the GAMMA (<strong>G</strong>ateway <strong>A</strong>PI for
+<a href="//localhost:1313/overview/glossary/#northsouth-traffic"><em>north/south</em></a> case. Over time, though, interest from
+<a href="//localhost:1313/overview/glossary/#service-mesh">service mesh</a> users prompted the creation of the GAMMA (<strong>G</strong>ateway <strong>A</strong>PI for
 <strong>M</strong>esh <strong>M</strong>anagement and <strong>A</strong>dministration) initiative in 2022 to define how
-Gateway API could also be used for inter-service or <a href="/overview/glossary/#eastwest-traffic"><em>east/west</em>
+Gateway API could also be used for inter-service or <a href="//localhost:1313/overview/glossary/#eastwest-traffic"><em>east/west</em>
 traffic</a> within the same cluster.</p>
 <p>The GAMMA initiative is a dedicated workstream within the Gateway API
 subproject, shepherded by the <a href="https://github.com/kubernetes-sigs/gateway-api/blob/main/OWNERS_ALIASES#L23">GAMMA leads</a>, rather than being a separate
 subproject. GAMMA's goal is to define how Gateway API can be used to configure
 a service mesh, with the intention of making minimal changes to Gateway API and
-always preserving the <a href="/overview/concepts/roles-and-personas/">role-oriented</a> nature of Gateway API. Additionally, we
+always preserving the <a href="//localhost:1313/overview/concepts/roles-and-personas/">role-oriented</a> nature of Gateway API. Additionally, we
 strive to advocate for consistency between implementations of Gateway API by
 service mesh projects, regardless of their technology stack or proxy.</p>
 <h2 id="deliverables">Deliverables</h2>
@@ -380,7 +381,7 @@ load-balanced across all the endpoint IPs.</li>
 </ul>
 <p>Unfortunately, these implementation details become very important when
 considering how Gateway API can work for service meshes!</p>
-<p>In <a href="/overview/mesh/gamma/">GAMMA initiative</a> work, it has become useful to consider Services
+<p>In <a href="//localhost:1313/overview/mesh/gamma/">GAMMA initiative</a> work, it has become useful to consider Services
 as comprising two separate <em>facets</em>:</p>
 <ul>
 <li>
@@ -394,7 +395,7 @@ associated with the endpoint IPs.)</p>
 </li>
 </ul>
 <p>The distinction between the facets is critical because the
-<a href="/reference/api-types/gateway/">gateway</a> and the <a href="/overview/mesh/">mesh</a> each need to decide whether
+<a href="//localhost:1313/reference/api-types/gateway/">gateway</a> and the <a href="//localhost:1313/overview/mesh/">mesh</a> each need to decide whether
 a request that mentions a given Service should be directed to the Service's
 frontend or its backend:</p>
 <ul>
@@ -410,9 +411,9 @@ often necessary to enable more advanced load balancing decisions (for
 example, a gateway implementing sticky sessions).</p>
 </li>
 </ul>
-<p>While Service routing may be the most direct fit for <a href="/overview/concepts/roles-and-personas/#ana">Ana</a>'s sense of routing,
+<p>While Service routing may be the most direct fit for <a href="//localhost:1313/overview/concepts/roles-and-personas/#ana">Ana</a>'s sense of routing,
 endpoint routing can be more predictable when using Gateway API for both
-<a href="/overview/glossary/#northsouth-traffic">north/south</a> and <a href="/overview/glossary/#eastwest-traffic">east/west traffic</a>. The <a href="/overview/mesh/gamma/">GAMMA initiative</a> is working to
+<a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a> and <a href="//localhost:1313/overview/glossary/#eastwest-traffic">east/west traffic</a>. The <a href="//localhost:1313/overview/mesh/gamma/">GAMMA initiative</a> is working to
 formalize guidance for this use case.</p>
 
 </div>
@@ -476,7 +477,7 @@ formalize guidance for this use case.</p>
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

@@ -57,7 +57,7 @@ API의 표준 채널에 포함되었으며 안정적인 API로 간주된다.
 [게이트웨이 컨트롤러]:/overview/glossary/#gateway-controller
 [게이트웨이 리소스 연결]:/overview/concepts/api-overview/#attaching-routes-to-gateways
 
-## 서비스 메시를 위한 게이트웨이 API ([GAMMA initiative]({{< ref "/overview/mesh/gamma" >}})) {#for-service-mesh}
+## 서비스 메시를 위한 게이트웨이 API (GAMMA initiative) {#for-service-mesh}
 
 {{< channel-version channel="standard" version="v1.1.0" >}}
 서비스 메시 사용 사례를 지원하기 위한 [GAMMA 이니셔티브]({{< ref "/overview/mesh/gamma" >}})

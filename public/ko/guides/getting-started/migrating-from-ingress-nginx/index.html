@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="ko" class="no-js" dir="ltr">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -20,16 +20,18 @@
 
 <title>Ingress-NGINX 사용자를 위한 가이드 | Kubernetes Gateway API</title>
 <meta name="description" content="Resources and guidance for migrating from Ingress-NGINX to Gateway API">
-<meta property="og:url" content="/ko/guides/getting-started/migrating-from-ingress-nginx/">
+<meta property="og:url" content="//localhost:1313/ko/guides/getting-started/migrating-from-ingress-nginx/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="Ingress-NGINX 사용자를 위한 가이드">
   <meta property="og:description" content="Resources and guidance for migrating from Ingress-NGINX to Gateway API">
   <meta property="og:locale" content="ko">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
+    <meta property="article:modified_time" content="2026-03-14T21:38:33+09:00">
 
   <meta itemprop="name" content="Ingress-NGINX 사용자를 위한 가이드">
   <meta itemprop="description" content="Resources and guidance for migrating from Ingress-NGINX to Gateway API">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta itemprop="wordCount" content="436">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ingress-NGINX 사용자를 위한 가이드">
@@ -38,8 +40,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -120,7 +122,7 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/guides/api-design/">English</a>
+	<a class="dropdown-item" href="/guides/crd-management/">English</a>
 	
 </div>
     </div>
@@ -251,7 +253,7 @@
   <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/ko/guides/getting-started/migrating-from-ingress-nginx.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 페이지 편집</a>
   <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/ko/guides/getting-started/migrating-from-ingress-nginx.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> 하부 페이지 생성</a>
   <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=Ingress-NGINX%20%ec%82%ac%ec%9a%a9%ec%9e%90%eb%a5%bc%20%ec%9c%84%ed%95%9c%20%ea%b0%80%ec%9d%b4%eb%93%9c" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> 이슈 생성</a>
-  <a id="print" href="/ko/guides/getting-started/_print/"><i class="fa-solid fa-print fa-fw"></i> 전체 섹션 프린트</a>
+  <a id="print" href="//localhost:1313/ko/guides/getting-started/_print/"><i class="fa-solid fa-print fa-fw"></i> 전체 섹션 프린트</a>
 
 </div>
 
@@ -302,13 +304,13 @@
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="/ko/guides/">가이드</a>
+    <a href="//localhost:1313/ko/guides/">가이드</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/ko/guides/getting-started/">Gateway API 시작하기</a>
+    <a href="//localhost:1313/ko/guides/getting-started/">Gateway API 시작하기</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/ko/guides/getting-started/migrating-from-ingress-nginx/" aria-disabled="true" class="btn-link disabled">Migrating from Ingress-NGINX</a>
+    <a href="//localhost:1313/ko/guides/getting-started/migrating-from-ingress-nginx/" aria-disabled="true" class="btn-link disabled">Migrating from Ingress-NGINX</a>
   </li>
   </ol>
 </nav>
@@ -331,7 +333,7 @@
 
 		
 	</header>
-	<p>Ingress-NGINX 사용자라면 적절한 곳에 왔다. 이 페이지는 Gateway API로의 마이그레이션을 고려하거나 진행 중인 사용자를 위한 리소스 허브이다. 시간이 지남에 따라 이 페이지를 더욱 포괄적으로 구성해 나갈 계획이다. Ingress에서의 마이그레이션에 대한 일반적인 개요를 찾고 있다면, <a href="/ko/guides/getting-started/migrating-from-ingress/">Ingress에서 마이그레이션 가이드</a>를 참고하라.</p>
+	<p>Ingress-NGINX 사용자라면 적절한 곳에 왔다. 이 페이지는 Gateway API로의 마이그레이션을 고려하거나 진행 중인 사용자를 위한 리소스 허브이다. 시간이 지남에 따라 이 페이지를 더욱 포괄적으로 구성해 나갈 계획이다. Ingress에서의 마이그레이션에 대한 일반적인 개요를 찾고 있다면, <a href="//localhost:1313/ko/guides/getting-started/migrating-from-ingress/">Ingress에서 마이그레이션 가이드</a>를 참고하라.</p>
 <p>마이그레이션은 복잡할 수 있으며, 목표는 원활한 전환에 필요한 정보와 도구를 제공하는 것이다.</p>
 <h2 id="자주-묻는-질문">자주 묻는 질문</h2>
 <h3 id="gateway-api는-ingress와-어떻게-다른가">Gateway API는 Ingress와 어떻게 다른가?</h3>
@@ -340,9 +342,9 @@
 <li><strong>Gateway:</strong> 트래픽이 클러스터에 진입하는 위치와 방법을 정의하며, 클러스터 운영자의 업무이다.</li>
 <li><strong>HTTPRoute:</strong> 트래픽이 서비스로 라우팅되는 방법을 정의하며, 애플리케이션 개발자의 업무이다.</li>
 </ul>
-<p>이러한 분리는 더 안전한 멀티 테넌트 인프라를 가능하게 한다. 자세한 내용은 <a href="/ko/guides/getting-started/migrating-from-ingress/">Ingress 마이그레이션 가이드</a>를 확인하라.</p>
+<p>이러한 분리는 더 안전한 멀티 테넌트 인프라를 가능하게 한다. 자세한 내용은 <a href="//localhost:1313/ko/guides/getting-started/migrating-from-ingress/">Ingress 마이그레이션 가이드</a>를 확인하라.</p>
 <h3 id="ingress-nginx-기능을-gateway-api에-어떻게-매핑하는가">Ingress-NGINX 기능을 Gateway API에 어떻게 매핑하는가?</h3>
-<p>Ingress-NGINX의 많은 어노테이션 기반 기능은 Gateway API에서 대응하는 필드를 가지고 있다. 예를 들어, 트래픽 분할, 헤더 조작, TLS 설정은 모두 API에 기본적으로 포함되어 있다. 자세한 매핑은 <a href="/ko/reference/api-types/httproute/">Gateway API HTTPRoute 문서</a>와 선택한 <a href="/ko/overview/implementations/">구현체</a>의 문서를 참고하라.</p>
+<p>Ingress-NGINX의 많은 어노테이션 기반 기능은 Gateway API에서 대응하는 필드를 가지고 있다. 예를 들어, 트래픽 분할, 헤더 조작, TLS 설정은 모두 API에 기본적으로 포함되어 있다. 자세한 매핑은 <a href="//localhost:1313/ko/reference/api-types/httproute/">Gateway API HTTPRoute 문서</a>와 선택한 <a href="//localhost:1313/ko/overview/implementations/">구현체</a>의 문서를 참고하라.</p>
 <h3 id="ingress-nginx를-제거하지-않고-gateway-api를-시도할-수-있는가">Ingress-NGINX를 제거하지 않고 Gateway API를 시도할 수 있는가?</h3>
 <p>그렇다. 그렇게 하는 것을 강력히 권장한다. 기존 Ingress-NGINX 컨트롤러와 함께 Gateway API 컨트롤러를 실행할 수 있다. 각각 다른 외부 IP 주소를 받게 되므로, 프로덕션 트래픽에 영향을 주지 않고 새로운 설정을 독립적으로 테스트하고 검증할 수 있다.</p>
 <h2 id="마이그레이션-리소스">마이그레이션 리소스</h2>
@@ -353,7 +355,7 @@
 <h3 id="구현체-선택하기">구현체 선택하기</h3>
 <p>첫 번째 단계는 요구 사항에 맞는 구현체를 선택하는 것이다. 고려해야 할 주요 요소는 다음과 같다:</p>
 <ul>
-<li><strong>적합성(Conformance):</strong> <a href="/ko/overview/implementations/">적합성 보고서</a>를 확인하여 구현체가 필요한 Gateway API 기능을 지원하는지 확인하라.</li>
+<li><strong>적합성(Conformance):</strong> <a href="//localhost:1313/ko/overview/implementations/">적합성 보고서</a>를 확인하여 구현체가 필요한 Gateway API 기능을 지원하는지 확인하라.</li>
 <li><strong>기반 기술:</strong> Envoy, NGINX 등의 프록시에 대한 팀의 친숙도가 선택에 영향을 줄 수 있다.</li>
 <li><strong>통합:</strong> 클라우드 제공자나 CNI가 이미 통합된 Gateway API 구현체를 제공할 수 있다.</li>
 </ul>
@@ -438,7 +440,10 @@
 
 		<br />
 	
-	
+	<div class="text-muted mt-5 pt-3 border-top">
+  최종 수정 March 14, 2026: <a href="https://github.com/kubernetes-sigs/gateway-api/commit/6deb09cb5c69cd1181b26b4501e40bbdecebd5f1">init: HUGO gateway-api-website draft (6deb09c)</a>
+</div>
+
 </div>
 
 
@@ -493,7 +498,7 @@
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

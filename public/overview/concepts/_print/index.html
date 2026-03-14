@@ -1,10 +1,10 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<link rel="canonical" type="text/html" href="/overview/concepts/">
+<link rel="canonical" type="text/html" href="//localhost:1313/overview/concepts/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -21,7 +21,7 @@
 
 <title>Concepts | Kubernetes Gateway API</title>
 <meta name="description" content="Core concepts behind the Gateway API">
-<meta property="og:url" content="/overview/concepts/">
+<meta property="og:url" content="//localhost:1313/overview/concepts/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="Concepts">
   <meta property="og:description" content="Core concepts behind the Gateway API">
@@ -30,6 +30,7 @@
 
   <meta itemprop="name" content="Concepts">
   <meta itemprop="description" content="Core concepts behind the Gateway API">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Concepts">
   <meta name="twitter:description" content="Core concepts behind the Gateway API">
@@ -37,8 +38,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -234,7 +235,7 @@ The designers of Gateway API have done our best to try to meet the dual demands 
 This page goes through the most important things to learn when you are starting out in Gateway API.</p>
 <p>On this page, important words and concepts that are used in other places in the Gateway API docs are written in <strong>bold text</strong>, as are other points that are really important to remember.</p>
 <h2 id="roles-and-personas">Roles and personas</h2>
-<p>There are 3 primary roles in Gateway API, as described in <a href="/overview/concepts/roles-and-personas/">roles and personas</a>:</p>
+<p>There are 3 primary roles in Gateway API, as described in <a href="//localhost:1313/overview/concepts/roles-and-personas/">roles and personas</a>:</p>
 <ul>
 <li><strong>Ian</strong> (he/him): Infrastructure Provider</li>
 <li><strong>Chihiro</strong> (they/them): Cluster Operator</li>
@@ -300,7 +301,7 @@ Listeners that are not <strong>distinct</strong> are in conflict, and Gateway AP
 <p>A critical reason for the requirement that Listeners are distinct is that traffic flowing through a Gateway <strong>must only match a single Listener</strong>.
 Any particular traffic must only be able to be assigned to a single Listener, and once that Listener is chosen, the traffic <strong>must</strong> be routable via an attached, protocol-specific Route, <strong>or it must be dropped by the Gateway</strong>.</p>
 <p>The most important outcome here is that traffic can't fail to be routed by one Listener, then fall back to another for further processing.
-For more information on this, see the <a href="/overview/concepts/traffic-matching/">Traffic Matching</a> page.</p>
+For more information on this, see the <a href="//localhost:1313/overview/concepts/traffic-matching/">Traffic Matching</a> page.</p>
 <p>However, for the Route -&gt; Gateway relationship, the most important thing is that Routes <strong>attach</strong> to one or more Listeners on the the Gateway.</p>
 <h4 id="distinctiveness">Distinctiveness</h4>
 <p>For the property that traffic must only match a <em>single</em> Listener to be true, then Listeners must be <strong>distinct</strong>.</p>
@@ -468,7 +469,7 @@ Chihiro, the Cluster Admin and Gateway owner, can limit what <em>shapes</em> Rou
 The final decision, and control of the Route object, is always Ana's.</p>
 <p>The Listener side is intended to ensure that Ana's Route produces a valid configuration, and also matches Chihiro's requirements (if any) about what traffic is allowed to be exposed on that Gateway.</p>
 <h3 id="example">Example</h3>
-<p><a href="/overview/concepts/roles-and-personas/#chihiro">Chihiro</a> has deployed a Gateway <code>shared-gw</code> in the <code>infra</code> Namespace to be
+<p><a href="//localhost:1313/overview/concepts/roles-and-personas/#chihiro">Chihiro</a> has deployed a Gateway <code>shared-gw</code> in the <code>infra</code> Namespace to be
 used by different application teams for exposing their applications outside
 the cluster. Teams A and B (in Namespaces <code>A</code> and <code>B</code> respectively) attach
 their Routes to this Gateway. They are unaware of each other and as long as
@@ -615,7 +616,7 @@ relationships between the different resources:</p>
 <!-- source: https://docs.google.com/document/d/1BxYbDovMwnEqe8lj8JwHo8YxHAt3oC7ezhlFsG_tyag/edit#heading=h.8du598fded3c -->
 <p><img src="/images/schema-uml.svg" alt="schema"></p>
 <h3 id="request-flow">Request flow</h3>
-<p>A typical <a href="/overview/glossary/#northsouth-traffic">north/south</a> API request flow for a gateway implemented using a
+<p>A typical <a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a> API request flow for a gateway implemented using a
 reverse proxy is:</p>
 <ol>
 <li>A client makes a request to <a href="http://foo.example.com">http://foo.example.com</a>.</li>
@@ -632,13 +633,13 @@ headers, based on <code>filter</code> rules of the <code>HTTPRoute</code>.</li>
 </ol>
 <h3 id="tls-configuration">TLS Configuration</h3>
 <p>TLS is configured on Gateway listeners, and may be referred to across namespaces.</p>
-<p>Please refer to the <a href="/guides/user-guides/tls/">TLS details</a> guide for a deep dive on TLS.</p>
+<p>Please refer to the <a href="//localhost:1313/guides/user-guides/tls/">TLS details</a> guide for a deep dive on TLS.</p>
 <h2 id="attaching-routes-to-services">Attaching Routes to Services</h2>
-<p>When using Gateway API to configure a <a href="/overview/glossary/#service-mesh">service mesh</a>, the Route will
+<p>When using Gateway API to configure a <a href="//localhost:1313/overview/glossary/#service-mesh">service mesh</a>, the Route will
 attach directly to a Service, representing configuration meant to be applied
 to any traffic directed to the Service. How and which Routes attach to a given
 Service is controlled by the Routes themselves (working with Kubernetes RBAC),
-as covered in the <a href="/overview/mesh/#connecting-routes-and-services">GAMMA routing documentation</a>.</p>
+as covered in the <a href="//localhost:1313/overview/mesh/#connecting-routes-and-services">GAMMA routing documentation</a>.</p>
 <h2 id="extension-points">Extension points</h2>
 <p>A number of extension points are provided in the API to provide flexibility in
 addressing the large number of use-cases that cannot be addressed by a general
@@ -756,7 +757,7 @@ resources that have graduated to &quot;beta&quot;. The &quot;experimental&quot; 
 includes everything in the &quot;standard&quot; channel, along with experimental fields
 and resources that may still be changed in breaking ways <strong>or removed
 altogether</strong>. For more information on this concept, refer to our
-<a href="/overview/concepts/versioning/">versioning</a> documentation.</p>
+<a href="//localhost:1313/overview/concepts/versioning/">versioning</a> documentation.</p>
 <h2 id="2-support-levels">2. Support Levels</h2>
 <p>Unfortunately some implementations of the API will not be able to support every
 feature that has been defined. To address that, the API defines a corresponding
@@ -1000,7 +1001,7 @@ authorization. This allows users to configure who can perform actions on
 resources in specific scopes. We anticipate that each persona will map
 approximately to a <code>Role</code> in the Kubernetes Role-Based Authentication (RBAC)
 system and will define resource model responsibility and separation.</p>
-<p>RBAC is discussed further in the <a href="/overview/concepts/security/#rbac">Security Model</a> description.</p>
+<p>RBAC is discussed further in the <a href="//localhost:1313/overview/concepts/security/#rbac">Security Model</a> description.</p>
 
 </div>
 
@@ -1031,7 +1032,7 @@ within the cluster.</li>
 <li><strong>Routes</strong> describe how traffic coming via the Gateway maps to the Services.</li>
 </ul>
 <h2 id="roles-and-personas">Roles and personas</h2>
-<p>There are 3 primary roles in Gateway API, as described in <a href="/overview/concepts/roles-and-personas/">roles and personas</a>:</p>
+<p>There are 3 primary roles in Gateway API, as described in <a href="//localhost:1313/overview/concepts/roles-and-personas/">roles and personas</a>:</p>
 <ul>
 <li><strong>Ian</strong> (he/him): Infrastructure Provider</li>
 <li><strong>Chihiro</strong> (they/them): Cluster Operator</li>
@@ -1167,7 +1168,7 @@ the ReferenceGrant.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Service<span style="color:#bbb">
 </span></span></span></code></pre></div></div>
 </div><span style="color:#bbb">
-</span></span></span></code></pre></div><p>For more information on ReferenceGrant, refer to our <a href="/reference/api-types/referencegrant/">detailed documentation
+</span></span></span></code></pre></div><p>For more information on ReferenceGrant, refer to our <a href="//localhost:1313/reference/api-types/referencegrant/">detailed documentation
 for this resource</a>.</p>
 <h2 id="security-considerations">Security considerations</h2>
 <p>Gateway controllers can be deployed in a multi-tenant environment, where different
@@ -1177,7 +1178,7 @@ provide a safer environment.</p>
 <h3 id="avoiding-hostname-domain-hijacking">Avoiding hostname/domain hijacking</h3>
 <p>On Gateway API, it is possible for distinct Routes and ListenerSets to claim the same hostname.
 Gateway controllers are responsible for the conflict resolution, that usually works on a first-come, first-served basis, where the first created resource wins in the  conflict management.</p>
-<p>The <a href="/reference/spec/#httproutespec">hostname definition</a> on a Route or on ListenerSet is a list, and given the following scenario:</p>
+<p>The <a href="//localhost:1313/reference/spec/#httproutespec">hostname definition</a> on a Route or on ListenerSet is a list, and given the following scenario:</p>
 <ul>
 <li><code>Gateway</code> accepts routes from a set of namespaces</li>
 <li><code>HTTPRoute</code> with name <code>route1</code> is created on namespace <code>ns1</code>, with <code>creationTimestamp: 00:00:01</code>
@@ -1310,7 +1311,7 @@ domains with a command like <code>kubectl annotate ns default domains=www.dom1.t
 <p>Additionally, when dealing with environments that provide DNS record creations,
 admins should be aware and limit the DNS creation based on the same constraints above.</p>
 <h3 id="limiting-cross-namespace-references">Limiting Cross-Namespace References</h3>
-<p>Owners of resources should be aware of the usage of <a href="/reference/api-types/referencegrant/">ReferenceGrants</a>.</p>
+<p>Owners of resources should be aware of the usage of <a href="//localhost:1313/reference/api-types/referencegrant/">ReferenceGrants</a>.</p>
 <p>ReferenceGrant allows resource owners to make their resources available to
 Gateway API resources in other namespaces. It may be beneficial to restrict where
 this can be done.</p>
@@ -1430,26 +1431,15 @@ can be used to limit what namespaces can use a <code>GatewayClass</code>.</p>
 strength and a weakness!). This page is emphatically <em>not</em> meant to be an
 exhaustive list of these use cases: rather, it is meant to provide some
 examples that can be helpful to demonstrate how the API can be used.</p>
-<p>In all cases, it's very important to bear in mind the <a href="/overview/concepts/roles-and-personas/">roles and personas</a>
+<p>In all cases, it's very important to bear in mind the <a href="//localhost:1313/overview/concepts/roles-and-personas/">roles and personas</a>
 used in Gateway API. The use cases presented here are deliberately
-described in terms of <a href="/overview/concepts/roles-and-personas/#key-roles-and-personas">Ana</a>, <a href="/overview/concepts/roles-and-personas/#key-roles-and-personas">Chihiro</a>, and <a href="/overview/concepts/roles-and-personas/#key-roles-and-personas">Ian</a>: they are the ones for whom
+described in terms of <a href="//localhost:1313/overview/concepts/roles-and-personas/#key-roles-and-personas">Ana</a>, <a href="//localhost:1313/overview/concepts/roles-and-personas/#key-roles-and-personas">Chihiro</a>, and <a href="//localhost:1313/overview/concepts/roles-and-personas/#key-roles-and-personas">Ian</a>: they are the ones for whom
 the API must be usable. (It's also important to remember that even though
 these roles might be filled by the same person, especially in smaller
 organizations, they all have distinct concerns that we need to consider
 separately.)</p>
 <h2 id="the-use-cases">The Use Cases</h2>
-<ul>
-<li><a href="/overview/concepts/use-cases/#use-cases">Use Cases</a>
-<ul>
-<li><a href="/overview/concepts/use-cases/#the-use-cases">The Use Cases</a></li>
-<li><a href="/overview/concepts/use-cases/#basic-northsouth-use-case">Basic north/south use case</a></li>
-<li><a href="/overview/concepts/use-cases/#multiple-applications-behind-a-single-gateway">Multiple applications behind a single Gateway</a></li>
-<li><a href="/overview/concepts/use-cases/#basic-eastwest-use-case">Basic east/west use case</a></li>
-<li><a href="/overview/concepts/use-cases/#gateway-and-mesh-use-case">Gateway and mesh use case</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="basic-north-south-use-case">Basic <a href="/overview/glossary/#northsouth-traffic">north/south</a> use case</h2>
+<h2 id="basic-northsouth-use-case">Basic north/south use case</h2>
 <details class="alert alert-success channel-version channel-standard" open>
 <summary class="alert-heading">Standard Channel since v0.8.0</summary>The [north/south] use case is fully supported by the Standard Channel
 since <code>v0.8.0</code>. For more information on release
@@ -1469,7 +1459,7 @@ her clients will expect her APIs to be available using URLs rooted at
 <p>Chihiro goes to Ian and requests a cluster.</p>
 </li>
 <li>
-<p>Ian provisions a cluster running a gateway controller with a <a href="/reference/api-types/gatewayclass/">GatewayClass</a>
+<p>Ian provisions a cluster running a gateway controller with a <a href="//localhost:1313/reference/api-types/gatewayclass/">GatewayClass</a>
 resource named <code>basic-gateway-class</code>. The gateway controller manages the
 infrastructure associated with routing traffic from outside the cluster to
 inside the cluster.</p>
@@ -1479,7 +1469,7 @@ inside the cluster.</p>
 they can use GatewayClass <code>basic-gateway-class</code> to set things up.</p>
 </li>
 <li>
-<p>Chihiro applies a <a href="/reference/api-types/gateway/">Gateway</a> named <code>ana-gateway</code> to the cluster, telling it
+<p>Chihiro applies a <a href="//localhost:1313/reference/api-types/gateway/">Gateway</a> named <code>ana-gateway</code> to the cluster, telling it
 to listen on port 443 for TLS traffic, and providing it a TLS certificate
 with a Subject CN of <code>ana.application.com</code>. They associate this Gateway with the <code>basic-gateway-class</code> GatewayClass.</p>
 </li>
@@ -1499,9 +1489,9 @@ outside the cluster for <code>ana.application.com</code> to match.</p>
 <code>ana-gateway</code>.</p>
 </li>
 <li>
-<p>Ana writes and applies <a href="/reference/api-types/httproute/">HTTPRoute</a> resources to configure which URL paths
+<p>Ana writes and applies <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute</a> resources to configure which URL paths
 are allowed and which microservices should handle them. She associates
-these HTTPRoutes with Gateway <code>ana-gateway</code> using the Gateway API <a href="/overview/concepts/api-overview/#attaching-routes-to-gateways">Route
+these HTTPRoutes with Gateway <code>ana-gateway</code> using the Gateway API <a href="//localhost:1313/overview/concepts/api-overview/#attaching-routes-to-gateways">Route
 Attachment Process</a>.</p>
 </li>
 <li>
@@ -1509,10 +1499,10 @@ Attachment Process</a>.</p>
 to Ana's application according to her routing specification.</p>
 </li>
 </ol>
-<p>This allows Chihiro to enforce centralized policies <a href="/guides/user-guides/tls/#downstream-tls">such as
+<p>This allows Chihiro to enforce centralized policies <a href="//localhost:1313/guides/user-guides/tls/#downstream-tls">such as
 TLS</a> at the Gateway, while simultaneously allowing
-Ana and her colleagues control over the application's <a href="/guides/user-guides/http-routing/">routing
-logic</a> and rollout plans (e.g. <a href="/guides/user-guides/traffic-splitting/">traffic splitting
+Ana and her colleagues control over the application's <a href="//localhost:1313/guides/user-guides/http-routing/">routing
+logic</a> and rollout plans (e.g. <a href="//localhost:1313/guides/user-guides/traffic-splitting/">traffic splitting
 rollouts</a>).</p>
 <h2 id="multiple-applications-behind-a-single-gateway">Multiple applications behind a single Gateway</h2>
 <details class="alert alert-success channel-version channel-standard" open>
@@ -1536,17 +1526,17 @@ same <code>Gateway</code> resource.</p>
 </li>
 </ul>
 <p>Again, this separation of concerns allows Chihiro to enforce centralized
-policies <a href="/guides/user-guides/tls/#downstream-tls">such as TLS</a> can be enforced at the
-Gateway. Meanwhile, Ana and Allison run their applications <a href="/guides/user-guides/multiple-ns/">in their own
+policies <a href="//localhost:1313/guides/user-guides/tls/#downstream-tls">such as TLS</a> can be enforced at the
+Gateway. Meanwhile, Ana and Allison run their applications <a href="//localhost:1313/guides/user-guides/multiple-ns/">in their own
 Namespaces</a>, but attach their Routes to the same shared
-Gateway, allowing them to independently control their <a href="/guides/user-guides/http-routing/">routing
-logic</a>, <a href="/guides/user-guides/traffic-splitting/">traffic splitting
+Gateway, allowing them to independently control their <a href="//localhost:1313/guides/user-guides/http-routing/">routing
+logic</a>, <a href="//localhost:1313/guides/user-guides/traffic-splitting/">traffic splitting
 rollout</a>, etc., while not worrying about the things
 that Chihiro and Ian are handling.</p>
 <p><img src="/images/gateway-roles.png" alt="Gateway API Roles"></p>
-<h2 id="basic-east-west-use-case">Basic <a href="/overview/glossary/#eastwest-traffic">east/west</a> use case</h2>
+<h2 id="basic-eastwest-use-case">Basic east/west use case</h2>
 <p>In this scenario, Ana has built a workload which is already running in a
-cluster with a <a href="/overview/mesh/">GAMMA</a>-compliant <a href="/overview/glossary/#service-mesh">service mesh</a>. She wants to use the mesh to
+cluster with a <a href="//localhost:1313/overview/mesh/">GAMMA</a>-compliant <a href="//localhost:1313/overview/glossary/#service-mesh">service mesh</a>. She wants to use the mesh to
 protect her workload by rejecting calls to her workload with incorrect
 URL paths, and by enforcing timeouts whenever anyone makes a request of her
 workload.</p>
@@ -1576,7 +1566,7 @@ single Gateway</a> and <a href="/overview/concepts/use-cases/#basic-eastwest-use
 east/west</a> use cases:</p>
 <ul>
 <li>
-<p>Chihiro and Ian will provision a cluster, a <a href="/reference/api-types/gatewayclass/">GatewayClass</a>, and a <a href="/reference/api-types/gateway/">Gateway</a>.</p>
+<p>Chihiro and Ian will provision a cluster, a <a href="//localhost:1313/reference/api-types/gatewayclass/">GatewayClass</a>, and a <a href="//localhost:1313/reference/api-types/gateway/">Gateway</a>.</p>
 </li>
 <li>
 <p>Ana and Allison will deploy their applications in the appropriate
@@ -1590,9 +1580,9 @@ Namespaces.</p>
 involved:</p>
 <ol>
 <li>
-<p>If Chihiro has deployed a <a href="/overview/glossary/#gateway-controller">gateway controller</a> that defaults to <a href="/overview/glossary/#service-routing">Service
-routing</a>, they will probably need to reconfigure it for <a href="/overview/glossary/#endpoint-routing">endpoint routing</a>.
-(This is an ongoing area of work for <a href="/overview/mesh/">GAMMA</a>, but the expectation is that
+<p>If Chihiro has deployed a <a href="//localhost:1313/overview/glossary/#gateway-controller">gateway controller</a> that defaults to <a href="//localhost:1313/overview/glossary/#service-routing">Service
+routing</a>, they will probably need to reconfigure it for <a href="//localhost:1313/overview/glossary/#endpoint-routing">endpoint routing</a>.
+(This is an ongoing area of work for <a href="//localhost:1313/overview/mesh/">GAMMA</a>, but the expectation is that
 endpoint routing will be recommended.)</p>
 </li>
 <li>
@@ -1603,12 +1593,12 @@ HTTPRoutes that bind to both the Gateway and a Service.</p>
 </li>
 </ol>
 <p>As always, the ultimate point of separating concerns in this way is that it
-permits Chihiro to enforce centralized policies <a href="/guides/user-guides/tls/#downstream-tls">such as
+permits Chihiro to enforce centralized policies <a href="//localhost:1313/guides/user-guides/tls/#downstream-tls">such as
 TLS</a> at the Gateway, while allowing Ana and
-Allison to retain independent control of <a href="/guides/user-guides/http-routing/">routing
-logic</a>, <a href="/guides/user-guides/traffic-splitting/">traffic splitting
-rollout</a>, etc., both for <a href="/overview/glossary/#northsouth-traffic">north/south</a> and for
-<a href="/overview/glossary/#eastwest-traffic">east/west</a> routing.</p>
+Allison to retain independent control of <a href="//localhost:1313/guides/user-guides/http-routing/">routing
+logic</a>, <a href="//localhost:1313/guides/user-guides/traffic-splitting/">traffic splitting
+rollout</a>, etc., both for <a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a> and for
+<a href="//localhost:1313/overview/glossary/#eastwest-traffic">east/west</a> routing.</p>
 
 </div>
 
@@ -1855,7 +1845,7 @@ lifetime of the API, or at least until an alternative is available.</li>
 </ol>
 <h2 id="crd-management">CRD Management</h2>
 <p>For information on how to manage Gateway API CRDs in your clusters, refer to our
-<a href="/guides/crd-management/">CRD Management Guide</a>.</p>
+<a href="//localhost:1313/guides/crd-management/">CRD Management Guide</a>.</p>
 <h2 id="out-of-scope">Out of Scope</h2>
 <h3 id="unreleased-apis">Unreleased APIs</h3>
 <p>This project will have frequent updates to the main branch. There are no
@@ -2626,7 +2616,7 @@ on a Listener and ReferenceGrants, can be used in a real cluster relatively safe
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

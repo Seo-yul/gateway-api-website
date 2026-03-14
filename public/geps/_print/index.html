@@ -1,10 +1,10 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<link rel="canonical" type="text/html" href="/geps/">
+<link rel="canonical" type="text/html" href="//localhost:1313/geps/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -21,7 +21,7 @@
 
 <title>Enhancements | Kubernetes Gateway API</title>
 <meta name="description" content="Gateway Enhancement Proposals for the Gateway API project">
-<meta property="og:url" content="/geps/">
+<meta property="og:url" content="//localhost:1313/geps/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="Enhancements">
   <meta property="og:description" content="Gateway Enhancement Proposals for the Gateway API project">
@@ -30,6 +30,7 @@
 
   <meta itemprop="name" content="Enhancements">
   <meta itemprop="description" content="Gateway Enhancement Proposals for the Gateway API project">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Enhancements">
   <meta name="twitter:description" content="Gateway Enhancement Proposals for the Gateway API project">
@@ -37,8 +38,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -758,7 +759,7 @@ several places this may be done:</p>
 <ul>
 <li>A <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/new">new GitHub Discussion</a></li>
 <li>On our <a href="https://kubernetes.slack.com/archives/CR0H13KGA">Slack Channel</a></li>
-<li>On one of our <a href="/contributing/">community meetings</a></li>
+<li>On one of our <a href="//localhost:1313/contributing/">community meetings</a></li>
 </ul>
 <p>Please default to GitHub discussions: they work a lot like GitHub issues which
 makes them easy to search.</p>
@@ -866,7 +867,7 @@ maintainers.</p>
 <code>Experimental</code> features clearly document that these features may be removed in
 future releases.</p></blockquote>
 <h3 id="5-standard-graduate-the-gep">5. <code>Standard</code> - Graduate the GEP</h3>
-<p>Once this feature has met the <a href="/overview/concepts/versioning/#graduation-criteria">graduation criteria</a>, it is
+<p>Once this feature has met the <a href="//localhost:1313/overview/concepts/versioning/#graduation-criteria">graduation criteria</a>, it is
 time to graduate it to the &quot;Standard&quot; channel of the API. Depending on the feature, this will usually
 include one or more of the following:</p>
 <ul>
@@ -885,7 +886,7 @@ YAML install files.</li>
 <p>In short, the GEP issue should only be closed when the work is &quot;done&quot; (whatever
 that means for that GEP).</p>
 <h2 id="format">Format</h2>
-<p>GEPs should match the format of the template found in <a href="/geps/gep-696/">GEP-696</a>.</p>
+<p>GEPs should match the format of the template found in <a href="//localhost:1313/geps/gep-696/">GEP-696</a>.</p>
 <h2 id="out-of-scope">Out of scope</h2>
 <p>What is out of scope: see <a href="https://github.com/kubernetes/enhancements/tree/master/keps#do-i-have-to-use-the-kep-process">text from KEP</a>. Examples:</p>
 <ul>
@@ -957,77 +958,77 @@ the API.</li>
 
 <p>
 
-- [GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener](/geps/gep-91/)
-- [GEP-709: Cross Namespace References from Routes](/geps/gep-709/)
-- [GEP-718: Rework forwardTo segment in routes](/geps/gep-718/)
-- [GEP-724: Refresh Route-Gateway Binding](/geps/gep-724/)
-- [GEP-726: Add Path Redirects and Rewrites](/geps/gep-726/)
-- [GEP-746: Replace Cert Refs on HTTPRoute with Cross Namespace Refs from Gateway](/geps/gep-746/)
-- [GEP-820: Drop extension points from Route matches](/geps/gep-820/)
-- [GEP-851: Allow Multiple Certificate Refs per Gateway Listener](/geps/gep-851/)
-- [GEP-957: Destination Port Matching](/geps/gep-957/)
-- [GEP-995: Named route rules](/geps/gep-995/)
-- [GEP-1016: GRPCRoute](/geps/gep-1016/)
-- [GEP-1294: xRoutes Mesh Binding](/geps/gep-1294/)
-- [GEP-1323: Response Header Filter](/geps/gep-1323/)
-- [GEP-1364: Status and Conditions Update](/geps/gep-1364/)
-- [GEP-1686: Mesh conformance testing plan](/geps/gep-1686/)
-- [GEP-1709: Conformance Profiles](/geps/gep-1709/)
-- [GEP-1713: ListenerSets (Standard Mechanism to Merge Gateways)](/geps/gep-1713/)
-- [GEP-1742: HTTPRoute Timeouts](/geps/gep-1742/)
-- [GEP-1762: In Cluster Gateway Deployments](/geps/gep-1762/)
-- [GEP-1767: CORS Filter](/geps/gep-1767/)
-- [GEP-1867: Per-Gateway Infrastructure](/geps/gep-1867/)
-- [GEP-1897: BackendTLSPolicy - Explicit Backend TLS Connection Configuration](/geps/gep-1897/)
-- [GEP-1911: Backend Protocol Selection](/geps/gep-1911/)
-- [GEP-2162: Supported features in GatewayClass Status](/geps/gep-2162/)
-- [GEP-2257: Gateway API Duration Format](/geps/gep-2257/)
-- [GEP-2643: TLS based passthrough Route / TLSRoute](/geps/gep-2643/)
-- [GEP-3155: Complete Backend mutual TLS Configuration](/geps/gep-3155/)
-- [GEP-3171: Percentage-based Request Mirroring](/geps/gep-3171/)
-- [GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing](/geps/gep-3567/)
+- [GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener](//localhost:1313/geps/gep-91/)
+- [GEP-709: Cross Namespace References from Routes](//localhost:1313/geps/gep-709/)
+- [GEP-718: Rework forwardTo segment in routes](//localhost:1313/geps/gep-718/)
+- [GEP-724: Refresh Route-Gateway Binding](//localhost:1313/geps/gep-724/)
+- [GEP-726: Add Path Redirects and Rewrites](//localhost:1313/geps/gep-726/)
+- [GEP-746: Replace Cert Refs on HTTPRoute with Cross Namespace Refs from Gateway](//localhost:1313/geps/gep-746/)
+- [GEP-820: Drop extension points from Route matches](//localhost:1313/geps/gep-820/)
+- [GEP-851: Allow Multiple Certificate Refs per Gateway Listener](//localhost:1313/geps/gep-851/)
+- [GEP-957: Destination Port Matching](//localhost:1313/geps/gep-957/)
+- [GEP-995: Named route rules](//localhost:1313/geps/gep-995/)
+- [GEP-1016: GRPCRoute](//localhost:1313/geps/gep-1016/)
+- [GEP-1294: xRoutes Mesh Binding](//localhost:1313/geps/gep-1294/)
+- [GEP-1323: Response Header Filter](//localhost:1313/geps/gep-1323/)
+- [GEP-1364: Status and Conditions Update](//localhost:1313/geps/gep-1364/)
+- [GEP-1686: Mesh conformance testing plan](//localhost:1313/geps/gep-1686/)
+- [GEP-1709: Conformance Profiles](//localhost:1313/geps/gep-1709/)
+- [GEP-1713: ListenerSets (Standard Mechanism to Merge Gateways)](//localhost:1313/geps/gep-1713/)
+- [GEP-1742: HTTPRoute Timeouts](//localhost:1313/geps/gep-1742/)
+- [GEP-1762: In Cluster Gateway Deployments](//localhost:1313/geps/gep-1762/)
+- [GEP-1767: CORS Filter](//localhost:1313/geps/gep-1767/)
+- [GEP-1867: Per-Gateway Infrastructure](//localhost:1313/geps/gep-1867/)
+- [GEP-1897: BackendTLSPolicy - Explicit Backend TLS Connection Configuration](//localhost:1313/geps/gep-1897/)
+- [GEP-1911: Backend Protocol Selection](//localhost:1313/geps/gep-1911/)
+- [GEP-2162: Supported features in GatewayClass Status](//localhost:1313/geps/gep-2162/)
+- [GEP-2257: Gateway API Duration Format](//localhost:1313/geps/gep-2257/)
+- [GEP-2643: TLS based passthrough Route / TLSRoute](//localhost:1313/geps/gep-2643/)
+- [GEP-3155: Complete Backend mutual TLS Configuration](//localhost:1313/geps/gep-3155/)
+- [GEP-3171: Percentage-based Request Mirroring](//localhost:1313/geps/gep-3171/)
+- [GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing](//localhost:1313/geps/gep-3567/)
 
 </div>
   <div id="tabset-geps-list-1-1" class="tab-pane" role="tabpanel" aria-labelledby="tabset-geps-list-1-1">
 
 <p>
 
-- [GEP-713: Metaresources and Policy Attachment](/geps/gep-713/)
-- [GEP-917: Gateway API Conformance Testing](/geps/gep-917/)
-- [GEP-922: Gateway API Versioning](/geps/gep-922/)
-- [GEP-1324: Service Mesh in Gateway API](/geps/gep-1324/)
-- [GEP-2722: Goals and UX for gwctl](/geps/gep-2722/)
-- [GEP-2907: TLS Configuration Placement and Terminology](/geps/gep-2907/)
+- [GEP-713: Metaresources and Policy Attachment](//localhost:1313/geps/gep-713/)
+- [GEP-917: Gateway API Conformance Testing](//localhost:1313/geps/gep-917/)
+- [GEP-922: Gateway API Versioning](//localhost:1313/geps/gep-922/)
+- [GEP-1324: Service Mesh in Gateway API](//localhost:1313/geps/gep-1324/)
+- [GEP-2722: Goals and UX for gwctl](//localhost:1313/geps/gep-2722/)
+- [GEP-2907: TLS Configuration Placement and Terminology](//localhost:1313/geps/gep-2907/)
 
 </div>
   <div id="tabset-geps-list-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-geps-list-1-2">
 
 <p>
 
-- [GEP-1494: HTTP Auth in Gateway API](/geps/gep-1494/)
-- [GEP-1619: Session Persistence](/geps/gep-1619/)
-- [GEP-1731: HTTPRoute Retries](/geps/gep-1731/)
-- [GEP-1748: Gateway API Interaction with Multi-Cluster Services](/geps/gep-1748/)
-- [GEP-3388: Retry Budgets](/geps/gep-3388/)
+- [GEP-1494: HTTP Auth in Gateway API](//localhost:1313/geps/gep-1494/)
+- [GEP-1619: Session Persistence](//localhost:1313/geps/gep-1619/)
+- [GEP-1731: HTTPRoute Retries](//localhost:1313/geps/gep-1731/)
+- [GEP-1748: Gateway API Interaction with Multi-Cluster Services](//localhost:1313/geps/gep-1748/)
+- [GEP-3388: Retry Budgets](//localhost:1313/geps/gep-3388/)
 
 </div>
   <div id="tabset-geps-list-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-geps-list-1-3">
 
 <p>
 
-- [GEP-3779: Identity Based Authz for east-west traffic](/geps/gep-3779/)
-- [GEP-3793: Default Gateways](/geps/gep-3793/)
-- [GEP-3949: Mesh Resource](/geps/gep-3949/)
+- [GEP-3779: Identity Based Authz for east-west traffic](//localhost:1313/geps/gep-3779/)
+- [GEP-3793: Default Gateways](//localhost:1313/geps/gep-3793/)
+- [GEP-3949: Mesh Resource](//localhost:1313/geps/gep-3949/)
 
 </div>
   <div id="tabset-geps-list-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-geps-list-1-4">
 
 <p>
 
-- [GEP-1651: Gateway Routability](/geps/gep-1651/)
-- [GEP-2627: DNS configuration for Gateway API](/geps/gep-2627/)
-- [GEP-3792: Out-of-Cluster Gateways](/geps/gep-3792/)
-- [GEP-4152: Extending TLS Validation in BackendTLSPolicy](/geps/gep-4152/)
+- [GEP-1651: Gateway Routability](//localhost:1313/geps/gep-1651/)
+- [GEP-2627: DNS configuration for Gateway API](//localhost:1313/geps/gep-2627/)
+- [GEP-3792: Out-of-Cluster Gateways](//localhost:1313/geps/gep-3792/)
+- [GEP-4152: Extending TLS Validation in BackendTLSPolicy](//localhost:1313/geps/gep-4152/)
 
 </div></div>
 
@@ -1074,35 +1075,35 @@ the API.</li>
 	<h1 id="pg-dd37951a3b79cec8602e2f44b59cff99">3.1 - Standard</h1>
     <div class="lead">Standard Gateway Enhancement Proposals</div>
 	<ul>
-<li><a href="/geps/gep-91/">GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener</a></li>
-<li><a href="/geps/gep-709/">GEP-709: Cross Namespace References from Routes</a></li>
-<li><a href="/geps/gep-718/">GEP-718: Rework forwardTo segment in routes</a></li>
-<li><a href="/geps/gep-724/">GEP-724: Refresh Route-Gateway Binding</a></li>
-<li><a href="/geps/gep-726/">GEP-726: Add Path Redirects and Rewrites</a></li>
-<li><a href="/geps/gep-746/">GEP-746: Replace Cert Refs on HTTPRoute with Cross Namespace Refs from Gateway</a></li>
-<li><a href="/geps/gep-820/">GEP-820: Drop extension points from Route matches</a></li>
-<li><a href="/geps/gep-851/">GEP-851: Allow Multiple Certificate Refs per Gateway Listener</a></li>
-<li><a href="/geps/gep-957/">GEP-957: Destination Port Matching</a></li>
-<li><a href="/geps/gep-995/">GEP-995: Named route rules</a></li>
-<li><a href="/geps/gep-1016/">GEP-1016: GRPCRoute</a></li>
-<li><a href="/geps/gep-1294/">GEP-1294: xRoutes Mesh Binding</a></li>
-<li><a href="/geps/gep-1323/">GEP-1323: Response Header Filter</a></li>
-<li><a href="/geps/gep-1364/">GEP-1364: Status and Conditions Update</a></li>
-<li><a href="/geps/gep-1686/">GEP-1686: Mesh conformance testing plan</a></li>
-<li><a href="/geps/gep-1709/">GEP-1709: Conformance Profiles</a></li>
-<li><a href="/geps/gep-1713/">GEP-1713: ListenerSets (Standard Mechanism to Merge Gateways)</a></li>
-<li><a href="/geps/gep-1742/">GEP-1742: HTTPRoute Timeouts</a></li>
-<li><a href="/geps/gep-1762/">GEP-1762: In Cluster Gateway Deployments</a></li>
-<li><a href="/geps/gep-1767/">GEP-1767: CORS Filter</a></li>
-<li><a href="/geps/gep-1867/">GEP-1867: Per-Gateway Infrastructure</a></li>
-<li><a href="/geps/gep-1897/">GEP-1897: BackendTLSPolicy - Explicit Backend TLS Connection Configuration</a></li>
-<li><a href="/geps/gep-1911/">GEP-1911: Backend Protocol Selection</a></li>
-<li><a href="/geps/gep-2162/">GEP-2162: Supported features in GatewayClass Status</a></li>
-<li><a href="/geps/gep-2257/">GEP-2257: Gateway API Duration Format</a></li>
-<li><a href="/geps/gep-2643/">GEP-2643: TLS based passthrough Route / TLSRoute</a></li>
-<li><a href="/geps/gep-3155/">GEP-3155: Complete Backend mutual TLS Configuration</a></li>
-<li><a href="/geps/gep-3171/">GEP-3171: Percentage-based Request Mirroring</a></li>
-<li><a href="/geps/gep-3567/">GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing</a></li>
+<li><a href="//localhost:1313/geps/gep-91/">GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener</a></li>
+<li><a href="//localhost:1313/geps/gep-709/">GEP-709: Cross Namespace References from Routes</a></li>
+<li><a href="//localhost:1313/geps/gep-718/">GEP-718: Rework forwardTo segment in routes</a></li>
+<li><a href="//localhost:1313/geps/gep-724/">GEP-724: Refresh Route-Gateway Binding</a></li>
+<li><a href="//localhost:1313/geps/gep-726/">GEP-726: Add Path Redirects and Rewrites</a></li>
+<li><a href="//localhost:1313/geps/gep-746/">GEP-746: Replace Cert Refs on HTTPRoute with Cross Namespace Refs from Gateway</a></li>
+<li><a href="//localhost:1313/geps/gep-820/">GEP-820: Drop extension points from Route matches</a></li>
+<li><a href="//localhost:1313/geps/gep-851/">GEP-851: Allow Multiple Certificate Refs per Gateway Listener</a></li>
+<li><a href="//localhost:1313/geps/gep-957/">GEP-957: Destination Port Matching</a></li>
+<li><a href="//localhost:1313/geps/gep-995/">GEP-995: Named route rules</a></li>
+<li><a href="//localhost:1313/geps/gep-1016/">GEP-1016: GRPCRoute</a></li>
+<li><a href="//localhost:1313/geps/gep-1294/">GEP-1294: xRoutes Mesh Binding</a></li>
+<li><a href="//localhost:1313/geps/gep-1323/">GEP-1323: Response Header Filter</a></li>
+<li><a href="//localhost:1313/geps/gep-1364/">GEP-1364: Status and Conditions Update</a></li>
+<li><a href="//localhost:1313/geps/gep-1686/">GEP-1686: Mesh conformance testing plan</a></li>
+<li><a href="//localhost:1313/geps/gep-1709/">GEP-1709: Conformance Profiles</a></li>
+<li><a href="//localhost:1313/geps/gep-1713/">GEP-1713: ListenerSets (Standard Mechanism to Merge Gateways)</a></li>
+<li><a href="//localhost:1313/geps/gep-1742/">GEP-1742: HTTPRoute Timeouts</a></li>
+<li><a href="//localhost:1313/geps/gep-1762/">GEP-1762: In Cluster Gateway Deployments</a></li>
+<li><a href="//localhost:1313/geps/gep-1767/">GEP-1767: CORS Filter</a></li>
+<li><a href="//localhost:1313/geps/gep-1867/">GEP-1867: Per-Gateway Infrastructure</a></li>
+<li><a href="//localhost:1313/geps/gep-1897/">GEP-1897: BackendTLSPolicy - Explicit Backend TLS Connection Configuration</a></li>
+<li><a href="//localhost:1313/geps/gep-1911/">GEP-1911: Backend Protocol Selection</a></li>
+<li><a href="//localhost:1313/geps/gep-2162/">GEP-2162: Supported features in GatewayClass Status</a></li>
+<li><a href="//localhost:1313/geps/gep-2257/">GEP-2257: Gateway API Duration Format</a></li>
+<li><a href="//localhost:1313/geps/gep-2643/">GEP-2643: TLS based passthrough Route / TLSRoute</a></li>
+<li><a href="//localhost:1313/geps/gep-3155/">GEP-3155: Complete Backend mutual TLS Configuration</a></li>
+<li><a href="//localhost:1313/geps/gep-3171/">GEP-3171: Percentage-based Request Mirroring</a></li>
+<li><a href="//localhost:1313/geps/gep-3567/">GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing</a></li>
 </ul>
 
 </div>
@@ -1122,12 +1123,12 @@ the API.</li>
 	<h1 id="pg-9cc18db0f8a27296e87d476ba4e35dc0">3.2 - Memorandum</h1>
     <div class="lead">Memorandum Gateway Enhancement Proposals</div>
 	<ul>
-<li><a href="/geps/gep-713/">GEP-713: Metaresources and Policy Attachment</a></li>
-<li><a href="/geps/gep-917/">GEP-917: Gateway API Conformance Testing</a></li>
-<li><a href="/geps/gep-922/">GEP-922: Gateway API Versioning</a></li>
-<li><a href="/geps/gep-1324/">GEP-1324: Service Mesh in Gateway API</a></li>
-<li><a href="/geps/gep-2722/">GEP-2722: Goals and UX for gwctl</a></li>
-<li><a href="/geps/gep-2907/">GEP-2907: TLS Configuration Placement and Terminology</a></li>
+<li><a href="//localhost:1313/geps/gep-713/">GEP-713: Metaresources and Policy Attachment</a></li>
+<li><a href="//localhost:1313/geps/gep-917/">GEP-917: Gateway API Conformance Testing</a></li>
+<li><a href="//localhost:1313/geps/gep-922/">GEP-922: Gateway API Versioning</a></li>
+<li><a href="//localhost:1313/geps/gep-1324/">GEP-1324: Service Mesh in Gateway API</a></li>
+<li><a href="//localhost:1313/geps/gep-2722/">GEP-2722: Goals and UX for gwctl</a></li>
+<li><a href="//localhost:1313/geps/gep-2907/">GEP-2907: TLS Configuration Placement and Terminology</a></li>
 </ul>
 
 </div>
@@ -1147,11 +1148,11 @@ the API.</li>
 	<h1 id="pg-ed44b337082909d37c73d5c2640e08ec">3.3 - Experimental</h1>
     <div class="lead">Experimental Gateway Enhancement Proposals</div>
 	<ul>
-<li><a href="/geps/gep-1494/">GEP-1494: HTTP Auth in Gateway API</a></li>
-<li><a href="/geps/gep-1619/">GEP-1619: Session Persistence</a></li>
-<li><a href="/geps/gep-1731/">GEP-1731: HTTPRoute Retries</a></li>
-<li><a href="/geps/gep-1748/">GEP-1748: Gateway API Interaction with Multi-Cluster Services</a></li>
-<li><a href="/geps/gep-3388/">GEP-3388: Retry Budgets</a></li>
+<li><a href="//localhost:1313/geps/gep-1494/">GEP-1494: HTTP Auth in Gateway API</a></li>
+<li><a href="//localhost:1313/geps/gep-1619/">GEP-1619: Session Persistence</a></li>
+<li><a href="//localhost:1313/geps/gep-1731/">GEP-1731: HTTPRoute Retries</a></li>
+<li><a href="//localhost:1313/geps/gep-1748/">GEP-1748: Gateway API Interaction with Multi-Cluster Services</a></li>
+<li><a href="//localhost:1313/geps/gep-3388/">GEP-3388: Retry Budgets</a></li>
 </ul>
 
 </div>
@@ -1171,9 +1172,9 @@ the API.</li>
 	<h1 id="pg-a4da4e4113808acadae2e24c6df2aa4f">3.4 - Implementable</h1>
     <div class="lead">Implementable Gateway Enhancement Proposals</div>
 	<ul>
-<li><a href="/geps/gep-3779/">GEP-3779: Identity Based Authz for east-west traffic</a></li>
-<li><a href="/geps/gep-3793/">GEP-3793: Default Gateways</a></li>
-<li><a href="/geps/gep-3949/">GEP-3949: Mesh Resource</a></li>
+<li><a href="//localhost:1313/geps/gep-3779/">GEP-3779: Identity Based Authz for east-west traffic</a></li>
+<li><a href="//localhost:1313/geps/gep-3793/">GEP-3793: Default Gateways</a></li>
+<li><a href="//localhost:1313/geps/gep-3949/">GEP-3949: Mesh Resource</a></li>
 </ul>
 
 </div>
@@ -1193,10 +1194,10 @@ the API.</li>
 	<h1 id="pg-0e25d19f4c98885ccc3195b2b910f8b0">3.5 - Provisional</h1>
     <div class="lead">Provisional Gateway Enhancement Proposals</div>
 	<ul>
-<li><a href="/geps/gep-1651/">GEP-1651: Gateway Routability</a></li>
-<li><a href="/geps/gep-2627/">GEP-2627: DNS configuration for Gateway API</a></li>
-<li><a href="/geps/gep-3792/">GEP-3792: Out-of-Cluster Gateways</a></li>
-<li><a href="/geps/gep-4152/">GEP-4152: Extending TLS Validation in BackendTLSPolicy</a></li>
+<li><a href="//localhost:1313/geps/gep-1651/">GEP-1651: Gateway Routability</a></li>
+<li><a href="//localhost:1313/geps/gep-2627/">GEP-2627: DNS configuration for Gateway API</a></li>
+<li><a href="//localhost:1313/geps/gep-3792/">GEP-3792: Out-of-Cluster Gateways</a></li>
+<li><a href="//localhost:1313/geps/gep-4152/">GEP-4152: Extending TLS Validation in BackendTLSPolicy</a></li>
 </ul>
 
 </div>
@@ -1223,7 +1224,7 @@ the API.</li>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/91">#91</a></li>
 <li>Status: Standard</li>
 </ul>
-<p>(See definitions in <a href="/geps/overview/#gep-states">GEP States</a>.)</p>
+<p>(See definitions in <a href="//localhost:1313/geps/overview/#gep-states">GEP States</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>This GEP proposes a way to validate the TLS certificate presented by the frontend client to the server
 (Gateway in this case) during a <a href="https://www.rfc-editor.org/rfc/rfc5246#section-7.4">TLS Handshake Protocol</a>.</p>
@@ -1232,7 +1233,7 @@ the API.</li>
 <h2 id="goals">Goals</h2>
 <ul>
 <li>Define an API field to specify the CA Certificate within the Gateway configuration that can be used as a trust anchor to validate the certificates presented by the client.
-This use case has been highlighted in the <a href="/geps/gep-2907/">TLS Configuration GEP</a> under segment 1 and in the <a href="https://docs.google.com/document/d/17sctu2uMJtHmJTGtBi_awGB0YzoCLodtR6rUNmKMCs8/edit?pli=1#heading=h.cxuq8vo8pcxm">Gateway API TLS Use Cases</a> document under point 7.</li>
+This use case has been highlighted in the <a href="//localhost:1313/geps/gep-2907/">TLS Configuration GEP</a> under segment 1 and in the <a href="https://docs.google.com/document/d/17sctu2uMJtHmJTGtBi_awGB0YzoCLodtR6rUNmKMCs8/edit?pli=1#heading=h.cxuq8vo8pcxm">Gateway API TLS Use Cases</a> document under point 7.</li>
 <li>Introduce explicit client certificate validation modes that reflect common TLS behaviors (e.g., optional vs. required client certs)</li>
 <li>Ensure the configuration mitigates the authentication bypass risks associated with HTTP/2 connection coalescing as described in <a href="https://gateway-api.sigs.k8s.io/geps/gep-3567/#interaction-with-client-cert-validation">GEP-3567</a>.</li>
 </ul>
@@ -1799,7 +1800,7 @@ This GEP aims to standardize this behavior as an official part of the upstream s
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/696">#696</a></li>
 <li>Status: Provisional|Prototyping|Implementable|Experimental|Standard|Completed|Memorandum|Deferred|Declined|Withdrawn</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>(1-2 sentence summary of the proposal)</p>
 <h2 id="goals">Goals</h2>
@@ -2201,7 +2202,7 @@ Proposal</a></li>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/713">#713</a></li>
 <li>Status: Memorandum</li>
 </ul>
-<p>(See status definitions <a href="/geps/overview/#gep-states">here</a>)</p>
+<p>(See status definitions <a href="//localhost:1313/geps/overview/#gep-states">here</a>)</p>
 <h2 id="tl-dr">TL;DR</h2>
 <p>This GEP aims to standardize terminology and processes around &quot;metaresources&quot;, i.e., using one Kubernetes object to modify the functions of one or more other objects.</p>
 <p>It lays out guidelines for Gateway API implementations and other stakeholders for the design and/or handling of custom resources in compliance with a pattern known as Policy Attachment.</p>
@@ -2209,14 +2210,14 @@ Proposal</a></li>
 <p>This pattern is currently unique to the Gateway API community. It's possible that, in the future, a better and broader form of extending Kubernetes APIs will emerge that could make this one obsolete.</p>
 <p>Policy attachment is the best way we've found to extend Gateway API resources so far, but it does come with meaningful challenges, such as the <a href="/geps/gep-713/#policy-discoverability">Discoverability problem</a> and the <a href="/geps/gep-713/#fanout-status-update-problems">Fanout status update problem</a>.</p>
 <p>In many cases, it will be better to work to include configuration directly inside upstream APIs instead of resorting to policy attachment.</p>
-<p>Some of the features of Metaresources and Policy Attachment are <strong>Standard</strong> features of Gateway API, while others are <strong>Experimental</strong> or even <strong>Provisional</strong>, still lacking wider adoption by the implementations. Features supported by the <a href="/geps/gep-1897/">BackendTLSPolicy (GEP-1897)</a> kind are examples of Standard features.</p>
+<p>Some of the features of Metaresources and Policy Attachment are <strong>Standard</strong> features of Gateway API, while others are <strong>Experimental</strong> or even <strong>Provisional</strong>, still lacking wider adoption by the implementations. Features supported by the <a href="//localhost:1313/geps/gep-1897/">BackendTLSPolicy (GEP-1897)</a> kind are examples of Standard features.</p>
 <p>While this GEP tries to focus on features that are at least Experimental, it also lays out some Provisional features and features that are merely examples of known practices adopted by some individual Policy implementations. The latter are still provided as reference though despite some of these features never being expected to become core in Gateway API, due to one of the inherent natures of Metaresources and Policies of being a framework for introducing gateway capabilities that are implementation-specific. These examples are still useful to the overall community though, which can draw analogies for their own particular cases and designs.</p>
 <h2 id="overview">Overview</h2>
 <h3 id="background">Background</h3>
 <p>When designing Gateway API, a recurring challenge became apparent. There was often a need to change or augment the behavior of objects without modifying their specs.</p>
 <p>There are several cases where this happens, such as:</p>
 <ul>
-<li>when changing the spec of the object to hold the new piece of information is not possible (e.g., <code>ReferenceGrant</code>, from <a href="/geps/gep-709/">GEP-709</a>, when affecting Secrets and Services);</li>
+<li>when changing the spec of the object to hold the new piece of information is not possible (e.g., <code>ReferenceGrant</code>, from <a href="//localhost:1313/geps/gep-709/">GEP-709</a>, when affecting Secrets and Services);</li>
 <li>when the new specification applies at different scopes (different object kinds), making it more maintainable if the declaration is extracted to a separate object, rather than adding new fields representing the same functionality across multiple objects;</li>
 <li>when the augmented behavior is intended to <a href="/geps/gep-713/#spanning-behavior-across-relationships-of-a-target">span across relationships of an object</a> other than the object that is directly referred in the declaration;</li>
 <li>when the augmented behavior is subject to different RBAC rules than the object it refers to;</li>
@@ -2231,7 +2232,7 @@ Proposal</a></li>
 <h3 id="user-stories">User stories</h3>
 <ul>
 <li>
-<p><a href="/overview/concepts/roles-and-personas/#ana">Ana</a> or <a href="/overview/concepts/roles-and-personas/#chihiro">Chihiro</a> would like to specify some new behavior for a standard Kubernetes resource, but that resource doesn't have a way to specify the behavior and neither Ana nor Chihiro can modify it.
+<p><a href="//localhost:1313/overview/concepts/roles-and-personas/#ana">Ana</a> or <a href="//localhost:1313/overview/concepts/roles-and-personas/#chihiro">Chihiro</a> would like to specify some new behavior for a standard Kubernetes resource, but that resource doesn't have a way to specify the behavior and neither Ana nor Chihiro can modify it.
 E.g., Ana may want to add a rate limit to a Kubernetes Service. The Service object itself doesn't have a field for rate limiting, and Ana can't modify the Service object's definition.</p>
 </li>
 <li>
@@ -2309,7 +2310,7 @@ E.g., a provider that knows how to configure Gateways controlled by one or more 
 <p>A combinatorial spec computed from a set of policies that affect a same policy scope, by orderly invoking defined merge strategies to resolve the conflict.</p>
 <p>See <em>Implementation guide</em> &gt; <a href="/geps/gep-713/#understanding-effective-policies">Understanding Effective policies</a> for details.</p>
 <h4 id="classes-of-policies">Classes of policies</h4>
-<p>While the notion of classes of policy kinds was more central in previous iterations of this GEP (see <a href="/geps/gep-2648/">GEP-2648</a> and <a href="/geps/gep-2649/">GEP-2649</a>), it here serves primarily as a communicative and organizational aid. The classification reflects patterns that emerge from the properties and behaviors described in sections of this GEP, but it does not impose any prescriptive or normative requirements on the implementations. These classes—namely <em>Direct</em> and <em>Inherited</em>—remain in the specification to support clarity and shared understanding, especially for implementations and users familiar with earlier versions.</p>
+<p>While the notion of classes of policy kinds was more central in previous iterations of this GEP (see <a href="//localhost:1313/geps/gep-2648/">GEP-2648</a> and <a href="//localhost:1313/geps/gep-2649/">GEP-2649</a>), it here serves primarily as a communicative and organizational aid. The classification reflects patterns that emerge from the properties and behaviors described in sections of this GEP, but it does not impose any prescriptive or normative requirements on the implementations. These classes—namely <em>Direct</em> and <em>Inherited</em>—remain in the specification to support clarity and shared understanding, especially for implementations and users familiar with earlier versions.</p>
 <table>
   <thead>
     <tr>
@@ -3016,7 +3017,7 @@ graph
 <p>This pattern enables different conditions to be set for different &quot;Ancestors&quot; of the target resource. This is particularly helpful for policies that may be implemented by multiple controllers or attached to resources with different effects or capabilities. For example a Policy that could attach to Route or Service to set load balancing properties may be reconciled by multiple controllers, and so needs further namespacing of its status. This pattern also provides a clear view of what resources a policy is affecting.</p>
 <p>For the best integration with community tooling and consistency across the broader community, we recommend that all implementations transition to Policy status with this kind of nested structure.</p>
 <p>This is an <code>Ancestor</code> status rather than a <code>Parent</code> status, as in the Route status, because, for Policy Attachment, the relevant object may or may not be the direct parent.</p>
-<p>For example, <code>BackendTLSPolicy</code> directly attaches to a Service, which may be included in multiple Routes, in multiple Gateways. However, for many implementations, the status of the <code>BackendTLSPolicy</code> will be different only at the Gateway level, so Gateway is the relevant Ancestor for the status. Each Gateway that has a Route that includes a backend with an attached <code>BackendTLSPolicy</code> SHOULD have a separate <code>PolicyAncestorStatus</code> section in the <code>BackendTLSPolicy</code>'s <code>status.ancestors</code> stanza, which mandates that entries must be distinct using the combination of the <code>AncestorRef</code> and the <code>ControllerName</code> fields as a key. See <a href="/geps/gep-1897/">GEP-1897</a> for the exact details.</p>
+<p>For example, <code>BackendTLSPolicy</code> directly attaches to a Service, which may be included in multiple Routes, in multiple Gateways. However, for many implementations, the status of the <code>BackendTLSPolicy</code> will be different only at the Gateway level, so Gateway is the relevant Ancestor for the status. Each Gateway that has a Route that includes a backend with an attached <code>BackendTLSPolicy</code> SHOULD have a separate <code>PolicyAncestorStatus</code> section in the <code>BackendTLSPolicy</code>'s <code>status.ancestors</code> stanza, which mandates that entries must be distinct using the combination of the <code>AncestorRef</code> and the <code>ControllerName</code> fields as a key. See <a href="//localhost:1313/geps/gep-1897/">GEP-1897</a> for the exact details.</p>
 <p>For other kinds of policies, <code>Ancestor</code> status may coincide with <code>Parent</code> status, as in having exactly one block of status conditions for each target in the <code>targetRefs</code> stanza of the policy suffices. This is usually the case of policy kinds that allow targeting only <code>Gateway</code> and/or gateway listeners (i.e. <code>Gateway</code> + <code>sectionName</code>).</p>
 <h4 id="target-object-status">Target object status</h4>
 <p><em>Status:</em> Experimental</p>
@@ -3876,7 +3877,7 @@ for the future addition of Route inclusion (Routes including other Routes).</p>
 <h2 id="goals">Goals</h2>
 <p>Refactor cross-namespace Route-Gateway binding to:</p>
 <ul>
-<li>Be more consistent with <a href="/geps/gep-709/">cross-namespace references from
+<li>Be more consistent with <a href="//localhost:1313/geps/gep-709/">cross-namespace references from
 Routes</a></li>
 <li>Provide a clear path to enable Route inclusion (Routes including Routes).</li>
 <li>Simplify user experience based on initial feedback.</li>
@@ -3916,7 +3917,7 @@ Routes in the same namespace makes it easy to accidentally expose applications
 larger conceptual change. Instead of Gateways selecting Routes, Routes would
 directly reference the Gateways they wanted to attach to. This pattern was
 already possible with the existing API, but not clearly documented.</p>
-<p>One of the key concepts in the <a href="/geps/gep-709/">cross-namespace references from Routes
+<p>One of the key concepts in the <a href="//localhost:1313/geps/gep-709/">cross-namespace references from Routes
 GEP</a> was that of a handshake for
 references that cross namespace boundaries. A key part of that handshake was
 that one direction included a direct reference, while the other direction
@@ -4475,7 +4476,7 @@ out or significantly complicate self-service use-cases.</li>
 <h2 id="references">References</h2>
 <p><strong>GEPs</strong></p>
 <ul>
-<li><a href="/geps/gep-709/">GEP 709: ReferenceGrant + Cross Namespace References from Routes</a></li>
+<li><a href="//localhost:1313/geps/gep-709/">GEP 709: ReferenceGrant + Cross Namespace References from Routes</a></li>
 </ul>
 <p><strong>Docs:</strong></p>
 <ul>
@@ -5886,7 +5887,7 @@ attach a route to an <code>Mesh</code> CRD. In this case, it's less intuitive to
 to differentiate between a listener name and a port number.</p>
 <h3 id="2-update-trafficmatches-to-support-port-matching">2. Update TrafficMatches to support port matching</h3>
 <p>TrafficMatches was proposed in
-<a href="/geps/gep-735/">gep-735</a> to support TCP and UDP
+<a href="//localhost:1313/geps/gep-735/">gep-735</a> to support TCP and UDP
 address matching. TrafficMatches can be extended to support port matching.
 TrafficMatches will need to be added to HTTPRoute/TLSRoute if the feature is
 desired there.</p>
@@ -5916,10 +5917,10 @@ on port 443 in a route while the route only attaches to a listener on port 80.</
 <li>Status: Standard</li>
 </ul>
 <h2 id="tldr">TLDR</h2>
-<p>Add a new optional <code>name</code> field to the route rule types (<a href="/reference/spec/#grpcrouterule">GRPCRouteRule</a>, <a href="/reference/spec/#httprouterule">HTTPRouteRule</a>, <a href="/reference/spec/#tcprouterule">TCPRouteRule</a>, <a href="/reference/spec/#tlsrouterule">TLSRouteRule</a> and <a href="/reference/spec/#udprouterule">UDPRouteRule</a>) to support referencing individual rules by name.</p>
+<p>Add a new optional <code>name</code> field to the route rule types (<a href="//localhost:1313/reference/spec/#grpcrouterule">GRPCRouteRule</a>, <a href="//localhost:1313/reference/spec/#httprouterule">HTTPRouteRule</a>, <a href="//localhost:1313/reference/spec/#tcprouterule">TCPRouteRule</a>, <a href="//localhost:1313/reference/spec/#tlsrouterule">TLSRouteRule</a> and <a href="//localhost:1313/reference/spec/#udprouterule">UDPRouteRule</a>) to support referencing individual rules by name.</p>
 <h2 id="goals">Goals</h2>
 <ul>
-<li>Support referencing individual route rules by name from other resources, such as from metaresources (<a href="/geps/gep-2648/#section-names">GEP-2648</a>.)</li>
+<li>Support referencing individual route rules by name from other resources, such as from metaresources (<a href="//localhost:1313/geps/gep-2648/#section-names">GEP-2648</a>.)</li>
 <li>Support referencing individual route rules by name from condition messages propagated in the status stanza of route resources as suggested in <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1696#issuecomment-1666258188">https://github.com/kubernetes-sigs/gateway-api/issues/1696#issuecomment-1666258188</a>.</li>
 <li>Support referencing individual route rules by name at other observability and networking tools that are part of the ecosystem based on Gateway API.</li>
 <li>Provide a rather intuitive API for users of Kubernetes who are familiar with the same pattern employed already by other kinds of resources where lists of complex elements can be declared – e.g. service <a href="https://kubernetes.io/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec">ports</a>, pod <a href="https://kubernetes.io/reference/kubernetes-api/workload-resources/pod-v1/#containers">containers</a> and pod <a href="https://kubernetes.io/reference/kubernetes-api/workload-resources/pod-v1/#volumes">volumes</a>.</li>
@@ -5932,14 +5933,14 @@ on port 443 in a route while the route only attaches to a listener on port 80.</
 <li>Define a patch strategy for the route objects based on rule <code>name</code>.</li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Some kinds of Gateway API types are complex types that support specifying lists of yet other complex object details within them. Examples include the <a href="/reference/spec/#gatewayspec"><code>GatewaySpec</code></a> type, the <a href="/reference/spec/#httproutespec"><code>HTTPRouteSpec</code></a> type, as well as other kinds of route specification types. Specifically, <code>Gateway</code> objects can declare multiple complex listener details (<code>spec.listeners</code>); similarly, <code>HTTPRoute</code> objects may contain multiple complex routing rule details (<code>spec.rules</code>).</p>
+<p>Some kinds of Gateway API types are complex types that support specifying lists of yet other complex object details within them. Examples include the <a href="//localhost:1313/reference/spec/#gatewayspec"><code>GatewaySpec</code></a> type, the <a href="//localhost:1313/reference/spec/#httproutespec"><code>HTTPRouteSpec</code></a> type, as well as other kinds of route specification types. Specifically, <code>Gateway</code> objects can declare multiple complex listener details (<code>spec.listeners</code>); similarly, <code>HTTPRoute</code> objects may contain multiple complex routing rule details (<code>spec.rules</code>).</p>
 <p>Even with a limited number of elements declared within those lists of resource specification details, without a field that works as a unique identifier of each element (e.g., a <code>name</code> field), referring individual ones can often lead to implementations that are inconsistent, complex, and error-prone. This is an issue for any kind of referencing pattern, including for Policy Attachment, status reporting, event logging, etc.</p>
 <p>Referencing list elements without a unique identifier is also prone to execution errors, either when relying on how the elements are sorted in the list (i.e., based on the index) or on partial or total repetition of values of the referents. The order of elements within a list may change without necessarily any semantic reason. Complex elements can sometimes differ only subtly from each other, thus easily being overlooked when making the reference and resulting in a higher chance of typos and/or references that are possibly ambiguous or broken. In both cases, such references are fragile and can result in unexpected errors.</p>
-<p>For the <code>Gateway</code> resource, problems above were addressed/mitigated by adding a <code>name</code> field to the <a href="/reference/spec/#listener"><code>Listener</code></a> type (<a href="https://github.com/kubernetes-sigs/gateway-api/issues/">#724</a>.) Listener names are required and must be unique of each listener declared in a gateway. This allowed for more explicit route and policy attachment relying on <em>sectionName</em>, as well as it opened for better implementation of status reporting and log recording of events related to specific gateway listeners.</p>
+<p>For the <code>Gateway</code> resource, problems above were addressed/mitigated by adding a <code>name</code> field to the <a href="//localhost:1313/reference/spec/#listener"><code>Listener</code></a> type (<a href="https://github.com/kubernetes-sigs/gateway-api/issues/">#724</a>.) Listener names are required and must be unique of each listener declared in a gateway. This allowed for more explicit route and policy attachment relying on <em>sectionName</em>, as well as it opened for better implementation of status reporting and log recording of events related to specific gateway listeners.</p>
 <p>In general, declaring explicit names for complex list elements is a common pattern in Kubernetes, observed in several other APIs. Examples include <a href="https://kubernetes.io/reference/kubernetes-api/workload-resources/pod-v1/#containers">containers</a> and <a href="https://kubernetes.io/reference/kubernetes-api/workload-resources/pod-v1/#volumes">volumes</a> of a Pod, <a href="https://kubernetes.io/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec">ports</a> of a Service, and many others.</p>
 <p>This GEP aims to rollout the same pattern of declarative <code>name</code> fields of these examples to the Gateway API route rule types.</p>
 <h2 id="api">API</h2>
-<p>This GEP proposes to add a new optional <code>name</code> field to the <a href="/reference/spec/#grpcrouterule">GRPCRouteRule</a>, <a href="/reference/spec/#httprouterule">HTTPRouteRule</a>, <a href="/reference/spec/#tcprouterule">TCPRouteRule</a>, <a href="/reference/spec/#tlsrouterule">TLSRouteRule</a> and <a href="/reference/spec/#udprouterule">UDPRouteRule</a> types.</p>
+<p>This GEP proposes to add a new optional <code>name</code> field to the <a href="//localhost:1313/reference/spec/#grpcrouterule">GRPCRouteRule</a>, <a href="//localhost:1313/reference/spec/#httprouterule">HTTPRouteRule</a>, <a href="//localhost:1313/reference/spec/#tcprouterule">TCPRouteRule</a>, <a href="//localhost:1313/reference/spec/#tlsrouterule">TLSRouteRule</a> and <a href="//localhost:1313/reference/spec/#udprouterule">UDPRouteRule</a> types.</p>
 <h3 id="format">Format</h3>
 <p>If specified, the name of a route rule MUST comply with the <a href="https://github.com/kubernetes-sigs/gateway-api/blob/v1.0.0/apis/v1/shared_types.go#L607-L624"><code>SectionName</code></a> type:</p>
 <ul>
@@ -5998,7 +5999,7 @@ on port 443 in a route while the route only attaches to a listener on port 80.</
 <li>Status: Standard</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>: This GEP is exempt from the <a href="/geps/overview/#probationary-period">Probationary Period</a> rules of
+<p><strong>Note</strong>: This GEP is exempt from the <a href="//localhost:1313/geps/overview/#probationary-period">Probationary Period</a> rules of
 our GEP overview as it existed before those rules did, and so it has been
 explicitly grandfathered in.</p></blockquote>
 <h2 id="goal">Goal</h2>
@@ -6840,7 +6841,7 @@ too much content not in version control to avoid broken links)</p>
 <p>Similar to how <code>xRoutes</code> bind to <code>Gateways</code> and manage North/South traffic flows in Gateway API’s ingress use-case, it would be natural to adopt a similar model for traffic routing concerns in service mesh deployments. The purpose of this GEP is to add a mechanism to the Gateway API spec for the purpose of associating the various <code>xRoute</code> types to a service mesh and offering a model for service owners to manage traffic splitting configurations.</p>
 <p>This GEP is intended to establish an implementable, but experimental, baseline for supporting basic service mesh traffic routing functionality through the Gateway API spec.</p>
 <h2 id="personas">Personas</h2>
-<p>This GEP uses the <a href="/overview/concepts/security/#roles-and-personas">roles and personas</a> defined in the Gateway API security model, and the service &quot;producer&quot; and &quot;consumer&quot; roles defined in <a href="/geps/gep-1324/#producer-and-consumer">GEP-1324: Service Mesh in Gateway API</a>.</p>
+<p>This GEP uses the <a href="//localhost:1313/overview/concepts/security/#roles-and-personas">roles and personas</a> defined in the Gateway API security model, and the service &quot;producer&quot; and &quot;consumer&quot; roles defined in <a href="//localhost:1313/geps/gep-1324/#producer-and-consumer">GEP-1324: Service Mesh in Gateway API</a>.</p>
 <h2 id="goals">Goals</h2>
 <ul>
 <li>MUST allow <code>xRoute</code> traffic rules to be configurable for a mesh service by the application owner/producer.</li>
@@ -6858,7 +6859,7 @@ too much content not in version control to avoid broken links)</p>
 </li>
 <li>Defining how multiple <code>Services</code> or <code>EndpointSlices</code> representing instances of a single &quot;logical&quot; service should present an identity for AuthN/AuthZ or be associated with each other beyond routing rules.</li>
 <li>Defining how AuthZ should be implemented to secure East/West traffic between services.</li>
-<li>Defining how <a href="/reference/policy-attachment/">Policy Attachment</a> would bind to <code>xRoute</code>, services or a mesh.</li>
+<li>Defining how <a href="//localhost:1313/reference/policy-attachment/">Policy Attachment</a> would bind to <code>xRoute</code>, services or a mesh.</li>
 <li>Defining how <code>Routes</code> configured for East/West service mesh traffic management might integrate with North/South <code>Gateways</code>.
 <ul>
 <li>This is a bit tricky in that it's effectively a form of delegation as described in <a href="https://github.com/kubernetes-sigs/gateway-api/pull/1085">GEP-1058: Route Inclusion and Delegation</a>, and is planned to be explored in a future GEP.</li>
@@ -6878,7 +6879,7 @@ too much content not in version control to avoid broken links)</p>
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>It is proposed that an application owner should configure traffic rules for a mesh service by configuring an <code>xRoute</code> with a Kubernetes <code>Service</code> resource as a <code>parentRef</code>.</p>
-<p>This approach is dependent on both the &quot;frontend&quot; role of the Kubernetes <code>Service</code> resource as defined in <a href="/geps/gep-1324/#service">GEP-1324: Service Mesh in Gateway API</a> when used as a <code>parentRef</code> and the &quot;backend&quot; role of <code>Service</code> when used as a <code>backendRef</code>. The conformant implementation would use the Kubernetes <code>Service</code> name to match traffic for meshes, but the <code>backendRef</code> endpoints would ultimately be used for the canonical IP address(es) to which traffic should be redirected by rules defined in this <code>xRoute</code>. This approach leverages the existing points of extensibility within the Gateway API spec, and would not require introducing any API changes or new resources, only defining expected behavior.</p>
+<p>This approach is dependent on both the &quot;frontend&quot; role of the Kubernetes <code>Service</code> resource as defined in <a href="//localhost:1313/geps/gep-1324/#service">GEP-1324: Service Mesh in Gateway API</a> when used as a <code>parentRef</code> and the &quot;backend&quot; role of <code>Service</code> when used as a <code>backendRef</code>. The conformant implementation would use the Kubernetes <code>Service</code> name to match traffic for meshes, but the <code>backendRef</code> endpoints would ultimately be used for the canonical IP address(es) to which traffic should be redirected by rules defined in this <code>xRoute</code>. This approach leverages the existing points of extensibility within the Gateway API spec, and would not require introducing any API changes or new resources, only defining expected behavior.</p>
 <h3 id="why-service">Why Service?</h3>
 <p>The GAMMA initiative has been working to bring service mesh use-cases to the Gateway API spec, taking the best practices and learnings from mesh implementations and codifying them in a spec. Most mesh users are familiar with using the Kubernetes Service resource as the foundation for traffic routing: not only do service meshes take advantage of the IP address management and corresponding DNS functionality provided by Service, but one of the key value propositions of service meshes is that they can be added &quot;on top&quot; of preexisting deployments, which are almost certain to already be using Service resources. This architecture is generally a simple, effective way for service meshes to operate.</p>
 <p>Add to that the ubiquity of Service in the Kubernetes ecosystem as well as the time and effort needed to get support for a new resource into the ecosystem (especially true for managed Kubernetes providers), and it's clearly impractical to force GAMMA to wait for a replacement for Service.</p>
@@ -6911,13 +6912,13 @@ too much content not in version control to avoid broken links)</p>
 <p><code>Service</code> resources with <a href="https://kubernetes.io/overview/concepts/services-networking/service/#externalname"><code>type: ExternalName</code></a> SHOULD NOT be allowed as <code>parentRefs</code> or <code>backendRefs</code> due to <a href="https://github.com/kubernetes/kubernetes/issues/103675">security concerns</a>, although might eventually play some role in <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1070">configuring egress functionality</a>.</p>
 <p>Services supported as <code>backendRefs</code> SHOULD be consistent with expectations for North/South Gateway API implementations, and MUST have associated endpoints. <code>ClusterIP</code> <code>Services</code> with selectors SHOULD be supported as a <code>backendRef</code>.</p>
 <h4 id="serviceimport-as-backendref"><code>ServiceImport</code> as <code>backendRef</code></h4>
-<p>Implementations that support <a href="/geps/gep-1748/">GEP-1748: Gateway API Interaction with Multi-Cluster Services</a> MAY allow <code>ServiceImport</code> to be used as a <code>backendRef</code>. When supported, the semantics MUST follow GEP-1748. Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec.</p>
+<p>Implementations that support <a href="//localhost:1313/geps/gep-1748/">GEP-1748: Gateway API Interaction with Multi-Cluster Services</a> MAY allow <code>ServiceImport</code> to be used as a <code>backendRef</code>. When supported, the semantics MUST follow GEP-1748. Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec.</p>
 <h4 id="service-without-selectors"><code>Service</code> without selectors</h4>
 <p>An alternate pattern additionally supported by this approach would be to target a <code>Service</code> without selectors as the <code>parentRef</code>. This could be a clean way to create a pure routing construct and abstract a logical frontend, as traffic would resolve to a <code>backendRef</code> <code>Service</code> with selectors defined on the <code>HTTPRoute</code>, or receive a 4xx/5xx error response if no matching path or valid backend was found.</p>
 <h3 id="parentref-conformance-levels"><code>parentRef</code> Conformance Levels</h3>
 <p>Currently (v0.7.0), this spec only considers the <code>Service</code> resource to be under Core conformance as a <code>parentRef</code>. However, Service is not the only resource that can fulfill the frontend role. While the Gateway API spec couldn’t possibly enumerate every existing (and future) frontend-like resource, it can specify a subset of resources that implementations MUST support as parentRefs under as a part of core conformance. Meshes MAY support other implementation-specific resources as parentRefs. The spec maintainers also reserve the right to add additional resources to core conformance as the spec evolves.</p>
 <h4 id="extended-conformance">Extended Conformance</h4>
-<p>In addition to Service, there are other optional parentRef resources that, if used by implementations, MUST adhere to the spec’s prescriptions. At the time of writing (v0.7.0), there is one resource in extended conformance: <code>ServiceImport</code> (part of the <a href="https://github.com/kubernetes-sigs/mcs-api">MCS API</a>, currently in alpha). The semantics of <code>ServiceImport</code> <code>parentRef</code> binding can be found in <a href="/geps/gep-1748/">GEP-1748</a> (Note: Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec).</p>
+<p>In addition to Service, there are other optional parentRef resources that, if used by implementations, MUST adhere to the spec’s prescriptions. At the time of writing (v0.7.0), there is one resource in extended conformance: <code>ServiceImport</code> (part of the <a href="https://github.com/kubernetes-sigs/mcs-api">MCS API</a>, currently in alpha). The semantics of <code>ServiceImport</code> <code>parentRef</code> binding can be found in <a href="//localhost:1313/geps/gep-1748/">GEP-1748</a> (Note: Headless <code>ServiceImport</code> is out of scope and not currently a part of the spec).</p>
 <h5 id="why-not-ipaddress">Why not <code>IPAddress</code></h5>
 <p>In Kubernetes 1.27, there will be a new IPAddress resource added to networking.k8s.io/v1alpha1 as part of <a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/1880-multiple-service-cidrs#proposal">KEP 1880</a>. Naturally, it makes sense to examine whether or not this new resource makes sense as a GAMMA aware parentRef. At first glance, IPAddress seems to be an appropriate abstraction for the “frontend” role we’ve been discussing; every Kubernetes Service is accessed over the network via one of its ip addresses. Furthermore, the fact that the Service resource auto-creates an IPAddress is encouraging. However, the fact that the name of the IPAddress is simply the decimal/hex ip address and not a human-readable Service name makes the UX untenable as a spec-supported parentRef. However, <code>IPAddress</code> is NOT disallowed; implementations may use it if they wish.</p>
 <h4 id="implementation-specific-parentrefs">Implementation-specific <code>parentRef</code>s</h4>
@@ -6974,7 +6975,7 @@ too much content not in version control to avoid broken links)</p>
 If <code>port</code> is not set, the implementation MUST associate the route with all ports defined in the Service.</p>
 <h3 id="hostnames-field"><code>hostnames</code> field</h3>
 <p>GAMMA implementations SHOULD NOT infer any functionality from the <code>hostnames</code> field on <code>xRoute</code>s (currently, <code>TLSRoute</code>, <code>HTTPRoute</code>, and <code>GRPCRoute</code> have this field) due to current under-specification and reserved potential for future usage or API changes.</p>
-<p>For the use case of filtering incoming traffic from selected HTTP hostnames, it is recommended to guide users toward configuring <a href="/reference/spec/#httpheadermatch"><code>HTTPHeaderMatch</code></a> rules for the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host"><code>Host</code></a> header. Functionality to be explored in future GEPs may include supporting concurrent usage of an <code>xRoute</code> traffic configuration for multiple North/South <code>Gateways</code> and East/West mesh use cases or redirection of egress traffic to an in-cluster <code>Service</code>.</p>
+<p>For the use case of filtering incoming traffic from selected HTTP hostnames, it is recommended to guide users toward configuring <a href="//localhost:1313/reference/spec/#httpheadermatch"><code>HTTPHeaderMatch</code></a> rules for the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host"><code>Host</code></a> header. Functionality to be explored in future GEPs may include supporting concurrent usage of an <code>xRoute</code> traffic configuration for multiple North/South <code>Gateways</code> and East/West mesh use cases or redirection of egress traffic to an in-cluster <code>Service</code>.</p>
 <h3 id="namespace-boundaries">Namespace boundaries</h3>
 <p>In a mesh, routes can be configured by two personas:</p>
 <ul>
@@ -7002,7 +7003,7 @@ However, when sent to a Service backend (ex: <code>curl pod-ip</code>), it would
 <h3 id="drawbacks">Drawbacks</h3>
 <ul>
 <li>The fact that this pattern is used for mesh configuration is implicit - this may benefit from some additional configuration to map the <code>HTTPRoute</code> to a particular mesh implementation rather than being picked up by any or all GAMMA meshes present in a cluster. Possible approaches include:</li>
-<li><a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a> may be one path to associating a <code>Service</code> with a mesh, but likely wouldn't be able to handle the application of multiple <code>HTTPRoutes</code> for the same <code>Service</code>, but each intended for different mesh implementations
+<li><a href="//localhost:1313/geps/gep-1282/">GEP-1282: Describing Backend Properties</a> may be one path to associating a <code>Service</code> with a mesh, but likely wouldn't be able to handle the application of multiple <code>HTTPRoutes</code> for the same <code>Service</code>, but each intended for different mesh implementations
 <ul>
 <li>It's currently unclear how relevant this constraint may be, but associating an <code>HTTPRoute</code> with a mesh by this method would additionally require an extra graph traversal step.</li>
 </ul>
@@ -7016,14 +7017,14 @@ However, when sent to a Service backend (ex: <code>curl pod-ip</code>), it would
 <h4 id="controller-manages-new-dns-hostname">Controller manages new DNS hostname</h4>
 <p>A controller could create a matching selector-less <code>Service</code> (i.e. no endpoints), to create a <code>.cluster.local</code> name, or could interact with <a href="https://github.com/kubernetes-sigs/external-dns">external-dns</a> to create a DNS name in an owned domain.</p>
 <p>Ownership/trust would remain based on naming pattern: <code>serviceName.namespace.svc.[USER_DOMAIN]</code></p>
-<p>Separate <code>HttpService</code>, <code>TlsService</code> and <code>TcpService</code> resources could have the benefit of allowing us to define protocol specific elements to the spec along with an embedded <code>CommonServiceSpec</code>, similar to <a href="/reference/spec/#commonroutespec"><code>CommonRouteSpec</code></a>, and keep similar patterns as <code>Service</code>.</p>
+<p>Separate <code>HttpService</code>, <code>TlsService</code> and <code>TcpService</code> resources could have the benefit of allowing us to define protocol specific elements to the spec along with an embedded <code>CommonServiceSpec</code>, similar to <a href="//localhost:1313/reference/spec/#commonroutespec"><code>CommonRouteSpec</code></a>, and keep similar patterns as <code>Service</code>.</p>
 <h5 id="drawbacks-1">Drawbacks</h5>
 <ul>
 <li>May require reconfiguring existing applications to point to a new mesh service hostname - adoption wouldn't be &quot;transparent&quot;.</li>
 <li>The pattern of creating a new pure routing construct would still be implementable following the proposed approach, by manually creating and targeting a new <code>Service</code> without selectors as a <code>parentRef</code>, without the overhead of introducing a new resource.</li>
 </ul>
 <h4 id="manage-dns-by-binding-to-an-existing-service">Manage DNS by binding to an existing <code>Service</code></h4>
-<p>A new <code>ServiceBinding</code> resource would directly reference an existing <code>Service</code> to determine which traffic should be intercepted and redirected following configured service mesh routing rules and facilitate &quot;transparent proxy&quot; functionality. This resource could possibly share similar responsibilities as the need identified in <a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a>.</p>
+<p>A new <code>ServiceBinding</code> resource would directly reference an existing <code>Service</code> to determine which traffic should be intercepted and redirected following configured service mesh routing rules and facilitate &quot;transparent proxy&quot; functionality. This resource could possibly share similar responsibilities as the need identified in <a href="//localhost:1313/geps/gep-1282/">GEP-1282: Describing Backend Properties</a>.</p>
 <pre tabindex="0"><code>kind: ServiceBinding
 metadata:
   name: foo_binding
@@ -7062,7 +7063,7 @@ spec:
   parentRefs:
   - kind: Mesh
     name: cool-mesh
-</code></pre><p>It is currently undefined how this approach may interact with either explicitly configured <a href="/reference/spec/#httproutespec"><code>hostnames</code></a> or implicit &quot;transparent proxy&quot; routing for Kubernetes <code>Services</code> to determine how traffic should be intercepted and redirected.</p>
+</code></pre><p>It is currently undefined how this approach may interact with either explicitly configured <a href="//localhost:1313/reference/spec/#httproutespec"><code>hostnames</code></a> or implicit &quot;transparent proxy&quot; routing for Kubernetes <code>Services</code> to determine how traffic should be intercepted and redirected.</p>
 <p>This approach is not entirely abandoned, as it could supplement the proposed approach if explicit attachment to a specific mesh is deemed necessary. Additionally, this approach may offer a future option for attaching an <code>HTTPRoute</code> to a mesh, but not a specific service (e.g. to implement mesh-wide egress functionality for all requests to a specific hostname).</p>
 <h4 id="peer-to-service-resource-parentref">Peer to <code>Service</code> resource <code>parentRef</code></h4>
 <p>An <code>HTTPRoute</code> could specify a <code>Mesh</code> resource <code>parentRef</code> as a peer to a <code>Service</code> resource <code>parentRef</code>.</p>
@@ -7076,7 +7077,7 @@ spec:
 <ul>
 <li>Would require separate <code>HTTPRoute</code> resources to explicitly define <em>different</em> traffic routing rules for the same service on different meshes.</li>
 </ul>
-<h4 id="nested-services-and-hostnames-fields-in-parentreference">Nested <code>services</code> and <code>hostnames</code> fields in <a href="/reference/spec/#parentreference"><code>ParentReference</code></a></h4>
+<h4 id="nested-services-and-hostnames-fields-in-parentreference">Nested <code>services</code> and <code>hostnames</code> fields in <a href="//localhost:1313/reference/spec/#parentreference"><code>ParentReference</code></a></h4>
 <p>In core conformance, the <code>services</code> would only be valid for <code>Mesh</code> types, and <code>hostnames</code> field only for <code>Gateway</code>. Mesh implementations could still use a <code>Host</code> header match if they wanted limit rules to specific hostnames.</p>
 <pre tabindex="0"><code>parentRefs:
 - kind: Mesh
@@ -7104,7 +7105,7 @@ spec:
     name: istio
 </code></pre><p>This is done by configuring the <code>parentRef</code>, to point to the <code>istio</code> <code>Mesh</code>. This resource does not actually exist in the cluster and is only used to signal that the Istio mesh should be used. In Istio's <a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/#mesh-traffic">experimental implementation</a>, the <code>hostnames</code> field on <code>HTTPRoute</code> is used to match mesh service traffic to the routing rules.</p>
 <h3 id="new-field-on-httproute-for-service-binding">New field on <code>HTTPRoute</code> for <code>Service</code> binding</h3>
-<p>A new field <code>serviceBinding</code> would be added to <code>HTTPRoute</code> to attach to the <code>Service</code>. Alternatively, this could be a new field in <a href="/reference/spec/#httproutematch"><code>HTTPRouteMatch</code></a>. As with the proposed implementation, this approach could be combined with a <code>Mesh</code> resource or similar as the <code>parentRef</code>, which would just define that the route would be applied to a mesh.</p>
+<p>A new field <code>serviceBinding</code> would be added to <code>HTTPRoute</code> to attach to the <code>Service</code>. Alternatively, this could be a new field in <a href="//localhost:1313/reference/spec/#httproutematch"><code>HTTPRouteMatch</code></a>. As with the proposed implementation, this approach could be combined with a <code>Mesh</code> resource or similar as the <code>parentRef</code>, which would just define that the route would be applied to a mesh.</p>
 <pre tabindex="0"><code>spec:
   serviceBinding:
     name: my-service
@@ -7147,7 +7148,7 @@ spec:
 <p>This approach is similar to the above <code>ServiceBinding</code> proposal with a couple of major differences:</p>
 <ul>
 <li><code>ServiceProjection</code> encapsulates both &quot;frontend&quot; and &quot;backend&quot; roles of the <code>Service</code> resource</li>
-<li><code>ServiceProjection</code> could handle the full responsibilities described in <a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a></li>
+<li><code>ServiceProjection</code> could handle the full responsibilities described in <a href="//localhost:1313/geps/gep-1282/">GEP-1282: Describing Backend Properties</a></li>
 </ul>
 <pre tabindex="0"><code>kind: ServiceProjection
 metadata:
@@ -7185,7 +7186,7 @@ spec:
       role: backend
       name: foo_v2
       weight: 10
-</code></pre><p>For convenience, <code>ServiceProjection</code> could have a <code>meshRef</code> field that, when set instead of <code>serviceRef</code>, makes all configuration within the <code>ServiceProjection</code> apply to all services in the mesh (the mesh control plane would need to read the <code>Mesh</code> resource). Pursuant to the changes to status semantics in <a href="/geps/gep-1364/">GEP-1364: Status and Conditions Update</a>, it is necessary for the route to attach to something; in this case, the route attaches to the specific role or profile of the <code>ServiceProjection</code> and the mesh control plane should update the route status to reflect that.</p>
+</code></pre><p>For convenience, <code>ServiceProjection</code> could have a <code>meshRef</code> field that, when set instead of <code>serviceRef</code>, makes all configuration within the <code>ServiceProjection</code> apply to all services in the mesh (the mesh control plane would need to read the <code>Mesh</code> resource). Pursuant to the changes to status semantics in <a href="//localhost:1313/geps/gep-1364/">GEP-1364: Status and Conditions Update</a>, it is necessary for the route to attach to something; in this case, the route attaches to the specific role or profile of the <code>ServiceProjection</code> and the mesh control plane should update the route status to reflect that.</p>
 <h4 id="drawbacks-8">Drawbacks</h4>
 <ul>
 <li>May require reconfiguring <code>Gateway</code> <code>HTTPRoutes</code> to specify <code>ServiceProjections</code> as <code>backendRefs</code>.</li>
@@ -7218,7 +7219,7 @@ This has been removed due to inconsistency with Gateway <code>parentRefs</code> 
 <li>Status: Standard</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>: This GEP is exempt from the <a href="/geps/overview/#probationary-period">Probationary Period</a> rules of
+<p><strong>Note</strong>: This GEP is exempt from the <a href="//localhost:1313/geps/overview/#probationary-period">Probationary Period</a> rules of
 our GEP overview as it existed before those rules did, and so it has been
 explicitly grandfathered in.</p></blockquote>
 <h2 id="tldr">TLDR</h2>
@@ -7267,7 +7268,7 @@ explicitly grandfathered in.</p></blockquote>
 </span></span><span style="display:flex;"><span>    Remove []<span style="color:#0b0;font-weight:bold">string</span> <span style="color:#b44">`json:&#34;remove,omitempty&#34;`</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Given the fact that this functionality is offered by only a few projects that currently implement Gateway API when using their own traffic routing CRDs, it’s better to support <code>ResponseHeaderModifier</code> as an <em>Extended</em> feature, unlike <code>RequestHeaderModifier</code> which is a <em>Core</em> feature. This will also not increase the difficulty of implementing Gateway API for any future ingress or service mesh.</p>
-<p>This feature can be further extended via <a href="/reference/policy-attachment/">Policy Attachment</a>. The mechanism and use cases of this may be explored in a future GEP.</p>
+<p>This feature can be further extended via <a href="//localhost:1313/reference/policy-attachment/">Policy Attachment</a>. The mechanism and use cases of this may be explored in a future GEP.</p>
 <h2 id="usage">Usage</h2>
 <p>Adding support for this unlocks a lot of real world use cases. Let’s review a couple of them:</p>
 <ul>
@@ -7431,7 +7432,7 @@ explicitly grandfathered in.</p></blockquote>
 <li>Status: Memorandum</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>: This GEP is exempt from the <a href="/geps/overview/#probationary-period">Probationary Period</a> rules
+<p><strong>Note</strong>: This GEP is exempt from the <a href="//localhost:1313/geps/overview/#probationary-period">Probationary Period</a> rules
 of our GEP overview as it existed before those rules did, and so it has been
 explicitly grandfathered in.</p></blockquote>
 <h2 id="overview">Overview</h2>
@@ -7458,7 +7459,7 @@ explicitly grandfathered in.</p></blockquote>
 </li>
 </ul>
 <h2 id="versioning">Versioning</h2>
-<p>Features or other modifications to the Gateway API spec that fall under this GEP will be subject to the same <a href="/overview/concepts/versioning/#graduation-criteria">versioning guidelines</a> as the rest of the Gateway API. For example, to move changes concerning a beta feature (e.g. HTTPRoute) from experimental to standard, all of the <a href="/overview/concepts/versioning/#graduation-criteria">graduation criteria</a> must be met (e.g. implemented by several implementations).</p>
+<p>Features or other modifications to the Gateway API spec that fall under this GEP will be subject to the same <a href="//localhost:1313/overview/concepts/versioning/#graduation-criteria">versioning guidelines</a> as the rest of the Gateway API. For example, to move changes concerning a beta feature (e.g. HTTPRoute) from experimental to standard, all of the <a href="//localhost:1313/overview/concepts/versioning/#graduation-criteria">graduation criteria</a> must be met (e.g. implemented by several implementations).</p>
 <h2 id="use-cases">Use-Cases</h2>
 <p>These use-cases are presented as an aid for discussion, and as frames of reference for how users may attempt to utilize the outputs of this GEP. They are not an exhaustive list of features for mesh support in Gateway API nor does a particular use-cases inclusion necessarily imply that it is a goal.</p>
 <ol>
@@ -7512,7 +7513,7 @@ explicitly grandfathered in.</p></blockquote>
 </li>
 </ol>
 <h3 id="policy"><strong>Policy</strong></h3>
-<p>Policy is a broad term for any resource that can attach to another resource to configure it. This is defined in the <a href="/geps/gep-713/">Policy Attachment GEP</a>. Examples of (hypothetical) policies could be resources like <code>TimeoutPolicy</code> or <code>AuthorizationPolicy</code>.</p>
+<p>Policy is a broad term for any resource that can attach to another resource to configure it. This is defined in the <a href="//localhost:1313/geps/gep-713/">Policy Attachment GEP</a>. Examples of (hypothetical) policies could be resources like <code>TimeoutPolicy</code> or <code>AuthorizationPolicy</code>.</p>
 <h3 id="routes"><strong>Routes</strong></h3>
 <p>Routes are a collective term for a number of types in gateway-api: <code>HTTPRoute</code>, <code>TLSRoute</code>, <code>TCPRoute</code>, <code>UDPRoute</code>, etc. In the future there may be more defined, in core or extensions (such as <code>SQLRoute</code>).This document focuses on routes, rather than &quot;Policy&quot;, as these are the primary existing core resources in gateway, and help form a foundation for policy attachment. Future work from GAMMA will likely look into policies, such as authorization policies.</p>
 <h3 id="service"><strong>Service</strong></h3>
@@ -8016,11 +8017,11 @@ needs updating.)</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1494">#1494</a></li>
 <li>Status: Experimental</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>Provide a method for configuring <strong>Gateway API implementations</strong> to add HTTP Authentication for north-south traffic. The method may also include Authorization config if practical. At the time of writing, this authentication is only for ingress traffic to the Gateway.</p>
 <h2 id="goals">Goals</h2>
-<p>(Using the <a href="/overview/concepts/roles-and-personas/">Gateway API Personas</a>)</p>
+<p>(Using the <a href="//localhost:1313/overview/concepts/roles-and-personas/">Gateway API Personas</a>)</p>
 <ul>
 <li>
 <p>A way for Ana the Application Developer to configure a Gateway API implementation to perform Authentication (at least), with optional Authorization.</p>
@@ -8061,7 +8062,7 @@ it as many times as you like), which is why Basic Auth is generally used for low
 <p>TLS includes the possibility of having both the client and server present certificates for the other party to validate. (This is often called &quot;mutual TLS&quot;, but is distinct from the use of that term in Service Mesh contexts, where it means something more like &quot;mutual TLS with short-lifetime, automatically created and managed dynamic keypairs for both client and server&quot;).</p>
 <p>In this case, the server also authenticates the client, based on the certificate chain presented by the client. Some implementations also allow details about the certificate to be passed through to backend clients, to be used in authorization decisions.</p>
 <p>TLS v1.3 is defined in <a href="https://datatracker.ietf.org/doc/html/rfc8446">RFC-8446</a>, with v1.2 defined in <a href="https://datatracker.ietf.org/doc/html/rfc5246">RFC-5246</a>. Earlier versions of TLS (v1.1 and v1.0) were deprecated in <a href="https://datatracker.ietf.org/doc/html/rfc8996">RFC-8996</a> and should no longer be used.</p>
-<p>Gateway API already has some work in progress to handle this for straightforward use cases, in <a href="/geps/gep-91/">GEP-91</a>.</p>
+<p>Gateway API already has some work in progress to handle this for straightforward use cases, in <a href="//localhost:1313/geps/gep-91/">GEP-91</a>.</p>
 <h4 id="jwt">JWT</h4>
 <p>JWT is a format for representing <em>claims</em>, which are stored as fields in a JSON object. In common use, these claims represent various parameters that describe the properties of an authentication, with sample claims being <code>iss</code>, Issuer, <code>sub</code>, Subject, and <code>aud</code>, Audience.</p>
 <p>JWT also specified ways in which JWTs can be <em>nested</em>, where a JWT is encoded inside another JWT, which allows the use of encryption and signing algorithms. In the Gateway API Auth* case, this is expected to be common, in a pattern looking something like this:</p>
@@ -8511,7 +8512,7 @@ direction)</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1619">#1619</a></li>
 <li>Status: Experimental</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="graduation-criteria">Graduation Criteria</h2>
 <h3 id="implementable">Implementable</h3>
 <p>This GEP was accidentally merged as Provisional before the required approval
@@ -9272,9 +9273,9 @@ implementation-specific backendRef)</li>
 <li>An inline API update to HTTPRoute and GRPCRoute rules</li>
 </ol>
 <h3 id="backendlbpolicy-api">BackendLBPolicy API</h3>
-<p>In order to apply session persistence configuration to a backend, we will implement it as a <a href="/reference/policy-attachment/">Policy Attachment</a>.
+<p>In order to apply session persistence configuration to a backend, we will implement it as a <a href="//localhost:1313/reference/policy-attachment/">Policy Attachment</a>.
 The new metaresource is named <code>BackendLBPolicy</code> and is responsible for configuring load balancing-related configuration
-for traffic intended for a backend after routing has occurred. It is defined as a <a href="/geps/gep-713/#direct-policy-attachment">Direct Policy Attachment</a>
+for traffic intended for a backend after routing has occurred. It is defined as a <a href="//localhost:1313/geps/gep-713/#direct-policy-attachment">Direct Policy Attachment</a>
 without defaults or overrides, applied to the targeted backend.</p>
 <p>Instead of utilizing a specific, session persistence-only policy object, we introduce a more generic API object named
 <code>BackendLBPolicy</code>. This design provides tighter coupling with other load balancing configuration which helps reduce
@@ -9486,7 +9487,7 @@ the <code>SessionPersistence</code> struct, including options for cookie-based o
 accommodates implementations that offer multiple methods of session persistence, while also allowing users to specify
 their preferred form of session persistence if desired.</p>
 <h3 id="target-persona">Target Persona</h3>
-<p>Referring to the <a href="/overview/concepts/security/#roles-and-personas">Gateway API Security Model</a>,
+<p>Referring to the <a href="//localhost:1313/overview/concepts/security/#roles-and-personas">Gateway API Security Model</a>,
 the target kubernetes role/persona for session persistence are application developers, as mentioned in the <a href="/geps/gep-1619/#when-does-an-application-require-session-persistence">When does an application require session persistence?</a>
 section. It is the responsibility of the application developers to adjust the persistence configuration to ensure the
 functionality of their applications.</p>
@@ -9498,18 +9499,18 @@ implementation's objects is hard to directly translate. The idea of a route in G
 route in any given implementation.</p>
 <h3 id="api-attachment-points">API Attachment Points</h3>
 <p>The new <code>BackendLBPolicy</code> metaresource only supports attaching to a backend. A backend can be a Service,
-ServiceImport (see <a href="/geps/gep-1748/">GEP-1748</a>), or any implementation-specific backends that are a valid
-<a href="/reference/spec/#backendobjectreference"><code>BackendObjectReference</code></a>. Enabling session
+ServiceImport (see <a href="//localhost:1313/geps/gep-1748/">GEP-1748</a>), or any implementation-specific backends that are a valid
+<a href="//localhost:1313/reference/spec/#backendobjectreference"><code>BackendObjectReference</code></a>. Enabling session
 persistence for a backend enables subsequently enables it for any route directing traffic to this backend. To learn more
-about the process of attaching a policy to a backend, please refer to <a href="/geps/gep-713/">GEP-713</a>.</p>
+about the process of attaching a policy to a backend, please refer to <a href="//localhost:1313/geps/gep-713/">GEP-713</a>.</p>
 <p>On the other hand, configuring the <code>sessionPersistence</code> field in the route rule enables session persistence exclusively
 for the traffic directed to the <code>backendRefs</code> in this route rule. This means applying session persistence configuration
 to a route rule MUST NOT affect traffic for other routes or route rules. Designing the configuration for a specific
 route rule section rather than the route entirely, allows users to configure session persistence in a more granular
 fashion. This approach avoids the need to decompose routes if the configuration is specific to a route path.</p>
 <p>Session persistence configuration specified in a route rule SHALL override equivalent configuration in <code>BackendLBPolicy</code>.
-In this situation, implementations MAY want to indicate a warning via a log or status. Refer to <a href="/geps/gep-713/">GEP-713</a>
-and/or <a href="/geps/gep-2648/">GEP-2648</a> for more specific details on how to handle override scenarios.</p>
+In this situation, implementations MAY want to indicate a warning via a log or status. Refer to <a href="//localhost:1313/geps/gep-713/">GEP-713</a>
+and/or <a href="//localhost:1313/geps/gep-2648/">GEP-2648</a> for more specific details on how to handle override scenarios.</p>
 <p>Edge cases will arise when implementing session persistence support for both backends and route rules through
 <code>BackendLBPolicy</code> and the route rule's <code>sessionPersistence</code> field. For guidance on addressing conflicting
 attachments, please consult the <a href="/geps/gep-1619/#edge-case-behavior">Edge Case Behavior</a> section, which outlines API
@@ -9606,9 +9607,9 @@ security-by-default principle and configure these attributes accordingly. This m
 and setting <code>SameSite</code> to <code>Strict</code>. However, in certain implementation use cases such as service mesh, secure values
 might not function as expected. In such cases, it's acceptable to make appropriate adjustments.</p>
 <h3 id="session-persistence-api-with-gamma">Session Persistence API with GAMMA</h3>
-<p>The object of the <a href="/overview/mesh/gamma/">GAMMA (Gateway API for Mesh Management and Administration)</a>
+<p>The object of the <a href="//localhost:1313/overview/mesh/gamma/">GAMMA (Gateway API for Mesh Management and Administration)</a>
 initiative is to provide support for service mesh and mesh-adjacent use-cases with Gateway API. GAMMA is focused on
-defining how Gateway API could also be used for inter-service or <a href="/overview/glossary/#eastwest-traffic">east/west</a>
+defining how Gateway API could also be used for inter-service or <a href="//localhost:1313/overview/glossary/#eastwest-traffic">east/west</a>
 traffic within the same cluster.</p>
 <p>Given that service meshes commonly have session persistence requirements, this API design should take into consideration
 session persistence needs in GAMMA and service mesh scenarios.</p>
@@ -9852,7 +9853,7 @@ predicable way.</li>
 <li>We need to revisit how to indicate to a user that a <code>BackendLBPolicy</code> configuration is being overridden by a route
 configuration via a warning status or log.
 <ul>
-<li>This might require addressing as part of an update to <a href="/geps/gep-2648/">GEP-2648</a>.</li>
+<li>This might require addressing as part of an update to <a href="//localhost:1313/geps/gep-2648/">GEP-2648</a>.</li>
 </ul>
 </li>
 </ul>
@@ -9972,9 +9973,9 @@ patterns for cookie attributes.</p>
 <li><a href="https://static.sched.com/hosted_files/kccnceu2023/c4/Autoscaling%20Elastic%20Kubernetes%20Infrastructure%20for%20Stateful%20Applications%20using%20Proxyless%20gRPC%20and%20Istio.pdf#page=25">LBPolicy</a> (proposed extension for session persistence API)</li>
 <li><a href="https://github.com/grpc/proposal/blob/master/A55-xds-stateful-session-affinity.md">gRPC Stateful Session Affinity Proposal</a> (info on session draining and session persistence in gRPC)</li>
 <li><a href="https://kubernetes.io/reference/networking/virtual-ips/#session-affinity">Kube-Proxy Session Affinity</a></li>
-<li><a href="/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a></li>
+<li><a href="//localhost:1313/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a></li>
 <li><a href="https://www.rfc-editor.org/rfc/rfc6265">RFC6265</a></li>
-<li><a href="/reference/policy-attachment/">Policy Attachment</a></li>
+<li><a href="//localhost:1313/reference/policy-attachment/">Policy Attachment</a></li>
 <li><a href="https://docs.google.com/document/d/1IU4b76AgOXijNa4sew1gfBfSiOMbZNiEt5Dhis8QpYg/edit#heading=h.sobqsca7i45e">Envoy Session Persistence Design Doc</a></li>
 <li><a href="https://github.com/envoyproxy/envoy/issues/16698">Envoy Session Persistence Issue</a></li>
 </ul>
@@ -9999,7 +10000,7 @@ patterns for cookie attributes.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1651">#1651</a></li>
 <li>Status: Provisional</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>Allow users to configure a Gateway so that it is only routable within
 a specific scope (ie. public/private/cluster)</p>
@@ -10380,11 +10381,11 @@ a Gateway.</p>
 <li>Rely on existing tests for non-GAMMA-specific Gateway API conformance</li>
 </ul>
 <h2 id="focus">Focus</h2>
-<p>Currently the GAMMA spec consists of two Gateway API GEPs <a href="/geps/gep-1324/">defining terminology and goals of Gateway API for service meshes</a>
-and specifically <a href="/geps/gep-1294/">how route resources work in a service mesh context</a>.
+<p>Currently the GAMMA spec consists of two Gateway API GEPs <a href="//localhost:1313/geps/gep-1324/">defining terminology and goals of Gateway API for service meshes</a>
+and specifically <a href="//localhost:1313/geps/gep-1294/">how route resources work in a service mesh context</a>.
 The goal of the initial conformance testing is to check the essential behavior as defined by GEP-1426, as it differs from the wider Gateway API spec. This GEP focuses on using a <code>Service</code> object as an <code>xRoute</code> <code>parentRef</code> to control how the GAMMA implementation directs traffic to the endpoints specified by the <code>Services</code> in <code>backendRefs</code> and how the traffic is filtered and modified.</p>
 <h2 id="conformance-profile">Conformance Profile</h2>
-<p>GAMMA intends to introduce a &quot;Mesh&quot; <a href="/geps/gep-1709/">conformance profile</a> to isolate tests specific to East/West functionality from both existing tests focused on North/South functionality and common Gateway API functionality shared by N/S and E/W implementations. A conformance profile is a set of tests that implementations can run to check their conformance to some subset of the Gateway API spec.</p>
+<p>GAMMA intends to introduce a &quot;Mesh&quot; <a href="//localhost:1313/geps/gep-1709/">conformance profile</a> to isolate tests specific to East/West functionality from both existing tests focused on North/South functionality and common Gateway API functionality shared by N/S and E/W implementations. A conformance profile is a set of tests that implementations can run to check their conformance to some subset of the Gateway API spec.</p>
 <p>This approach will enable service meshes to certify that an implementation follows the GAMMA spec without requiring a North/South implementation, and importantly avoid any expectation that North/South Gateway API implementations expand their scope to understand GAMMA and E/W traffic flows.</p>
 <p>Leveraging existing tests for common functionality between N/S and E/W implementations will both ensure consistency across Gateway API implementations and help limit the maintenance burden for the conformance testing suite.</p>
 <h3 id="support-levels">Support Levels</h3>
@@ -11139,7 +11140,7 @@ the CLI and via the Golang library.</li>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1713">#1713</a></li>
 <li>Status: Standard</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="introduction">Introduction</h2>
 <p>The <code>Gateway</code> Resource is a point of contention since it is the only place to attach listeners with certificates. We propose a new resource called <code>ListenerSet</code> to allow a shared list of listeners to be attached to a single <code>Gateway</code>.</p>
 <h2 id="goals">Goals</h2>
@@ -12764,7 +12765,7 @@ listeners:
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1731">#1731</a></li>
 <li>Status: Experimental</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>To allow configuration of a Gateway to retry unsuccessful requests to backends before sending a response to a client request.</p>
 <h2 id="goals">Goals</h2>
@@ -12772,7 +12773,7 @@ listeners:
 <li>To allow specification of <a href="https://www.rfc-editor.org/rfc/rfc9110#name-overview-of-status-codes">HTTP status codes</a> for which a request should be retried.</li>
 <li>To allow specification of the maximum number of times to retry a request.</li>
 <li>To allow specification of the minimum backoff interval between retry attempts.</li>
-<li>To define any interaction with configured HTTPRoute <a href="/geps/gep-1742/">timeouts</a>.</li>
+<li>To define any interaction with configured HTTPRoute <a href="//localhost:1313/geps/gep-1742/">timeouts</a>.</li>
 <li>Retry configuration must be applicable to most known Gateway API implementations.</li>
 </ul>
 <h2 id="future-goals">Future Goals</h2>
@@ -13250,15 +13251,15 @@ retriable. This currently activates &quot;conn-failure&quot;, &quot;empty-respon
 <h3 id="standard-retrypolicy-metaresource">Standard RetryPolicy metaresource</h3>
 <p>This may be a reasonable approach for configuring broad default retry policies, but the UX of using a separate resource could feel overly burdensome for basic use cases or granular configuration, and the structure of the policy attachment model is <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/2927">currently being revised</a>. Additionally, multiple data plane proxies warn in their documentation about the danger of configuring broad retry policies which may cause logical application errors from replaying non-idempotent requests or overwhelm backends. This approach may still be considered to enable future goals.</p>
 <h3 id="httproute-filter">HTTPRoute filter</h3>
-<p>Implementing a <code>requestRetryPolicy</code> <a href="/reference/spec/#httproutefilter">HTTPRouteFilter</a> type is likely a reasonable alternative implementation (with the downside of slightly deeping nesting and more complex structural configuration) that was not fully explored.</p>
-<p>Adding a new field to HTTPRouteRule instead is proposed for parity with the similar and intersecting configuration of <a href="/reference/spec/#httproutetimeouts">HTTPRouteTimeouts</a>.</p>
+<p>Implementing a <code>requestRetryPolicy</code> <a href="//localhost:1313/reference/spec/#httproutefilter">HTTPRouteFilter</a> type is likely a reasonable alternative implementation (with the downside of slightly deeping nesting and more complex structural configuration) that was not fully explored.</p>
+<p>Adding a new field to HTTPRouteRule instead is proposed for parity with the similar and intersecting configuration of <a href="//localhost:1313/reference/spec/#httproutetimeouts">HTTPRouteTimeouts</a>.</p>
 <h2 id="other-considerations">Other considerations</h2>
 <h3 id="what-accommodations-are-needed-for-future-retry-budget-support">What accommodations are needed for future retry budget support?</h3>
 <p>Changing the retry stanza to a Kubernetes &quot;tagged union&quot; pattern with something like <code>mode: &quot;budget&quot;</code> to support mutually-exclusive distinct sibling fields is possible as a non-breaking change if omitting the <code>mode</code> field defaults to the currently proposed behavior (which could retroactively become something like <code>mode: count</code>).</p>
 <h3 id="should-whether-to-retry-on-connection-errors-be-configurable">Should whether to retry on connection errors be configurable?</h3>
 <p>Retrying on connection errors (disconnect, reset, timeout, TCP failure) is typically default behavior for most dataplanes, even those that don't support configurable retries based on HTTP status codes. Some proxies allow this to be configurable, but retrying attempts on these sort of errors is typically desirable and excluding it from the Gateway API spec both allows a simpler UX with less boilerplate, and avoids nuances between how these are defined and configured in different proxies.</p>
 <h3 id="should-whether-to-retry-on-a-backend-timeout-be-configurable">Should whether to retry on a backend timeout be configurable?</h3>
-<p>On Kubernetes, retrying should <em>typically</em> route a backend request to a different pod if the original destination has become unhealthy and therefore should generally be safe. Even if a <a href="/geps/gep-1619/">BackendLBPolicy</a> is configured, most dataplane implementations implement &quot;soft&quot; affinity rather than strict session routing. The warnings against this practice in NGINX and HAProxy documentation seem to reference risks with legacy deployment models using a small number of statically-defined servers. We could consider adding something like a <code>excludeRetryOnTimeout</code> boolean field (implementable by NGINX and HAProxy, not by Envoy) in the future if this behavior is desirable, while still retaining the retry-on-timeout behavior as a default.</p>
+<p>On Kubernetes, retrying should <em>typically</em> route a backend request to a different pod if the original destination has become unhealthy and therefore should generally be safe. Even if a <a href="//localhost:1313/geps/gep-1619/">BackendLBPolicy</a> is configured, most dataplane implementations implement &quot;soft&quot; affinity rather than strict session routing. The warnings against this practice in NGINX and HAProxy documentation seem to reference risks with legacy deployment models using a small number of statically-defined servers. We could consider adding something like a <code>excludeRetryOnTimeout</code> boolean field (implementable by NGINX and HAProxy, not by Envoy) in the future if this behavior is desirable, while still retaining the retry-on-timeout behavior as a default.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a></li>
@@ -13288,7 +13289,7 @@ retriable. This currently activates &quot;conn-failure&quot;, &quot;empty-respon
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1742">#1742</a></li>
 <li>Status: Standard</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>Create some sort of design so that Gateway API objects can be used to configure
 timeouts for different types of connection.</p>
@@ -13740,7 +13741,7 @@ sequenceDiagram
     <em class="javascript-required"></em>
   </div>
 </noscript>
-<p>Both timeout fields are <a href="/geps/gep-2257/">GEP-2257 Duration</a> values. A zero-valued timeout
+<p>Both timeout fields are <a href="//localhost:1313/geps/gep-2257/">GEP-2257 Duration</a> values. A zero-valued timeout
 (&quot;0s&quot;) MUST be interpreted as disabling the timeout; a non-zero-valued timeout
 MUST be &gt;= 1ms.</p>
 <h3 id="go">GO</h3>
@@ -14173,7 +14174,7 @@ many existing resources attach only to resources like <code>Deployment</code> or
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">gateway.networking.k8s.io/gateway-name</span>:<span style="color:#bbb"> </span>gateway<span style="color:#bbb">
 </span></span></span></code></pre></div><p>Note: there is <a href="https://github.com/kubernetes-sigs/gateway-api/discussions/1355">discussion</a> around a way to attach a HPA to a Gateway directly.</p>
 <h2 id="api">API</h2>
-<p>This GEP extends the <code>infrastructure</code> API introduced in <a href="/geps/gep-1867/">GEP-1867</a>.</p>
+<p>This GEP extends the <code>infrastructure</code> API introduced in <a href="//localhost:1313/geps/gep-1867/">GEP-1867</a>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> GatewayInfrastructure <span style="color:#a2f;font-weight:bold">struct</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#080;font-style:italic">// Labels that should be applied to any resources created in response to this Gateway.</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#080;font-style:italic">//</span>
@@ -15361,7 +15362,7 @@ However, this introduces operational challenges when configuring Gateways.</p>
 This has been previously discussed in <a href="https://github.com/kubernetes-sigs/gateway-api/issues/567">this issue</a>.</p>
 <p>As a cluster scoped resource, <code>GatewayClass</code> does not meet this requirement.
 This restricts customization use cases to either a few pre-provisioned classes by the admin, or running in an environment where the &quot;Infrastructure Provider&quot; and &quot;Cluster Operator&quot; are the same roles.
-The distinction between these roles is explicitly called out on the <a href="/#personas">homepage</a>.</p>
+The distinction between these roles is explicitly called out on the <a href="//localhost:1313/#personas">homepage</a>.</p>
 <h3 id="custom-resource">Custom Resource</h3>
 <p><code>parametersRef</code> is entirely a generic implementation-specific meaning.
 This means implementations will either need a custom CRD or use untyped resources like ConfigMap.
@@ -15374,7 +15375,7 @@ The scoping, as mentioned above, is also a bit awkward of a cluster scoped resou
 <h3 id="separation-of-concerns">Separation of concerns</h3>
 <p>While there is value out of providing class-wide options as defaults, there is also value in providing these options on the object (Gateway) directly.</p>
 <p>Some parallels in existing APIs:</p>
-<p><a href="/reference/policy-attachment/">Policy Attachment</a> offers a hierarchy of defaults and overrides, allowing attachment to GatewayClass and Gateway.
+<p><a href="//localhost:1313/reference/policy-attachment/">Policy Attachment</a> offers a hierarchy of defaults and overrides, allowing attachment to GatewayClass and Gateway.
 This is similar to our needs here, but representing infrastructure configuration as a &quot;Policy&quot; is a bit problematic, and the existing mechanisms have no hierarchy.</p>
 <p>In core Kubernetes, Pods declare their requirements (for example, CPU requests) inline in the Pod resource; there is not a <code>ResourceClass</code> API that abstracts these further.
 These higher level abstractions are handled by layered APIs (whether this is a CRD, an admission webhook, CI/CD tooling, etc).
@@ -15388,7 +15389,7 @@ For example, if I wanted to represent a <code>version</code> field and change th
 <h2 id="api">API</h2>
 <p>In order to address the concerns above, I propose a standard <code>infrastructure</code> API is added to <code>Gateway</code>.</p>
 <p>The exact fields are out of scope for this GEP and will be handled by additional GEPs.
-One example GEP already depending on this is <a href="/geps/gep-1651/">GEP-1651</a>.</p>
+One example GEP already depending on this is <a href="//localhost:1313/geps/gep-1651/">GEP-1651</a>.</p>
 <p>The fields as defined below are, at time of writing, the existing fields covered by this GEP. More fields may be added as needed.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">type</span> GatewaySpec <span style="color:#a2f;font-weight:bold">struct</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Infrastructure defines infrastructure level attributes about this Gateway instance.</span>
@@ -15609,7 +15610,7 @@ This GEP is the outcome of the TLS use case #4 in
 <p>To allow the gateway client to know how to connect to the backend pod, when the backend pod has its own
 certificate, we implement a metaresource named <code>BackendTLSPolicy</code>, that was previously introduced with the name
 <code>TLSConnectionPolicy</code> as a hypothetical Direct Policy Attachment example in
-<a href="/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a>.
+<a href="//localhost:1313/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a>.
 Because naming is hard, a new name may be
 substituted without blocking acceptance of the content of the API change.</p>
 <p>The selection of the applicable Gateway API persona is important in the design of BackendTLSPolicy, because it provides
@@ -15642,7 +15643,7 @@ rather than the Route resource, so that we can reuse the same BackendTLSPolicy f
 might point to this Service.</p>
 <p>One of the areas of concern for this API is that we need to indicate how and when the API implementations should use the
 backend destination certificate authority.  This solution proposes, as introduced in
-<a href="/geps/gep-713/">GEP-713</a>, that the implementation
+<a href="//localhost:1313/geps/gep-713/">GEP-713</a>, that the implementation
 should watch the connections to the specified TargetRefs (Services), and if a Service matches a BackendTLSPolicy, then
 assume the connection is TLS, and verify that the TargetRef’s certificate can be validated by the client (Gateway) using
 the provided certificates and hostname before the connection is made. On the question of how to signal
@@ -16088,7 +16089,7 @@ Extended support level (HTTPRoute → Service referenced in backendRefs) is cove
 <h2 id="future-plans">Future plans</h2>
 <p>In order to scope this GEP, some changes are deferred to a near-future GEP.
 This GEP intends to add the ability for additional control by gateway clients to override TLS settings, following previously
-established patterns of <a href="/overview/glossary/#producer-route">consumer and producer policies</a>.
+established patterns of <a href="//localhost:1313/overview/glossary/#producer-route">consumer and producer policies</a>.
 Additionally, more contextual control over when to apply the policies will be explored, to enable use cases like &quot;apply
 TLS only from this route&quot; (<a href="https://github.com/kubernetes-sigs/gateway-api/issues/3856">issue</a>).</p>
 <p>While the details of these plans are out of scope for this GEP it is important to be aware of the future plans for the
@@ -16220,8 +16221,8 @@ the implementation would be required to fully implement the policy or mark the b
 of the first standard Policy type.</p></blockquote>
 <h2 id="references">References</h2>
 <p><a href="https://docs.google.com/document/d/17sctu2uMJtHmJTGtBi_awGB0YzoCLodtR6rUNmKMCs8/edit#heading=h.cxuq8vo8pcxm">Gateway API TLS Use Cases</a></p>
-<p><a href="/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a></p>
-<p><a href="/guides/user-guides/tls/">Gateway API TLS</a></p>
+<p><a href="//localhost:1313/geps/gep-713/">GEP-713: Metaresources and PolicyAttachment</a></p>
+<p><a href="//localhost:1313/guides/user-guides/tls/">Gateway API TLS</a></p>
 <p><a href="https://docs.google.com/document/d/1RTYh2brg_vLX9o3pTcrWxtZSsf8Y5NQvIG52lpFcZlo">SIG-NET Gateway API: TLS to the K8s.Service/Backend</a></p>
 <p><a href="https://serverfault.com/questions/807959/what-is-the-difference-between-san-and-sni-ssl-certificates">SAN vs SNI</a></p>
 
@@ -16245,7 +16246,7 @@ of the first standard Policy type.</p></blockquote>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/1911">#1911</a></li>
 <li>Status: Standard</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>Not all implementations support automatic protocol selection. Even in some cases protocols are disabled without an explicit opt-in (eg. websockets with Contour &amp; NGINX). Thus application developers need the ability to specify the protocol(s) that their application supports.</p>
 <h2 id="goals">Goals</h2>
@@ -16262,7 +16263,7 @@ of the first standard Policy type.</p></blockquote>
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>Since Kubernetes 1.20 the <a href="https://kubernetes.io/overview/concepts/services-networking/service/"><code>core/v1.Service</code></a> and <a href="https://kubernetes.io/overview/concepts/services-networking/endpoint-slices/"><code>core/v1.EndpointSlice</code></a> resource has a stable <code>appProtocol</code> field. It's purpose is to allow end-users to specify an application protocol (L7) for each service port.</p>
-<p>Originally the use of this field in the Gateway API was rejected in <a href="/geps/gep-1282/#non-goals">GEP-1282</a>:</p>
+<p>Originally the use of this field in the Gateway API was rejected in <a href="//localhost:1313/geps/gep-1282/#non-goals">GEP-1282</a>:</p>
 <blockquote>
 <p>v1.Service’s appProtocol field is not fit for purpose, because it is defined as accepting values either from the IANA Service Name registry, or domain-prefixed values and we need more flexibility than that.</p></blockquote>
 <p>Since then a Kubernetes enhancement proposal was created <a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/3726-standard-application-protocols">KEP-3726</a> to repurpose <code>appProtocol</code> to include a convention for protocols that are not IANA service names. This would involve prefixing protocol names with <code>kubernetes.io/*</code>.</p>
@@ -16349,7 +16350,7 @@ is set for the target Service Port.</p>
   </tbody>
 </table>
 <ol>
-<li>Only if there is a corresponding <code>BackendTLSPolicy</code> - see <a href="/geps/gep-1897/">GEP-1897</a></li>
+<li>Only if there is a corresponding <code>BackendTLSPolicy</code> - see <a href="//localhost:1313/geps/gep-1897/">GEP-1897</a></li>
 </ol>
 <h2 id="open-questions">Open Questions</h2>
 <ol>
@@ -16364,7 +16365,7 @@ applies to an underlying UDP protocol.</p>
 <p>Should we upstream new constants for websocket over <a href="https://www.rfc-editor.org/rfc/rfc8441.html">HTTP/2</a> &amp; <a href="https://www.rfc-editor.org/rfc/rfc9220.html">HTTP/3</a> ? HTTP/3 makes things more complicated since its supports UDP as the underlying protocol.</p>
 <h2 id="alternatives">Alternatives</h2>
 <h3 id="single-meta-resource">Single Meta-resource</h3>
-<p>The first pass of this GEP proposed a new meta-resource <a href="/geps/gep-713/">GEP-713</a> called <code>BackendProtocol</code>.</p>
+<p>The first pass of this GEP proposed a new meta-resource <a href="//localhost:1313/geps/gep-713/">GEP-713</a> called <code>BackendProtocol</code>.</p>
 <p>This allows end-users to specify a list of ports and a list of corresponding protocols that that single
 port supports.</p>
 <p>This was dropped in favour of supporting Kubernetes Standard Application Protocols.</p>
@@ -16382,7 +16383,7 @@ ie. <code>HTTP2Backend</code>, <code>GRPCBackend</code>, <code>WebsocketBackend<
 <li>No easy mechanic to specify priority of protocols</li>
 </ul>
 <h3 id="adding-properties-on-gateway-route-objects">Adding Properties on Gateway Route Objects</h3>
-<p>From <a href="/geps/gep-1282/#tldr">GEP-1282</a>:</p>
+<p>From <a href="//localhost:1313/geps/gep-1282/#tldr">GEP-1282</a>:</p>
 <blockquote>
 <p>some types of configuration requested by users are more about defining functionality that describes capabilities of the backend more than the route you take to get to the backend.</p></blockquote>
 <p>Backend protocol is specifying capabilities. This configuration is less about routing.</p>
@@ -16390,10 +16391,10 @@ ie. <code>HTTP2Backend</code>, <code>GRPCBackend</code>, <code>WebsocketBackend<
 <p>The <code>protocol</code> field on a Kubernetes service is used to specify a L4 protocol over IP. This field isn't appropriate to describe protocols
 that operate at a higher 'application' level (eg. HTTP/GRPC etc.)</p>
 <h3 id="extending-kubernetes-service">Extending Kubernetes Service</h3>
-<p>This is considered untenable due to the 'the turnaround time for those changes can be years.' (<a href="/geps/gep-1282/#non-goals">ref-1282</a>)</p>
+<p>This is considered untenable due to the 'the turnaround time for those changes can be years.' (<a href="//localhost:1313/geps/gep-1282/#non-goals">ref-1282</a>)</p>
 <h3 id="unstructured-data-special-values">Unstructured Data/Special Values</h3>
 <p>Unstructured data refers to using labels and annotations.</p>
-<p>From <a href="/geps/gep-1282/#non-goals">GEP-1282</a>:</p>
+<p>From <a href="//localhost:1313/geps/gep-1282/#non-goals">GEP-1282</a>:</p>
 <blockquote>
 <p>these are very sticky and hard to get rid of once you start using them.</p></blockquote>
 <p>Special values refers to using special strings in existing Kubernetes Resources.
@@ -16409,11 +16410,11 @@ documentation via <code>kubectl explain</code></p>
 <li><a href="https://github.com/kubernetes-sigs/gateway-api/discussions/1244">GitHub Discussion</a></li>
 <li>GEP-1282 - Describing Backend Properties
 <ul>
-<li><a href="/geps/gep-1282/">GEP</a></li>
+<li><a href="//localhost:1313/geps/gep-1282/">GEP</a></li>
 <li><a href="https://github.com/kubernetes-sigs/gateway-api/issues/1911">Issue</a></li>
 </ul>
 </li>
-<li><a href="/geps/gep-713/">GEP-713 - Metaresources</a></li>
+<li><a href="//localhost:1313/geps/gep-713/">GEP-713 - Metaresources</a></li>
 <li><a href="https://linkerd.io/2.12/features/protocol-detection/">Linkerd Protocol Detection</a></li>
 <li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/">Istio Protocol Selection</a></li>
 <li>Contour Protocol Selection
@@ -16473,7 +16474,7 @@ Meaning we don't intend to verify whether the supported features reported by the
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>The current <a href="https://github.com/kubernetes-sigs/gateway-api/blob/f2cd9bb92b4ff392416c40d6148ff7f76b30e649/apis/v1beta1/gatewayclass_types.go#L185">GatewayClassStatus</a> is only used to store conditions the controller publishes.</p>
-<p>Partnered with the <a href="/geps/gep-1709/">Conformance Profiles</a> work, we want to:</p>
+<p>Partnered with the <a href="//localhost:1313/geps/gep-1709/">Conformance Profiles</a> work, we want to:</p>
 <ol>
 <li>Improve UX by enabling users to easily see what features the implementation(GatewayClass) support.</li>
 <li>Standardize features and conformance tests names.</li>
@@ -16575,7 +16576,7 @@ Having this connection between supported features and conformance tests, helps i
 <p>Though it would be nice to have only one place to update, these structs seems to include much more data relevant to the conformance report but not for our use case.</p>
 <p>That said, conformance profiles are still at experimental stage, we could explore the option to create a shared struct that will be used both for the conformance reports and for the GatewayClass status.</p>
 <h3 id="instruct-users-to-read-from-the-future-conformance-profiles-report">Instruct users to read from the future conformance profiles report</h3>
-<p>The current plan for conformance profiles is to also include centralized reporting. (more info in <a href="/geps/gep-1709/">gep-1709</a>)
+<p>The current plan for conformance profiles is to also include centralized reporting. (more info in <a href="//localhost:1313/geps/gep-1709/">gep-1709</a>)
 We could wait for this to be implemented and instruct users to read from that source to determine what features their installed GatewayClass support.</p>
 <p>However, having the supported features published in the GatewayClass Status adds the following values:</p>
 <ul>
@@ -16629,7 +16630,7 @@ We could wait for this to be implemented and instruct users to read from that so
 </ul>
 <h2 id="tl-dr">TL;DR</h2>
 <p>As we extend the Gateway API to have more functionality, we need a standard
-way to represent duration values. The first instance is the <a href="/geps/gep-1742/">HTTPRoute
+way to represent duration values. The first instance is the <a href="//localhost:1313/geps/gep-1742/">HTTPRoute
 Timeouts GEP</a>; doubtless others will arise.</p>
 <h2 id="gateway-api-duration-format">Gateway API Duration Format</h2>
 <p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
@@ -17158,7 +17159,7 @@ based on the SNI identification that should pass the traffic to N load balanced 
 <h2 id="non-goals">Non-Goals</h2>
 <ul>
 <li>Provide an interface for users to define different listeners or ports for the
-<code>TLSRoute</code> - This will be covered by the <a href="/geps/gep-1713/">ListenerSet enhancement</a>.</li>
+<code>TLSRoute</code> - This will be covered by the <a href="//localhost:1313/geps/gep-1713/">ListenerSet enhancement</a>.</li>
 <li>Describe re-encryption capabilities when TLS Termination is being used - This will
 be proposed in <a href="https://github.com/kubernetes-sigs/gateway-api/issues/4274">GEP-4274</a>, extending
 <code>BackendTLSPolicy</code> to allow <code>TLSRoute</code>.</li>
@@ -17331,7 +17332,7 @@ the request and then directed to the backends.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>tls-backend<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">443</span><span style="color:#bbb">
-</span></span></span></code></pre></div><p>A typical <a href="/overview/glossary/#northsouth-traffic">north/south</a>
+</span></span></span></code></pre></div><p>A typical <a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a>
 API request flow for a gateway implemented using a <code>TLSRoute</code> is:</p>
 <ul>
 <li>A client makes a request to <a href="https://foo.example.com">https://foo.example.com</a>.</li>
@@ -17381,7 +17382,7 @@ the request and terminated on the <code>Gateway</code>.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>rtmp-backend<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">12345</span><span style="color:#bbb">
-</span></span></span></code></pre></div><p>A typical <a href="/overview/glossary/#northsouth-traffic">north/south</a>
+</span></span></span></code></pre></div><p>A typical <a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a>
 API request flow for a gateway implemented using both <code>TLSRoute</code> is:</p>
 <ul>
 <li>A client makes a request to <code>rtmps://rtmp.example.com:443</code>.</li>
@@ -17474,7 +17475,7 @@ mode or be terminated on the <code>Gateway</code> and passed unencrypted to the 
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#008000;font-weight:bold">backendRefs</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>rtmp-backend<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">12345</span><span style="color:#bbb">
-</span></span></span></code></pre></div><p>A typical <a href="/overview/glossary/#northsouth-traffic">north/south</a>
+</span></span></span></code></pre></div><p>A typical <a href="//localhost:1313/overview/glossary/#northsouth-traffic">north/south</a>
 API request flow for a gateway implemented using a <code>TLSRoute</code> is:</p>
 <ul>
 <li>A client makes a request to <code>rtmps://rtmp.example.com:443</code>.</li>
@@ -17715,7 +17716,7 @@ the field can be considered too complex.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/2648">#2648</a></li>
 <li>Status: Declined</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <div class="alert alert-danger" role="note">This GEP has been merged back into <a href="https://gateway-api.sigs.k8s.io/geps/gep-713/">GEP-713</a>
 and now it's now obsolete. Please refer the original specification of Metaresources
@@ -17769,7 +17770,7 @@ documentation.</li>
 <p>A Direct Policy Attachment is tightly bound to one instance of a particular
 Kind within a single namespace (or to an instance of a single Kind at cluster scope),
 and only modifies the behavior of the object that matches its binding.</p>
-<p>As an example, the BackendTLSPolicy is specified in <a href="/geps/gep-1897/">GEP-1897</a>,
+<p>As an example, the BackendTLSPolicy is specified in <a href="//localhost:1313/geps/gep-1897/">GEP-1897</a>,
 BackendTLSPolicy - Explicit Backend TLS Connection Configuration. This Policy
 attaches to the Service object and tells Gateway API implementations what TLS
 settings should be used to connect to that Service when it is used as a backend
@@ -17847,7 +17848,7 @@ of other resources, for example:</p>
 <ul>
 <li>Service.Ports.Name</li>
 <li>Gateway.Listeners.Name</li>
-<li>HTTPRoute.Rules.Name (once they are added in <a href="/geps/gep-995/">GEP-995</a>, implementation tracked by <a href="https://github.com/kubernetes-sigs/gateway-api/pull/2985">#2985</a>)</li>
+<li>HTTPRoute.Rules.Name (once they are added in <a href="//localhost:1313/geps/gep-995/">GEP-995</a>, implementation tracked by <a href="https://github.com/kubernetes-sigs/gateway-api/pull/2985">#2985</a>)</li>
 </ul>
 <p>Implementations SHOULD NOT use the name of a <code>backendRef</code> for applying Policy,
 since the <code>backendRef</code> both is not guaranteed to be unique across a Route's rules,
@@ -18014,7 +18015,7 @@ so Gateway is the relevant Ancestor for the status.</p>
 MUST have a separate <code>PolicyAncestorStatus</code> section in the <code>BackendTLSPolicy</code>'s
 <code>status.ancestors</code> stanza, which mandates that entries must be distinct using the
 combination of the <code>AncestorRef</code> and the <code>ControllerName</code> fields as a key.</p>
-<p>See <a href="/geps/gep-1897/">GEP-1897</a> for the exact details. A snapshot of the Go code is
+<p>See <a href="//localhost:1313/geps/gep-1897/">GEP-1897</a> for the exact details. A snapshot of the Go code is
 included here for reference, but the canonical representation is in the code
 itself (at the time of writing, this is in <code>apis/v1alpha2/policy_types.go</code>).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// PolicyAncestorStatus describes the status of a route with respect to an</span>
@@ -18118,7 +18119,7 @@ Gateway <code>spec</code>, this is an example of a non-field Policy.</p>
 Gateway itself, rather than fields or behavior associated with Routes attached
 to that Gateway.</p>
 <h3 id="backendtlspolicy">BackendTLSPolicy</h3>
-<p>BackendTLSPolicy, introduced in <a href="/geps/gep-1897/">GEP-1897</a>
+<p>BackendTLSPolicy, introduced in <a href="//localhost:1313/geps/gep-1897/">GEP-1897</a>
 allows backends to set the TLS details that a Gateway implementation must use
 to connect to that backend.</p>
 <p>It does this using a Direct Attached Policy that attaches to a Service.</p>
@@ -18144,7 +18145,7 @@ to connect to that backend.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/2649">#2649</a></li>
 <li>Status: Declined</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <div class="alert alert-danger" role="note">This GEP has been merged back into <a href="https://gateway-api.sigs.k8s.io/geps/gep-713/">GEP-713</a>
 and now it's now obsolete. Please refer the original specification of Metaresources
@@ -19044,7 +19045,7 @@ up for discussion.</p>
 <li>Type: Memorandum</li>
 <li>Status: Accepted</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>This GEP clarifies some details about GEPs, and adds relationships and a new
 status.</p>
@@ -19060,7 +19061,7 @@ status.</p>
 <p>As part of preparing for work to split up GEP-713, we (the Gateway API and GAMMA
 maintainers) have noticed a few shortcomings in our GEP process.</p>
 <p>In particular, we have some GEPs that are very different to other GEPs.
-<a href="/geps/gep-1324/">GEP-1324</a> is a good example,
+<a href="//localhost:1313/geps/gep-1324/">GEP-1324</a> is a good example,
 as it lays out the general agreement and use cases for the GAMMA initiative, but
 has no firm deliverables of its own. In fact, its main purpose was to ensure
 that the community was in agreement on the language around and scope of the
@@ -19068,11 +19069,11 @@ problem of representing Mesh config using Gateway API primitives. Essentially,
 it lays out a shared understanding of the problem space, as a basis for further
 work (in the form of subsequent GEPs). However, our current GEP system of checklists
 for graduating levels fits this type of GEP poorly.</p>
-<p>Additionally, we've had two GEPs moved to Declined (<a href="/geps/gep-735/">GEP-735: TCP and UDP address
+<p>Additionally, we've had two GEPs moved to Declined (<a href="//localhost:1313/geps/gep-735/">GEP-735: TCP and UDP address
 matching</a> and
-<a href="/geps/gep-1282/">GEP-1282: Describing Backend Properties</a>).
+<a href="//localhost:1313/geps/gep-1282/">GEP-1282: Describing Backend Properties</a>).
 In the case of GEP-1282, we now have a replacement GEP,
-<a href="/geps/gep-1897/">GEP-1897: BackendTLSPolicy</a>
+<a href="//localhost:1313/geps/gep-1897/">GEP-1897: BackendTLSPolicy</a>
 which obsoletes the older GEP. But we have no way of representing this
 relationship (or any other, in fact) between GEPs at the moment.</p>
 <p>With these previous two changes, the addition of a metadata YAML file, similar
@@ -19211,7 +19212,7 @@ optimal views for Gateway API resources.</li>
 </li>
 <li>Complex policy attachment management:
 <ul>
-<li>As described in <a href="/geps/gep-713/">GEP-713</a>,
+<li>As described in <a href="//localhost:1313/geps/gep-713/">GEP-713</a>,
 policies present a valuable mechanism for expanding the capabilities of
 Gateway API resources. However, discoverability poses a challenge due to
 the absence of a clear connection between resources and their associated
@@ -19613,12 +19614,12 @@ resource.</li>
 <li>Investigate the feasibility and any advantages of using Graphviz or webview
 for visualizing data and presenting information in a visually appealing
 manner.</li>
-<li>Evaluate how gwctl can be extended to support <a href="/overview/mesh/">Mesh use
+<li>Evaluate how gwctl can be extended to support <a href="//localhost:1313/overview/mesh/">Mesh use
 cases</a></li>
 </ul>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="/geps/gep-713/">GEP-713: Metaresources and Policy
+<li><a href="//localhost:1313/geps/gep-713/">GEP-713: Metaresources and Policy
 Attachment</a></li>
 </ul>
 <h2 id="sample-outputs">Sample outputs</h2>
@@ -19883,7 +19884,7 @@ DirectlyAttachedPolicies:
 <p>This GEP aims to define high level TLS terminology and structure within Gateway
 API to ensure that all our independent proposals related to TLS result in a
 coherent set of APIs. This will result in some adjustments to provisional and
-experimental TLS-related GEPs, specifically <a href="/geps/gep-1897/">BackendTLSPolicy</a></p>
+experimental TLS-related GEPs, specifically <a href="//localhost:1313/geps/gep-1897/">BackendTLSPolicy</a></p>
 <h2 id="goals">Goals</h2>
 <ol>
 <li>Define high-level terminology for how we refer to TLS in Gateway API.</li>
@@ -20416,7 +20417,7 @@ an identical field on BackendTLSPolicy.</p>
 </ul>
 <h2 id="references">References</h2>
 <p>This is a natural continuation of
-<a href="/geps/gep-2907/">GEP-2907</a>, the memorandum GEP
+<a href="//localhost:1313/geps/gep-2907/">GEP-2907</a>, the memorandum GEP
 that provided the overall vision for where TLS configuration should fit
 throughout Gateway API.</p>
 
@@ -20440,16 +20441,16 @@ throughout Gateway API.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3171">#3171</a></li>
 <li>Status: Standard</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
-<p>Enhance the existing <a href="/guides/user-guides/http-request-mirroring/">Request Mirroring</a> feature by allowing users to specify a percentage of requests they'd like mirrored.</p>
+<p>Enhance the existing <a href="//localhost:1313/guides/user-guides/http-request-mirroring/">Request Mirroring</a> feature by allowing users to specify a percentage of requests they'd like mirrored.</p>
 <h2 id="goals">Goals</h2>
 <p>Enable percentage-based request mirroring with Gateway and Gateway for mesh APIs.</p>
 <h2 id="scope">Scope</h2>
 <!-- TODO(https://github.com/kubernetes-sigs/gateway-api/issues/3514) Add GRPCRoute supportedFeatures and coverage -->
 <p>The scope of this GEP is to add support for this feature in both HTTPRoute and GRPCRoute</p>
 <h2 id="introduction">Introduction</h2>
-<p><a href="/guides/user-guides/http-request-mirroring/">Request Mirroring</a> is a feature that allows a user to mirror requests going to some backend A along to some other specified backend B. Right now Request Mirroring is an all or nothing feature – either 100% of request are mirrored, or 0% are. Percentage-based Request Mirroring will allow users to specify a percentage of requests they'd like mirrored as opposed to every single request.</p>
+<p><a href="//localhost:1313/guides/user-guides/http-request-mirroring/">Request Mirroring</a> is a feature that allows a user to mirror requests going to some backend A along to some other specified backend B. Right now Request Mirroring is an all or nothing feature – either 100% of request are mirrored, or 0% are. Percentage-based Request Mirroring will allow users to specify a percentage of requests they'd like mirrored as opposed to every single request.</p>
 <p>This feature is already <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#envoy-v3-api-msg-config-route-v3-routeaction-requestmirrorpolicy">supported by Envoy</a>, so adding it for the Gateway API would enable better integration between the two products. There's also an existing user desire for this feature on the <a href="https://www.haproxy.com/blog/haproxy-traffic-mirroring-for-real-world-testing">HAProxy side</a> and <a href="https://alex.dzyoba.com/blog/nginx-mirror/">NGINX side</a>. Since Request Mirroring is already supported by the Gateway API, Percentage-based Request Mirroring would a clear improvement on this preexisting feature.</p>
 <h2 id="existing-support-in-implementations">Existing Support in Implementations</h2>
 <table>
@@ -20647,7 +20648,7 @@ throughout Gateway API.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3388">#3388</a></li>
 <li>Status: Experimental</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>To allow configuration of a &quot;retry budget&quot; across all endpoints of a destination service, preventing additional client-side retries when the percentage of the active request load consisting of retries reaches a certain threshold.</p>
 <h2 id="goals">Goals</h2>
@@ -20970,7 +20971,7 @@ and Host header match the Listener hostname, it MUST clearly document that.
 <p>In practice we can end up with an implementation that misroutes requests when a
 Gateway is configured using certificates that use multiple or wildcard SANs.</p>
 <h3 id="example">Example</h3>
-<p>The following configuration (<a href="/guides/user-guides/tls/#wildcard-tls-listeners">from the Gateway API
+<p>The following configuration (<a href="//localhost:1313/guides/user-guides/tls/#wildcard-tls-listeners">from the Gateway API
 documentation</a>)
 illustrates the problem:</p>
 <pre tabindex="0"><code>apiVersion: gateway.networking.k8s.io/v1
@@ -21012,13 +21013,13 @@ Listener violates the intent of the configuration, and routing via the
 negotiated with the other Listener’s certificate.</p>
 <p>Mapping a request to a Listener matters if the Gateway configuration has
 different
-<a href="/reference/spec/#httproute">HTTPRoutes</a>
+<a href="//localhost:1313/reference/spec/#httproute">HTTPRoutes</a>
 bound to the different Listeners. It also matters if the Listeners have
 different
-<a href="/reference/spec/#gatewaytlsconfig">GatewayTlsConfigs</a>
+<a href="//localhost:1313/reference/spec/#gatewaytlsconfig">GatewayTlsConfigs</a>
 attached, for example if one Listener uses mutual TLS and the other does not.</p>
 <h3 id="interaction-with-client-cert-validation">Interaction with Client Cert Validation</h3>
-<p><a href="/geps/gep-91/">GEP-91</a> introduced Client
+<p><a href="//localhost:1313/geps/gep-91/">GEP-91</a> introduced Client
 Certificate Validation to Gateway Listeners as a new experimental concept. If an
 implementation is unable to properly isolate HTTPS listeners, this could result
 in this Client Cert Validation being bypassed. Before this feature can graduate
@@ -21075,11 +21076,11 @@ doc</a></p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3779">#3779</a></li>
 <li>Status: Implementable</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="tldr">TLDR</h2>
 <p>Provide a method for configuring Gateway API Mesh implementations to enforce east-west identity-based Authorization controls. At the time of writing this we leave Authentication for specific implementation and outside of this proposal scope.</p>
 <h2 id="goals">Goals</h2>
-<p>(Using the <a href="/overview/concepts/roles-and-personas/">Gateway API Personas</a>)</p>
+<p>(Using the <a href="//localhost:1313/overview/concepts/roles-and-personas/">Gateway API Personas</a>)</p>
 <ul>
 <li>
 <p>A way for Ana the Application Developer to configure a Gateway API for Mesh implementation to enforce authorization policy that <strong>allows</strong> identity or multiple identities to talk with some set (could be namespace or more granular) of the workloads she controls.</p>
@@ -21706,7 +21707,7 @@ Additionally, this also suffers from the same problem of being perceived as an a
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3792">#3792</a></li>
 <li>Status: Provisional</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="user-story">User Story</h2>
 <p><strong><a href="../../concepts/roles-and-personas.md#chihiro">Chihiro</a> and <a href="../../concepts/roles-and-personas/#ian">Ian</a> want a way for out-of-cluster Gateways to be able to
 usefully participate in a GAMMA-compliant in-cluster service mesh.</strong></p>
@@ -21966,7 +21967,7 @@ assumption that we will indeed need a Mesh resource.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3793">#3793</a></li>
 <li>Status: Implementable</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
 &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
 document are to be interpreted as described in BCP 14 (<a href="https://www.rfc-editor.org/rfc/rfc8174">RFC8174</a>) when, and
@@ -22598,7 +22599,7 @@ recreate all her Routes.</p>
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3798">#3798</a></li>
 <li>Status: Deferred</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <h2 id="notes-and-disclaimers">Notes and Disclaimers</h2>
 <ul>
 <li><strong>DEFERRED</strong>: This originally targeted release as <code>Experimental</code> in <a href="https://github.com/kubernetes-sigs/gateway-api/milestone/22">v1.4.0</a>.
@@ -22702,7 +22703,7 @@ be moved to <code>Withdrawn</code>, or moved into the alternatives considered fo
 <li>Issue: <a href="https://github.com/kubernetes-sigs/gateway-api/issues/3949">#3949</a></li>
 <li>Status: Implementable</li>
 </ul>
-<p>(See <a href="/geps/overview/#gep-states">status definitions</a>.)</p>
+<p>(See <a href="//localhost:1313/geps/overview/#gep-states">status definitions</a>.)</p>
 <p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
 &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
 document are to be interpreted as described in BCP 14 (<a href="https://www.rfc-editor.org/rfc/rfc8174">RFC8174</a>) when, and
@@ -23368,7 +23369,7 @@ implement shall be left open-ended until <em>&quot;What?&quot;</em> and <em>&quo
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

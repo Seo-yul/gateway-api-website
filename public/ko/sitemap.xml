@@ -2,1933 +2,2080 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/ko/guides/getting-started/</loc>
+    <loc>//localhost:1313/ko/guides/getting-started/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/getting-started/"
+                href="//localhost:1313/guides/getting-started/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/getting-started/"
+                href="//localhost:1313/ko/guides/getting-started/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-routing/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-routing/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-routing/"
+                href="//localhost:1313/guides/user-guides/http-routing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-routing/"
+                href="//localhost:1313/ko/guides/user-guides/http-routing/"
                 />
   </url><url>
-    <loc>/ko/geps/overview/</loc>
+    <loc>//localhost:1313/ko/geps/overview/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/overview/"
+                href="//localhost:1313/geps/overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/overview/"
+                href="//localhost:1313/ko/geps/overview/"
                 />
   </url><url>
-    <loc>/ko/overview/</loc>
+    <loc>//localhost:1313/ko/overview/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/"
+                href="//localhost:1313/overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/"
+                href="//localhost:1313/ko/overview/"
                 />
   </url><url>
-    <loc>/ko/overview/mesh/overview/</loc>
+    <loc>//localhost:1313/ko/overview/mesh/overview/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/mesh/overview/"
+                href="//localhost:1313/overview/mesh/overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/mesh/overview/"
+                href="//localhost:1313/ko/overview/mesh/overview/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/list/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/list/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/list/"
+                href="//localhost:1313/overview/implementations/list/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/list/"
+                href="//localhost:1313/ko/overview/implementations/list/"
                 />
   </url><url>
-    <loc>/ko/overview/introduction/</loc>
+    <loc>//localhost:1313/ko/overview/introduction/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/introduction/"
+                href="//localhost:1313/overview/introduction/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/introduction/"
+                href="//localhost:1313/ko/overview/introduction/"
                 />
   </url><url>
-    <loc>/ko/contributing/how-to-get-involved/</loc>
+    <loc>//localhost:1313/ko/contributing/how-to-get-involved/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/how-to-get-involved/"
+                href="//localhost:1313/contributing/how-to-get-involved/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/how-to-get-involved/"
+                href="//localhost:1313/ko/contributing/how-to-get-involved/"
                 />
   </url><url>
-    <loc>/ko/guides/getting-started/simple-gateway/</loc>
+    <loc>//localhost:1313/ko/guides/getting-started/simple-gateway/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/getting-started/simple-gateway/"
+                href="//localhost:1313/guides/getting-started/simple-gateway/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/getting-started/simple-gateway/"
+                href="//localhost:1313/ko/guides/getting-started/simple-gateway/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-redirect-rewrite/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-redirect-rewrite/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-redirect-rewrite/"
+                href="//localhost:1313/guides/user-guides/http-redirect-rewrite/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-redirect-rewrite/"
+                href="//localhost:1313/ko/guides/user-guides/http-redirect-rewrite/"
                 />
   </url><url>
-    <loc>/ko/geps/list/</loc>
+    <loc>//localhost:1313/ko/geps/list/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/list/"
+                href="//localhost:1313/geps/list/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/list/"
+                href="//localhost:1313/ko/geps/list/"
                 />
   </url><url>
-    <loc>/ko/guides/</loc>
+    <loc>//localhost:1313/ko/guides/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/"
+                href="//localhost:1313/guides/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/"
+                href="//localhost:1313/ko/guides/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/"
+                href="//localhost:1313/guides/user-guides/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/"
+                href="//localhost:1313/ko/guides/user-guides/"
                 />
   </url><url>
-    <loc>/ko/guides/api-design/</loc>
+    <loc>//localhost:1313/ko/guides/api-design/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/api-design/"
+                href="//localhost:1313/guides/api-design/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/api-design/"
+                href="//localhost:1313/ko/guides/api-design/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/"
+                href="//localhost:1313/geps/by-state/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/"
+                href="//localhost:1313/ko/geps/by-state/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-header-modifier/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-header-modifier/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-header-modifier/"
+                href="//localhost:1313/guides/user-guides/http-header-modifier/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-header-modifier/"
+                href="//localhost:1313/ko/guides/user-guides/http-header-modifier/"
                 />
   </url><url>
-    <loc>/ko/guides/getting-started/migrating-from-ingress/</loc>
+    <loc>//localhost:1313/ko/guides/getting-started/migrating-from-ingress/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/getting-started/migrating-from-ingress/"
+                href="//localhost:1313/guides/getting-started/migrating-from-ingress/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/getting-started/migrating-from-ingress/"
+                href="//localhost:1313/ko/guides/getting-started/migrating-from-ingress/"
                 />
   </url><url>
-    <loc>/ko/reference/</loc>
+    <loc>//localhost:1313/ko/reference/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/"
+                href="//localhost:1313/reference/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/"
+                href="//localhost:1313/ko/reference/"
                 />
   </url><url>
-    <loc>/ko/guides/crd-management/</loc>
+    <loc>//localhost:1313/ko/guides/crd-management/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/crd-management/"
+                href="//localhost:1313/guides/crd-management/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/crd-management/"
+                href="//localhost:1313/ko/guides/crd-management/"
                 />
   </url><url>
-    <loc>/ko/geps/</loc>
+    <loc>//localhost:1313/ko/geps/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/"
+                href="//localhost:1313/geps/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/"
+                href="//localhost:1313/ko/geps/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/traffic-splitting/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/traffic-splitting/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/traffic-splitting/"
+                href="//localhost:1313/guides/user-guides/traffic-splitting/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/traffic-splitting/"
+                href="//localhost:1313/ko/guides/user-guides/traffic-splitting/"
                 />
   </url><url>
-    <loc>/ko/guides/getting-started/migrating-from-ingress-nginx/</loc>
+    <loc>//localhost:1313/ko/guides/getting-started/migrating-from-ingress-nginx/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/getting-started/migrating-from-ingress-nginx/"
+                href="//localhost:1313/guides/getting-started/migrating-from-ingress-nginx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/getting-started/migrating-from-ingress-nginx/"
+                href="//localhost:1313/ko/guides/getting-started/migrating-from-ingress-nginx/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-request-mirroring/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-request-mirroring/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-request-mirroring/"
+                href="//localhost:1313/guides/user-guides/http-request-mirroring/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-request-mirroring/"
+                href="//localhost:1313/ko/guides/user-guides/http-request-mirroring/"
                 />
   </url><url>
-    <loc>/ko/guides/implementers/</loc>
+    <loc>//localhost:1313/ko/guides/implementers/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/implementers/"
+                href="//localhost:1313/guides/implementers/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/implementers/"
+                href="//localhost:1313/ko/guides/implementers/"
                 />
   </url><url>
-    <loc>/ko/contributing/</loc>
+    <loc>//localhost:1313/ko/contributing/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/"
+                href="//localhost:1313/contributing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/"
+                href="//localhost:1313/ko/contributing/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-query-param-matching/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-query-param-matching/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-query-param-matching/"
+                href="//localhost:1313/guides/user-guides/http-query-param-matching/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-query-param-matching/"
+                href="//localhost:1313/ko/guides/user-guides/http-query-param-matching/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-method-matching/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-method-matching/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-method-matching/"
+                href="//localhost:1313/guides/user-guides/http-method-matching/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-method-matching/"
+                href="//localhost:1313/ko/guides/user-guides/http-method-matching/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-timeouts/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-timeouts/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-timeouts/"
+                href="//localhost:1313/guides/user-guides/http-timeouts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-timeouts/"
+                href="//localhost:1313/ko/guides/user-guides/http-timeouts/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/http-cors/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/http-cors/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/http-cors/"
+                href="//localhost:1313/guides/user-guides/http-cors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/http-cors/"
+                href="//localhost:1313/ko/guides/user-guides/http-cors/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/api-overview/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/api-overview/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/api-overview/"
+                href="//localhost:1313/overview/concepts/api-overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/api-overview/"
+                href="//localhost:1313/ko/overview/concepts/api-overview/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/"
+                href="//localhost:1313/reference/api-types/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/"
+                href="//localhost:1313/ko/reference/api-types/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/policy/backendtlspolicy/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/policy/backendtlspolicy/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/policy/backendtlspolicy/"
+                href="//localhost:1313/reference/api-types/policy/backendtlspolicy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/policy/backendtlspolicy/"
+                href="//localhost:1313/ko/reference/api-types/policy/backendtlspolicy/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/multiple-ns/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/multiple-ns/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/multiple-ns/"
+                href="//localhost:1313/guides/user-guides/multiple-ns/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/multiple-ns/"
+                href="//localhost:1313/ko/guides/user-guides/multiple-ns/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/development/</loc>
+    <loc>//localhost:1313/ko/reference/spec/development/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/development/"
+                href="//localhost:1313/reference/spec/development/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/development/"
+                href="//localhost:1313/ko/reference/spec/development/"
                 />
   </url><url>
-    <loc>/ko/overview/mesh/gamma/</loc>
+    <loc>//localhost:1313/ko/overview/mesh/gamma/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/mesh/gamma/"
+                href="//localhost:1313/overview/mesh/gamma/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/mesh/gamma/"
+                href="//localhost:1313/ko/overview/mesh/gamma/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/gateway/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/gateway/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/gateway/"
+                href="//localhost:1313/reference/api-types/gateway/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/gateway/"
+                href="//localhost:1313/ko/reference/api-types/gateway/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/standard/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/standard/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/standard/"
+                href="//localhost:1313/geps/by-state/standard/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/standard/"
+                href="//localhost:1313/ko/geps/by-state/standard/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/development/spec/</loc>
+    <loc>//localhost:1313/ko/reference/spec/development/spec/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/development/spec/"
+                href="//localhost:1313/reference/spec/development/spec/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/development/spec/"
+                href="//localhost:1313/ko/reference/spec/development/spec/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.4/spec/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.4/spec/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.4/spec/"
+                href="//localhost:1313/reference/spec/v1.4/spec/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.4/spec/"
+                href="//localhost:1313/ko/reference/spec/v1.4/spec/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.5/spec/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.5/spec/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.5/spec/"
+                href="//localhost:1313/reference/spec/v1.5/spec/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.5/spec/"
+                href="//localhost:1313/ko/reference/spec/v1.5/spec/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/v1.4/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/v1.4/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/v1.4/"
+                href="//localhost:1313/overview/implementations/comparisons/v1.4/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/v1.4/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/v1.4/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/"
+                href="//localhost:1313/overview/concepts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/"
+                href="//localhost:1313/ko/overview/concepts/"
                 />
   </url><url>
-    <loc>/ko/contributing/devguide/</loc>
+    <loc>//localhost:1313/ko/contributing/devguide/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/devguide/"
+                href="//localhost:1313/contributing/devguide/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/devguide/"
+                href="//localhost:1313/ko/contributing/devguide/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/wizard/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/wizard/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/wizard/"
+                href="//localhost:1313/overview/implementations/wizard/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/wizard/"
+                href="//localhost:1313/ko/overview/implementations/wizard/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/tls/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/tls/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/tls/"
+                href="//localhost:1313/guides/user-guides/tls/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/tls/"
+                href="//localhost:1313/ko/guides/user-guides/tls/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/tls-routing/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/tls-routing/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/tls-routing/"
+                href="//localhost:1313/guides/user-guides/tls-routing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/tls-routing/"
+                href="//localhost:1313/ko/guides/user-guides/tls-routing/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/tcp/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/tcp/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/tcp/"
+                href="//localhost:1313/guides/user-guides/tcp/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/tcp/"
+                href="//localhost:1313/ko/guides/user-guides/tcp/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/grpc-routing/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/grpc-routing/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/grpc-routing/"
+                href="//localhost:1313/guides/user-guides/grpc-routing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/grpc-routing/"
+                href="//localhost:1313/ko/guides/user-guides/grpc-routing/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/backend-protocol/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/backend-protocol/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/backend-protocol/"
+                href="//localhost:1313/guides/user-guides/backend-protocol/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/backend-protocol/"
+                href="//localhost:1313/ko/guides/user-guides/backend-protocol/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/infrastructure/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/infrastructure/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/infrastructure/"
+                href="//localhost:1313/guides/user-guides/infrastructure/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/infrastructure/"
+                href="//localhost:1313/ko/guides/user-guides/infrastructure/"
                 />
   </url><url>
-    <loc>/ko/guides/user-guides/listener-set/</loc>
+    <loc>//localhost:1313/ko/guides/user-guides/listener-set/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/guides/user-guides/listener-set/"
+                href="//localhost:1313/guides/user-guides/listener-set/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/guides/user-guides/listener-set/"
+                href="//localhost:1313/ko/guides/user-guides/listener-set/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/</loc>
+    <loc>//localhost:1313/ko/reference/spec/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/"
+                href="//localhost:1313/reference/spec/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/"
+                href="//localhost:1313/ko/reference/spec/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/policy/backendtrafficpolicy/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/policy/backendtrafficpolicy/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/policy/backendtrafficpolicy/"
+                href="//localhost:1313/reference/api-types/policy/backendtrafficpolicy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/policy/backendtrafficpolicy/"
+                href="//localhost:1313/ko/reference/api-types/policy/backendtrafficpolicy/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/development/specx/</loc>
+    <loc>//localhost:1313/ko/reference/spec/development/specx/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/development/specx/"
+                href="//localhost:1313/reference/spec/development/specx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/development/specx/"
+                href="//localhost:1313/ko/reference/spec/development/specx/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.4/specx/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.4/specx/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.4/specx/"
+                href="//localhost:1313/reference/spec/v1.4/specx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.4/specx/"
+                href="//localhost:1313/ko/reference/spec/v1.4/specx/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.5/specx/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.5/specx/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.5/specx/"
+                href="//localhost:1313/reference/spec/v1.5/specx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.5/specx/"
+                href="//localhost:1313/ko/reference/spec/v1.5/specx/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/gatewayclass/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/gatewayclass/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/gatewayclass/"
+                href="//localhost:1313/reference/api-types/gatewayclass/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/gatewayclass/"
+                href="//localhost:1313/ko/reference/api-types/gatewayclass/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/memorandum/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/memorandum/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/memorandum/"
+                href="//localhost:1313/geps/by-state/memorandum/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/memorandum/"
+                href="//localhost:1313/ko/geps/by-state/memorandum/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/v1.3/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/v1.3/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/v1.3/"
+                href="//localhost:1313/overview/implementations/comparisons/v1.3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/v1.3/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/v1.3/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.5/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.5/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.5/"
+                href="//localhost:1313/reference/spec/v1.5/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.5/"
+                href="//localhost:1313/ko/reference/spec/v1.5/"
                 />
   </url><url>
-    <loc>/ko/contributing/style-guide/</loc>
+    <loc>//localhost:1313/ko/contributing/style-guide/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/style-guide/"
+                href="//localhost:1313/contributing/style-guide/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/style-guide/"
+                href="//localhost:1313/ko/contributing/style-guide/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/troubleshooting/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/troubleshooting/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/troubleshooting/"
+                href="//localhost:1313/overview/concepts/troubleshooting/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/troubleshooting/"
+                href="//localhost:1313/ko/overview/concepts/troubleshooting/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/"
+                href="//localhost:1313/overview/implementations/comparisons/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/"
                 />
   </url><url>
-    <loc>/ko/overview/mesh/</loc>
+    <loc>//localhost:1313/ko/overview/mesh/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/mesh/"
+                href="//localhost:1313/overview/mesh/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/mesh/"
+                href="//localhost:1313/ko/overview/mesh/"
                 />
   </url><url>
-    <loc>/ko/overview/mesh/service-facets/</loc>
+    <loc>//localhost:1313/ko/overview/mesh/service-facets/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/mesh/service-facets/"
+                href="//localhost:1313/overview/mesh/service-facets/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/mesh/service-facets/"
+                href="//localhost:1313/ko/overview/mesh/service-facets/"
                 />
   </url><url>
-    <loc>/ko/contributing/enhancement-requests/</loc>
+    <loc>//localhost:1313/ko/contributing/enhancement-requests/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/enhancement-requests/"
+                href="//localhost:1313/contributing/enhancement-requests/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/enhancement-requests/"
+                href="//localhost:1313/ko/contributing/enhancement-requests/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/experimental/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/experimental/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/experimental/"
+                href="//localhost:1313/geps/by-state/experimental/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/experimental/"
+                href="//localhost:1313/ko/geps/by-state/experimental/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/grpcroute/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/grpcroute/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/grpcroute/"
+                href="//localhost:1313/reference/api-types/grpcroute/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/grpcroute/"
+                href="//localhost:1313/ko/reference/api-types/grpcroute/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/v1.2/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/v1.2/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/v1.2/"
+                href="//localhost:1313/overview/implementations/comparisons/v1.2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/v1.2/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/v1.2/"
                 />
   </url><url>
-    <loc>/ko/reference/spec/v1.4/</loc>
+    <loc>//localhost:1313/ko/reference/spec/v1.4/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/spec/v1.4/"
+                href="//localhost:1313/reference/spec/v1.4/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/spec/v1.4/"
+                href="//localhost:1313/ko/reference/spec/v1.4/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/"
+                href="//localhost:1313/overview/implementations/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/"
+                href="//localhost:1313/ko/overview/implementations/"
                 />
   </url><url>
-    <loc>/ko/reference/policy-attachment/</loc>
+    <loc>//localhost:1313/ko/reference/policy-attachment/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/policy-attachment/"
+                href="//localhost:1313/reference/policy-attachment/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/policy-attachment/"
+                href="//localhost:1313/ko/reference/policy-attachment/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/conformance/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/conformance/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/conformance/"
+                href="//localhost:1313/overview/concepts/conformance/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/conformance/"
+                href="//localhost:1313/ko/overview/concepts/conformance/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/httproute/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/httproute/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/httproute/"
+                href="//localhost:1313/reference/api-types/httproute/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/httproute/"
+                href="//localhost:1313/ko/reference/api-types/httproute/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/implementable/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/implementable/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/implementable/"
+                href="//localhost:1313/geps/by-state/implementable/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/implementable/"
+                href="//localhost:1313/ko/geps/by-state/implementable/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/v1.1/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/v1.1/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/v1.1/"
+                href="//localhost:1313/overview/implementations/comparisons/v1.1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/v1.1/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/v1.1/"
                 />
   </url><url>
-    <loc>/ko/contributing/release-cycle/</loc>
+    <loc>//localhost:1313/ko/contributing/release-cycle/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/release-cycle/"
+                href="//localhost:1313/contributing/release-cycle/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/release-cycle/"
+                href="//localhost:1313/ko/contributing/release-cycle/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/roles-and-personas/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/roles-and-personas/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/roles-and-personas/"
+                href="//localhost:1313/overview/concepts/roles-and-personas/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/roles-and-personas/"
+                href="//localhost:1313/ko/overview/concepts/roles-and-personas/"
                 />
   </url><url>
-    <loc>/ko/geps/by-state/provisional/</loc>
+    <loc>//localhost:1313/ko/geps/by-state/provisional/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/by-state/provisional/"
+                href="//localhost:1313/geps/by-state/provisional/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/by-state/provisional/"
+                href="//localhost:1313/ko/geps/by-state/provisional/"
                 />
   </url><url>
-    <loc>/ko/overview/implementations/comparisons/v1.0/</loc>
+    <loc>//localhost:1313/ko/overview/implementations/comparisons/v1.0/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/implementations/comparisons/v1.0/"
+                href="//localhost:1313/overview/implementations/comparisons/v1.0/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/implementations/comparisons/v1.0/"
+                href="//localhost:1313/ko/overview/implementations/comparisons/v1.0/"
                 />
   </url><url>
-    <loc>/ko/contributing/contributor-ladder/</loc>
+    <loc>//localhost:1313/ko/contributing/contributor-ladder/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/contributing/contributor-ladder/"
+                href="//localhost:1313/contributing/contributor-ladder/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/contributing/contributor-ladder/"
+                href="//localhost:1313/ko/contributing/contributor-ladder/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/security/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/security/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/security/"
+                href="//localhost:1313/overview/concepts/security/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/security/"
+                href="//localhost:1313/ko/overview/concepts/security/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/policy/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/policy/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/policy/"
+                href="//localhost:1313/reference/api-types/policy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/policy/"
+                href="//localhost:1313/ko/reference/api-types/policy/"
                 />
   </url><url>
-    <loc>/ko/overview/faq/</loc>
+    <loc>//localhost:1313/ko/overview/faq/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/faq/"
+                href="//localhost:1313/overview/faq/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/faq/"
+                href="//localhost:1313/ko/overview/faq/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/referencegrant/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/referencegrant/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/referencegrant/"
+                href="//localhost:1313/reference/api-types/referencegrant/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/referencegrant/"
+                href="//localhost:1313/ko/reference/api-types/referencegrant/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/tooling/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/tooling/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/tooling/"
+                href="//localhost:1313/overview/concepts/tooling/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/tooling/"
+                href="//localhost:1313/ko/overview/concepts/tooling/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/tlsroute/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/tlsroute/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/tlsroute/"
+                href="//localhost:1313/reference/api-types/tlsroute/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/tlsroute/"
+                href="//localhost:1313/ko/reference/api-types/tlsroute/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/use-cases/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/use-cases/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/use-cases/"
+                href="//localhost:1313/overview/concepts/use-cases/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/use-cases/"
+                href="//localhost:1313/ko/overview/concepts/use-cases/"
                 />
   </url><url>
-    <loc>/ko/overview/glossary/</loc>
+    <loc>//localhost:1313/ko/overview/glossary/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/glossary/"
+                href="//localhost:1313/overview/glossary/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/glossary/"
+                href="//localhost:1313/ko/overview/glossary/"
                 />
   </url><url>
-    <loc>/ko/reference/api-types/listenerset/</loc>
+    <loc>//localhost:1313/ko/reference/api-types/listenerset/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/reference/api-types/listenerset/"
+                href="//localhost:1313/reference/api-types/listenerset/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/reference/api-types/listenerset/"
+                href="//localhost:1313/ko/reference/api-types/listenerset/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/versioning/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/versioning/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/versioning/"
+                href="//localhost:1313/overview/concepts/versioning/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/versioning/"
+                href="//localhost:1313/ko/overview/concepts/versioning/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/traffic-matching/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/traffic-matching/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/traffic-matching/"
+                href="//localhost:1313/overview/concepts/traffic-matching/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/traffic-matching/"
+                href="//localhost:1313/ko/overview/concepts/traffic-matching/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-91/</loc>
+    <loc>//localhost:1313/ko/geps/gep-91/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-91/"
+                href="//localhost:1313/geps/gep-91/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-91/"
+                href="//localhost:1313/ko/geps/gep-91/"
                 />
   </url><url>
-    <loc>/ko/overview/concepts/hostnames/</loc>
+    <loc>//localhost:1313/ko/overview/concepts/hostnames/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/overview/concepts/hostnames/"
+                href="//localhost:1313/overview/concepts/hostnames/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/overview/concepts/hostnames/"
+                href="//localhost:1313/ko/overview/concepts/hostnames/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-696/</loc>
+    <loc>//localhost:1313/ko/geps/gep-696/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-696/"
+                href="//localhost:1313/geps/gep-696/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-696/"
+                href="//localhost:1313/ko/geps/gep-696/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-709/</loc>
+    <loc>//localhost:1313/ko/geps/gep-709/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-709/"
+                href="//localhost:1313/geps/gep-709/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-709/"
+                href="//localhost:1313/ko/geps/gep-709/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-713/</loc>
+    <loc>//localhost:1313/ko/geps/gep-713/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-713/"
+                href="//localhost:1313/geps/gep-713/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-713/"
+                href="//localhost:1313/ko/geps/gep-713/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-718/</loc>
+    <loc>//localhost:1313/ko/geps/gep-718/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-718/"
+                href="//localhost:1313/geps/gep-718/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-718/"
+                href="//localhost:1313/ko/geps/gep-718/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-724/</loc>
+    <loc>//localhost:1313/ko/geps/gep-724/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-724/"
+                href="//localhost:1313/geps/gep-724/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-724/"
+                href="//localhost:1313/ko/geps/gep-724/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-726/</loc>
+    <loc>//localhost:1313/ko/geps/gep-726/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-726/"
+                href="//localhost:1313/geps/gep-726/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-726/"
+                href="//localhost:1313/ko/geps/gep-726/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-735/</loc>
+    <loc>//localhost:1313/ko/geps/gep-735/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-735/"
+                href="//localhost:1313/geps/gep-735/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-735/"
+                href="//localhost:1313/ko/geps/gep-735/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-746/</loc>
+    <loc>//localhost:1313/ko/geps/gep-746/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-746/"
+                href="//localhost:1313/geps/gep-746/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-746/"
+                href="//localhost:1313/ko/geps/gep-746/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-820/</loc>
+    <loc>//localhost:1313/ko/geps/gep-820/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-820/"
+                href="//localhost:1313/geps/gep-820/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-820/"
+                href="//localhost:1313/ko/geps/gep-820/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-851/</loc>
+    <loc>//localhost:1313/ko/geps/gep-851/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-851/"
+                href="//localhost:1313/geps/gep-851/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-851/"
+                href="//localhost:1313/ko/geps/gep-851/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-917/</loc>
+    <loc>//localhost:1313/ko/geps/gep-917/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-917/"
+                href="//localhost:1313/geps/gep-917/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-917/"
+                href="//localhost:1313/ko/geps/gep-917/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-922/</loc>
+    <loc>//localhost:1313/ko/geps/gep-922/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-922/"
+                href="//localhost:1313/geps/gep-922/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-922/"
+                href="//localhost:1313/ko/geps/gep-922/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-957/</loc>
+    <loc>//localhost:1313/ko/geps/gep-957/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-957/"
+                href="//localhost:1313/geps/gep-957/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-957/"
+                href="//localhost:1313/ko/geps/gep-957/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-995/</loc>
+    <loc>//localhost:1313/ko/geps/gep-995/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-995/"
+                href="//localhost:1313/geps/gep-995/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-995/"
+                href="//localhost:1313/ko/geps/gep-995/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1016/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1016/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1016/"
+                href="//localhost:1313/geps/gep-1016/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1016/"
+                href="//localhost:1313/ko/geps/gep-1016/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1282/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1282/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1282/"
+                href="//localhost:1313/geps/gep-1282/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1282/"
+                href="//localhost:1313/ko/geps/gep-1282/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1294/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1294/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1294/"
+                href="//localhost:1313/geps/gep-1294/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1294/"
+                href="//localhost:1313/ko/geps/gep-1294/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1323/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1323/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1323/"
+                href="//localhost:1313/geps/gep-1323/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1323/"
+                href="//localhost:1313/ko/geps/gep-1323/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1324/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1324/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1324/"
+                href="//localhost:1313/geps/gep-1324/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1324/"
+                href="//localhost:1313/ko/geps/gep-1324/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1364/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1364/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1364/"
+                href="//localhost:1313/geps/gep-1364/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1364/"
+                href="//localhost:1313/ko/geps/gep-1364/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1494/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1494/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1494/"
+                href="//localhost:1313/geps/gep-1494/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1494/"
+                href="//localhost:1313/ko/geps/gep-1494/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1619/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1619/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1619/"
+                href="//localhost:1313/geps/gep-1619/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1619/"
+                href="//localhost:1313/ko/geps/gep-1619/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1651/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1651/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1651/"
+                href="//localhost:1313/geps/gep-1651/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1651/"
+                href="//localhost:1313/ko/geps/gep-1651/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1686/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1686/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1686/"
+                href="//localhost:1313/geps/gep-1686/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1686/"
+                href="//localhost:1313/ko/geps/gep-1686/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1709/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1709/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1709/"
+                href="//localhost:1313/geps/gep-1709/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1709/"
+                href="//localhost:1313/ko/geps/gep-1709/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1713/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1713/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1713/"
+                href="//localhost:1313/geps/gep-1713/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1713/"
+                href="//localhost:1313/ko/geps/gep-1713/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1731/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1731/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1731/"
+                href="//localhost:1313/geps/gep-1731/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1731/"
+                href="//localhost:1313/ko/geps/gep-1731/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1742/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1742/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1742/"
+                href="//localhost:1313/geps/gep-1742/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1742/"
+                href="//localhost:1313/ko/geps/gep-1742/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1748/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1748/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1748/"
+                href="//localhost:1313/geps/gep-1748/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1748/"
+                href="//localhost:1313/ko/geps/gep-1748/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1762/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1762/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1762/"
+                href="//localhost:1313/geps/gep-1762/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1762/"
+                href="//localhost:1313/ko/geps/gep-1762/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1767/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1767/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1767/"
+                href="//localhost:1313/geps/gep-1767/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1767/"
+                href="//localhost:1313/ko/geps/gep-1767/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1867/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1867/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1867/"
+                href="//localhost:1313/geps/gep-1867/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1867/"
+                href="//localhost:1313/ko/geps/gep-1867/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1897/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1897/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1897/"
+                href="//localhost:1313/geps/gep-1897/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1897/"
+                href="//localhost:1313/ko/geps/gep-1897/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-1911/</loc>
+    <loc>//localhost:1313/ko/geps/gep-1911/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-1911/"
+                href="//localhost:1313/geps/gep-1911/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-1911/"
+                href="//localhost:1313/ko/geps/gep-1911/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2162/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2162/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2162/"
+                href="//localhost:1313/geps/gep-2162/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2162/"
+                href="//localhost:1313/ko/geps/gep-2162/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2257/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2257/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2257/"
+                href="//localhost:1313/geps/gep-2257/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2257/"
+                href="//localhost:1313/ko/geps/gep-2257/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2627/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2627/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2627/"
+                href="//localhost:1313/geps/gep-2627/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2627/"
+                href="//localhost:1313/ko/geps/gep-2627/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2643/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2643/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2643/"
+                href="//localhost:1313/geps/gep-2643/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2643/"
+                href="//localhost:1313/ko/geps/gep-2643/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2648/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2648/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2648/"
+                href="//localhost:1313/geps/gep-2648/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2648/"
+                href="//localhost:1313/ko/geps/gep-2648/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2649/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2649/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2649/"
+                href="//localhost:1313/geps/gep-2649/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2649/"
+                href="//localhost:1313/ko/geps/gep-2649/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2659/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2659/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2659/"
+                href="//localhost:1313/geps/gep-2659/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2659/"
+                href="//localhost:1313/ko/geps/gep-2659/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2722/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2722/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2722/"
+                href="//localhost:1313/geps/gep-2722/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2722/"
+                href="//localhost:1313/ko/geps/gep-2722/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-2907/</loc>
+    <loc>//localhost:1313/ko/geps/gep-2907/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-2907/"
+                href="//localhost:1313/geps/gep-2907/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-2907/"
+                href="//localhost:1313/ko/geps/gep-2907/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3155/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3155/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3155/"
+                href="//localhost:1313/geps/gep-3155/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3155/"
+                href="//localhost:1313/ko/geps/gep-3155/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3171/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3171/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3171/"
+                href="//localhost:1313/geps/gep-3171/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3171/"
+                href="//localhost:1313/ko/geps/gep-3171/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3388/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3388/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3388/"
+                href="//localhost:1313/geps/gep-3388/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3388/"
+                href="//localhost:1313/ko/geps/gep-3388/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3567/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3567/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3567/"
+                href="//localhost:1313/geps/gep-3567/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3567/"
+                href="//localhost:1313/ko/geps/gep-3567/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3779/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3779/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3779/"
+                href="//localhost:1313/geps/gep-3779/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3779/"
+                href="//localhost:1313/ko/geps/gep-3779/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3792/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3792/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3792/"
+                href="//localhost:1313/geps/gep-3792/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3792/"
+                href="//localhost:1313/ko/geps/gep-3792/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3793/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3793/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3793/"
+                href="//localhost:1313/geps/gep-3793/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3793/"
+                href="//localhost:1313/ko/geps/gep-3793/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3798/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3798/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3798/"
+                href="//localhost:1313/geps/gep-3798/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3798/"
+                href="//localhost:1313/ko/geps/gep-3798/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-3949/</loc>
+    <loc>//localhost:1313/ko/geps/gep-3949/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-3949/"
+                href="//localhost:1313/geps/gep-3949/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-3949/"
+                href="//localhost:1313/ko/geps/gep-3949/"
                 />
   </url><url>
-    <loc>/ko/geps/gep-4152/</loc>
+    <loc>//localhost:1313/ko/geps/gep-4152/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/geps/gep-4152/"
+                href="//localhost:1313/geps/gep-4152/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/geps/gep-4152/"
+                href="//localhost:1313/ko/geps/gep-4152/"
                 />
   </url><url>
-    <loc>/ko/</loc>
-    <lastmod>2026-03-13T23:54:40+09:00</lastmod>
+    <loc>//localhost:1313/ko/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/"
+                href="//localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="/ko/"
+                href="//localhost:1313/ko/"
                 />
   </url><url>
-    <loc>/ko/docs/</loc>
-    <lastmod>2026-03-13T23:54:40+09:00</lastmod>
+    <loc>//localhost:1313/ko/docs/</loc>
+    <lastmod>2026-03-14T21:38:33+09:00</lastmod>
     <priority>0.75</priority>
   </url>
 </urlset>

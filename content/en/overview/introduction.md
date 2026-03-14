@@ -59,7 +59,7 @@ resources), in the same cluster.
 [gateway controller]: /overview/glossary/#gateway-controller
 [gateway-attachment]: /overview/concepts/api-overview/#attaching-routes-to-gateways
 
-## Gateway API for Service Mesh (the [GAMMA initiative]({{< ref "/overview/mesh/gamma" >}})) {#for-service-mesh}
+## Gateway API for Service Mesh (the GAMMA initiative) {#for-service-mesh}
 
 {{< channel-version channel="standard" version="v1.1.0" >}}
 **Standard Channel since v1.1.0**

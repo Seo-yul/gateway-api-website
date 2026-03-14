@@ -1,10 +1,10 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<link rel="canonical" type="text/html" href="/guides/user-guides/">
+<link rel="canonical" type="text/html" href="//localhost:1313/guides/user-guides/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -21,7 +21,7 @@
 
 <title>User Guides | Kubernetes Gateway API</title>
 <meta name="description" content="Detailed guides for Gateway API features">
-<meta property="og:url" content="/guides/user-guides/">
+<meta property="og:url" content="//localhost:1313/guides/user-guides/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="User Guides">
   <meta property="og:description" content="Detailed guides for Gateway API features">
@@ -30,6 +30,7 @@
 
   <meta itemprop="name" content="User Guides">
   <meta itemprop="description" content="Detailed guides for Gateway API features">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="User Guides">
   <meta name="twitter:description" content="Detailed guides for Gateway API features">
@@ -37,8 +38,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -284,7 +285,7 @@ This is the multi-page printable view of this section.
     
 	<h1 id="pg-7eeec20ddbc07ff4d7cf628421620696">1 - HTTP Routing</h1>
     <div class="lead">Configuring HTTP routing with HTTPRoute</div>
-	<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> allows you to match on HTTP traffic and
+	<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> allows you to match on HTTP traffic and
 direct it to Kubernetes backends. This guide shows how the HTTPRoute matches
 traffic on host, header, and path fields and forwards it to different
 Kubernetes Services.</p>
@@ -301,9 +302,9 @@ to <code>bar-svc-canary</code></li>
 behavior. There are two HTTPRoute resources that create routing rules on the
 same <code>prod-web</code> Gateway. This illustrates how more than one Route can bind to a
 Gateway which allows Routes to merge on a Gateway as long as they don't
-conflict. For more information on Route merging, refer to the <a href="/reference/api-types/httproute/#merging">HTTPRoute
+conflict. For more information on Route merging, refer to the <a href="//localhost:1313/reference/api-types/httproute/#merging">HTTPRoute
 documentation</a>.</p>
-<p>In order to receive traffic from a <a href="/reference/spec/#gateway">Gateway</a> an <code>HTTPRoute</code> resource
+<p>In order to receive traffic from a <a href="//localhost:1313/reference/spec/#gateway">Gateway</a> an <code>HTTPRoute</code> resource
 must be configured with <code>ParentRefs</code> which reference the parent gateway(s) that it
 should be attached to. The following example shows how the combination
 of <code>Gateway</code> and <code>HTTPRoute</code> would be configured to serve HTTP traffic:</p>
@@ -337,7 +338,7 @@ of <code>Gateway</code> and <code>HTTPRoute</code> would be configured to serve 
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
 </span></span></span></code></pre></div></div>
 </div><span style="color:#bbb">
-</span></span></span></code></pre></div><p>An HTTPRoute can match against a <a href="/reference/spec/#httproutespec">single set of hostnames</a>.
+</span></span></span></code></pre></div><p>An HTTPRoute can match against a <a href="//localhost:1313/reference/spec/#httproutespec">single set of hostnames</a>.
 These hostnames are matched before any other matching within the HTTPRoute takes
 place. Since <code>foo.example.com</code> and <code>bar.example.com</code> are separate hosts with
 different routing requirements, each is deployed as its own HTTPRoute -
@@ -418,15 +419,15 @@ missing or not <code>canary</code> then it'll be forwarded to <code>bar-svc</cod
     
 	<h1 id="pg-61de392f2154ba3ad8816e7bb3d15941">2 - HTTP Path Redirects and Rewrites</h1>
     <div class="lead">Configuring HTTP redirects and URL rewrites with HTTPRoute</div>
-	<p><a href="/reference/api-types/httproute/">HTTPRoute resources</a> can issue redirects to
+	<p><a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resources</a> can issue redirects to
 clients or rewrite paths sent upstream using
-<a href="/reference/api-types/httproute/#filters-optional">filters</a>. This guide shows how
+<a href="//localhost:1313/reference/api-types/httproute/#filters-optional">filters</a>. This guide shows how
 to use these features.</p>
 <p>Note that redirect and rewrite filters are mutually incompatible. Rules cannot
 use both filter types at once.</p>
 <h2 id="redirects">Redirects</h2>
 <p>Redirects return HTTP 3XX responses to a client, instructing it to retrieve a
-different resource. <a href="/reference/spec/#httprequestredirectfilter"><code>RequestRedirect</code> rule
+different resource. <a href="//localhost:1313/reference/spec/#httprequestredirectfilter"><code>RequestRedirect</code> rule
 filters</a>
 instruct Gateways to emit a redirect response to requests matching a filtered
 HTTPRoute rule.</p>
@@ -709,7 +710,7 @@ portion matching <code>matches.path.value</code>. Changing the filter in the abo
 </span></span></span></code></pre></div><p>will result in redirects with <code>location: https://redirect.example/paprika/pinch</code> and <code>location: https://redirect.example/paprika/teaspoon</code> response headers.</p>
 <h2 id="rewrites">Rewrites</h2>
 <p>Rewrites modify components of a client request before proxying it upstream. A
-<a href="/reference/spec/#httpurlrewritefilter"><code>URLRewrite</code>
+<a href="//localhost:1313/reference/spec/#httpurlrewritefilter"><code>URLRewrite</code>
 filter</a>
 can change the upstream request hostname and/or path. For example, the
 following HTTPRoute will accept a request for
@@ -817,10 +818,10 @@ request <code>https://elsewhere.example/fennel/smidgen</code> upstream.</p>
     
 	<h1 id="pg-8bcad9daed4bf12b043379777f13de10">3 - HTTP Header Modifiers</h1>
     <div class="lead">Modifying HTTP request and response headers with HTTPRoute</div>
-	<p><a href="/reference/api-types/httproute/">HTTPRoute resources</a> can modify the headers of HTTP requests and the HTTP responses from clients.
-There are two types of <a href="/reference/api-types/httproute/#filters-optional">filters</a> available to meet these requirements: <code>RequestHeaderModifier</code> and <code>ResponseHeaderModifier</code>.</p>
+	<p><a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resources</a> can modify the headers of HTTP requests and the HTTP responses from clients.
+There are two types of <a href="//localhost:1313/reference/api-types/httproute/#filters-optional">filters</a> available to meet these requirements: <code>RequestHeaderModifier</code> and <code>ResponseHeaderModifier</code>.</p>
 <p>This guide shows how to use these features.</p>
-<p>Note that these features are compatible. HTTP headers of the incoming requests and the headers of their responses can both be modified using a single <a href="/reference/api-types/httproute/">HTTPRoute resource</a>.</p>
+<p>Note that these features are compatible. HTTP headers of the incoming requests and the headers of their responses can both be modified using a single <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a>.</p>
 <h2 id="http-request-header-modifier">HTTP Request Header Modifier</h2>
 <p>HTTP header modification is the process of adding, removing, or modifying HTTP headers in incoming requests.</p>
 <p>To configure HTTP header modification, define a Gateway object with one or more HTTP filters. Each filter specifies a specific modification to make to incoming requests, such as adding a custom header or modifying an existing header.</p>
@@ -895,7 +896,7 @@ There are two types of <a href="/reference/api-types/httproute/#filters-optional
     
 	<h1 id="pg-6063b799d6c707e865314773fdfccde4">4 - HTTP Traffic Splitting</h1>
     <div class="lead">Splitting HTTP traffic between backends for canary and blue-green deployments</div>
-	<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> allows you to specify
+	<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> allows you to specify
 weights to shift traffic between different backends. This is useful for
 splitting traffic during rollouts, canarying changes, or for emergencies.
 The HTTPRoute<code>spec.rules.backendRefs</code> accepts a list of backends that a route
@@ -960,7 +961,7 @@ production user traffic for <code>foo.example.com</code>. The following HTTPRout
 receive 100% of the traffic matched by each of their route rules. A canary
 route rule is used (matching the header <code>traffic=test</code>) to send synthetic test
 traffic before splitting any production user traffic to <code>foo-v2</code>.
-<a href="/reference/spec/#httprouterule">Routing precedence</a>
+<a href="//localhost:1313/reference/spec/#httprouterule">Routing precedence</a>
 ensures that all traffic with the matching host and header
 (the most specific match) will be sent to <code>foo-v2</code>.</p>
 <p><img src="/images/traffic-splitting-1.png" alt="Traffic splitting"></p>
@@ -1074,7 +1075,7 @@ the rollout is deemed final, v1 can be fully decommissioned.</p>
 	
 <div class="alert alert-info" role="note">This feature is part of extended support. For more information on support levels, refer to our <a href="/overview/concepts/conformance/">conformance guide</a>.</div>
 
-<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> can be used to mirror
+<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> can be used to mirror
 requests to multiple backends. This is useful for testing new services with
 production traffic.</p>
 <p>Mirrored requests will only be sent to one single destination endpoint
@@ -1133,7 +1134,7 @@ are only generated from service <code>foo-v1</code>.</p>
 	
 <div class="alert alert-info" role="note">This feature is part of extended support. For more information on support levels, refer to our <a href="/overview/concepts/conformance/">conformance guide</a>.</div>
 
-<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> can be used to match
+<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> can be used to match
 requests based on query parameters. This guide shows how to use this
 functionality.</p>
 <h2 id="matching-requests-based-on-a-single-query-parameter">Matching requests based on a single query parameter</h2>
@@ -1254,7 +1255,7 @@ header matching. The following rules demonstrate this:</p>
 	
 <div class="alert alert-info" role="note">This feature is part of extended support. For more information on support levels, refer to our <a href="/overview/concepts/conformance/">conformance guide</a>.</div>
 
-<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> can be used to match
+<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> can be used to match
 requests based on the HTTP method. This guide shows how to use this
 functionality.</p>
 <h2 id="matching-requests-based-on-the-http-method">Matching requests based on the HTTP method</h2>
@@ -1357,7 +1358,7 @@ of them. The following rule routes traffic to <code>infra-backend-v1</code> if:<
 	
 <div class="alert alert-info" role="note">This feature is part of extended support. For more information on support levels, refer to our <a href="/overview/concepts/conformance/">conformance guide</a>.</div>
 
-<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> can be used to configure
+<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> can be used to configure
 timeouts for HTTP requests. This is useful for preventing long-running requests
 from consuming resources and for providing a better user experience.</p>
 <p>The <code>timeouts</code> field in an <code>HTTPRouteRule</code> can be used to specify a request
@@ -1421,7 +1422,7 @@ return a timeout error.</p>
 <code>v1.5.0</code>. For more information on release channels, refer to our <a href="/overview/concepts/versioning/">versioning
 guide</a>.</details>
 
-<p>The <a href="/reference/api-types/httproute/">HTTPRoute resource</a> can be used to configure
+<p>The <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute resource</a> can be used to configure
 Cross-Origin Resource Sharing (CORS). CORS is a security feature that allows
 or denies web applications running at one domain to make requests for resources
 from a different domain.</p>
@@ -1639,7 +1640,7 @@ to centrally control security without directly involving application teams.</li>
 <p>The logical relationship between Gateway API resources looks like this:</p>
 <p><img src="/images/cross-namespace-routing.svg" alt="Cross-Namespace routing"></p>
 <h2 id="cross-namespace-route-attachment">Cross-namespace Route Attachment</h2>
-<p><a href="/overview/concepts/api-overview/#attaching-routes-to-gateways">Route attachment</a> is an important concept that dictates how Routes
+<p><a href="//localhost:1313/overview/concepts/api-overview/#attaching-routes-to-gateways">Route attachment</a> is an important concept that dictates how Routes
 attach to Gateways and program their routing rules. It is especially relevant
 when there are Routes across Namespaces that share one or more Gateways.
 Gateway and Route attachment is bidirectional - attachment can only succeed if
@@ -1841,9 +1842,9 @@ Gateway that these Routes want to attach to.</p>
 </div><span style="color:#bbb">
 </span></span></span></code></pre></div><p>After these three Routes are deployed, they will all be attached to the
 <code>shared-gateway</code> Gateway. The Gateway merges these Routes into a single flat
-list of routing rules. <a href="/reference/spec/#httprouterule">Routing precedence</a>
+list of routing rules. <a href="//localhost:1313/reference/spec/#httprouterule">Routing precedence</a>
 between these routing rules is determined by most specific match and
-conflicts are handled according to <a href="/guides/api-design/#conflicts">conflict
+conflicts are handled according to <a href="//localhost:1313/guides/api-design/#conflicts">conflict
 resolution</a>. This provides predictable and
 deterministic merging of routing rules between independent users.</p>
 <p>Thanks to cross-Namespace routing, the Foobar Corporation can distribute
@@ -2263,11 +2264,11 @@ could go in here would be TLS version restrictions, or ciphers to use.</p>
     
 	<h1 id="pg-7cc913a3286f64c9bfd22040bd531e1a">12 - TLS Routing</h1>
     <div class="lead">Configuring TLS routing with TLSRoute</div>
-	<p>The <a href="/reference/api-types/tlsroute/">TLSRoute resource</a> allows you to match on TLS
+	<p>The <a href="//localhost:1313/reference/api-types/tlsroute/">TLSRoute resource</a> allows you to match on TLS
 metadata and direct it to Kubernetes backends. This guide shows how the TLSRoute
 matches traffic on hostname and forwards it to different Kubernetes Services,
 using either <code>Passthrough</code> or <code>Terminate</code> TLS modes on the Gateway.</p>
-<p>In order to receive traffic from a <a href="/reference/spec/#gateway">Gateway</a> a TLSRoute resource
+<p>In order to receive traffic from a <a href="//localhost:1313/reference/spec/#gateway">Gateway</a> a TLSRoute resource
 must be configured with <code>ParentRefs</code> which reference the parent gateway(s) that it
 should be attached to. The following example shows how the combination
 of Gateway and TLSRoute would be configured to serve TLS traffic using both
@@ -2296,7 +2297,7 @@ implementation):</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>tls-terminate-certificate<span style="color:#bbb">
 </span></span></span></code></pre></div></div>
 </div><span style="color:#bbb">
-</span></span></span></code></pre></div><p>A TLSRoute can match against a <a href="/reference/spec/#tlsroutespec">single set of hostnames</a>.
+</span></span></span></code></pre></div><p>A TLSRoute can match against a <a href="//localhost:1313/reference/spec/#tlsroutespec">single set of hostnames</a>.
 Since <code>foo.example.com</code> and <code>bar.example.com</code> are separate hosts with
 different routing requirements, each is deployed as its own TLSRoute -
 <code>foo-route</code> and <code>bar-route</code>.</p>
@@ -2368,7 +2369,7 @@ the backend:</p>
 &quot;Experimental&quot; channel of Gateway API. For more information on release
 channels, refer to our <a href="/overview/concepts/versioning/">versioning guide</a>.</div>
 
-<p>Gateway API is designed to work with multiple protocols and <a href="/reference/spec/#tcproute">TCPRoute</a>
+<p>Gateway API is designed to work with multiple protocols and <a href="//localhost:1313/reference/spec/#tcproute">TCPRoute</a>
 is one such route which allows for managing <a href="https://datatracker.ietf.org/doc/html/rfc793">TCP</a> traffic.</p>
 <p>In this example, we have one Gateway resource and two TCPRoute resources that
 distribute the traffic with the following rules:</p>
@@ -2378,7 +2379,7 @@ distribute the traffic with the following rules:</p>
 <li>All TCP streams on port 8090 of the Gateway are forwarded to port 6000 of
 <code>my-bar-service</code> Kubernetes Service.</li>
 </ul>
-<p>In this example two <code>TCP</code> listeners will be applied to the <a href="/reference/spec/#gateway">Gateway</a>
+<p>In this example two <code>TCP</code> listeners will be applied to the <a href="//localhost:1313/reference/spec/#gateway">Gateway</a>
 in order to route them to two separate backend <code>TCPRoutes</code>, note that the
 <code>protocol</code> set for the <code>listeners</code> on the <code>Gateway</code> is <code>TCP</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><div class="highlight code-sample">
@@ -2457,7 +2458,7 @@ listeners using the <code>port</code> field in the <code>parentRefs</code>:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">8080</span><span style="color:#bbb">
 </span></span></span></code></pre></div><p>Using the <code>port</code> field instead of <code>sectionName</code> for the attachment has the
 downside of more tightly coupling the relationship between the Gateway and
-its associated Routes. Refer to <a href="/reference/api-types/httproute/#attaching-to-gateways">Attaching to Gateways</a> for more
+its associated Routes. Refer to <a href="//localhost:1313/reference/api-types/httproute/#attaching-to-gateways">Attaching to Gateways</a> for more
 details.</p>
 
 </div>
@@ -2476,7 +2477,7 @@ details.</p>
     
 	<h1 id="pg-b4b6e185150a6c03b1a3c5db3731bbfc">14 - gRPC Routing</h1>
     <div class="lead">Configuring gRPC routing with GRPCRoute</div>
-	<p>The <a href="/reference/api-types/grpcroute/">GRPCRoute resource</a> allows you to match on gRPC traffic and
+	<p>The <a href="//localhost:1313/reference/api-types/grpcroute/">GRPCRoute resource</a> allows you to match on gRPC traffic and
 direct it to Kubernetes backends. This guide shows how the GRPCRoute matches
 traffic on host, header, and service, and method fields and forwards it to different
 Kubernetes Services.</p>
@@ -2496,8 +2497,8 @@ behavior. There are two <code>GRPCRoute</code> resources that create routing rul
 same <code>prod</code> Gateway. This illustrates how more than one Route can bind to a
 Gateway which allows Routes to merge on a <code>Gateway</code> as long as they don't
 conflict. <code>GRPCRoute</code> follows the same Route merging semantics. For more
-information on that, refer to the <a href="/reference/api-types/httproute/#merging">documentation</a>.</p>
-<p>In order to receive traffic from a <a href="/reference/spec/#gateway">Gateway</a>, a <code>GRPCRoute</code> resource
+information on that, refer to the <a href="//localhost:1313/reference/api-types/httproute/#merging">documentation</a>.</p>
+<p>In order to receive traffic from a <a href="//localhost:1313/reference/spec/#gateway">Gateway</a>, a <code>GRPCRoute</code> resource
 must be configured with <code>ParentRefs</code> which reference the parent gateway(s) that it
 should be attached to. The following example shows how the combination
 of <code>Gateway</code> and <code>GRPCRoute</code> would be configured to serve gRPC traffic:</p>
@@ -2536,7 +2537,7 @@ of <code>Gateway</code> and <code>GRPCRoute</code> would be configured to serve 
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">port</span>:<span style="color:#bbb"> </span><span style="color:#666">50051</span><span style="color:#bbb">
 </span></span></span></code></pre></div></div>
 </div><span style="color:#bbb">
-</span></span></span></code></pre></div><p>A <code>GRPCRoute</code> can match against a <a href="/reference/spec/#grpcroutespec">single set of hostnames</a>.
+</span></span></span></code></pre></div><p>A <code>GRPCRoute</code> can match against a <a href="//localhost:1313/reference/spec/#grpcroutespec">single set of hostnames</a>.
 These hostnames are matched before any other matching within the GRPCRoute takes
 place. Since <code>foo.example.com</code> and <code>bar.example.com</code> are separate hosts with
 different routing requirements, each is deployed as its own GRPCRoute -
@@ -2709,7 +2710,7 @@ running in a Kubernetes cluster often create <a href="https://kubernetes.io/over
 <a href="https://kubernetes.io/overview/concepts/workloads/controllers/deployment/">Deployments</a>, while cloud-based implementations may create cloud
 load balancer resources. In many cases, it can be helpful to be able to
 propagate labels or annotations to these generated resources.</p>
-<p>The <a href="/reference/spec/#gatewayinfrastructure"><code>infrastructure</code> field</a> on a Gateway allows you to specify
+<p>The <a href="//localhost:1313/reference/spec/#gatewayinfrastructure"><code>infrastructure</code> field</a> on a Gateway allows you to specify
 labels and annotations for the infrastructure created by the Gateway API controller.
 For example, if your Gateway infrastructure is running in-cluster, you can specify
 both Linkerd and Istio injection using the following Gateway configuration, making
@@ -3012,7 +3013,7 @@ label will be accepted :</p>
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

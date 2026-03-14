@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en" class="no-js" dir="ltr">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.145.0">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -20,16 +20,18 @@
 
 <title>Migrating from Ingress | Kubernetes Gateway API</title>
 <meta name="description" content="A general guide for migrating from any Ingress implementation to Gateway API">
-<meta property="og:url" content="/guides/getting-started/migrating-from-ingress/">
+<meta property="og:url" content="//localhost:1313/guides/getting-started/migrating-from-ingress/">
   <meta property="og:site_name" content="Kubernetes Gateway API">
   <meta property="og:title" content="Migrating from Ingress">
   <meta property="og:description" content="A general guide for migrating from any Ingress implementation to Gateway API">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
+    <meta property="article:modified_time" content="2026-03-14T21:38:33+09:00">
 
   <meta itemprop="name" content="Migrating from Ingress">
   <meta itemprop="description" content="A general guide for migrating from any Ingress implementation to Gateway API">
+  <meta itemprop="dateModified" content="2026-03-14T21:38:33+09:00">
   <meta itemprop="wordCount" content="2426">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Migrating from Ingress">
@@ -38,8 +40,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" as="style">
-<link href="/scss/main.min.b74f61d3327b07b37e11569f529dc33a786f853a3c49ff0ab3c7028d40975e71.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -251,7 +253,7 @@
   <a href="https://github.com/kubernetes-sigs/gateway-api/edit/main/content/en/guides/getting-started/migrating-from-ingress.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
   <a href="https://github.com/kubernetes-sigs/gateway-api/new/main/content/en/guides/getting-started/migrating-from-ingress.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
   <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new?title=Migrating%20from%20Ingress" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
-  <a id="print" href="/guides/getting-started/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+  <a id="print" href="//localhost:1313/guides/getting-started/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
 
 </div>
 
@@ -313,13 +315,13 @@
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="/guides/">Guides</a>
+    <a href="//localhost:1313/guides/">Guides</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/guides/getting-started/">Getting Started</a>
+    <a href="//localhost:1313/guides/getting-started/">Getting Started</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/guides/getting-started/migrating-from-ingress/" aria-disabled="true" class="btn-link disabled">Migrating from Ingress</a>
+    <a href="//localhost:1313/guides/getting-started/migrating-from-ingress/" aria-disabled="true" class="btn-link disabled">Migrating from Ingress</a>
   </li>
   </ol>
 </nav>
@@ -379,7 +381,7 @@ multi-team clusters with shared load-balancing infrastructure.</li>
 </ul>
 <p>Gateway API addresses those limitations, as the next section will show.</p>
 <blockquote>
-<p>Read more about the <a href="/overview/#gateway-api-concepts">design goals</a>
+<p>Read more about the <a href="//localhost:1313/overview/#gateway-api-concepts">design goals</a>
 of Gateway API.</p></blockquote>
 <h2 id="key-differences-between-ingress-api-and-gateway-api">Key Differences Between Ingress API and Gateway API</h2>
 <p>There are three major differences between the Ingress API and Gateway API:</p>
@@ -404,7 +406,7 @@ the <a href="https://kubernetes.io/overview/concepts/services-networking/ingress
 resource, the infrastructure provider and cluster operator became the owners of
 that resource, and thus, explicit personas of the Ingress API.</p>
 <p>Gateway API
-includes <a href="/overview/concepts/security/#roles-and-personas">four explicit personas</a>:
+includes <a href="//localhost:1313/overview/concepts/security/#roles-and-personas">four explicit personas</a>:
 the application developer, the application admin, the cluster operator, and the
 infrastructure providers. This allows you to break away from the self-service
 model by splitting the responsibilities of the user persona across those
@@ -487,29 +489,29 @@ need to rely on the extensions of Gateway API.</p>
 reference a custom resource specific to the Gateway implementation that
 configures that feature. For example:
 <ul>
-<li><a href="/reference/spec/#httproutefilter">HTTPRouteFilter</a>
+<li><a href="//localhost:1313/reference/spec/#httproutefilter">HTTPRouteFilter</a>
 can reference an external resource via the <code>extensionRef</code> field, thus
 configuring an implementation-specific filter.</li>
-<li><a href="/reference/spec/#backendobjectreference">BackendObjectReference</a>
+<li><a href="//localhost:1313/reference/spec/#backendobjectreference">BackendObjectReference</a>
 supports resources other than Services.</li>
-<li><a href="/reference/spec/#secretobjectreference">SecretObjectReference</a>
+<li><a href="//localhost:1313/reference/spec/#secretobjectreference">SecretObjectReference</a>
 supports resources other than Secrets.</li>
 </ul>
 </li>
 <li><em>Custom implementations</em>. For some features, it is left up to an
 implementation to define how to support them. Those features correspond to the
 implementation-specific
-(custom)  <a href="/overview/concepts/conformance/#2-support-levels">conformance level</a>. For
+(custom)  <a href="//localhost:1313/overview/concepts/conformance/#2-support-levels">conformance level</a>. For
 example:
 <ul>
 <li>The <code>RegularExpression</code> type of
-the <a href="/reference/spec/#httppathmatch">HTTPPathMatch</a>.</li>
+the <a href="//localhost:1313/reference/spec/#httppathmatch">HTTPPathMatch</a>.</li>
 </ul>
 </li>
 <li><em>Policies.</em> A Gateway implementation can define custom resources called
 Policies for exposing data plane features like authentication. Gateway API
 does not prescribe the details of those resources. However, it prescribes a
-standard UX. See the <a href="/reference/policy-attachment/">Policy attachment guide</a>
+standard UX. See the <a href="//localhost:1313/reference/policy-attachment/">Policy attachment guide</a>
 for more details. In contrast with the <em>external references</em> above, a Gateway
 API resource does not reference a Policy. Instead, a Policy must reference a
 Gateway API resource.</li>
@@ -532,9 +534,9 @@ other for HTTPS traffic. An Ingress controller provides those entry points.
 Typically, they will either be shared by all Ingress resources, or every Ingress
 resource will get dedicated entry points.</p>
 <p>In Gateway API, entry points must be explicitly defined in
-a <a href="/reference/api-types/gateway/">Gateway</a> resource. For example, if you want the data
+a <a href="//localhost:1313/reference/api-types/gateway/">Gateway</a> resource. For example, if you want the data
 plane to handle HTTP traffic on port 80, you need to define
-a <a href="/reference/spec/#listener">listener</a> for
+a <a href="//localhost:1313/reference/spec/#listener">listener</a> for
 that traffic. Typically, a Gateway implementation provides a dedicated data
 plane for each Gateway resource.</p>
 <p>Gateway resources are owned by the cluster operator and the application admin.</p>
@@ -543,7 +545,7 @@ plane for each Gateway resource.</p>
 the <a href="https://kubernetes.io/overview/concepts/services-networking/ingress/#tls">TLS section</a>,
 where the TLS certificate and key are stored in a Secret.</p>
 <p>In Gateway API, TLS termination is a property of
-the <a href="/reference/spec/#listener">Gateway listener</a>,
+the <a href="//localhost:1313/reference/spec/#listener">Gateway listener</a>,
 and similarly to the Ingress, a TLS certificate and key are also stored in a
 Secret.</p>
 <p>Because the listener is part of the Gateway resource, the cluster operator and
@@ -551,20 +553,20 @@ application admin own TLS termination.</p>
 <h3 id="routing-rules">Routing Rules</h3>
 <p>The <a href="https://kubernetes.io/overview/concepts/services-networking/ingress/#path-types">path-based routing rules</a>
 of the Ingress resource map directly to
-the <a href="/reference/spec/#httprouterule">routing rules</a>
-of the <a href="/reference/api-types/httproute/">HTTPRoute</a>.</p>
+the <a href="//localhost:1313/reference/spec/#httprouterule">routing rules</a>
+of the <a href="//localhost:1313/reference/api-types/httproute/">HTTPRoute</a>.</p>
 <p>The <a href="https://kubernetes.io/overview/concepts/services-networking/ingress/#name-based-virtual-hosting">host-header-based routing rules</a>
 map to
-the <a href="/reference/spec/#hostname">hostnames</a> of
+the <a href="//localhost:1313/reference/spec/#hostname">hostnames</a> of
 the HTTPRoute. However, note that in the Ingress, each hostname has separate
 routing rules, while in the HTTPRoute the routing rules apply to all hostnames.</p>
 <blockquote>
 <p>The Ingress API uses the term host while Gateway API uses the hostname.
 This guide will use Gateway API term to refer to the Ingress host.</p></blockquote>
 <blockquote>
-<p>The <code>hostnames</code> of an HTTPRoute must match the <code>hostname</code> of the <a href="/reference/spec/#listener">Gateway listener</a>.
+<p>The <code>hostnames</code> of an HTTPRoute must match the <code>hostname</code> of the <a href="//localhost:1313/reference/spec/#listener">Gateway listener</a>.
 Otherwise, the listener will ignore the routing rules for the unmatched
-hostnames. See the <a href="/reference/spec/#httproutespec">HTTPRoute documentation</a>.</p></blockquote>
+hostnames. See the <a href="//localhost:1313/reference/spec/#httproutespec">HTTPRoute documentation</a>.</p></blockquote>
 <p>HTTPRoutes are owned by the application developer.</p>
 <p>The next three sections map additional features of the Ingress routing rules.</p>
 <h4 id="rules-merging-and-conflict-resolution">Rules Merging and Conflict Resolution</h4>
@@ -578,7 +580,7 @@ implement them differently.</p>
 <li>A Gateway implementation must merge the routing rules from all HTTPRoutes
 attached to a listener.</li>
 <li>Conflicts must be handled as
-prescribed in <a href="/guides/api-design/#conflicts">API Design Guide: Conflicts</a>. For example, more specific
+prescribed in <a href="//localhost:1313/guides/api-design/#conflicts">API Design Guide: Conflicts</a>. For example, more specific
 matches in a routing rule win over the less specific ones.</li>
 </ul>
 <h4 id="default-backend">Default Backend</h4>
@@ -594,7 +596,7 @@ default backend.</p>
 a <a href="https://kubernetes.io/overview/concepts/services-networking/ingress/#ingress-class">class</a>
 to select which Ingress controller to use. An HTTPRoute must specify which
 Gateway (or Gateways) to attach to via
-a <a href="/reference/spec/#parentreference">parentRef</a>.</p>
+a <a href="//localhost:1313/reference/spec/#parentreference">parentRef</a>.</p>
 <h3 id="implementation-specific-ingress-features-annotations">Implementation-Specific Ingress Features (Annotations)</h3>
 <p>Ingress annotations configure implementation-specific features. Thus, converting
 them to Gateway API depends both on the Ingress controller and Gateway
@@ -895,7 +897,10 @@ HTTPRoutes. The conversion results should always be tested and verified.</p>
 
 		<br />
 	
-	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Last modified March 14, 2026: <a href="https://github.com/kubernetes-sigs/gateway-api/commit/6deb09cb5c69cd1181b26b4501e40bbdecebd5f1">init: HUGO gateway-api-website draft (6deb09c)</a>
+</div>
+
 </div>
 
 
@@ -950,7 +955,7 @@ HTTPRoutes. The conversion results should always be tested and verified.</p>
 
     </div>
     
-  <script src="/js/main.min.b7a28af53492828acce3e3fc3396dbc5d35c1f43c7f99a9538a9124c1043beb3.js" integrity="sha256-t6KK9TSSgorM4&#43;P8M5bbxdNcH0PH&#43;ZqVOKkSTBBDvrM=" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
 

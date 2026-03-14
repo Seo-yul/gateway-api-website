@@ -24,16 +24,9 @@ separately.)
 
 ## The Use Cases
 
-- [Use Cases](#use-cases)
-  - [The Use Cases](#the-use-cases)
-  - [Basic north/south use case](#basic-northsouth-use-case)
-  - [Multiple applications behind a single Gateway](#multiple-applications-behind-a-single-gateway)
-  - [Basic east/west use case](#basic-eastwest-use-case)
-  - [Gateway and mesh use case](#gateway-and-mesh-use-case)
-
 [role and personas]: {{< ref "/overview/concepts/roles-and-personas" >}}
 
-## Basic [north/south] use case
+## Basic north/south use case {#basic-northsouth-use-case}
 
 {{< channel-version channel="standard" version="v0.8.0" >}}
 The [north/south] use case is fully supported by the Standard Channel
@@ -128,7 +121,7 @@ that Chihiro and Ian are handling.
 
 ![Gateway API Roles](/images/gateway-roles.png)
 
-## Basic [east/west] use case
+## Basic east/west use case {#basic-eastwest-use-case}
 
 In this scenario, Ana has built a workload which is already running in a
 cluster with a [GAMMA]-compliant [service mesh]. She wants to use the mesh to
