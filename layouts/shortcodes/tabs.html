@@ -20,9 +20,8 @@
 {{ else }}
   <div id="{{ $id }}" class="tab-pane" role="tabpanel" aria-labelledby="{{ $id }}">
 {{ end }}
-<p>
 	{{- with .content -}}
-		{{- . -}}
+		{{- . | markdownify -}}
 	{{- else -}}
 		{{- if eq $.Page.BundleType "leaf" -}}
 			{{- /* find the file somewhere inside the bundle. Note the use of double asterisk */ -}}

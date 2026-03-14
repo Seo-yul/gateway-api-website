@@ -5,7 +5,7 @@ weight: 2
 ---
 
 {{< tabs >}}
-{{< tab "Standard" >}}
+{{< tab name="Standard" >}}
 
 - [GEP-91: Client Certificate Validation for TLS terminating at the Gateway Listener]({{< ref "/geps/gep-91" >}})
 - [GEP-709: Cross Namespace References from Routes]({{< ref "/geps/gep-709" >}})
@@ -38,7 +38,7 @@ weight: 2
 - [GEP-3567: Gateway TLS Updates for HTTP/2 Connection Coalescing]({{< ref "/geps/gep-3567" >}})
 
 {{< /tab >}}
-{{< tab "Memorandum" >}}
+{{< tab name="Memorandum" >}}
 
 - [GEP-713: Metaresources and Policy Attachment]({{< ref "/geps/gep-713" >}})
 - [GEP-917: Gateway API Conformance Testing]({{< ref "/geps/gep-917" >}})
@@ -48,7 +48,7 @@ weight: 2
 - [GEP-2907: TLS Configuration Placement and Terminology]({{< ref "/geps/gep-2907" >}})
 
 {{< /tab >}}
-{{< tab "Experimental" >}}
+{{< tab name="Experimental" >}}
 
 - [GEP-1494: HTTP Auth in Gateway API]({{< ref "/geps/gep-1494" >}})
 - [GEP-1619: Session Persistence]({{< ref "/geps/gep-1619" >}})
@@ -57,14 +57,14 @@ weight: 2
 - [GEP-3388: Retry Budgets]({{< ref "/geps/gep-3388" >}})
 
 {{< /tab >}}
-{{< tab "Implementable" >}}
+{{< tab name="Implementable" >}}
 
 - [GEP-3779: Identity Based Authz for east-west traffic]({{< ref "/geps/gep-3779" >}})
 - [GEP-3793: Default Gateways]({{< ref "/geps/gep-3793" >}})
 - [GEP-3949: Mesh Resource]({{< ref "/geps/gep-3949" >}})
 
 {{< /tab >}}
-{{< tab "Provisional" >}}
+{{< tab name="Provisional" >}}
 
 - [GEP-1651: Gateway Routability]({{< ref "/geps/gep-1651" >}})
 - [GEP-2627: DNS configuration for Gateway API]({{< ref "/geps/gep-2627" >}})

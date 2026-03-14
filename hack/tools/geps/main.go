@@ -83,6 +83,10 @@ func main() {
 		if m.Kind != "GEPDetails" {
 			continue
 		}
+		if m.Number == 0 || m.Name == "" || m.Status == "" {
+			fmt.Fprintf(os.Stderr, "warning: skipping %s: missing required fields (number=%d, name=%q, status=%q)\n", entry, m.Number, m.Name, m.Status)
+			continue
+		}
 		if excludedStatuses[m.Status] {
 			continue
 		}
@@ -115,14 +119,14 @@ func main() {
 			continue
 		}
 
-		fmt.Fprintf(&buf, "{{< tab %q >}}\n\n", status)
+		fmt.Fprintf(&buf, "{{< tab name=%q >}}\n\n", status)
 		for _, g := range items {
 			fmt.Fprintf(&buf, "- [GEP-%d: %s]({{< ref \"/geps/gep-%d\" >}})\n", g.Number, g.Name, g.Number)
 		}
 		buf.WriteString("\n{{< /tab >}}\n")
 	}
 
-	buf.WriteString("{{< /tabs >}}")
+	buf.WriteString("{{< /tabs >}}\n")
 
 	if err := os.WriteFile(indexPath, []byte(buf.String()), 0644); err != nil {
 		fmt.Fprintf(os.Stderr, "error writing %s: %v\n", indexPath, err)
