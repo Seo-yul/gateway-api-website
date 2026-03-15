@@ -94,7 +94,7 @@ description = "Kubernetes Gateway API"
 showedit = true
 
 # GitHub repository link for editing a page and opening issues.
-github_repo = "https://github.com/kubernetes-sigs/gateway-api"
+github_repo = "https://github.com/Seo-yul/gateway-api-website"
 github_branch = "main"
 
 # Searching
@@ -122,8 +122,8 @@ footer_about_disable = false
 # Feedback section at the bottom of each doc page
 [params.ui.feedback]
 enable = true
-yes = 'Glad to hear it! Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.'
-no = 'Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gateway-api/issues/new">tell us how we can improve</a>.'
+yes = 'Glad to hear it! Please <a href="https://github.com/Seo-yul/gateway-api-website/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/Seo-yul/gateway-api-website/issues/new">tell us how we can improve</a>.'
 
 [params.links]
 # Links displayed on the right side of footer.
@@ -139,7 +139,7 @@ no = 'Sorry to hear that. Please <a href="https://github.com/kubernetes-sigs/gat
 
 [[params.links.developer]]
 	name = "GitHub"
-	url = "https://github.com/kubernetes-sigs/gateway-api"
+	url = "https://github.com/Seo-yul/gateway-api-website"
 	icon = "fa-brands fa-github"
 
 [[menu.main]]
