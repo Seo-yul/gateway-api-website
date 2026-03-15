@@ -130,6 +130,4 @@ The following example shows a `Gateway` with an HTTP listener and two child HTTP
 with unique hostnames and certificates. Only `ListenerSets` in namespaces that have the `belongs: shared-gateway`
 label will be accepted :
 
-```yaml
 {{< include file="examples/standard/listenerset/listenerset.yaml" >}}
-```

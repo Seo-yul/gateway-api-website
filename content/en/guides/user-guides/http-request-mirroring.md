@@ -21,9 +21,7 @@ Request mirroring is particularly useful in blue-green deployment. It can be
 used to assess the impact on application performance without impacting
 responses to clients in any way.
 
-```yaml
 {{< include file="examples/standard/http-request-mirroring/httproute-mirroring.yaml" >}}
-```
 
 In this example, all requests are forwarded to service `foo-v1` on port `8080`,
 and they are also forwarded to service `foo-v2` on port `8080`, but responses

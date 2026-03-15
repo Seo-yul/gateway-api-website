@@ -33,9 +33,7 @@ must be configured with `ParentRefs` which reference the parent gateway(s) that 
 should be attached to. The following example shows how the combination
 of `Gateway` and `GRPCRoute` would be configured to serve gRPC traffic:
 
-```yaml
 {{< include file="examples/standard/grpc-routing/gateway.yaml" >}}
-```
 
 A `GRPCRoute` can match against a [single set of hostnames][spec].
 These hostnames are matched before any other matching within the GRPCRoute takes
@@ -49,9 +47,7 @@ only one match specified, only requests for the `com.example.User.Login` method 
 `foo.example.com` will be forwarded. RPCs of any other method` will not be matched
 by this Route.
 
-```yaml
 {{< include file="examples/standard/grpc-routing/foo-grpcroute.yaml" >}}
-```
 
 Similarly, the `bar-route` GRPCRoute matches RPCs for `bar.example.com`. All
 traffic for this hostname will be evaluated against the routing rules. The most
@@ -59,9 +55,7 @@ specific match will take precedence which means that any traffic with the `env:
 canary` header will be forwarded to `bar-svc-canary` and if the header is
 missing or does not have the value `canary` then it will be forwarded to `bar-svc`.
 
-```yaml
 {{< include file="examples/standard/grpc-routing/bar-grpcroute.yaml" >}}
-```
 
 [gRPC
 Reflection](https://github.com/grpc/grpc/blob/v1.49.1/doc/server-reflection.md)
@@ -74,9 +68,7 @@ is likely to be useful in development and staging environments, but this should
 be enabled in production environments only after the security implications have
 been considered.
 
-```yaml
 {{< include file="examples/standard/grpc-routing/reflection-grpcroute.yaml" >}}
-```
 
 [gateway]: {{< ref "/reference/spec#gateway" >}}
 [spec]: {{< ref "/reference/spec#grpcroutespec" >}}

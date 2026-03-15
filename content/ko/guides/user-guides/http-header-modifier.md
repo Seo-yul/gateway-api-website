@@ -22,9 +22,7 @@ HTTP 헤더 수정을 구성하려면 하나 이상의 HTTP 필터가 포함된 
 
 HTTP 요청에 헤더를 추가하려면 `RequestHeaderModifier` 유형의 필터를 `add` 액션과 함께 헤더의 이름 및 값을 지정하여 사용한다:
 
-```yaml
 {{< include file="examples/standard/http-request-header-add.yaml" >}}
-```
 
 기존 헤더를 편집하려면 `set` 액션을 사용하고 수정할 헤더의 값과 설정할 새 헤더 값을 지정한다.
 

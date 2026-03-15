@@ -97,9 +97,7 @@ For example, the following ReferenceGrant allows references from HTTPRoutes in
 the "prod" namespace to Services that are deployed in the same namespace as
 the ReferenceGrant.
 
-```yaml
 {{< include file="examples/standard/reference-grant.yaml" >}}
-```
 
 For more information on ReferenceGrant, refer to our [detailed documentation
 for this resource]({{< ref "/reference/api-types/referencegrant" >}}).

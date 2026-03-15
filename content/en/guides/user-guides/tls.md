@@ -91,9 +91,7 @@ In this example, the Gateway is configured to serve the `foo.example.com` and
 `bar.example.com` domains. The certificate for these domains is specified
 in the Gateway.
 
-```yaml
 {{< include file="examples/standard/tls-basic.yaml" >}}
-```
 
 #### Wildcard TLS listeners
 
@@ -103,9 +101,7 @@ Since a specific match takes priority, the Gateway will serve
 `foo-example-com-cert` for requests to `foo.example.com` and
 `wildcard-example-com-cert` for all other requests.
 
-```yaml
 {{< include file="examples/standard/wildcard-tls-gateway.yaml" >}}
-```
 
 #### Cross namespace certificate references
 
@@ -114,9 +110,7 @@ different namespace. This is allowed by the ReferenceGrant created in the
 target namespace. Without that ReferenceGrant, the cross-namespace reference
 would be invalid.
 
-```yaml
 {{< include file="examples/standard/tls-cert-cross-namespace.yaml" >}}
-```
 ### Client Certificate Validation (Frontend mTLS)
 {{< channel-version channel="standard" version="v1.5.0" >}}
 GatewayFrontendClientCertificateValidation feature has been part of the Standard Channel since
@@ -148,9 +142,7 @@ Validation can be applied globally to the Gateway or overridden for specific por
 ##### Basic Client Validation
 This example shows how to configure client certificate validation with default configuration and per port override.
 
-```yaml
 {{< include file="examples/standard/frontend-cert-validation.yaml" >}}
-```
 
 ## Upstream TLS
 
@@ -187,9 +179,7 @@ In this example, the `BackendTLSPolicy` is configured to use system certificates
 TLS-encrypted upstream connection where Pods backing the `dev` Service are expected to serve a valid
 certificate for `dev.example.com`.
 
-```yaml
 {{< include file="examples/standard/backendtlspolicy/backendtlspolicy-system-certs.yaml" >}}
-```
 
 #### Using Explicit CA Certificates
 
@@ -197,9 +187,7 @@ In this example, the `BackendTLSPolicy` is configured to use certificates define
 map `auth-cert` to connect with a TLS-encrypted upstream connection where Pods backing the `auth` Service
 are expected to serve a valid certificate for `auth.example.com`.
 
-```yaml
 {{< include file="examples/standard/backendtlspolicy/backendtlspolicy-ca-certs.yaml" >}}
-```
 ### Gateway's Certificate Selection (Backend mTLS)
 {{< channel-version channel="standard" version="v1.5.0" >}}
 GatewayBackendClientCertificate feature has been part of the Standard Channel since
@@ -214,9 +202,7 @@ To configure the client certificate that the Gateway uses when connecting to bac
 
 This configuration applies to the Gateway as a client for *all* upstream connections managed by that Gateway.
 
-```yaml
 {{< include file="examples/standard/backend-tls.yaml" >}}
-```
 
 ## Extensions
 

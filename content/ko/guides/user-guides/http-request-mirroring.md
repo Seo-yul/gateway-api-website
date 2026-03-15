@@ -22,9 +22,7 @@ description: "Mirroring HTTP requests to multiple backends"
 영향도 미치지 않으면서 애플리케이션 성능에 대한 영향을 평가하는 데 사용할 수
 있다.
 
-```yaml
 {{< include file="examples/standard/http-request-mirroring/httproute-mirroring.yaml" >}}
-```
 
 이 예제에서는 모든 요청이 포트 `8080`의 서비스 `foo-v1`로 전달되고, 포트 `8080`의
 서비스 `foo-v2`로도 전달되지만, 응답은 서비스 `foo-v1`에서만 생성된다.

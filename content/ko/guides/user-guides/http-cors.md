@@ -27,23 +27,17 @@ CORS(교차 출처 리소스 공유)를 구성할 수 있다. CORS는 한 도메
 
 다음 HTTPRoute는 `https://app.example`에서의 요청을 허용한다:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-specific-origin-no-creds.yaml" >}}
-```
 
 특정 출처 목록을 지정하는 대신, 단일 와일드카드(`"*"`)를 지정하여
 모든 출처를 허용할 수도 있다:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-all-origins-no-creds.yaml" >}}
-```
 
 목록에 반지정(semi-specified) 출처를 사용할 수도 있다.
 와일드카드는 스킴 뒤, 호스트명의 시작 부분에 위치한다(예: `https://*.bar.com`):
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-origins-with-wildcards-no-creds.yaml" >}}
-```
 
 ## 자격 증명 허용
 
@@ -52,9 +46,7 @@ CORS(교차 출처 리소스 공유)를 구성할 수 있다. CORS는 한 도메
 
 다음 규칙은 `https://app.example`에서 자격 증명을 포함한 요청을 허용한다:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-credentials-true.yaml" >}}
-```
 
 ## 기타 CORS 옵션
 
@@ -70,6 +62,4 @@ CORS(교차 출처 리소스 공유)를 구성할 수 있다. CORS는 한 도메
 
 종합 예시:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-all-fields-set.yaml" >}}
-```

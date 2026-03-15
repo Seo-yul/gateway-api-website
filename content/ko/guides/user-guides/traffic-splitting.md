@@ -18,9 +18,7 @@ HTTPRoute의 `spec.rules.backendRefs`는 라우트 규칙이 트래픽을 보낼
 
 ![Traffic splitting](/images/simple-split.png)
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/simple-split.yaml" >}}
-```
 
 `weight`는 (백분율이 아닌) 비례적 트래픽 분할을 나타내므로, 단일 라우트 규칙 내
 모든 가중치의 합이 모든 백엔드의 분모가 된다. `weight`는 선택적 매개변수이며
@@ -34,9 +32,7 @@ v1에서 v2로의 점진적인 트래픽 이동을 관리하는 데 사용된다
 
 이 예제에서는 다음 게이트웨이가 배포되어 있다고 가정한다:
 
-```yaml
 {{< include file="examples/standard/simple-gateway/gateway.yaml" >}}
-```
 
 ## 카나리 트래픽 롤아웃
 
@@ -52,9 +48,7 @@ v1에서 v2로의 점진적인 트래픽 이동을 관리하는 데 사용된다
 ![Traffic splitting](/images/traffic-splitting-1.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-1.yaml" >}}
-```
 
 ## 블루-그린 트래픽 롤아웃
 
@@ -67,9 +61,7 @@ v1에서 v2로의 점진적인 트래픽 이동을 관리하는 데 사용된다
 ![Traffic splitting](/images/traffic-splitting-2.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-2.yaml" >}}
-```
 
 ## 롤아웃 완료
 
@@ -80,9 +72,7 @@ v1에서 v2로의 점진적인 트래픽 이동을 관리하는 데 사용된다
 ![Traffic splitting](/images/traffic-splitting-3.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-3.yaml" >}}
-```
 
 이 시점에서 100%의 트래픽이 `foo-v2`로 라우팅되며 롤아웃이 완료된다.
 어떤 이유로든 `foo-v2`에서 오류가 발생하면, 가중치를 업데이트하여 트래픽을

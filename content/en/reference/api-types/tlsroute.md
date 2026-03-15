@@ -189,9 +189,7 @@ one backendRef must be specified.
 The following example forwards TLS requests with the hostname `foo.example.com`
 to service "foo-svc" on port `443`.
 
-```yaml
 {{< include file="examples/standard/tls-routing/tls-route.yaml" >}}
-```
 
 Reference the [backendRef][backendRef] API documentation for additional details
 on `weight` and other fields.
@@ -199,9 +197,7 @@ on `weight` and other fields.
 This TLSRoute attaches to the Gateway TLS listener named `tls`, as defined
 below:
 
-```yaml
 {{< include file="examples/standard/tls-routing/gateway.yaml" >}}
-```
 
 Because the `tls` listener has its TLS mode configured as `Passthrough`, the
 traffic routed via this listener is sent as a direct encrypted TCP stream to the

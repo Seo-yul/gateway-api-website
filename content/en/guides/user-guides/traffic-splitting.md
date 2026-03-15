@@ -16,9 +16,7 @@ will split traffic 90% to `foo-v1` and 10% to `foo-v2`.
 
 ![Traffic splitting](/images/simple-split.png)
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/simple-split.yaml" >}}
-```
 
 `weight` indicates a proportional split of traffic (rather than percentage)
 and so the sum of all the weights within a single route rule is the
@@ -34,9 +32,7 @@ is used to manage the gradual splitting of traffic from v1 to v2.
 
 This example assumes that the following Gateway is deployed:
 
-```yaml
 {{< include file="examples/standard/simple-gateway/gateway.yaml" >}}
-```
 
 ## Canary traffic rollout
 
@@ -53,9 +49,7 @@ ensures that all traffic with the matching host and header
 ![Traffic splitting](/images/traffic-splitting-1.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-1.yaml" >}}
-```
 
 ## Blue-green traffic rollout
 
@@ -69,9 +63,7 @@ as a backend along with weights. The weights add up to a total of 100 so
 ![Traffic splitting](/images/traffic-splitting-2.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-2.yaml" >}}
-```
 
 ## Completing the rollout
 
@@ -82,9 +74,7 @@ Finally, if all signals are positive, it is time to fully shift traffic to
 ![Traffic splitting](/images/traffic-splitting-3.png)
 
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-3.yaml" >}}
-```
 
 At this point 100% of the traffic is being routed to `foo-v2` and the
 rollout is complete. If for any reason `foo-v2` experiences errors, the

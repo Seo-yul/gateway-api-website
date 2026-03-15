@@ -26,9 +26,7 @@ Gateway API는 여러 프로토콜과 함께 작동하도록 설계되었으며,
 별도 백엔드 `TCPRoute`로 라우팅된다. `Gateway`의 `listeners`에 설정된
 `protocol`이 `TCP`임에 유의한다:
 
-```yaml
 {{< include file="examples/experimental/basic-tcp.yaml" >}}
-```
 
 위 예제에서는 `parentRefs`의 `sectionName` 필드를 사용하여 두 개의 별도 백엔드
 TCP [Service][svc]에 대한 트래픽을 분리한다:

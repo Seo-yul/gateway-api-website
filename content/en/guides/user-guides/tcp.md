@@ -26,9 +26,7 @@ In this example two `TCP` listeners will be applied to the [Gateway][gateway]
 in order to route them to two separate backend `TCPRoutes`, note that the
 `protocol` set for the `listeners` on the `Gateway` is `TCP`:
 
-```yaml
 {{< include file="examples/experimental/basic-tcp.yaml" >}}
-```
 
 In the above example we separate the traffic for the two separate backend TCP
 [Services][svc] by using the `sectionName` field in the `parentRefs`:

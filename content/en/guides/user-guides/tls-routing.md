@@ -17,9 +17,7 @@ of Gateway and TLSRoute would be configured to serve TLS traffic using both
 `Passthrough` and `Terminate` modes (when supported by the Gateway API
 implementation):
 
-```yaml
 {{< include file="examples/standard/tls-routing/gateway.yaml" >}}
-```
 
 A TLSRoute can match against a [single set of hostnames][spec].
 Since `foo.example.com` and `bar.example.com` are separate hosts with
@@ -31,9 +29,7 @@ and apply its routing rules to forward the traffic to the configured backend.
 Since it is attached to a listener that is configured in `Passthrough` mode, the
 Gateway will pass the encrypted TCP stream directly to the backend:
 
-```yaml
 {{< include file="examples/standard/tls-routing/tls-route.yaml" >}}
-```
 
 Similarly, the `bar-route` TLSRoute matches traffic for `bar.example.com`.
 However, since it is attached to a listener that is configured in `Terminate`
@@ -41,9 +37,7 @@ mode, the Gateway will first terminate the TLS stream using the certificate
 specified on the listener, and then pass the resulting unencrypted TCP stream to
 the backend:
 
-```yaml
 {{< include file="examples/standard/tls-routing/tls-route-terminate.yaml" >}}
-```
 
 [gateway]: {{< ref "/reference/spec#gateway" >}}
 [spec]: {{< ref "/reference/spec#tlsroutespec" >}}

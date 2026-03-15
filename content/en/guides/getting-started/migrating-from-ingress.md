@@ -396,22 +396,16 @@ Also, note that both listeners allow all HTTPRoutes from the same namespace
 the `example.com` subdomain (allow hostnames like `foo.example.com` but
 not `foo.kubernetes.io`).
 
-```yaml
 {{< include file="examples/standard/simple-http-https/gateway.yaml" >}}
-```
 
 ### Conversion Step 2 - Define HTTPRoutes
 
 The Ingress is split into two HTTPRoutes -- one for `foo.example.com` and one
 for `bar.example.com` hostnames.
 
-```yaml
 {{< include file="examples/standard/simple-http-https/foo-route.yaml" >}}
-```
 
-```yaml
 {{< include file="examples/standard/simple-http-https/bar-route.yaml" >}}
-```
 
 Both HTTPRoutes:
 
@@ -428,9 +422,7 @@ configured via an annotation. The HTTPRoute below:
 *   Issues a TLS redirect for any HTTP request for the `foo.example.com`
     or `bar.example.com` hostnames.
 
-```yaml
 {{< include file="examples/standard/simple-http-https/tls-redirect-route.yaml" >}}
-```
 
 ## Automatic Conversion of Ingresses
 

@@ -19,9 +19,7 @@ TLSRoute가 호스트네임을 기준으로 트래픽을 매칭하고, **Gateway
 `Terminate` 모드를 모두 사용하여 TLS 트래픽을 처리하는 방법을
 보여준다(Gateway API 구현체에서 지원하는 경우):
 
-```yaml
 {{< include file="examples/standard/tls-routing/gateway.yaml" >}}
-```
 
 TLSRoute는 [단일 호스트네임 집합][spec]에 대해 매칭할 수 있다.
 `foo.example.com`과 `bar.example.com`은 서로 다른 라우팅 요구 사항을 가진
@@ -33,18 +31,14 @@ TLSRoute로 배포된다.
 `Passthrough` 모드로 구성된 리스너에 연결되어 있으므로,
 게이트웨이는 암호화된 TCP 스트림을 백엔드로 직접 전달한다:
 
-```yaml
 {{< include file="examples/standard/tls-routing/tls-route.yaml" >}}
-```
 
 마찬가지로, `bar-route` TLSRoute는 `bar.example.com`에 대한 트래픽을 매칭한다.
 그러나 `Terminate` 모드로 구성된 리스너에 연결되어 있으므로,
 게이트웨이는 먼저 리스너에 지정된 인증서를 사용하여 TLS 스트림을 종료한 다음,
 결과로 생성된 비암호화 TCP 스트림을 백엔드로 전달한다:
 
-```yaml
 {{< include file="examples/standard/tls-routing/tls-route-terminate.yaml" >}}
-```
 
 [gateway]: {{< ref "/reference/spec#gateway" >}}
 [spec]: {{< ref "/reference/spec#tlsroutespec" >}}

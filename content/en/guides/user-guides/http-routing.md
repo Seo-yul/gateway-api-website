@@ -32,9 +32,7 @@ must be configured with `ParentRefs` which reference the parent gateway(s) that 
 should be attached to. The following example shows how the combination
 of `Gateway` and `HTTPRoute` would be configured to serve HTTP traffic:
 
-```yaml
 {{< include file="examples/standard/http-routing/gateway.yaml" >}}
-```
 
 An HTTPRoute can match against a [single set of hostnames][spec].
 These hostnames are matched before any other matching within the HTTPRoute takes
@@ -48,9 +46,7 @@ only one match specified, only `foo.example.com/login/*` traffic will be
 forwarded. Traffic to any other paths that do not begin with `/login` will not
 be matched by this Route.
 
-```yaml
 {{< include file="examples/standard/http-routing/foo-httproute.yaml" >}}
-```
 
 Similarly, the `bar-route` HTTPRoute matches traffic for `bar.example.com`. All
 traffic for this hostname will be evaluated against the routing rules. The most
@@ -58,9 +54,7 @@ specific match will take precedence which means that any traffic with the `env:
 canary` header will be forwarded to `bar-svc-canary` and if the header is
 missing or not `canary` then it'll be forwarded to `bar-svc`.
 
-```yaml
 {{< include file="examples/standard/http-routing/bar-httproute.yaml" >}}
-```
 
 [gateway]: {{< ref "/reference/spec#gateway" >}}
 [spec]: {{< ref "/reference/spec#httproutespec" >}}

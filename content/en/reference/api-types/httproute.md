@@ -183,9 +183,7 @@ strategies, rate-limiting, and traffic shaping.
 
 The following example adds header "my-header: foo" to HTTP requests with Host
 header "my.filter.com".
-```yaml
 {{< include file="examples/standard/http-filter.yaml" >}}
-```
 
 API conformance is defined based on the filter type. The effects of ordering
 multiple behaviors is currently unspecified. This may change in the future
@@ -225,16 +223,12 @@ following criteria
 - method `GET`
 
 to service "my-service2" on port `8080`:
-```yaml
 {{< include file="examples/standard/basic-http.yaml" >}}
-```
 
 The following example uses the `weight` field to forward 90% of HTTP requests to
 `foo.example.com` to the "foo-v1" Service and the other 10% to the "foo-v2"
 Service:
-```yaml
 {{< include file="examples/standard/traffic-splitting/traffic-split-2.yaml" >}}
-```
 
 Reference the [backendRef][backendRef] API documentation for additional details
 on `weight` and other fields.
@@ -261,9 +255,7 @@ Timeouts are optional, and their fields are of type [Duration]({{< ref "/geps/ge
 
 The following example uses the `request` field which will cause a timeout if a client request is taking longer than 10 seconds to complete. The example also defines a 2s `backendRequest` which specifies a timeout for an individual request from the gateway to a backend service `timeout-svc`:
 
-```yaml
 {{< include file="examples/experimental/http-route-timeouts/timeout-example.yaml" >}}
-```
 
 Reference the [timeouts][timeouts] API documentation for additional details.
 
@@ -281,9 +273,7 @@ If specified, the value of the name field must comply with the [`SectionName`](h
 
 The following example specifies the `name` field to identify HTTPRoute Rules used to split traffic between a _read-only_ backend service and a _write-only_ one:
 
-```yaml
 {{< include file="examples/experimental/http-route-rule-name.yaml" >}}
-```
 
 ##### Backend Protocol
 

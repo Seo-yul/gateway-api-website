@@ -9,9 +9,7 @@ This guide is a great place to start if you are new to Gateway API. It shows the
 
 ![Simple Gateway](/images/single-service-gateway.png)
 
-```yaml
 {{< include file="examples/standard/simple-gateway/gateway.yaml" >}}
-```
 
 The Gateway represents the instantiation of a logical load balancer and the
 GatewayClass defines the load balancer template when users create a Gateway.
@@ -37,9 +35,7 @@ to backends. Because there are no host routes or paths specified, this HTTPRoute
 will match all HTTP traffic that arrives at port 80 of the load balancer and
 send it to the `foo-svc` Pods.
 
-```yaml
 {{< include file="examples/standard/simple-gateway/httproute.yaml" >}}
-```
 
 While Route resources are often used to filter traffic to many different
 backends (potentially with different owners), this demonstrates the simplest

@@ -118,6 +118,4 @@ Gateway API의 다른 모든 충돌 해결 규칙과 마찬가지로, 이는 트
 
 다음 예시는 HTTP 리스너가 있는 Gateway와 고유한 호스트명 및 인증서를 가진 두 개의 하위 HTTPS ListenerSet을 보여준다. `belongs: shared-gateway` 레이블이 있는 네임스페이스의 ListenerSet만 허용된다:
 
-```yaml
 {{< include file="examples/standard/listenerset/listenerset.yaml" >}}
-```

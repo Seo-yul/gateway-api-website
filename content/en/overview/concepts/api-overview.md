@@ -323,22 +323,16 @@ The following `my-route` Route wants to attach to the `foo-gateway` in the
 `foo-gateway` is in a different Namespace. The `foo-gateway` must allow
 attachment from HTTPRoutes in the namespace `gateway-api-example-ns2`.
 
-```yaml
 {{< include file="examples/standard/http-route-attachment/httproute.yaml" >}}
-```
 
 This `foo-gateway` allows the `my-route` HTTPRoute to attach.
 
-```yaml
 {{< include file="examples/standard/http-route-attachment/gateway-strict.yaml" >}}
-```
 
 For a more permissive example, the below Gateway will allow all HTTPRoute resources
 to attach from Namespaces with the "expose-apps: true" label.
 
-```yaml
 {{< include file="examples/standard/http-route-attachment/gateway-namespaces.yaml" >}}
-```
 
 ### Combined types
 

@@ -39,9 +39,7 @@ Redirect filters can substitute various URL components independently. For
 example, to issue a permanent redirect (301) from HTTP to HTTPS, configure
 `requestRedirect.statusCode=301` and `requestRedirect.scheme="https"`:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-http.yaml" >}}
-```
 
 Redirects change configured URL components to match the redirect configuration
 while preserving other components from the original request URL. In this
@@ -54,32 +52,24 @@ unchanged.
 
 When you need to ensure that the HTTP method is preserved during a redirect, use status codes 307 or 308:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-307.yaml" >}}
-```
 
 For permanent redirects that must preserve the HTTP method, use status code 308:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-308.yaml" >}}
-```
 
 ### POST-Redirect-GET Pattern
 
 For implementing the POST-Redirect-GET pattern, use status code 303 to redirect POST requests to a GET endpoint:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-303.yaml" >}}
-```
 
 ### HTTP-to-HTTPS redirects
 
 To redirect HTTP traffic to HTTPS, you need to have a Gateway with both HTTP
 and HTTPS listeners.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/gateway-redirect-http-https.yaml" >}}
-```
 There are multiple ways to secure a Gateway. In this example, it is secured
 using a Kubernetes Secret(`redirect-example` in the `certificateRefs` section).
 
@@ -87,16 +77,12 @@ You need an HTTPRoute that attaches to the HTTP listener and does the redirect
 to HTTPS. Here we set `sectionName` to be `http` so it only selects the
 listener named `http`.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-http.yaml" >}}
-```
 
 You also need an HTTPRoute that attaches to the HTTPS listener that forwards
 HTTPS traffic to application backends.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-https.yaml" >}}
-```
 
 ### Path redirects
 
@@ -106,9 +92,7 @@ prefixes. For example, the HTTPRoute below will issue a 302 redirect to all
 Note that you can use any of the supported status codes (301, 302, 303, 307, 308)
 depending on your specific requirements:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-full.yaml" >}}
-```
 
 Both requests to
 `https://redirect.example/cayenne/pinch` and
@@ -118,9 +102,7 @@ Both requests to
 The other path redirect type, `ReplacePrefixMatch`, replaces only the path
 portion matching `matches.path.value`. Changing the filter in the above to:
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-redirect-prefix.yaml" >}}
-```
 
 will result in redirects with `location:
 https://redirect.example/paprika/pinch` and `location:
@@ -137,21 +119,15 @@ following HTTPRoute will accept a request for
 `host: elsewhere.example` in request headers instead of `host:
 rewrite.example`.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-rewrite.yaml" >}}
-```
 
 Path rewrites also make use of HTTP Path Modifiers. The HTTPRoute below
 will take request for `https://rewrite.example/cardamom/smidgen` and proxy a
 request to `https://elsewhere.example/fennel` upstream to `example-svc`.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-rewrite-full-path.yaml" >}}
-```
 
 Instead using `type: ReplacePrefixMatch` and `replacePrefixMatch: /fennel` will
 request `https://elsewhere.example/fennel/smidgen` upstream.
 
-```yaml
 {{< include file="examples/standard/http-redirect-rewrite/httproute-rewrite-prefix-path.yaml" >}}
-```

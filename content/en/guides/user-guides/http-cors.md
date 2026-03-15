@@ -26,24 +26,18 @@ The `CORS` filter in an `HTTPRouteRule` can be used to specify the CORS policy.
 
 The following `HTTPRoute` allows requests from `https://app.example`:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-specific-origin-no-creds.yaml" >}}
-```
 
 Instead of specifying a list of specific origins, you can also specify a
 single wildcard (`"*"`), which will allow any origin:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-all-origins-no-creds.yaml" >}}
-```
 
 It is also allowed to use semi-specified origins in the list,
 where the wildcard appears after the scheme
 and at the beginning of the hostname, e.g. `https://*.bar.com`:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-origins-with-wildcards-no-creds.yaml" >}}
-```
 
 ## Allowing credentials
 
@@ -54,9 +48,7 @@ request.
 The following rule allows requests from `https://app.example` with
 credentials:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-credentials-true.yaml" >}}
-```
 
 ## Other CORS options
 
@@ -73,6 +65,4 @@ to use a single wildcard (`"*"`) instead of a list of specific names.
 
 A comprehensive example:
 
-```yaml
 {{< include file="examples/standard/http-cors/httproute-all-fields-set.yaml" >}}
-```

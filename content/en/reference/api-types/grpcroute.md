@@ -217,9 +217,7 @@ The following example adds header "my-header: foo" to gRPC requests with Host
 header "my.filter.com". Note that GRPCRoute uses HTTPRoute filters for features
 with functionality identical to HTTPRoute, such as this.
 
-```yaml
 {{< include file="examples/standard/grpc-filter.yaml" >}}
-```
 
 API conformance is defined based on the filter type. The effects of ordering
 multiple behaviors are currently unspecified. This may change in the future
@@ -250,17 +248,13 @@ The following example forwards gRPC requests for the method `User.Login` to serv
 "my-service1" on port `50051` and gRPC requests for the method `Things.DoThing` with
 header `magic: foo` to service "my-service2" on port `50051`:
 
-```yaml
 {{< include file="examples/standard/basic-grpc.yaml" >}}
-```
 
 The following example uses the `weight` field to forward 90% of gRPC requests to
 `foo.example.com` to the "foo-v1" Service and the other 10% to the "foo-v2"
 Service:
 
-```yaml
 {{< include file="examples/standard/traffic-splitting/grpc-traffic-split-2.yaml" >}}
-```
 
 Reference the [backendRef][backendRef] API documentation for additional details
 on `weight` and other fields.

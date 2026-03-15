@@ -389,22 +389,16 @@ spec:
 제한한다 (`foo.example.com`과 같은 호스트이름은 허용하지만
 `foo.kubernetes.io`는 허용하지 않음).
 
-```yaml
 {{< include file="examples/standard/simple-http-https/gateway.yaml" >}}
-```
 
 ### 변환 단계 2 - HTTPRoute 정의
 
 Ingress는 두 개의 HTTPRoute로 분할된다 -- `foo.example.com`용과
 `bar.example.com`용.
 
-```yaml
 {{< include file="examples/standard/simple-http-https/foo-route.yaml" >}}
-```
 
-```yaml
 {{< include file="examples/standard/simple-http-https/bar-route.yaml" >}}
-```
 
 두 HTTPRoute 모두:
 
@@ -420,9 +414,7 @@ Ingress는 두 개의 HTTPRoute로 분할된다 -- `foo.example.com`용과
 *   `foo.example.com` 또는 `bar.example.com` 호스트이름에 대한 모든 HTTP 요청에
     TLS 리다이렉트를 발행한다.
 
-```yaml
 {{< include file="examples/standard/simple-http-https/tls-redirect-route.yaml" >}}
-```
 
 ## Ingress 자동 변환
 

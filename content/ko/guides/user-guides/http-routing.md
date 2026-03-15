@@ -30,9 +30,7 @@ description: "Configuring HTTP routing with HTTPRoute"
 연결할 상위 게이트웨이를 참조하는 `ParentRefs`를 구성해야 한다. 다음 예제는
 `Gateway`와 `HTTPRoute`의 조합이 HTTP 트래픽을 서비스하도록 구성되는 방법을 보여준다:
 
-```yaml
 {{< include file="examples/standard/http-routing/gateway.yaml" >}}
-```
 
 HTTPRoute는 [단일 호스트명 집합][spec]에 대해 매칭할 수 있다.
 이러한 호스트명은 HTTPRoute 내의 다른 매칭보다 먼저 매칭된다.
@@ -44,18 +42,14 @@ HTTPRoute는 [단일 호스트명 집합][spec]에 대해 매칭할 수 있다.
 `foo.example.com/login/*` 트래픽만 전달된다. `/login`으로 시작하지 않는
 다른 경로로의 트래픽은 이 라우트에 의해 매칭되지 않는다.
 
-```yaml
 {{< include file="examples/standard/http-routing/foo-httproute.yaml" >}}
-```
 
 마찬가지로 `bar-route` HTTPRoute는 `bar.example.com`에 대한 트래픽을 매칭한다.
 이 호스트명에 대한 모든 트래픽은 라우팅 규칙에 따라 평가된다. 가장 구체적인
 매치가 우선하므로, `env: canary` 헤더가 있는 트래픽은 `bar-svc-canary`로
 전달되고, 헤더가 없거나 `canary`가 아닌 경우 `bar-svc`로 전달된다.
 
-```yaml
 {{< include file="examples/standard/http-routing/bar-httproute.yaml" >}}
-```
 
 [gateway]: {{< ref "/reference/spec#gateway" >}}
 [spec]: {{< ref "/reference/spec#httproutespec" >}}

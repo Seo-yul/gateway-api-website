@@ -20,9 +20,7 @@ To configure HTTP header modification, define a Gateway object with one or more 
 
 To add a header to an HTTP request, use a filter of the type `RequestHeaderModifier`, with the `add` action and the name and value of the header:
 
-```yaml
 {{< include file="examples/standard/http-request-header-add.yaml" >}}
-```
 
 To edit an existing header, use the `set` action and specify the value of the header to be modified and the new header value to be set.
 
