@@ -19,7 +19,15 @@
 {{- end -}}
 {{- $content := "" -}}
 {{- if fileExists $file -}}
-  {{- $content = readFile $file -}}
+  {{- $raw := readFile $file -}}
+  {{- $lines := split $raw "\n" -}}
+  {{- $filtered := slice -}}
+  {{- range $lines -}}
+    {{- if not (hasPrefix . "#$") -}}
+      {{- $filtered = $filtered | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $content = delimit $filtered "\n" -}}
 {{- end -}}
 {{- if $content -}}
 <div class="highlight code-sample">
