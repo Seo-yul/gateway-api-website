@@ -143,6 +143,10 @@ body.td-404 main .error-details {
   padding-top: 1rem;
   padding-bottom: 1rem;
 
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+
   // mermaid diagram - sequence diagram
   .actor {
     fill: $primary !important;
@@ -1802,55 +1806,6 @@ div.alert > em.javascript-required {
     background: #326de6;
 }
 
-/* CSS for 'figure' full-screen display */
-
-/* Define styles for full-screen overlay */
-.figure-fullscreen-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.95); /* White background with some transparency */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: calc(5% + 20px);
-  box-sizing: border-box;
-}
-
-/* CSS class to scale the image when zoomed */
-.figure-zoomed {
-  transform: scale(1.2);
-}
-
-/* Define styles for full-screen image */
-.figure-fullscreen-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Maintain aspect ratio and fit within the container */
-}
-
-/* Define styles for close button */
-.figure-close-button {
-  position: absolute;
-  top: 1%;
-  right: 2%;
-  cursor: pointer;
-  font-size: calc(5vw + 10px);
-  color: #333;
-}
-
-.code-sample > .copy-code-icon {
-  cursor: pointer;
-  display: flex;
-  gap:1rem;
-  justify-content: right;
-  padding: 0.2rem;
-}
-
-.includecode .highlight {
-  margin-top: 0;
-  margin-bottom: 0;
-}
 #toast-container > *{
   background: $primary;
 }
@@ -1881,7 +1836,7 @@ body.td-home section#upcoming-events > .col > .row {
 
   flex-direction: row;
   row-gap: 0.25rem;
-  column-gap: calc(clamp(1rem, 5vw, 6rem);
+  column-gap: clamp(1rem, 5vw, 6rem);
   justify-content: center;
   flex-wrap: wrap;
 
@@ -1984,7 +1939,9 @@ body.td-home section.case-studies {
 }
 
 @media screen and (max-aspect-ratio: 9/15) {
+  body.td-home .features-container > div {
     gap: 0.4rem;
+  }
 }
 
 @media screen and (min-width: 1281px) {
